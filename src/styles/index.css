@@ -1,0 +1,17 @@
+@import url('./default.css');
+@import url('./animate.css');
+@import url('./element-ui.css');
+@import url('./style.css');
+
+:root {
+  --white: #e0e0e0;
+  --black:#333;
+  --red:#c0392b;
+  --orange:#d35400;
+  --yellow:#f39c12;
+  --green:#27ae60;
+  --cyan:#16a085;
+  --blue:#2980b9;
+  --purple:#8e44ad;
+  --magenta:#e84393;
+}
