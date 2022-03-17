@@ -1,7 +1,7 @@
 const { defineConfig } = require('@vue/cli-service');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const path = require('path');
-const myTheme = path.resolve(__dirname, './src/plugins/vant/vantChange.less');
+const myTheme = path.resolve(__dirname, './src/plugins/vant/index.less');
 
 module.exports = defineConfig({
   transpileDependencies: true,

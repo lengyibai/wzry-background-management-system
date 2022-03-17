@@ -6,6 +6,7 @@ import router from './router';
 import './styles/index.css';
 
 import './plugins/element';
+import './plugins/vant';
 
 Vue.prototype.$bus = new Vue();
 

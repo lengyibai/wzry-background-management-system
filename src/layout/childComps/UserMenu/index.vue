@@ -28,7 +28,6 @@ export default {
     margin-right: 15px;
   }
   span {
-    font-size: ;
     color: var(--black);
   }
 }
