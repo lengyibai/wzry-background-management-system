@@ -1,9 +1,8 @@
 <template>
-  <div style="padding: 30px">
+  <div class="index">
     <h1>射手</h1>
   </div>
 </template>
-
 <script>
 export default {
   name: 'index',

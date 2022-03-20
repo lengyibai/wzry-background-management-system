@@ -17,9 +17,11 @@
         <el-button type="warning" @click="reset">重置</el-button>
       </el-col>
     </el-row>
+    <BgVideo :video="require('../../../assets/video/video.mp4')" />
   </div>
 </template>
 <script>
+import BgVideo from '../../../components/BgVideo/index.vue';
 export default {
   name: 'Login',
   data() {
@@ -29,7 +31,6 @@ export default {
         id: 1329670984,
         password: 'lengyibai.'
       },
-
       /* 表单验证 */
       rules: {
         id: [{ required: true, message: '请输入帐号', trigger: 'blur' }],
@@ -49,7 +50,8 @@ export default {
       this.form = {};
       this.$refs.form.resetFields();
     }
-  }
+  },
+  components: { BgVideo }
 };
 </script>
 <style scoped lang="less">

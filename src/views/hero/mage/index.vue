@@ -1,12 +1,8 @@
 <template>
-  <div style="padding: 30px">
+  <div class="index">
     <h1>法师</h1>
-    <transition name="fade-transform" mode="out-in">
-      <router-view :key="new Date().getTime()" />
-    </transition>
   </div>
 </template>
-
 <script>
 export default {
   name: 'index',

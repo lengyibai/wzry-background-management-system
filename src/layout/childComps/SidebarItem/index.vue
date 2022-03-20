@@ -105,15 +105,12 @@ export default {
 };
 </script>
 <style lang="less">
+.el-menu-item .submenu i {
+  color: var(--theme-font-dark);
+}
 .icon {
   width: 25px;
   height: 25px;
   margin-right: 20px;
-}
-</style>
-<style scoped lang="less">
-.submenu {
-  display: flex;
-  align-items: center;
 }
 </style>

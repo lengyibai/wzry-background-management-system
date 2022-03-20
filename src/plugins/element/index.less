@@ -1,9 +1,6 @@
 .color {
   color: var(--theme-font-light) !important;
-  background-color: #2281c7;
-  background-image: linear-gradient(62deg, #223a5e 0%, #2281c7 100%);
-}
-.bg {
+  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
 }
 
 /* 侧边栏主体 */
@@ -14,8 +11,10 @@
 
 /* 侧边栏背景 */
 .sidebar-container {
-  background-color: #1a2842;
-  background-image: linear-gradient(180deg, #1a2842 0%, #1c3353 50%, #1a365b 100%);
+  background: rgba(35, 60, 91, .25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* 菜单激活色 */

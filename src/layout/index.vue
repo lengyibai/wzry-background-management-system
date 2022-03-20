@@ -7,6 +7,7 @@
       <navbar />
       <app-main />
     </div>
+    <BgVideo :video="require('../assets/video/bg.mp4')" />
   </div>
 </template>
 
@@ -14,13 +15,15 @@
 import Navbar from '@/layout/childComps/Navbar.vue';
 import Sidebar from '@/layout/childComps/Sidebar.vue';
 import AppMain from '@/layout/childComps/AppMain.vue';
+import BgVideo from '../components/BgVideo/index.vue';
 
 export default {
   name: 'Layout',
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    BgVideo
   }
 };
 </script>
