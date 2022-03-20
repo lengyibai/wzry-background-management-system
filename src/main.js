@@ -3,8 +3,6 @@ import App from './App';
 import store from './store';
 import router from './router';
 
-import './styles/index.css';
-
 import './plugins/element';
 
 Vue.prototype.$bus = new Vue();

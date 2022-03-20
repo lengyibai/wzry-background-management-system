@@ -46,7 +46,7 @@
 import path from 'path';
 /* 用于路由跳转 */
 import AppLink from './Link';
-import icon from '@/icons/svg/index.js';
+import icon from '@/assets/icons/svg/index.js';
 
 export default {
   name: 'SidebarItem',

@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import './index.css';
 import 'element-ui/lib/theme-chalk/index.css';
 import {
   Message,

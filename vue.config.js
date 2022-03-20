@@ -28,7 +28,7 @@ module.exports = defineConfig({
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
-      patterns: [path.resolve(__dirname, './src/styles/less/common.less')] // 引入全局样式变量
+      patterns: [path.resolve(__dirname, './src/styles/index.less')] // 引入全局样式变量
     }
   }
 });

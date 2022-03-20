@@ -20,7 +20,6 @@
   </div>
 </template>
 <script>
-import { getUserInfo } from '@/api/test.js';
 export default {
   name: 'Login',
   data() {
@@ -62,6 +61,7 @@ export default {
   width: 100%;
   height: 100%;
   h1 {
+    color: var(--white);
     margin-bottom: 25px;
   }
 }

@@ -96,7 +96,6 @@ router.beforeEach((to, from, next) => {
   // 如果本地存在token，但未登录，则自动登录
   if (!store.state.userStatus && store.state.token) {
     store.dispatch('userInfo');
-    next();
   }
   // 如果状态为 true、或路由不需要验证，则跳转
   else if (store.state.userStatus === true || to.path === '/login') {
