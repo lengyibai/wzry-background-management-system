@@ -5,11 +5,6 @@ export default {
     state.token = token;
     window.localStorage.setItem('token', token);
   },
-  // 设置用户信息
-  setUserInfo(state, userInfo) {
-    state.userInfo = userInfo;
-    state.userStatus = true;
-  },
   // 退出登录清除token
   clearToken(state) {
     state.token = '';

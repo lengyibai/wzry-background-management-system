@@ -24,7 +24,7 @@ export const routes = [
           title: '主页',
           icon: 'HOME'
         },
-        component: () => import('@/views/base/Home.vue')
+        component: () => import('@/views/base/Home')
       }
     ]
   },
@@ -34,7 +34,7 @@ export const routes = [
       title: '登录',
       noVerify: true
     },
-    component: () => import('@/views/base/Login.vue'),
+    component: () => import('@/views/base/Login'),
     hidden: true
   },
 
@@ -49,7 +49,7 @@ export const routes = [
     children: [
       {
         path: 'mage',
-        component: () => import('@/views/hero/mage/index'),
+        component: () => import('@/views/hero/mage'),
         meta: { title: '法师', icon: 'MAGE' },
         redirect: 'male',
         children: [
@@ -67,7 +67,7 @@ export const routes = [
       },
       {
         path: 'striker',
-        component: () => import('@/views/hero/striker/index'),
+        component: () => import('@/views/hero/striker'),
         meta: { title: '射手', icon: 'STRIKER' }
       }
     ]
@@ -77,7 +77,7 @@ export const routes = [
     meta: {
       title: '404 NotFound'
     },
-    component: () => import('@/views/base/NotFound.vue'),
+    component: () => import('@/views/base/NotFound'),
     hidden: true
   }
 ];
@@ -89,11 +89,12 @@ const router = new VueRouter({
 import store from '@/store/index.js';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
-  if (store.state.userStatus || to.meta.noVerify) {
-    if (store.state.userStatus && ['/login'].includes(to.path)) {
-      next('/');
-      return;
-    }
+  // ?如果本地存在token，但未登录，则自动登录
+  if (!store.state.userStatus && store.state.token) {
+    store.dispatch('userInfo');
+  }
+  // 如果状态为 true、或路由不需要验证，则跳转
+  if (store.state.userStatus === true || to.path === '/login') {
     next();
   } else {
     next('/login');

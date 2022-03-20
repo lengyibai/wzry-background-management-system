@@ -28,10 +28,9 @@ export default {
 .navbar {
   width: 100%;
   height: 50px;
-  overflow: hidden;
   position: relative;
   background-color: var(--white);
-
+  z-index: 2;
   .hamburger-container {
     line-height: 46px;
     height: 100%;

@@ -1,3 +1,5 @@
+import store from '@/store/index.js';
+import Vue from 'vue';
 import axios from 'axios';
 
 //#####··········域名管理··········#####//
@@ -31,3 +33,20 @@ export function patchReq(url, data) {
 export function deleteReq(url) {
   return server({ method: 'DELETE', url });
 }
+
+//#####·········拦截器··········#####//
+//####·······请求拦截器········####//
+server.interceptors.request.use(config => {
+  config.headers.authorization = localStorage.getItem('token');
+
+  return config;
+});
+//####·······响应拦截器········####//
+server.interceptors.response.use(
+  res => {
+    return res;
+  },
+  () => {
+    Vue.prototype.$message.error('请求失败！');
+  }
+);

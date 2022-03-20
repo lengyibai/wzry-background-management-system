@@ -2,8 +2,9 @@ import { getReq, postReq, patchReq, deleteReq } from './network/request.js';
 
 //#####··········GET请求··········#####//
 //####········获取用户信息········####//
-export const getUserInfo = id => {
-  return getReq('/userList', { id });
+export const getUserInfo = (data = {}) => {
+  // let { id, _page, _limit, token } = data;
+  return getReq('/userList', data);
 };
 
 //#####··········POST请求··········#####//
@@ -20,6 +21,6 @@ export const updateUser = (id, data) => {
 
 //#####··········DELETE请求··········#####//
 //####········删除用户········####//
-export const delUser = id => {
-  return deleteReq(`/userList/${id}`);
+export const delUser = (data = {}) => {
+  return deleteReq('/userList', data);
 };

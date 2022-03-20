@@ -8,8 +8,10 @@ import getters from './getters';
 import network from './modules/network';
 export default new Vuex.Store({
   state: {
+    //token
+    token: localStorage.getItem('token'),
     // 用户状态
-    userStatus: localStorage.getItem('token'),
+    userStatus: false,
     // 用户相关信息
     userInfo: {}
   },

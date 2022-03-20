@@ -5,13 +5,42 @@
 
 :root {
   --white: #e0e0e0;
-  --black:#333;
-  --red:#c0392b;
-  --orange:#d35400;
-  --yellow:#f39c12;
-  --green:#27ae60;
-  --cyan:#16a085;
-  --blue:#2980b9;
-  --purple:#8e44ad;
-  --magenta:#e84393;
+  --black: #333;
+  --red: #e74c3c;
+  --orange: #e67e22;
+  --yellow: #f1c40f;
+  --green: #2ecc71;
+  --cyan: #1abc9c;
+  --blue: #3498db;
+  --purple: #9b59b6;
+  --pink: #fd79a8;
+}
+
+/* 背景色 */
+.bg-black{
+  background-color: var(--black);
+}
+.bg-red{
+  background-color: var(--red);
+}
+.bg-orange{
+  background-color: var(--orange);
+}
+.bg-yellow{
+  background-color: var(--yellow);
+}
+.bg-green{
+  background-color: var(--green);
+}
+.bg-cyan{
+  background-color: var(--cyan);
+}
+.bg-blue{
+  background-color: var(--blue);
+}
+.bg-purple{
+  background-color: var(--purple);
+}
+.bg-pink{
+  background-color: var(--pink);
 }
