@@ -29,25 +29,6 @@ export default {
   width: 100vw;
   display: flex;
 }
-.sidebar-container {
-  .submenu-title-noDropdown,
-  .el-submenu__title {
-    &:hover {
-      background-color: #000 !important;
-      color: var(--white) !important;
-    }
-  }
-
-  & .nest-menu .el-submenu > .el-submenu__title,
-  & .el-submenu .el-menu-item {
-    background-color: var(--white) !important;
-
-    &:hover {
-      background-color: #000 !important;
-      color: var(--white) !important;
-    }
-  }
-}
 .main-container {
   width: 100%;
 }

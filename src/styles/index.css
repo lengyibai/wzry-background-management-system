@@ -16,31 +16,56 @@
   --pink: #fd79a8;
 }
 
+:root {
+  --theme-color-dark: #1c293b;
+  --theme-color-light: #233c5b;
+  --theme-font-dark: #84ade2;
+  --theme-font-light: #fafafb;
+}
+
+@font-face {
+  font-family: '方正正准黑';
+  src: url('.././assets/font/方正正准黑简体.ttf');
+}
+
+* {
+  font-family: '方正正准黑';
+}
+
+
 /* 背景色 */
-.bg-black{
+.bg-black {
   background-color: var(--black);
 }
-.bg-red{
+
+.bg-red {
   background-color: var(--red);
 }
-.bg-orange{
+
+.bg-orange {
   background-color: var(--orange);
 }
-.bg-yellow{
+
+.bg-yellow {
   background-color: var(--yellow);
 }
-.bg-green{
+
+.bg-green {
   background-color: var(--green);
 }
-.bg-cyan{
+
+.bg-cyan {
   background-color: var(--cyan);
 }
-.bg-blue{
+
+.bg-blue {
   background-color: var(--blue);
 }
-.bg-purple{
+
+.bg-purple {
   background-color: var(--purple);
 }
-.bg-pink{
+
+.bg-pink {
   background-color: var(--pink);
 }

@@ -65,7 +65,7 @@ export default {
   margin-left: 8px;
 
   .no-redirect {
-    color: #00a8ff;
+    color: var(--theme-font-dark);
     cursor: text;
   }
 }

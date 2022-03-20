@@ -21,7 +21,6 @@ export default {
       // 获取成功后存储用户信息
       context.state.userInfo = res.data[0];
       context.state.userStatus = true;
-      router.push('/home');
     });
   },
   // 退出登录

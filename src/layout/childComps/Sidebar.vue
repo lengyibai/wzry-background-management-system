@@ -3,9 +3,9 @@
   <div>
     <el-menu
       :default-active="activeMenu"
-      background-color="var(--white)"
-      text-color="#000"
-      active-text-color="#00a8ff"
+      background-color="transparent"
+      text-color="var(--theme-font-dark)"
+      active-text-color="var(--theme-font-light)"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
     >

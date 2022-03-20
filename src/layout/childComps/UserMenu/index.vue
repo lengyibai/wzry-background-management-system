@@ -26,6 +26,9 @@ export default {
 };
 </script>
 <style scoped lang="less">
+* {
+  transition: all 0.5s;
+}
 .index {
   position: absolute;
   right: 0;
@@ -33,6 +36,9 @@ export default {
   height: 100%;
   &:hover .index-hover {
     transform: rotateX(-180deg);
+  }
+  &:hover .logout {
+    opacity: 1 !important;
   }
   .index-hover {
     width: 100%;
@@ -45,14 +51,13 @@ export default {
       display: flex;
       align-items: center;
       transform: translateZ(1px);
-      background-color: var(--white);
       img {
         height: 75%;
         border-radius: 50%;
         margin-right: 15px;
       }
       span {
-        color: var(--black);
+        color: var(--theme-font-dark);
       }
     }
     .logout {
@@ -66,6 +71,7 @@ export default {
       cursor: pointer;
       border-radius: 0 0 0 10px;
       font-size: 20px;
+      opacity: 0;
     }
   }
 }

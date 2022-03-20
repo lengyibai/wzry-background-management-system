@@ -29,7 +29,7 @@ export default {
   width: 100%;
   height: 50px;
   position: relative;
-  background-color: var(--white);
+  background-color: transparent;
   z-index: 2;
   .hamburger-container {
     line-height: 46px;

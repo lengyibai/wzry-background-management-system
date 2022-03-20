@@ -1,5 +1,12 @@
 import Vue from 'vue';
+
+//#####··········网络请求··········#####//
+//接口信息：{ 获取用户信息，修改用户 }
 import { getUserInfo, updateUser } from '@/api/test.js';
+
+//#####··········公共方法··········#####//
+//方法信息：{ 随机数 }
+import { $random } from '@/utils/lyb.js';
 
 function tip(code, msg) {
   if (code === 200) {
@@ -20,7 +27,7 @@ export function login(form) {
         resolve({ code: 401, msg: '帐号不存在' });
       } else if (form.password === res.data[0].password) {
         // 数据库写入token
-        updateUser(form.id, { token: new Date().getTime().toString() }).then(res => {
+        updateUser(form.id, { token: $random(1000, 9999) }).then(res => {
           // 返回请求状态及数据
           resolve({ data: res.data, code: 200, msg: '登录成功' });
         });

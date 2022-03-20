@@ -18,7 +18,7 @@ export default {
   width: 100%;
   position: relative;
   min-height: calc(100vh - 50px);
-  background-color: var(--white);
+
   padding: 20px;
   box-sizing: border-box;
 }

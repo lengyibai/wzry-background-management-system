@@ -33,12 +33,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .hamburger {
   display: inline-block;
   vertical-align: middle;
   width: 20px;
   height: 20px;
+  fill: var(--theme-font-dark);
+  transition: all 0.5s;
+  &:hover {
+    fill: var(--theme-font-light);
+  }
 }
 
 .hamburger.is-active {

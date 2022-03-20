@@ -7,8 +7,9 @@
   scroll-behavior: smooth;
 }
 
-body{
-  background-color: var(--红);
+body {
+  background-color: #203049;
+  background-image: linear-gradient(0deg, #203049 0%, #243959 50%, #1c2b42 100%);
 }
 
 .clear-fix::after {

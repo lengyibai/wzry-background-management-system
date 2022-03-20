@@ -15,11 +15,15 @@ import Layout from '@/layout';
 export const routes = [
   {
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     component: Layout,
-    redirect: '/home',
+    redirect: '',
     children: [
       {
-        path: 'home',
+        path: '',
         meta: {
           title: '主页',
           icon: 'HOME'
@@ -89,12 +93,13 @@ const router = new VueRouter({
 import store from '@/store/index.js';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
-  // ?如果本地存在token，但未登录，则自动登录
+  // 如果本地存在token，但未登录，则自动登录
   if (!store.state.userStatus && store.state.token) {
     store.dispatch('userInfo');
+    next();
   }
   // 如果状态为 true、或路由不需要验证，则跳转
-  if (store.state.userStatus === true || to.path === '/login') {
+  else if (store.state.userStatus === true || to.path === '/login') {
     next();
   } else {
     next('/login');
