@@ -2,7 +2,7 @@
   <div class="index">
     <div class="index-hover">
       <div class="user">
-        <img v-if="userInfo.headImg" :src="userInfo.headImg" alt="" /> <span>晚上好，{{ userInfo.name }}</span>
+        <img v-if="userInfo.headImg" :src="userInfo.headImg" alt="" /><span>晚上好，{{ userInfo.name }}</span>
       </div>
       <div class="logout" @click="logout">退出登录</div>
     </div>
@@ -34,6 +34,7 @@ export default {
   right: 0;
   width: 175px;
   height: 100%;
+  cursor: pointer;
   &:hover .index-hover {
     transform: rotateX(-180deg);
   }
@@ -68,7 +69,6 @@ export default {
       background-color: var(--red);
       color: var(--white);
       transform: rotateX(180deg) translateZ(1px);
-      cursor: pointer;
       border-radius: 0 0 0 10px;
       font-size: 20px;
       opacity: 0;

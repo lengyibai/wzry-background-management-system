@@ -43,14 +43,4 @@ export default {
   }
 };
 </script>
-<style lang="less">
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-}
-.el-menu-vertical-demo .el-icon-arrow-right {
-  right: 5px;
-}
-.el-menu-vertical-demo .el-submenu__title {
-  display: flex;
-}
-</style>
+<style lang="less"></style>

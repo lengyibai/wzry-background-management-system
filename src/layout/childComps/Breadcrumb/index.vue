@@ -63,9 +63,11 @@ export default {
   font-size: 14px;
   line-height: 50px;
   margin-left: 8px;
-
-  .no-redirect {
+  .el-breadcrumb__item .el-breadcrumb__inner a {
     color: var(--theme-font-dark);
+  }
+  .no-redirect {
+    color: var(--theme-font-light);
     cursor: text;
   }
 }

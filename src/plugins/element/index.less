@@ -3,64 +3,71 @@
   background-color: #2281c7;
   background-image: linear-gradient(62deg, #223a5e 0%, #2281c7 100%);
 }
+
 /* 侧边栏主体 */
 .el-menu {
   border: none !important;
   height: 100%;
 }
+
 /* 侧边栏背景 */
 .sidebar-container {
   background-color: #1a2842;
   background-image: linear-gradient(180deg, #1a2842 0%, #1c3353 50%, #1a365b 100%);
 }
+
 /* 菜单激活色 */
 .el-menu-item.is-active {
-  color: var(--theme-font-light) !important;
-  background-color: #2281c7;
-  background-image: linear-gradient(62deg, #223a5e 0%, #2281c7 100%);
+  .color();
 }
 /* 父级菜单 */
+// 背景色
 .el-menu .el-menu-item {
   background-color: transparent !important;
+  &:hover {
+    .color();
+  }
 }
-.el-menu .el-menu-item:hover {
-  color: var(--theme-font-light) !important;
-  background-color: #2281c7;
-  background-image: linear-gradient(62deg, #223a5e 0%, #2281c7 100%);
+// 文字及图标激活色
+.el-submenu.is-active > .el-submenu__title .submenu {
+  i,
+  span {
+    color: var(--theme-font-light) !important;
+  }
 }
-.el-submenu.is-active > .el-submenu__title .submenu i,
-.el-submenu.is-active > .el-submenu__title .submenu span {
-  color: var(--theme-font-light) !important;
-}
+
 /* 子级菜单 */
+// 背景色
 .sidebar-container .el-submenu .el-submenu__title {
   background-color: transparent !important;
+  &:hover {
+    .color();
+  }
 }
-.sidebar-container .el-submenu .el-submenu__title:hover {
-  color: var(--theme-font-light) !important;
-  background-color: #2281c7;
-  background-image: linear-gradient(62deg, #223a5e 0%, #2281c7 100%);
-}
+
 /* 折叠相关 */
+// 设置宽度才会有折叠动画
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
+// 折叠后箭头距离左侧图标间隔
 .el-menu-vertical-demo .el-icon-arrow-right {
   right: 5px;
 }
 /* 折叠隐藏文字 */
+// 子级
 .el-menu--collapse .el-submenu span {
   display: none;
 }
+// 父级
 .el-menu--collapse .el-menu-item .submenu span {
   display: none;
 }
 /* 折叠后父级 */
+// 背景色
 .el-menu--vertical .el-menu .el-submenu .el-submenu__title {
   background-color: transparent !important;
-}
-.el-menu--vertical .el-menu .el-submenu .el-submenu__title:hover {
-  color: var(--theme-font-light) !important;
-  background-color: #2281c7;
-  background-image: linear-gradient(62deg, #223a5e 0%, #2281c7 100%);
+  &:hover {
+    .color();
+  }
 }

@@ -11,7 +11,7 @@
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <div class="submenu">
-            <span v-if="onlyOneChild.meta.icon" v-html="icon[onlyOneChild.meta.icon]"></span>
+            <i v-if="onlyOneChild.meta.icon" v-html="icon[onlyOneChild.meta.icon]"></i>
             <span v-else style="margin-right: 20px; font-size: 25px; font-weight: bold">{{
               onlyOneChild.meta.title[0]
             }}</span>
@@ -52,7 +52,6 @@ export default {
   name: 'SidebarItem',
   components: { AppLink },
   props: {
-    // route object
     item: {
       type: Object,
       required: true
@@ -67,28 +66,25 @@ export default {
     return {};
   },
   computed: {
+    //#####··········图标··········#####//
     icon() {
       return icon;
     }
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
-      // 判断是否手动隐藏
       const showingChildren = children.filter(item => {
         if (item.hidden) {
           return false;
         } else {
-          // 得到不需要隐藏路由的子路由
           this.onlyOneChild = item;
           return true;
         }
       });
-      // 获取没有hidden的子路由个数
       if (showingChildren.length === 1) {
         return true;
       }
 
-      // Show parent if there are no child router to display
       if (showingChildren.length === 0) {
         this.onlyOneChild = { ...parent, path: '', noShowingChildren: true };
         return true;
