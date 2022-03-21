@@ -10,6 +10,7 @@ export default {
         context.commit('setToken', res.data.token);
         // 获取用户信息
         context.dispatch('userInfo', res.data);
+        router.push('/');
       }
     });
   },
@@ -27,7 +28,6 @@ export default {
   logout(context) {
     logout(context.state.userInfo.id).then(() => {
       context.commit('clearToken');
-      router.push('/login');
     });
   }
 };

@@ -141,13 +141,17 @@ const router = new VueRouter({
 import store from '@/store/index.js';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
-  // 如果本地存在token，但未登录，则自动登录
+  // 如果本地存在token，但状态为false，则自动登录
   if (!store.state.userStatus && store.state.token) {
     store.dispatch('userInfo');
-    next();
+    if (to.meta.noVerify) {
+      next('/');
+    } else {
+      next();
+    }
   }
-  // 如果状态为 true、或路由不需要验证，则跳转
-  else if (store.state.userStatus === true || to.path === '/login') {
+  // 如果状态为 true、或路由不需要验证，则正常跳转
+  else if (store.state.userStatus === true || to.path.noVerify) {
     next();
   } else {
     next('/login');
