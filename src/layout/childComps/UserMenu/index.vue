@@ -30,11 +30,11 @@ export default {
   transition: all 0.5s;
 }
 .index {
+  .cursor-pointer();
   position: absolute;
   right: 0;
   width: 175px;
   height: 100%;
-  cursor: pointer;
   &:hover .index-hover {
     transform: rotateX(-180deg);
   }
@@ -46,6 +46,7 @@ export default {
     height: 100%;
     transform-style: preserve-3d;
     .user {
+      .cursor-pointer();
       position: absolute;
       width: 100%;
       height: 100%;
@@ -62,6 +63,7 @@ export default {
       }
     }
     .logout {
+      .cursor-pointer();
       .flex();
       position: absolute;
       width: 100%;
