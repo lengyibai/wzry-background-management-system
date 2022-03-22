@@ -144,15 +144,22 @@ router.beforeEach((to, from, next) => {
   // 如果本地存在token，但状态为false，则自动登录
   if (!store.state.userStatus && store.state.token) {
     store.dispatch('userInfo');
+    // 如果是想进入登录页面，则直接跳转到首页
+    if (to.meta.noVerify) {
+      next('/');
+    } else {
+      console.error('触发');
+      next();
+    }
+  }
+  // 如果状态为 true、或路由不需要验证，则正常跳转
+  else if (store.state.userStatus === true) {
+    // 如果是想进入登录页面，则直接跳转到首页
     if (to.meta.noVerify) {
       next('/');
     } else {
       next();
     }
-  }
-  // 如果状态为 true、或路由不需要验证，则正常跳转
-  else if (store.state.userStatus === true || to.path.noVerify) {
-    next();
   } else {
     next('/login');
   }
