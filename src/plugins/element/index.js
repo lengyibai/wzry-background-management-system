@@ -27,38 +27,39 @@ Vue.use(Input);
 Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
-//#####··········封装··········!//
-//####········消息提示········@//
-let m = undefined;
-Vue.prototype.$message = {
-  info(text) {
-    if (m) {
-      m.close();
-    }
-    m = Message(text);
-  },
-  success(text) {
-    if (m) {
-      m.close();
-    }
-    m = Message({
-      message: text,
-      type: 'success'
-    });
-  },
-  warning(text) {
-    if (m) {
-      m.close();
-    }
-    m = Message({
-      message: text,
-      type: 'warning'
-    });
-  },
-  error(text) {
-    if (m) {
-      m.close();
-    }
-    m = Message.error(text);
-  }
-};
+Vue.prototype.$message = Message;
+// //#####··········封装··········!//
+// //####········消息提示········@//
+// let m = undefined;
+// Vue.prototype.$message = {
+//   info(text) {
+//     if (m) {
+//       m.close();
+//     }
+//     m = Message(text);
+//   },
+//   success(text) {
+//     if (m) {
+//       m.close();
+//     }
+//     m = Message({
+//       message: text,
+//       type: 'success'
+//     });
+//   },
+//   warning(text) {
+//     if (m) {
+//       m.close();
+//     }
+//     m = Message({
+//       message: text,
+//       type: 'warning'
+//     });
+//   },
+//   error(text) {
+//     if (m) {
+//       m.close();
+//     }
+//     m = Message.error(text);
+//   }
+// };

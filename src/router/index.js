@@ -139,6 +139,7 @@ const router = new VueRouter({
 });
 
 import store from '@/store/index.js';
+import { Select } from 'element-ui';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   // 如果本地存在token，但状态为false，则自动登录
@@ -148,7 +149,6 @@ router.beforeEach((to, from, next) => {
     if (to.meta.noVerify) {
       next('/');
     } else {
-      console.error('触发');
       next();
     }
   }
@@ -156,12 +156,22 @@ router.beforeEach((to, from, next) => {
   else if (store.state.userStatus === true) {
     // 如果是想进入登录页面，则直接跳转到首页
     if (to.meta.noVerify) {
+      console.log(1);
       next('/');
     } else {
+      console.log(11);
       next();
     }
-  } else {
-    next('/login');
+    // 如果不存在token
+  } else if (!store.state.token) {
+    // 如果是想进入登录页面，则直接跳转到首页
+    if (to.meta.noVerify) {
+      console.log(3);
+      next();
+    } else {
+      console.log(33);
+      next('/login');
+    }
   }
 });
 export default router;
