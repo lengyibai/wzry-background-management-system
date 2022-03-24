@@ -139,17 +139,33 @@ const router = new VueRouter({
 });
 
 import store from '@/store/index.js';
-import { Select } from 'element-ui';
+import { userInfo } from '@/api/transfer.js';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   // 如果本地存在token，但状态为false，则自动登录
   if (!store.state.userStatus && store.state.token) {
-    store.dispatch('userInfo');
+    // 从数据库查找token
+    userInfo({
+      token: store.state.token
+    })
+      .then(res => {
+        console.log(res);
+        if (res.status !== 200) {
+          throw '请求失败';
+        }
+        // 获取成功后存储用户信息
+        store.state.userInfo = res.data[0];
+        store.state.userStatus = true;
+        next();
+      })
+      .catch(() => {
+        Vue.prototype.$message.error('token已过期');
+        this.commit('clearToken');
+        next();
+      });
     // 如果是想进入登录页面，则直接跳转到首页
     if (to.meta.noVerify) {
       next('/');
-    } else {
-      next();
     }
   }
   // 如果状态为 true、或路由不需要验证，则正常跳转

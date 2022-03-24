@@ -15,25 +15,6 @@ export default {
       }
     });
   },
-  // 获取用户信息
-  userInfo(context) {
-    userInfo({
-      token: context.state.token
-    })
-      .then(res => {
-        if (res.data !== 0) {
-          throw '请求失败';
-        }
-        // 获取成功后存储用户信息
-        context.state.userInfo = res.data[0];
-        context.state.userStatus = true;
-      })
-      .catch(() => {
-        Vue.prototype.$message.error('token已过期');
-        this.commit('clearToken');
-        router.push('/');
-      });
-  },
   // 退出登录
   logout(context) {
     logout(context.state.userInfo.id).then(() => {
