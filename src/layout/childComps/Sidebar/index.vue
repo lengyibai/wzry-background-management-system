@@ -1,5 +1,5 @@
 <template>
-  <!-- 侧边栏 -->
+  <!-- 侧边栏(禁止删除) -->
   <div>
     <el-menu
       :default-active="activeMenu"
@@ -19,6 +19,7 @@
 import SidebarItem from './SidebarItem';
 
 export default {
+  name: 'Sidebar',
   components: { SidebarItem },
   data() {
     return { isCollapse: false };

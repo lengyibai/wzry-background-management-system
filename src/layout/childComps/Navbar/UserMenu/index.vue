@@ -9,14 +9,15 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
 export default {
-  name: 'index',
+  name: 'UserMenu',
   data() {
     return {};
   },
   computed: {
-    ...mapState(['userInfo']) //100
+    userInfo() {
+      return this.$store.state.userInfo;
+    }
   },
   methods: {
     logout() {

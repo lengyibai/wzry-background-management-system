@@ -1,9 +1,7 @@
 <template>
   <!-- 主体结构 -->
   <div class="main">
-    <!-- 左侧边栏 -->
-    <sidebar class="sidebar-container" />
-    <!-- 右侧内容 -->
+    <sidebar />
     <div class="main-container">
       <navbar />
       <app-main />
@@ -13,10 +11,10 @@
 </template>
 
 <script>
-import Navbar from '@/layout/childComps/Navbar.vue';
-import Sidebar from '@/layout/childComps/Sidebar.vue';
-import AppMain from '@/layout/childComps/AppMain.vue';
-import BgVideo from '../components/BgVideo/index.vue';
+import Navbar from '@/layout/childComps/Navbar';
+import Sidebar from '@/layout/childComps/Sidebar';
+import AppMain from '@/layout/childComps/AppMain';
+import BgVideo from '@/components/BgVideo/index';
 
 export default {
   name: 'Layout',
@@ -34,6 +32,7 @@ export default {
   display: flex;
 }
 .main-container {
-  width: 100%;
+  flex: 1;
+  height: 100vh;
 }
 </style>
