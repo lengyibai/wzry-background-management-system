@@ -10,9 +10,26 @@ export default {
         // 存储 token 到本地
         context.commit('setToken', res.data.token);
         // 获取用户信息
-        context.dispatch('userInfo', res.data);
         router.push('/');
       }
+    });
+  },
+  userInfo(context) {
+    return new Promise(resolve => {
+      userInfo({
+        token: context.state.token
+      })
+        .then(res => {
+          if (res.data.length === 0) throw '请求失败';
+          // 获取成功后存储用户信息
+          context.state.userInfo = res.data[0];
+          context.state.userStatus = true;
+          resolve();
+        })
+        .catch(() => {
+          Vue.prototype.$message.error('token已过期');
+          context.commit('clearToken');
+        });
     });
   },
   // 退出登录
