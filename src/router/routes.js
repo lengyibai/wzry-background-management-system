@@ -1,4 +1,5 @@
 import Layout from '@/layout';
+import Layout1 from '@/layout1';
 export default [
   {
     path: '/',
@@ -108,6 +109,41 @@ export default [
         path: 'migration',
         component: () => import('@/views/equip/Migration'),
         meta: { title: '游走', icon: 'MIGRATION' }
+      }
+    ]
+  },
+  {
+    path: '/system',
+    component: Layout,
+    redirect: '',
+    meta: {
+      title: '系统管理',
+      icon: 'EQUIP'
+    },
+    children: [
+      {
+        path: '',
+        component: Layout1,
+        redirect: '/system/hero',
+        hidden: true,
+        children: [
+          {
+            path: '/system/hero',
+            component: () => import('@/views/equip/Move'),
+            meta: {
+              title: '添加英雄',
+              icon: 'HERO'
+            }
+          },
+          {
+            path: '/system/equip',
+            component: () => import('@/views/equip/Magic'),
+            meta: {
+              title: '添加装备',
+              icon: 'EQUIP'
+            }
+          }
+        ]
       }
     ]
   },

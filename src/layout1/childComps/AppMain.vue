@@ -2,8 +2,7 @@
   <!-- 路由视图 -->
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <!-- 带有二级侧边栏，需要组件复用，一级侧边栏的路由视图不需要加 key -->
-      <router-view />
+      <router-view :key="new Date().getTime()" />
     </transition>
   </section>
 </template>
