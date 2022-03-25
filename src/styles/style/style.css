@@ -12,7 +12,6 @@
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   background: url('@/assets/img/bg.png') no-repeat center fixed;
   background-image: url('@/assets/img/bg.png');
   background-repeat: no-repeat;
