@@ -1,11 +1,11 @@
 <template>
-  <div class="index">
+  <div class="Move">
     <h1>移动</h1>
   </div>
 </template>
 <script>
 export default {
-  name: 'index',
+  name: 'Move',
   data() {
     return {};
   },
@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.index {
+.Move {
   width: 100%;
   height: 100%;
 }

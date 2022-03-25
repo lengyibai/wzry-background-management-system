@@ -1,6 +1,6 @@
 <template>
-  <div class="index">
-    <div class="index-hover">
+  <div class="UserMenu">
+    <div class="UserMenu-hover">
       <div class="user">
         <img v-if="userInfo.headImg" :src="userInfo.headImg" alt="" /><span>晚上好，{{ userInfo.name }}</span>
       </div>
@@ -30,19 +30,19 @@ export default {
 * {
   transition: all 0.5s;
 }
-.index {
+.UserMenu {
   .cursor-pointer();
   position: absolute;
   right: 0;
   width: 175px;
   height: 100%;
-  &:hover .index-hover {
+  &:hover .UserMenu-hover {
     transform: rotateX(-180deg);
   }
   &:hover .logout {
     opacity: 1 !important;
   }
-  .index-hover {
+  .UserMenu-hover {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;

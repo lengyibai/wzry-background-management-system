@@ -1,11 +1,11 @@
 <template>
-  <div class="index">
+  <div class="Assassin">
     <h1>刺客</h1>
   </div>
 </template>
 <script>
 export default {
-  name: 'index',
+  name: 'Assassin',
   data() {
     return {};
   },
@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.index {
+.Assassin {
   width: 100%;
   height: 100%;
 }

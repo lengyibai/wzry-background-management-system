@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="BgVideo">
     <video class="video" autoplay loop>
       <source :src="video" />
     </video>
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.index {
+.BgVideo {
   position: absolute;
   width: 100vw;
   height: 100vh;

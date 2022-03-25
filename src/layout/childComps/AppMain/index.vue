@@ -1,8 +1,7 @@
 <template>
   <!-- 路由视图 -->
-  <div class="index">
+  <div class="AppMain">
     <transition name="fade-transform" mode="out-in">
-      <!-- 带有二级侧边栏，需要组件复用，一级侧边栏的路由视图不需要加 key -->
       <router-view />
     </transition>
   </div>
@@ -15,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.index {
+.AppMain {
   max-width: 100%;
   position: relative;
   height: calc(100% - 125px);

@@ -1,11 +1,11 @@
 <template>
-  <div class="index">
+  <div class="Jungle">
     <h1>打野</h1>
   </div>
 </template>
 <script>
 export default {
-  name: 'index',
+  name: 'Jungle',
   data() {
     return {};
   },
@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.index {
+.Jungle {
   width: 100%;
   height: 100%;
 }

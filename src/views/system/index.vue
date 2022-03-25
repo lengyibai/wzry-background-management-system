@@ -1,21 +1,18 @@
 <template>
-  <div class="index">
-    <Layouta />
-  </div>
+  <div class="system"></div>
 </template>
 <script>
-import Layouta from '../../layout1/index.vue';
 export default {
-  name: 'index',
+  name: 'system',
   data() {
     return {};
   },
-  components: { Layouta },
+  components: {},
   methods: {}
 };
 </script>
 <style scoped lang="less">
-.index {
+.system {
   width: 100%;
   height: 100%;
 }
