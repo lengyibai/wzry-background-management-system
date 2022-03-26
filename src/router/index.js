@@ -21,14 +21,9 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   // 如果本地存在token，但状态为false，则自动登录
   if (!store.state.userStatus && store.state.token) {
-    store
-      .dispatch('userInfo')
-      .then(() => {
-        next();
-      })
-      .catch(() => {
-        next();
-      });
+    store.dispatch('userInfo').then(() => {
+      next();
+    });
     // 如果是想进入登录页面，则直接跳转到首页
     if (to.meta.noVerify) {
       next('/');

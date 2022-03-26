@@ -11,8 +11,6 @@ import { $random } from '@/utils/lyb.js';
 function tip(code, msg) {
   if (code === 200) {
     Vue.prototype.$message.success(msg);
-  } else if (code === 401) {
-    Vue.prototype.$message.error(msg);
   }
 }
 //#####··········基本··········#####//
