@@ -8,7 +8,8 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created() {}
 };
 </script>
 <style scoped lang="less">

@@ -37,13 +37,13 @@
 
 /* 鼠标样式 */
 .cursor-default {
-  cursor: url('../../assets/icons/cur/default.png'), auto;
+  cursor: url('../../assets/icon/cur/default.png'), auto;
 }
 .cursor-pointer {
-  cursor: url('../../assets/icons/cur/pointer.png'), auto;
+  cursor: url('../../assets/icon/cur/pointer.png'), auto;
 }
 .cursor-not-allowed {
-  cursor: url('../../assets/icons/cur/not-allowed.png'), auto;
+  cursor: url('../../assets/icon/cur/not-allowed.png'), auto;
 }
 
 /* 溢出省略号显示单行 */

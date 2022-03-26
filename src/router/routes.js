@@ -117,7 +117,7 @@ export default [
     redirect: '',
     meta: {
       title: '系统管理',
-      icon: 'EQUIP'
+      icon: 'SYSTEM'
     },
     children: [
       {
@@ -125,7 +125,15 @@ export default [
         component: () => import('@/views/equip/Move'),
         meta: {
           title: '添加英雄',
-          icon: 'HERO'
+          icon: 'ADDHERO'
+        }
+      },
+      {
+        path: '/system/skin',
+        component: () => import('@/views/equip/Move'),
+        meta: {
+          title: '添加皮肤',
+          icon: 'ADDSKIN'
         }
       },
       {
@@ -133,7 +141,7 @@ export default [
         component: () => import('@/views/equip/Magic'),
         meta: {
           title: '添加装备',
-          icon: 'EQUIP'
+          icon: 'ADDEQUIP'
         }
       }
     ]

@@ -1,10 +1,10 @@
 <template>
-  <div class="UserMenu">
+  <div class="UserMenu cursor-pointer">
     <div class="UserMenu-hover">
-      <div class="user">
+      <div class="user cursor-pointer">
         <img v-if="userInfo.headImg" :src="userInfo.headImg" alt="" /><span>晚上好，{{ userInfo.name }}</span>
       </div>
-      <div class="logout" @click="logout">退出登录</div>
+      <div class="logout cursor-pointer flex" @click="logout">退出登录</div>
     </div>
   </div>
 </template>
@@ -31,7 +31,6 @@ export default {
   transition: all 0.5s;
 }
 .UserMenu {
-  .cursor-pointer();
   position: absolute;
   right: 0;
   width: 175px;
@@ -47,7 +46,6 @@ export default {
     height: 100%;
     transform-style: preserve-3d;
     .user {
-      .cursor-pointer();
       position: absolute;
       width: 100%;
       height: 100%;
@@ -64,8 +62,6 @@ export default {
       }
     }
     .logout {
-      .cursor-pointer();
-      .flex();
       position: absolute;
       width: 100%;
       height: 100%;

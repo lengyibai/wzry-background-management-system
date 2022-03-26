@@ -17,11 +17,11 @@
         <el-button type="warning" @click="reset">重置</el-button>
       </el-col>
     </el-row>
-    <BgVideo :video="require('../../../assets/video/video.mp4')" />
+    <BgVideo :video="require('@/assets/video/video.mp4')" />
   </div>
 </template>
 <script>
-import BgVideo from '../../../components/BgVideo/index.vue';
+import BgVideo from '@/components/BgVideo/index.vue';
 export default {
   name: 'Login',
   data() {
@@ -56,9 +56,9 @@ export default {
 </script>
 <style scoped lang="less">
 .Login {
-  display: flex;
   flex-direction: column;
   justify-content: center;
+  display: flex;
   align-items: center;
   width: 100%;
   height: 100%;

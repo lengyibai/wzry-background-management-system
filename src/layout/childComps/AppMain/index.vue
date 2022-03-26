@@ -15,11 +15,17 @@ export default {
 
 <style scoped>
 .AppMain {
-  max-width: 100%;
   position: relative;
-  height: calc(100% - 125px);
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  height: calc(100% - 125px);
   margin: 25px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 </style>
