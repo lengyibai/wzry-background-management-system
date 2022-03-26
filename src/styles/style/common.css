@@ -1,38 +1,43 @@
+:root{
+  --gap-25:25px;
+  --gap-15:15px;
+}
+
 /* 背景色 */
 .bg-black {
-  background-color: var(--black);
+  background-color: var(--black)!important;
 }
 
 .bg-red {
-  background-color: var(--red);
+  background-color: var(--red)!important;
 }
 
 .bg-orange {
-  background-color: var(--orange);
+  background-color: var(--orange)!important;
 }
 
 .bg-yellow {
-  background-color: var(--yellow);
+  background-color: var(--yellow)!important;
 }
 
 .bg-green {
-  background-color: var(--green);
+  background-color: var(--green)!important;
 }
 
 .bg-cyan {
-  background-color: var(--cyan);
+  background-color: var(--cyan)!important;
 }
 
 .bg-blue {
-  background-color: var(--blue);
+  background-color: var(--blue)!important;
 }
 
 .bg-purple {
-  background-color: var(--purple);
+  background-color: var(--purple)!important;
 }
 
 .bg-pink {
-  background-color: var(--pink);
+  background-color: var(--pink)!important;
 }
 
 /* 鼠标样式 */
@@ -44,6 +49,11 @@
 }
 .cursor-not-allowed {
   cursor: url('../../assets/icon/cur/not-allowed.png'), auto;
+}
+
+/* 边框线 */
+.border-1{
+  border: 1px dotted var(--theme-font-dark);
 }
 
 /* 溢出省略号显示单行 */
@@ -77,7 +87,6 @@
   justify-content: center;
   align-items: center;
   user-select: none;
-  cursor: pointer;
 }
 
 /* 布局 */

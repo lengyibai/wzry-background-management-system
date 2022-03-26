@@ -31,9 +31,7 @@ export default {
   transition: all 0.5s;
 }
 .UserMenu {
-  position: absolute;
-  right: 0;
-  width: 175px;
+  width: 185px;
   height: 100%;
   &:hover .UserMenu-hover {
     transform: rotateX(-180deg);
@@ -51,14 +49,15 @@ export default {
       height: 100%;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       transform: translateZ(1px);
       img {
         height: 75%;
         border-radius: 50%;
-        margin-right: 15px;
       }
       span {
         color: var(--theme-font-dark);
+        margin-right: var(--gap-15);
       }
     }
     .logout {

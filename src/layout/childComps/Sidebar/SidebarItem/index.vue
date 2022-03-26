@@ -105,12 +105,18 @@ export default {
 };
 </script>
 <style lang="less">
-.el-menu-item .submenu i {
-  color: var(--theme-font-dark);
+i {
+  color: var(--theme-font-dark) !important;
 }
+
 .icon {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   margin-right: 20px;
+}
+</style>
+<style>
+span {
+  font-size: 20px;
 }
 </style>

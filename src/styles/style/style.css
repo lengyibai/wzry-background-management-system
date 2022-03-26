@@ -12,8 +12,8 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: url('@/assets/img/bg.png') no-repeat center fixed;
-  background-image: url('@/assets/img/bg.png');
+  background: url('@/assets/img/bg.jpg') no-repeat center fixed;
   background-repeat: no-repeat;
   background-size: cover;
 }
+

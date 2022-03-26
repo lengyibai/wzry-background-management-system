@@ -1,6 +1,6 @@
 <template>
   <!-- 侧边栏(禁止删除) -->
-  <div class="Sidebar">
+  <div class="Sidebar border-1">
     <el-menu
       :default-active="activeMenu"
       background-color="transparent"
@@ -46,7 +46,6 @@ export default {
 </script>
 <style scoped lang="less">
 .Sidebar {
-  background-color: #000;
-  border: 1px solid #fff;
+  background: url('./img/bg.png') no-repeat center;
 }
 </style>

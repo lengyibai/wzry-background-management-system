@@ -20,7 +20,9 @@ export default {
         token: context.state.token
       })
         .then(res => {
-          if (res.data.length === 0) throw '请求失败';
+          // token 100 秒后过期
+          if (res.data.length === 0 || context.state.token !== new Date().getTime().toString().slice(0, 8))
+            throw '请求失败';
           // 获取成功后存储用户信息
           context.state.userInfo = res.data[0];
           context.state.userStatus = true;

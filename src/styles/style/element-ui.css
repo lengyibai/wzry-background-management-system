@@ -15,3 +15,7 @@
 .el-table .gray-row {
   background: #e2e2e2 !important;
 }
+
+.el-row {
+  height: 100%!important;
+}

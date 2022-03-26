@@ -1,20 +1,20 @@
 <template>
   <!-- 主体结构 -->
-  <div class="main">
-    <sidebar />
-    <div class="main-container">
-      <navbar />
-      <app-main />
+  <div class="layout">
+    <Sidebar />
+    <div class="layout-container">
+      <Navbar />
+      <AppMain />
+      <Footbar />
     </div>
-    <BgVideo :video="require('../assets/video/bg.mp4')" />
   </div>
 </template>
 
 <script>
-import Navbar from '@/layout/childComps/Navbar';
 import Sidebar from '@/layout/childComps/Sidebar';
+import Navbar from '@/layout/childComps/Navbar';
 import AppMain from '@/layout/childComps/AppMain';
-import BgVideo from '@/components/BgVideo/index';
+import Footbar from '@/layout/childComps/Footbar';
 
 export default {
   name: 'Layout',
@@ -22,16 +22,16 @@ export default {
     Navbar,
     Sidebar,
     AppMain,
-    BgVideo
+    Footbar
   }
 };
 </script>
 <style scoped lang="less">
-.main {
+.layout {
   width: 100vw;
   display: flex;
 }
-.main-container {
+.layout-container {
   flex: 1;
   height: 100vh;
 }
