@@ -1,12 +1,23 @@
-/* fade */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.28s;
-}
-
+/* 进入前状态 */
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
+  transform: scale(0);
+}
+
+/* 进入和离开动画属性 */
+.fade-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-leave-active{
+  transition: all 0.25s;
+}
+
+
+/* 解决删除元素时，其他元素补位无动画 */
+.fade-leave-active {
+  position: absolute; /* 必须为绝对定位 */
 }
 
 /* fade-transform */

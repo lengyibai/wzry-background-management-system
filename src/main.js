@@ -5,6 +5,8 @@ import router from './router';
 
 import './plugins/element';
 
+import '@/styles/indexs.css';
+
 Vue.prototype.$bus = new Vue();
 
 Vue.config.productionTip = false;

@@ -12,9 +12,7 @@
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <div class="submenu">
             <i v-if="onlyOneChild.meta.icon" v-html="icon[onlyOneChild.meta.icon]"></i>
-            <span v-else style="margin-right: 20px; font-size: 25px; font-weight: bold">{{
-              onlyOneChild.meta.title[0]
-            }}</span>
+            <span v-else style="font-size: 25px; font-weight: bold">{{ onlyOneChild.meta.title[0] }}</span>
             <span>{{ onlyOneChild.meta && onlyOneChild.meta.title }}</span>
           </div>
         </el-menu-item>
@@ -26,7 +24,7 @@
       <template slot="title">
         <div class="submenu">
           <i v-if="item.meta.icon" v-html="icon[item.meta.icon]"></i>
-          <span v-else style="margin-right: 20px; font-size: 25px; font-weight: bold">{{ item.meta.title[0] }}</span>
+          <span v-else style="font-size: 25px; font-weight: bold">{{ item.meta.title[0] }}</span>
           <span>{{ item.meta && item.meta.title }}</span>
         </div>
       </template>
@@ -104,19 +102,3 @@ export default {
   }
 };
 </script>
-<style lang="less">
-i {
-  color: var(--theme-font-dark) !important;
-}
-
-.icon {
-  width: 35px;
-  height: 35px;
-  margin-right: 20px;
-}
-</style>
-<style>
-span {
-  font-size: 20px;
-}
-</style>

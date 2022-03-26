@@ -21,7 +21,7 @@ export default {
       })
         .then(res => {
           // token 100 秒后过期
-          if (res.data.length === 0 || context.state.token !== new Date().getTime().toString().slice(0, 8))
+          if (res.data.length === 0 || context.state.token !== new Date().getTime().toString().slice(0, 7))
             throw '请求失败';
           // 获取成功后存储用户信息
           context.state.userInfo = res.data[0];

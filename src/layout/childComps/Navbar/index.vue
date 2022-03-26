@@ -33,7 +33,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 56px;
+  height: 75px;
   position: relative;
   background: url('./img/bg.png') no-repeat center;
   background-size: cover;

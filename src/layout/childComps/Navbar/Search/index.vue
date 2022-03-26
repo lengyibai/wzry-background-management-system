@@ -24,8 +24,6 @@ export default {
 .search {
   display: inline-block;
   vertical-align: middle;
-  width: 20px;
-  height: 20px;
   fill: var(--theme-font-dark);
   transition: transform 0.5s;
   &:hover {

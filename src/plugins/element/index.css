@@ -2,84 +2,69 @@
   color: var(--theme-font-light) !important;
   background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
 }
-
 /* 侧边栏主体 */
 .el-menu {
   border: none !important;
   height: 100%;
 }
-
 /* 侧边栏背景 */
 .sidebar-container {
-  // 目前已被图片替代
-  background-color: rgba(35, 60, 91, 0.25)!important;
+  background-color: rgba(35, 60, 91, 0.25) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 /* 菜单激活色 */
 .el-menu-item.is-active {
-  .color();
+  color: var(--theme-font-light) !important;
+  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
 }
 /* 父级菜单 */
-// 背景色
 .el-menu .el-menu-item {
   background-color: transparent !important;
-  &:hover {
-    .color();
-  }
 }
-// 文字及图标激活色
-.el-submenu.is-active > .el-submenu__title .submenu {
-  i,
-  span {
-    color: var(--theme-font-light) !important;
-  }
+.el-menu .el-menu-item:hover {
+  color: var(--theme-font-light) !important;
+  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
 }
-
+.el-submenu.is-active > .el-submenu__title .submenu i,
+.el-submenu.is-active > .el-submenu__title .submenu span {
+  color: var(--theme-font-light) !important;
+}
 /* 子级菜单 */
-// 背景色
 .el-submenu .el-submenu__title {
   background-color: transparent !important;
-  &:hover {
-    .color();
-  }
 }
-// 文字
+.el-submenu .el-submenu__title:hover {
+  color: var(--theme-font-light) !important;
+  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+}
 .el-menu .el-submenu .el-submenu__title .submenu span,
 .el-menu .el-menu-item .submenu span {
   font-size: var(--font-s-20);
 }
-
 /* 折叠相关 */
-// 设置宽度才会有折叠动画
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 250px;
 }
-// 折叠后隐藏箭头
 .el-menu-vertical-demo .el-icon-arrow-right {
-  // right: 0px;
   display: none;
 }
 /* 折叠隐藏文字 */
-// 子级
 .el-menu--collapse .el-submenu span {
   display: none;
 }
-// 父级
 .el-menu--collapse .el-menu-item .submenu span {
   display: none;
 }
 /* 折叠后父级 */
-// 背景色
 .el-menu--vertical .el-menu .el-submenu .el-submenu__title {
   background-color: transparent !important;
-  &:hover {
-    .color();
-  }
 }
-
+.el-menu--vertical .el-menu .el-submenu .el-submenu__title:hover {
+  color: var(--theme-font-light) !important;
+  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+}
 /* 折叠后菜单背景 */
 .el-menu--vertical .el-menu {
   background-color: #1a2842 !important;

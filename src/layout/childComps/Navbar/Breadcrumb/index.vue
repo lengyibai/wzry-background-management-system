@@ -61,7 +61,7 @@ export default {
 
 <style lang="less" scoped>
 .app-breadcrumb.el-breadcrumb {
-  font-size: 14px;
+  font-size: var(--font-s-20);
   margin-left: 8px;
   .el-breadcrumb__item .el-breadcrumb__inner a {
     color: var(--theme-font-dark);

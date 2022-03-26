@@ -29,9 +29,10 @@ export default {
 <style scoped lang="less">
 * {
   transition: all 0.5s;
+  font-size: var(--font-s-20);
 }
 .UserMenu {
-  width: 185px;
+  width: 240px;
   height: 100%;
   &:hover .UserMenu-hover {
     transform: rotateX(-180deg);
@@ -54,6 +55,7 @@ export default {
       img {
         height: 75%;
         border-radius: 50%;
+        margin-left: var(--gap-15);
       }
       span {
         color: var(--theme-font-dark);
@@ -68,7 +70,6 @@ export default {
       color: var(--white);
       transform: rotateX(180deg) translateZ(1px);
       border-radius: 0 0 0 10px;
-      font-size: 20px;
       opacity: 0;
     }
   }

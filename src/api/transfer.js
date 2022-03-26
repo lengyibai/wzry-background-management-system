@@ -21,7 +21,7 @@ export function login(form) {
         resolve({ code: 401, msg: '帐号不存在' });
       } else if (form.password === res.data[0].password) {
         // 数据库写入token
-        updateUser(form.id, { token: new Date().getTime().toString().slice(0, 8) }).then(res => {
+        updateUser(form.id, { token: new Date().getTime().toString().slice(0, 7) }).then(res => {
           // 返回请求状态及数据
           resolve({ data: res.data, code: 200, msg: '登录成功' });
         });

@@ -1,6 +1,5 @@
 const { defineConfig } = require('@vue/cli-service');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-const path = require('path');
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -24,11 +23,11 @@ module.exports = defineConfig({
       }
     }
   },
-  publicPath: './',
-  pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'less',
-      patterns: [path.resolve(__dirname, './src/styles/index.less')] // 引入全局样式变量
-    }
-  }
+  publicPath: './'
+  // pluginOptions: {
+  //   'style-resources-loader': {
+  //     preProcessor: 'less',
+  //     patterns: [path.resolve(__dirname, './src/styles/index.less')] // 引入全局样式变量
+  //   }
+  // }
 });

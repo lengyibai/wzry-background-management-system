@@ -8,6 +8,21 @@
   cursor: url('../../assets/icon/cur/default.png'), auto;
 }
 
+/* 滚动条里面可以拖动的那部分 */
+*::-webkit-scrollbar-thumb {
+  background-color: var(--theme-font-dark);
+  border-radius: 5px;
+}
+
+/* 滚动条里面可以拖动的那部分 */
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-font-dark);
+}
+
+/* 滚动条里面可以拖动的那部分 */
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--theme-font-dark);
+}
 
 body {
   width: 100vw;
@@ -15,5 +30,11 @@ body {
   background: url('@/assets/img/bg.jpg') no-repeat center fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
+.icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 20px;
+}

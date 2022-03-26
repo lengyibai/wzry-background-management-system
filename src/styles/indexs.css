@@ -1,0 +1,26 @@
+@import url('./style/default.css');
+@import url('../plugins/element/index.css');
+@import url('./style/element-ui.css');
+@import url('./style/animate.css');
+@import url('./style/common.css');
+@import url('./style/style.css');
+
+:root {
+  --white: #e0e0e0;
+  --black: #333;
+  --red: #e74c3c;
+  --orange: #e67e22;
+  --yellow: #f1c40f;
+  --green: #2ecc71;
+  --cyan: #1abc9c;
+  --blue: #3498db;
+  --purple: #9b59b6;
+  --pink: #fd79a8;
+}
+
+:root {
+  --theme-color-dark: #1c293b;
+  --theme-color-light: #233c5b;
+  --theme-font-dark: #84ade2;
+  --theme-font-light: #fafafb;
+}
