@@ -23,7 +23,7 @@ export default {
   methods: {
     toggleClick() {
       this.isActive = !this.isActive;
-      this.$bus.$emit('lyb');
+      this.$bus.$emit('collapse');
     }
   }
 };

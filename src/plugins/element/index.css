@@ -46,16 +46,10 @@
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 250px;
 }
-.el-menu-vertical-demo .el-icon-arrow-right {
-  display: none;
+.el-menu--vertical .el-icon-arrow-right {
+  display: none !important;
 }
 /* 折叠隐藏文字 */
-.el-menu--collapse .el-submenu span {
-  display: none;
-}
-.el-menu--collapse .el-menu-item .submenu span {
-  display: none;
-}
 /* 折叠后父级 */
 .el-menu--vertical .el-menu .el-submenu .el-submenu__title {
   background-color: transparent !important;

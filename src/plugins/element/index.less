@@ -12,7 +12,7 @@
 /* 侧边栏背景 */
 .sidebar-container {
   // 目前已被图片替代
-  background-color: rgba(35, 60, 91, 0.25)!important;
+  background-color: rgba(35, 60, 91, 0.25) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -57,18 +57,22 @@
   width: 250px;
 }
 // 折叠后隐藏箭头
-.el-menu-vertical-demo .el-icon-arrow-right {
-  // right: 0px;
-  display: none;
+// .el-menu-vertical-demo .el-icon-arrow-right {
+//   // right: 0px;
+//   display: none !important;
+// }
+.el-menu--vertical .el-icon-arrow-right {
+  display: none !important;
 }
+
 /* 折叠隐藏文字 */
 // 子级
 .el-menu--collapse .el-submenu span {
-  display: none;
+  // display: none;
 }
 // 父级
 .el-menu--collapse .el-menu-item .submenu span {
-  display: none;
+  // display: none;
 }
 /* 折叠后父级 */
 // 背景色

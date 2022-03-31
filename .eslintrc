@@ -12,10 +12,11 @@
     "parser": "babel-eslint"
   },
   "rules": {
-    "vue/no-multiple-template-root": "off",
+    "vue/no-multiple-template-root": "warn",
     "no-unused-vars": "warn",
-    "vue/no-mutating-props": "off",
-    "vue/multi-word-component-names":"off",
-    "vue/no-parsing-error":"off"
+    "vue/no-unused-components": "warn",
+    "vue/no-mutating-props": "warn",
+    "vue/multi-word-component-names": "off",
+    "vue/no-parsing-error": "warn"
   }
 }

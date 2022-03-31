@@ -5,6 +5,16 @@ export default [
     redirect: '/home'
   },
   {
+    path: '/login',
+    meta: {
+      title: '登录',
+      noVerify: true
+    },
+    component: () => import('@/views/Base/Login'),
+    hidden: true,
+    Hidden: true
+  },
+  {
     path: '/home',
     component: Layout,
     redirect: '',
@@ -15,99 +25,114 @@ export default [
           title: '主页',
           icon: 'HOME'
         },
-        component: () => import('@/views/base/Home')
+        component: () => import('@/views/Base/Home')
       }
-    ]
+    ],
+    Hidden: true
   },
-  {
-    path: '/login',
-    meta: {
-      title: '登录',
-      noVerify: true
-    },
-    component: () => import('@/views/base/Login'),
-    hidden: true
-  },
-
   {
     path: '/hero',
     component: Layout,
-    redirect: '/hero/mage/male',
+    redirect: '/Hero/profession',
     meta: {
       title: '英雄',
       icon: 'HERO'
     },
     children: [
       {
-        path: 'tank',
-        component: () => import('@/views/hero/Tank'),
-        meta: { title: '坦克', icon: 'TANK' }
-      },
-      {
-        path: 'warrior',
-        component: () => import('@/views/hero/Warrior'),
-        meta: { title: '战士', icon: 'WARRIOR' }
-      },
-      {
-        path: 'assassin',
-        component: () => import('@/views/hero/Assassin'),
-        meta: { title: '刺客', icon: 'ASSASSIN' }
-      },
-      {
-        path: 'Mage',
-        component: () => import('@/views/hero/Mage'),
-        meta: { title: '法师', icon: 'MAGE' }
-      },
-      {
-        path: 'striker',
-        component: () => import('@/views/hero/Striker'),
-        meta: { title: '射手', icon: 'STRIKER' }
-      },
-      {
-        path: 'assist',
-        component: () => import('@/views/hero/Assist'),
-        meta: { title: '辅助', icon: 'ASSIST' }
+        path: 'profession',
+        meta: {
+          title: '职业',
+          icon: 'PROFESSION'
+        },
+        component: () => import('@/views/Hero'),
+        redirect: '/hero/profession/tank',
+        children: [
+          {
+            path: 'tank',
+            component: () => import('@/views/Hero/childViews/Tank'),
+            meta: { title: '坦克', icon: 'TANK' }
+          },
+          {
+            path: 'warrior',
+            component: () => import('@/views/Hero/childViews/Warrior'),
+            meta: { title: '战士', icon: 'WARRIOR' }
+          },
+          {
+            path: 'assassin',
+            component: () => import('@/views/Hero/childViews/Assassin'),
+            meta: { title: '刺客', icon: 'ASSASSIN' }
+          },
+          {
+            path: 'Mage',
+            component: () => import('@/views/Hero/childViews/Mage'),
+            meta: { title: '法师', icon: 'MAGE' }
+          },
+          {
+            path: 'striker',
+            component: () => import('@/views/Hero/childViews/Striker'),
+            meta: { title: '射手', icon: 'STRIKER' }
+          },
+          {
+            path: 'assist',
+            component: () => import('@/views/Hero/childViews/Assist'),
+            meta: { title: '辅助', icon: 'ASSIST' }
+          }
+        ],
+        hidden: true
       }
     ]
   },
   {
     path: '/equip',
     component: Layout,
-    redirect: '/equip/attack',
+    redirect: '/equip/category',
     meta: {
       title: '装备',
       icon: 'EQUIP'
     },
     children: [
       {
-        path: 'attack',
-        component: () => import('@/views/equip/Attack'),
-        meta: { title: '攻击', icon: 'ATTACK' }
-      },
-      {
-        path: 'magic',
-        component: () => import('@/views/equip/Magic'),
-        meta: { title: '法术', icon: 'MAGIC' }
-      },
-      {
-        path: 'defense',
-        component: () => import('@/views/equip/Defense'),
-        meta: { title: '防御', icon: 'DEFENSE' }
-      },
-      {
-        path: 'move',
-        component: () => import('@/views/equip/Move'),
-        meta: { title: '移动', icon: 'MOVE' }
-      },
-      {
-        path: 'jungle',
-        component: () => import('@/views/equip/Jungle'),
-        meta: { title: '打野', icon: 'JUNGLE' }
-      },
-      {
-        path: 'migration',
-        component: () => import('@/views/equip/Migration'),
-        meta: { title: '游走', icon: 'MIGRATION' }
+        path: 'category',
+        meta: {
+          title: '类型',
+          icon: 'CATEGORY'
+        },
+        component: () => import('@/views/Equip'),
+        redirect: '/equip/category/attack',
+        children: [
+          {
+            path: 'attack',
+            component: () => import('@/views/Equip/childViews/Attack'),
+            meta: { title: '攻击', icon: 'ATTACK' }
+          },
+          {
+            path: 'magic',
+            component: () => import('@/views/Equip/childViews/Magic'),
+            meta: { title: '法术', icon: 'MAGIC' }
+          },
+          {
+            path: 'defense',
+            component: () => import('@/views/Equip/childViews/Defense'),
+            meta: { title: '防御', icon: 'DEFENSE' }
+          },
+          {
+            path: 'move',
+            component: () => import('@/views/Equip/childViews/Move'),
+            meta: { title: '移动', icon: 'MOVE' }
+          },
+          {
+            path: 'jungle',
+            component: () => import('@/views/Equip/childViews/Jungle'),
+            meta: { title: '打野', icon: 'JUNGLE' }
+          },
+          {
+            path: 'migration',
+            component: () => import('@/views/Equip/childViews/Migration'),
+            meta: { title: '游走', icon: 'MIGRATION' }
+          }
+        ],
+        hidden: true
       }
     ]
   },
@@ -122,7 +147,7 @@ export default [
     children: [
       {
         path: '/system/hero',
-        component: () => import('@/views/equip/Move'),
+        component: () => import('@/views/Equip/childViews/Move'),
         meta: {
           title: '添加英雄',
           icon: 'ADDHERO'
@@ -130,7 +155,7 @@ export default [
       },
       {
         path: '/system/skin',
-        component: () => import('@/views/equip/Move'),
+        component: () => import('@/views/Equip/childViews/Move'),
         meta: {
           title: '添加皮肤',
           icon: 'ADDSKIN'
@@ -138,20 +163,22 @@ export default [
       },
       {
         path: '/system/equip',
-        component: () => import('@/views/equip/Magic'),
+        component: () => import('@/views/Equip/childViews/Magic'),
         meta: {
           title: '添加装备',
           icon: 'ADDEQUIP'
         }
       }
-    ]
+    ],
+    Hidden: true
   },
   {
     path: '*',
     meta: {
       title: '404 NotFound'
     },
-    component: () => import('@/views/base/NotFound'),
-    hidden: true
+    component: () => import('@/views/Base/NotFound'),
+    hidden: true,
+    Hidden: true
   }
 ];
