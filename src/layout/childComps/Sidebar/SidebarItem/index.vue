@@ -11,7 +11,7 @@
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <div class="submenu">
-            <i v-if="onlyOneChild.meta.icon" v-html="icon[onlyOneChild.meta.icon]"></i>
+            <span v-if="onlyOneChild.meta.icon" v-html="icon[onlyOneChild.meta.icon]"></span>
             <span v-else style="font-size: 25px; font-weight: bold">{{ onlyOneChild.meta.title[0] }}</span>
             <span>{{ onlyOneChild.meta && onlyOneChild.meta.title }}</span>
           </div>
@@ -23,7 +23,7 @@
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
         <div class="submenu">
-          <i v-if="item.meta.icon" v-html="icon[item.meta.icon]"></i>
+          <span v-if="item.meta.icon" v-html="icon[item.meta.icon]"></span>
           <span v-else style="font-size: 25px; font-weight: bold">{{ item.meta.title[0] }}</span>
           <span>{{ item.meta && item.meta.title }}</span>
         </div>

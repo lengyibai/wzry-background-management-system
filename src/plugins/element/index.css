@@ -27,7 +27,6 @@
   color: var(--theme-font-light) !important;
   background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
 }
-.el-submenu.is-active > .el-submenu__title .submenu i,
 .el-submenu.is-active > .el-submenu__title .submenu span {
   color: var(--theme-font-light) !important;
 }

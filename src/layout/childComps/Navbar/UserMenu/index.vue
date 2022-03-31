@@ -2,7 +2,7 @@
   <div class="UserMenu cursor-pointer">
     <div class="UserMenu-hover">
       <div class="user cursor-pointer">
-        <img v-if="userInfo.headImg" :src="userInfo.headImg" alt="" /><span>晚上好，{{ userInfo.name }}</span>
+        <img v-if="userInfo.headImg" :src="userInfo.headImg" alt="" /><span>早上好，{{ userInfo.name }}</span>
       </div>
       <div class="logout cursor-pointer flex" @click="logout">退出登录</div>
     </div>
