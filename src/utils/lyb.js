@@ -1,8 +1,4 @@
-//随机数
-export function $random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
+/* 功能 */
 // 时间格式化
 export function $fmtTime(date, fmt = 'YYYY-MM-DD hh:mm:ss') {
   date = new Date(date);
@@ -25,4 +21,11 @@ export function $fmtTime(date, fmt = 'YYYY-MM-DD hh:mm:ss') {
     }
   }
   return fmt;
+}
+
+//根据时间段问候
+export function $timeGreet(greet = {}) {
+  const { a = '午夜好', b = '早上好', c = '上午好', d = '中午好', e = '下午好', f = '晚上好' } = greet;
+  const now = new Date().getHours();
+  return now < 4 ? a : now < 10 ? b : now < 12 ? c : now < 14 ? d : now < 18 ? e : f;
 }
