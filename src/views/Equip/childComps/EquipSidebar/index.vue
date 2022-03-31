@@ -47,6 +47,9 @@ export default {
         this.hidden_text ? 250 : 0
       );
     });
+  },
+  beforeDestroy() {
+    this.$bus.$off('collapse');
   }
 };
 </script>
