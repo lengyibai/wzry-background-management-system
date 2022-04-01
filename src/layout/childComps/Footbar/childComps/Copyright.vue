@@ -1,14 +1,10 @@
 <template>
+  <!-- 底部右侧版权 -->
   <div class="Copyright">© Coded with by lengyibai.</div>
 </template>
 <script>
 export default {
-  name: 'Copyright',
-  data() {
-    return {};
-  },
-  components: {},
-  methods: {}
+  name: 'Copyright'
 };
 </script>
 <style scoped lang="less">

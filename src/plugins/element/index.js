@@ -1,32 +1,32 @@
 import Vue from 'vue';
 import 'element-ui/lib/theme-chalk/index.css';
 import {
-  Message,
-  Cascader,
-  Menu,
-  MenuItem,
-  Submenu,
   Breadcrumb,
   BreadcrumbItem,
+  Button,
+  Cascader,
+  Col,
   Form,
   FormItem,
   Input,
-  Button,
+  Menu,
+  MenuItem,
+  Message,
   Row,
-  Col
+  Submenu
 } from 'element-ui';
-Vue.use(Cascader);
-Vue.use(Menu);
-Vue.use(MenuItem);
-Vue.use(Submenu);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
+Vue.use(Button);
+Vue.use(Cascader);
+Vue.use(Col);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
-Vue.use(Button);
+Vue.use(Menu);
+Vue.use(MenuItem);
 Vue.use(Row);
-Vue.use(Col);
+Vue.use(Submenu);
 Vue.prototype.$message = Message;
 // //#####··········封装··········!//
 // //####········消息提示········@//

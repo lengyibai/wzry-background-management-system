@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 //#####··········网络请求··········#####//
 //接口信息：{ 获取用户信息，修改用户 }
-import { getUserInfo, updateUser } from '@/api/test.js';
+import { getUserInfo, updateUser } from './transfer.js';
 
 function tip(code, msg) {
   if (code === 200) {

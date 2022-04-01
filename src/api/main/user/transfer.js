@@ -1,4 +1,4 @@
-import { getReq, postReq, patchReq, deleteReq } from './network/request.js';
+import { getReq, postReq, patchReq, deleteReq } from '../../network/request.js';
 
 //#####··········GET请求··········#####//
 //####········获取用户信息········####//

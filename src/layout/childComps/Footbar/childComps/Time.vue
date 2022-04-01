@@ -1,7 +1,9 @@
 <template>
-  <div class="Time">2022年3月16日 - {{ time }}</div>
+  <div class="Time">2022.3.16 - {{ time }}</div>
 </template>
 <script>
+//#####··········公共方法··········#####//
+//方法信息：{ 时间格式化 }
 import { $fmtTime } from '@/utils/lyb.js';
 export default {
   name: 'Time',
@@ -10,7 +12,7 @@ export default {
   },
   computed: {
     time() {
-      return $fmtTime(new Date(), 'YYYY年MM月DD日');
+      return $fmtTime(new Date(), 'YYYY.MM.DD');
     }
   }
 };

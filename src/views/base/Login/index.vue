@@ -21,7 +21,6 @@
   </div>
 </template>
 <script>
-import BgVideo from '@/components/BgVideo/index.vue';
 export default {
   name: 'Login',
   data() {
@@ -50,8 +49,7 @@ export default {
       this.form = {};
       this.$refs.form.resetFields();
     }
-  },
-  components: { BgVideo }
+  }
 };
 </script>
 <style scoped lang="less">

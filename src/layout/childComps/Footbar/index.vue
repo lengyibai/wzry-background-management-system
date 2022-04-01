@@ -2,15 +2,18 @@
   <!-- 导航栏 -->
   <div class="Footbar border-1">
     <Time class="Time" />
+    <PassTime />
     <Copyright class="Copyright" />
   </div>
 </template>
 
 <script>
-import Time from './childComps/Time.vue';
-import Copyright from './childComps/Copyright.vue';
+//#####··········子组件··········#####//
+import Time from './childComps/Time.vue'; //左侧时间
+import PassTime from './childComps/PassTime.vue'; //中间过去时
+import Copyright from './childComps/Copyright.vue'; //右侧版权
 export default {
-  components: { Time, Copyright }
+  components: { Time, PassTime, Copyright }
 };
 </script>
 

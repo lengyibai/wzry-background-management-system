@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
+//捕获双击路由错误
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err);
 };
+//捕获双击路由错误
 const originalReplace = VueRouter.prototype.replace;
 VueRouter.prototype.replace = function replace(location) {
   return originalReplace.call(this, location).catch(err => err);
@@ -19,6 +21,11 @@ const router = new VueRouter({
 import store from '@/store/index.js';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
+  console.log(to.path);
+  if (!to.path) {
+    next('/404');
+    return;
+  }
   // 如果本地存在token，但状态为false，则自动登录
   if (!store.state.userStatus && store.state.token) {
     store.dispatch('userInfo').then(() => {
@@ -29,9 +36,9 @@ router.beforeEach((to, from, next) => {
       next('/');
     }
   }
-  // 如果状态为 true、或路由不需要验证，则正常跳转
+  // 如果状态为 true、则正常跳转
   else if (store.state.userStatus === true) {
-    // 如果是想进入登录页面，则直接跳转到首页
+    //如果路由不需要验证，则跳转到首页
     if (to.meta.noVerify) {
       next('/');
     } else {
@@ -39,7 +46,7 @@ router.beforeEach((to, from, next) => {
     }
     // 如果不存在token
   } else if (!store.state.token) {
-    // 如果是想进入登录页面，则直接跳转到首页
+    // 如果是想进入登录页面，则直接进入
     if (to.meta.noVerify) {
       next();
     } else {

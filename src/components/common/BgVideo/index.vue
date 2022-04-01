@@ -7,6 +7,7 @@
 </template>
 <script>
 export default {
+  name: 'BgVideo',
   props: {
     video: {
       type: String,
