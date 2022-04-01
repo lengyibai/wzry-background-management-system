@@ -29,3 +29,27 @@ export function $timeGreet(greet = {}) {
   const now = new Date().getHours();
   return now < 4 ? a : now < 10 ? b : now < 12 ? c : now < 14 ? d : now < 18 ? e : f;
 }
+
+//记录已过去时间或倒计时
+export function $getCountTime(time = '2022-04-01 10:45:00') {
+  let now = new Date(time).getTime(),
+    future = new Date().getTime(),
+    times = future - now > 0 ? Math.floor((future - now) / 1000) : Math.floor((now - future) / 1000);
+  const time_arr = [
+    { y: times / 60 / 60 / 24 / 30 / 12 },
+    { mon: (times / 60 / 60 / 24 / 30) % 12 },
+    { d: (times / 60 / 60 / 24) % 30 },
+    { h: (times / 60 / 60) % 24 },
+    { min: (times / 60) % 60 },
+    { s: times % 60 }
+  ];
+  let timeObj = {};
+  time_arr.forEach(item => {
+    const arr = Object.entries(item)[0];
+    const key = arr[0];
+    const value = arr[1];
+    item[key] = Math.floor(value).toString().padStart(2, '0');
+    Object.assign(timeObj, item);
+  });
+  return timeObj;
+}
