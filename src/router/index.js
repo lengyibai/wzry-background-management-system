@@ -21,11 +21,12 @@ const router = new VueRouter({
 import store from '@/store/index.js';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
+  /* 如果未找到路由，跳转404 */
   if (!to.path) {
     next('/404');
     return;
   }
-  // 如果本地存在token，但状态为false，则自动登录
+  /* 如果本地存在token，但状态为false，则自动登录 */
   if (!store.state.userStatus && store.state.token) {
     store.dispatch('userInfo').then(() => {
       // 如果是想进入登录页面，则直接跳转到首页
@@ -37,7 +38,7 @@ router.beforeEach((to, from, next) => {
     });
     return;
   }
-  // 如果状态为 true、则正常跳转
+  /* 如果状态为 true、则正常跳转 */
   if (store.state.userStatus === true) {
     //如果路由不需要验证，则跳转到首页
     if (to.meta.noVerify) {
@@ -47,7 +48,7 @@ router.beforeEach((to, from, next) => {
     next();
     return;
   }
-  // 如果不存在token
+  /* 如果不存在token */
   if (!store.state.token) {
     // 如果是想进入登录页面，则直接进入
     if (to.meta.noVerify) {
