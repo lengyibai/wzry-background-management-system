@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
     next();
     return;
   }
-  /* 如果不存在token */
+  /* 如果不存在token，则跳转登录 */
   if (!store.state.token) {
     // 如果是想进入登录页面，则直接进入
     if (to.meta.noVerify) {
