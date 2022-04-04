@@ -24,6 +24,7 @@ export default {
   display: flex;
   .HeroMain {
     flex: 1;
+    padding-right: calc(var(--gap-25) * 10);
   }
 }
 </style>
