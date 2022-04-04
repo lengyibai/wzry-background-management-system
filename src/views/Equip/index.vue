@@ -4,18 +4,14 @@
     <div class="EquipMain">
       <router-view></router-view>
     </div>
-    <EquipSidebar />
+    <!-- 英雄和装备的右边都会额外展示一个侧边栏，传递对方的路由进行排斥 -->
+    <Sidebar path="/hero" />
   </div>
 </template>
 
 <script>
-import EquipSidebar from './childComps/EquipSidebar';
-
 export default {
-  name: 'Equip',
-  components: {
-    EquipSidebar
-  }
+  name: 'Equip'
 };
 </script>
 <style scoped lang="less">
@@ -24,6 +20,7 @@ export default {
   display: flex;
   .EquipMain {
     flex: 1;
+    padding-right: calc(var(--gap-25) * 10);
   }
 }
 </style>

@@ -5,17 +5,14 @@
       <router-view></router-view>
     </div>
     <HeroSidebar />
+    <!-- 英雄和装备的右边都会额外展示一个侧边栏，传递对方的路由进行排斥 -->
+    <Sidebar path="/equip" />
   </div>
 </template>
 
 <script>
-import HeroSidebar from './childComps/HeroSidebar';
-
 export default {
-  name: 'Hero',
-  components: {
-    HeroSidebar
-  }
+  name: 'Hero'
 };
 </script>
 <style scoped lang="less">

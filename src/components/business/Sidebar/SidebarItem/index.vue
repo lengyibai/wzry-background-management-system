@@ -1,6 +1,6 @@
 <template>
   <!-- 根据路由对象属性是否显示栏目 -->
-  <div v-if="!item.Hidden && item.path !== '/equip'">
+  <div v-if="!item.Hidden && item.path !== path">
     <template
       v-if="
         hasOneShowingChild(item.children, item) &&
@@ -47,8 +47,6 @@ import AppLink from './Link';
 import icon from '@/assets/icon/svg/index.js';
 
 export default {
-  name: 'SidebarItem',
-  components: { AppLink },
   props: {
     item: {
       type: Object,
@@ -57,8 +55,14 @@ export default {
     basePath: {
       type: String,
       default: ''
+    },
+    path: {
+      type: String,
+      default: ''
     }
   },
+  name: 'SidebarItem',
+  components: { AppLink },
   data() {
     this.onlyOneChild = null;
     return {};

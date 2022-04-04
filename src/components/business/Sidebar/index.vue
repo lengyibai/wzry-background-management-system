@@ -1,6 +1,6 @@
 <template>
-  <!-- 侧边栏(禁止删除) -->
-  <div class="HeroSidebar border-1">
+  <!-- 侧边栏(英雄和装备的额外侧边栏) -->
+  <div class="Sidebar border-1">
     <el-menu
       :default-active="activeMenu"
       background-color="transparent"
@@ -10,7 +10,7 @@
       :collapse="isCollapse"
     >
       <!-- 菜单 -->
-      <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+      <sidebar-item v-bind="$attrs" v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
     </el-menu>
   </div>
 </template>
@@ -19,7 +19,7 @@
 import SidebarItem from './SidebarItem';
 
 export default {
-  name: 'HeroSidebar',
+  name: 'Sidebar',
   components: { SidebarItem },
   data() {
     return { isCollapse: false, hidden_text: false };
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.HeroSidebar {
+.Sidebar {
   position: absolute;
   top: 0;
   right: 0;
