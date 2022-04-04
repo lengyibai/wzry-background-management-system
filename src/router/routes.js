@@ -64,7 +64,7 @@ export default [
             meta: { title: '刺客', icon: 'ASSASSIN' }
           },
           {
-            path: 'Mage',
+            path: 'mage',
             component: () => import('@/views/Hero/childViews/Mage'),
             meta: { title: '法师', icon: 'MAGE' }
           },
