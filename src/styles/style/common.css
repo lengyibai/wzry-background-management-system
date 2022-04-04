@@ -55,10 +55,6 @@
   cursor: url('../../assets/icon/cur/not-allowed.png'), auto;
 }
 
-/* 边框线 */
-.border-1 {
-  /* border: 1px dotted var(--theme-font-dark); */
-}
 
 /* 溢出省略号显示单行 */
 .lyb-one-line {

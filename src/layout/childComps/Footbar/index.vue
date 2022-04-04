@@ -1,6 +1,6 @@
 <template>
   <!-- 导航栏 -->
-  <div class="Footbar border-1">
+  <div class="Footbar">
     <Time class="Time" />
     <PassTime />
     <Copyright class="Copyright" />

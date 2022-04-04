@@ -1,6 +1,6 @@
 <template>
   <!-- 侧边栏(英雄和装备的额外侧边栏) -->
-  <div class="Sidebar border-1">
+  <div class="Sidebar">
     <el-menu
       :default-active="activeMenu"
       background-color="transparent"

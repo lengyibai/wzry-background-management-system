@@ -1,6 +1,6 @@
 <template>
   <!-- 侧边栏(禁止删除) -->
-  <div class="Sidebar border-1">
+  <div class="Sidebar">
     <div class="game">
       <svg class="icon" viewBox="0 0 1024 1024">
         <path
@@ -91,6 +91,10 @@ export default {
       color: var(--theme-font-dark);
       font-size: var(--font-s-30);
     }
+  }
+  .el-menu-vertical-demo {
+    height: calc(100% - 75px);
+    overflow: hidden auto;
   }
 }
 .el-menu-vertical-demo {
