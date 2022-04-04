@@ -1,6 +1,6 @@
 <template>
   <div class="BgVideo">
-    <video class="video" autoplay loop>
+    <video class="video" autoplay loop muted>
       <source :src="video" />
     </video>
   </div>

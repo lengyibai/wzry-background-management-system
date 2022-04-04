@@ -168,6 +168,14 @@ export default [
           title: '添加装备',
           icon: 'ADDEQUIP'
         }
+      },
+      {
+        path: '/system/components',
+        component: () => import('@/views/System/childViews/Components'),
+        meta: {
+          title: '项目组件',
+          icon: 'COMPONENTS'
+        }
       }
     ],
     Hidden: true

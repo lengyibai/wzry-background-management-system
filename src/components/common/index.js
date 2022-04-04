@@ -1,5 +1,5 @@
 //#####··········公共组件··········#####//
-import BgVideo from './common/BgVideo'; //视频背景
+import BgVideo from './BgVideo'; //视频背景
 
 //使用组件
 const components = [BgVideo];

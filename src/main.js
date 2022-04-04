@@ -8,7 +8,7 @@ import router from './router';
 import './plugins/element';
 
 //####········全局组件········####//
-import lybUI from '@/components/index.js';
+import lybUI from '@/components/common/index.js';
 Vue.use(lybUI);
 
 //####········公共CSS········####//

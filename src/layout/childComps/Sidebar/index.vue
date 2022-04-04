@@ -74,7 +74,6 @@ export default {
 .Sidebar {
   height: 100vh;
   background: url('./img/bg.png') no-repeat center;
-  overflow: auto !important;
   .game {
     margin: 0 auto;
     width: 72.5%;

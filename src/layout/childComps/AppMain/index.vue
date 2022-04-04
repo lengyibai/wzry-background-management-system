@@ -19,5 +19,6 @@ export default {
   box-sizing: border-box;
   max-width: 100%;
   height: calc(100% - 131px);
+  padding: 25px;
 }
 </style>
