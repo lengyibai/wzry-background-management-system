@@ -6,7 +6,7 @@
         :key="index"
         :style="{
           backgroundColor: item,
-          animationDelay: index * 0.1 - 0.8 + 0.75 + 's',
+          animationDelay: index * 0.1 - 0.8 + 0.5 + 's',
           boxShadow: '0 0 50px ' + item
         }"
       ></span>

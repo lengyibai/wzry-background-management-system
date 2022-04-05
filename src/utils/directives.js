@@ -1,4 +1,3 @@
-// /* 修改文字 */
 const play = {
   inserted(el, binding) {}
 };

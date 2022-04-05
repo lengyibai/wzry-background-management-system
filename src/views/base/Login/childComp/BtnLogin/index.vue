@@ -1,6 +1,6 @@
 <template>
   <div class="BtnLogin" @click="login">
-    <audio src="./audio/login.mp3" ref="login" hidden="true"></audio>
+    <audio src="@/assets/audio/login.mp3" ref="login" hidden="true"></audio>
     <span>登录</span>
     <span>LOGIN</span>
   </div>

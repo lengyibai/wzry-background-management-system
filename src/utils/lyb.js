@@ -1,4 +1,16 @@
 /* 功能 */
+//随机数
+export function $random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+//小数百分比互转
+export function $potEoPct(str, ret = 4) {
+  if (typeof str == 'string') {
+    return str.replace('%', '') / 100;
+  } else {
+    return Number((str * 100).toFixed(ret));
+  }
+}
 // 时间格式化
 export function $fmtTime(date, fmt = 'YYYY-MM-DD hh:mm:ss') {
   date = new Date(date);

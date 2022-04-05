@@ -4,6 +4,7 @@
     <Time class="Time" />
     <PassTime />
     <Copyright class="Copyright" />
+    <MusicPlay class="MusicPlay" />
   </div>
 </template>
 
@@ -12,8 +13,9 @@
 import Time from './childComps/Time.vue'; //左侧时间
 import PassTime from './childComps/PassTime.vue'; //中间过去时
 import Copyright from './childComps/Copyright.vue'; //右侧版权
+import MusicPlay from './childComps/MusicPlay.vue'; //音乐进度条
 export default {
-  components: { Time, PassTime, Copyright }
+  components: { Time, PassTime, Copyright, MusicPlay }
 };
 </script>
 
@@ -32,6 +34,10 @@ export default {
   }
   .Copyright {
     margin-right: var(--gap-15);
+  }
+  .MusicPlay {
+    position: absolute;
+    bottom: 0;
   }
 }
 </style>
