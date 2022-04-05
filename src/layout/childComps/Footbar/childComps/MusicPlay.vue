@@ -18,10 +18,10 @@ export default {
       status: 'play', //当前音乐状态
       timer: null, //进度条计时器
       musics: [
-        require('@/assets/music/王者战歌.mp3'),
-        require('@/assets/music/英雄归来.mp3'),
-        require('@/assets/music/荣耀主题.mp3'),
-        require('@/assets/music/荣耀之路.mp3')
+        'http://lengyibai.gitee.io/wzry/music/王者战歌.mp3',
+        'http://lengyibai.gitee.io/wzry/music/英雄归来.mp3',
+        'http://lengyibai.gitee.io/wzry/music/荣耀主题.mp3',
+        'http://lengyibai.gitee.io/wzry/music/荣耀之路.mp3'
       ]
     };
   },
@@ -31,6 +31,7 @@ export default {
   methods: {
     musicPlay() {
       const that = this;
+      that.bgmIndex = $random(0, that.musics.length - 1);
       this.$refs.bgm.play();
       this.timer = setInterval(() => {
         /* 实时设置播放进度 */
