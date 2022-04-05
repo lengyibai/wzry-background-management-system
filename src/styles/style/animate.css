@@ -1,40 +1,38 @@
-/* 进入前状态 */
+/* 淡入淡出 */
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
-  transform: scale(0);
 }
 
-/* 进入和离开动画属性 */
-.fade-enter-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: all 0.5s;
 }
 
-.fade-leave-active{
-  transition: all 0.25s;
+
+.fade-move {
+  transition: all 0.5s;
 }
 
-
-/* 解决删除元素时，其他元素补位无动画 */
 .fade-leave-active {
-  position: absolute; /* 必须为绝对定位 */
+  position: absolute;
 }
 
-/* fade-transform */
+/* 路由 */
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+}
+
 .fade-transform-leave-active,
 .fade-transform-enter-active {
   transition: all 0.5s;
 }
 
-.fade-transform-enter {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-.fade-transform-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
 
 /* 面包屑 */
 .breadcrumb-enter-active,

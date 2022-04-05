@@ -31,11 +31,7 @@
 import ChildComps from './childComps/index.vue';
 export default {
   name: 'Components',
-  data() {
-    return {};
-  },
-  components: { ChildComps },
-  methods: {}
+  components: { ChildComps }
 };
 </script>
 <style scoped lang="less">

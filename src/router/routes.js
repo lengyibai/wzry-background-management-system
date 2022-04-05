@@ -139,14 +139,14 @@ export default [
   {
     path: '/system',
     component: Layout,
-    redirect: '',
+    redirect: '/system/hero',
     meta: {
       title: '系统管理',
       icon: 'SYSTEM'
     },
     children: [
       {
-        path: '/system/hero',
+        path: 'hero',
         component: () => import('@/views/Equip/childViews/Move'),
         meta: {
           title: '添加英雄',
@@ -154,7 +154,7 @@ export default [
         }
       },
       {
-        path: '/system/skin',
+        path: 'skin',
         component: () => import('@/views/Equip/childViews/Move'),
         meta: {
           title: '添加皮肤',
@@ -162,7 +162,7 @@ export default [
         }
       },
       {
-        path: '/system/equip',
+        path: 'equip',
         component: () => import('@/views/Equip/childViews/Magic'),
         meta: {
           title: '添加装备',
@@ -170,7 +170,7 @@ export default [
         }
       },
       {
-        path: '/system/components',
+        path: 'components',
         component: () => import('@/views/System/childViews/Components'),
         meta: {
           title: '项目组件',

@@ -9,18 +9,13 @@
         <el-input v-model="form.password"></el-input>
       </el-form-item>
     </el-form>
-    <el-row :gutter="20">
-      <el-col :span="12">
-        <el-button type="primary" @click="login">登录</el-button>
-      </el-col>
-      <el-col :span="12">
-        <el-button type="warning" @click="reset">重置</el-button>
-      </el-col>
-    </el-row>
+
+    <BtnLogin @click.native="login" />
     <BgVideo :video="require('@/assets/video/video.mp4')" />
   </div>
 </template>
 <script>
+import BtnLogin from './childComp/BtnLogin/index.vue';
 export default {
   name: 'Login',
   data() {
@@ -49,17 +44,18 @@ export default {
       this.form = {};
       this.$refs.form.resetFields();
     }
-  }
+  },
+  components: { BtnLogin }
 };
 </script>
 <style scoped lang="less">
 .Login {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  display: flex;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   h1 {
     color: var(--white);
     margin-bottom: 25px;

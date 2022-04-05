@@ -30,6 +30,7 @@ body {
   background: url('@/assets/img/bg.jpg') no-repeat center fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .icon {

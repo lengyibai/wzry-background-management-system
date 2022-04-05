@@ -1,5 +1,5 @@
 <template>
-  <!-- 侧边栏(禁止删除) -->
+  <!-- 侧边栏 -->
   <div class="Sidebar">
     <div class="game">
       <svg class="icon" viewBox="0 0 1024 1024">
@@ -27,7 +27,13 @@
       :collapse="isCollapse"
     >
       <!-- 菜单 -->
-      <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+      <sidebar-item
+        v-for="route in routes"
+        :key="route.path"
+        :item="route"
+        :base-path="route.path"
+        @click.native="$click"
+      />
     </el-menu>
   </div>
 </template>

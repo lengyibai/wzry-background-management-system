@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     logout() {
+      this.$click();
       this.$store.dispatch('logout');
     }
   }

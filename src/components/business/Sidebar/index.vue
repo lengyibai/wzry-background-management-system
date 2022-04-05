@@ -1,18 +1,25 @@
 <template>
   <!-- 侧边栏(英雄和装备的额外侧边栏) -->
-  <div class="Sidebar">
-    <el-menu
-      :default-active="activeMenu"
-      background-color="transparent"
-      text-color="var(--theme-font-dark)"
-      active-text-color="var(--theme-font-light)"
-      class="el-menu-vertical-demo"
-      :collapse="isCollapse"
-    >
-      <!-- 菜单 -->
-      <sidebar-item v-bind="$attrs" v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
-    </el-menu>
-  </div>
+  <transition name="fade-transform">
+    <div class="Sidebar" v-show="isShow">
+      <el-menu
+        :default-active="activeMenu"
+        background-color="transparent"
+        text-color="var(--theme-font-dark)"
+        active-text-color="var(--theme-font-light)"
+      >
+        <!-- 菜单 -->
+        <sidebar-item
+          v-bind="$attrs"
+          v-for="route in routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+          @click.native="$click"
+        />
+      </el-menu>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -22,7 +29,7 @@ export default {
   name: 'Sidebar',
   components: { SidebarItem },
   data() {
-    return { isCollapse: false, hidden_text: false };
+    return { hidden_text: false, isShow: false };
   },
   computed: {
     routes() {
@@ -37,19 +44,10 @@ export default {
       return path;
     }
   },
-  created() {
-    this.$bus.$on('collapse', () => {
-      this.isCollapse = !this.isCollapse;
-      setTimeout(
-        () => {
-          this.hidden_text = !this.hidden_text;
-        },
-        this.hidden_text ? 250 : 0
-      );
-    });
-  },
-  beforeDestroy() {
-    this.$bus.$off('collapse');
+  mounted() {
+    setTimeout(() => {
+      this.isShow = true;
+    }, 500);
   }
 };
 </script>
@@ -58,8 +56,23 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
+  width: 250px;
+  height: calc(100vh - 75px - 56px);
   background: url('./img/bg.png') no-repeat center;
   overflow: auto !important;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+}
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
 }
 </style>

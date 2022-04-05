@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     toggleClick() {
+      this.$click();
       this.isActive = !this.isActive;
       this.$bus.$emit('collapse');
     }
