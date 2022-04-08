@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import BtnLogin from "./childComp/BtnLogin/index.vue";
+import BtnLogin from "./childComp/BtnLogin";
 export default {
   name: "Login",
   data() {
