@@ -13,18 +13,18 @@
 </template>
 
 <script>
-import Breadcrumb from './Breadcrumb';
-import Hamburger from './Hamburger';
-import UserMenu from './UserMenu';
-import Search from './Search/index.vue';
+import Breadcrumb from "./Breadcrumb";
+import Hamburger from "./Hamburger";
+import UserMenu from "./UserMenu";
+import Search from "./Search/index.vue";
 
 export default {
   components: {
     Breadcrumb,
     Hamburger,
     UserMenu,
-    Search
-  }
+    Search,
+  },
 };
 </script>
 
@@ -35,7 +35,7 @@ export default {
   width: 100%;
   height: 75px;
   position: relative;
-  background: url('./img/bg.png') no-repeat center;
+  background: url("./img/bg.png") no-repeat center;
   background-size: cover;
   .Hamburger {
     margin-left: var(--gap-15);

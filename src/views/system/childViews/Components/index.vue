@@ -28,10 +28,10 @@
   </div>
 </template>
 <script>
-import ChildComps from './childComps/index.vue';
+import ChildComps from "./childComps/index.vue";
 export default {
-  name: 'Components',
-  components: { ChildComps }
+  name: "Components",
+  components: { ChildComps },
 };
 </script>
 <style scoped lang="less">

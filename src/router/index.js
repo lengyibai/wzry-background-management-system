@@ -1,37 +1,37 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from "vue";
+import VueRouter from "vue-router";
 Vue.use(VueRouter);
 //捕获双击路由错误
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err);
+  return originalPush.call(this, location).catch((err) => err);
 };
 //捕获双击路由错误
 const originalReplace = VueRouter.prototype.replace;
 VueRouter.prototype.replace = function replace(location) {
-  return originalReplace.call(this, location).catch(err => err);
+  return originalReplace.call(this, location).catch((err) => err);
 };
 
-import routes from './routes';
+import routes from "./routes";
 
 const router = new VueRouter({
-  routes
+  routes,
 });
 
-import store from '@/store/index.js';
+import store from "@/store/index.js";
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   /* 如果未找到路由，跳转404 */
   if (!to.path) {
-    next('/404');
+    next("/404");
     return;
   }
   /* 如果本地存在token，但状态为false，则自动登录 */
   if (!store.state.userStatus && store.state.token) {
-    store.dispatch('userInfo').then(() => {
+    store.dispatch("userInfo").then(() => {
       // 如果是想进入登录页面，则直接跳转到首页
       if (to.meta.noVerify) {
-        next('/');
+        next("/");
         return;
       }
       next();
@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
   if (store.state.userStatus === true) {
     //如果路由不需要验证，则跳转到首页
     if (to.meta.noVerify) {
-      next('/');
+      next("/");
       return;
     }
     next();
@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
       next();
       return;
     }
-    next('/login');
+    next("/login");
   }
 });
 export default router;

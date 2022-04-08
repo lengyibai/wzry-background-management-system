@@ -11,19 +11,19 @@
 </template>
 
 <script>
-import Sidebar from '@/layout/childComps/Sidebar'; //侧边栏
-import Navbar from '@/layout/childComps/Navbar'; //顶部栏
-import AppMain from '@/layout/childComps/AppMain'; //路由视图
-import Footbar from '@/layout/childComps/Footbar'; //底部栏
+import Sidebar from "@/layout/childComps/Sidebar"; //侧边栏
+import Navbar from "@/layout/childComps/Navbar"; //顶部栏
+import AppMain from "@/layout/childComps/AppMain"; //路由视图
+import Footbar from "@/layout/childComps/Footbar"; //底部栏
 
 export default {
-  name: 'Layout',
+  name: "Layout",
   components: {
     Navbar,
     Sidebar,
     AppMain,
-    Footbar
-  }
+    Footbar,
+  },
 };
 </script>
 <style scoped lang="less">

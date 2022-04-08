@@ -1,14 +1,14 @@
 const play = {
-  inserted(el, binding) {}
+  // inserted(el, binding) {},
 };
 
 let directives = {
-  play
+  play,
 };
 export default {
   install(Vue) {
-    Object.keys(directives).forEach(directive => {
+    Object.keys(directives).forEach((directive) => {
       Vue.directive(directive, directives[directive]);
     });
-  }
+  },
 };

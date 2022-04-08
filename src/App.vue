@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import GlobalSwitch from './components/common/GlobalSwitch/GlobalSwitch.vue';
+import GlobalSwitch from "./components/common/GlobalSwitch/GlobalSwitch.vue";
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {};
   },
-  components: { GlobalSwitch }
+  components: { GlobalSwitch },
 };
 </script>
 <style scoped lang="less">

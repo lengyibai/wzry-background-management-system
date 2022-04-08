@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-  name: 'Attack',
+  name: "Attack",
   data() {
     return {};
   },
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="less">

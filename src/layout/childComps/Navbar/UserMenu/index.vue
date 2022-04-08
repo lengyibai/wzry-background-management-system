@@ -1,20 +1,24 @@
 <template>
   <div class="UserMenu cursor-pointer">
-    <div class="UserMenu-hover">
-      <div class="user cursor-pointer">
-        <img v-if="userInfo.headImg" :src="userInfo.headImg" alt />
-        <span>{{ $timeGreet }}，{{ userInfo.name }}</span>
-      </div>
-      <div class="logout cursor-pointer flex" @click="logout">退出登录</div>
-    </div>
+    <LybFlipBox>
+      <template #z>
+        <div class="user cursor-pointer">
+          <img v-if="userInfo.headImg" :src="userInfo.headImg" alt />
+          <span>{{ $timeGreet }}，{{ userInfo.name }}</span>
+        </div>
+      </template>
+      <template #f>
+        <div class="logout cursor-pointer flex" @click="logout">退出登录</div>
+      </template>
+    </LybFlipBox>
   </div>
 </template>
 <script>
 //#####··········公共方法··········#####//
 //方法信息：{ 根据时间问候 }
-import { $timeGreet } from '@/utils/lyb.js';
+import { $timeGreet } from "@/utils/lyb.js";
 export default {
-  name: 'UserMenu',
+  name: "UserMenu",
   data() {
     return {};
   },
@@ -24,14 +28,14 @@ export default {
     },
     $timeGreet() {
       return $timeGreet();
-    }
+    },
   },
   methods: {
     logout() {
       this.$click();
-      this.$store.dispatch('logout');
-    }
-  }
+      this.$store.dispatch("logout");
+    },
+  },
 };
 </script>
 <style scoped lang="less">
@@ -42,44 +46,31 @@ export default {
 .UserMenu {
   width: 240px;
   height: 100%;
-  &:hover .UserMenu-hover {
-    transform: rotateX(-180deg);
-  }
-  &:hover .logout {
-    opacity: 1 !important;
-  }
-  .UserMenu-hover {
+  .user {
+    position: absolute;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
-    .user {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transform: translateZ(1px);
-      img {
-        height: 75%;
-        border-radius: 50%;
-        margin-left: var(--gap-15);
-      }
-      span {
-        color: var(--theme-font-dark);
-        margin-right: var(--gap-15);
-      }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      height: 75%;
+      border-radius: 50%;
+      margin-left: var(--gap-15);
     }
-    .logout {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: var(--red);
-      color: var(--white);
-      transform: rotateX(180deg) translateZ(1px);
-      border-radius: 0 0 0 10px;
-      opacity: 0;
+    span {
+      color: var(--theme-font-dark);
+      margin-right: var(--gap-15);
     }
+  }
+  .logout {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 0 0 0 10px;
+    font-size: var(--font-s-25);
   }
 }
 </style>

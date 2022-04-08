@@ -14,19 +14,19 @@
 
 <script>
 export default {
-  name: 'Hamburger',
+  name: "Hamburger",
   data() {
     return {
-      isActive: true
+      isActive: true,
     };
   },
   methods: {
     toggleClick() {
       this.$click();
       this.isActive = !this.isActive;
-      this.$bus.$emit('collapse');
-    }
-  }
+      this.$bus.$emit("collapse");
+    },
+  },
 };
 </script>
 

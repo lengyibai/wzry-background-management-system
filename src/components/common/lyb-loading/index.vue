@@ -1,15 +1,17 @@
 <template>
   <transition name="fade">
     <div class="LybLoading" v-show="isShow">
+      <img src="./img/daji.png" alt="妲己" />
       <span
         v-for="(item, index) in color"
         :key="index"
         :style="{
           backgroundColor: item,
           animationDelay: index * 0.1 - 0.8 + 0.5 + 's',
-          boxShadow: '0 0 50px ' + item
+          boxShadow: '0 0 50px ' + item,
         }"
       ></span>
+      <h1>加载中...</h1>
     </div>
   </transition>
 </template>
@@ -18,17 +20,23 @@ export default {
   props: {
     isShow: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  name: 'LybLoading',
+  name: "LybLoading",
   data() {
     return {
-      color: ['#ffff00', '#76ff03', '#f06292', '#4fc3f7', '#ba68c8', '#f57c00', '#673ab7']
+      color: [
+        "#ffff00",
+        "#76ff03",
+        "#f06292",
+        "#4fc3f7",
+        "#ba68c8",
+        "#f57c00",
+        "#673ab7",
+      ],
     };
   },
-  components: {},
-  methods: {}
 };
 </script>
 <style scoped lang="less">
@@ -41,13 +49,26 @@ export default {
   height: 100vh;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
-}
-span {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  transform: scale(0.2);
-  animation: animate 1s infinite;
+  img {
+    position: absolute;
+    width: 40vw;
+    left: 0;
+    bottom: 0;
+  }
+  span {
+    display: inline-block;
+    width: 3vw;
+    height: 3vw;
+    transform: scale(0.2);
+    animation: animate 1s infinite;
+  }
+  h1 {
+    position: absolute;
+    right: 3.5vh;
+    top: 3.5vh;
+    font-size: 3.5vw;
+    color: #fff;
+  }
 }
 @keyframes animate {
   0% {

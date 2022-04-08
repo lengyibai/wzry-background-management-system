@@ -12,12 +12,12 @@
 </template>
 <script>
 export default {
-  name: 'Search',
+  name: "Search",
   data() {
     return {};
   },
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="less">

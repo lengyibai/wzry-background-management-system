@@ -9,8 +9,8 @@ export default {
   props: {
     to: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     isExternal() {
@@ -18,23 +18,23 @@ export default {
     },
     type() {
       if (this.isExternal) {
-        return 'a';
+        return "a";
       }
-      return 'router-link';
-    }
+      return "router-link";
+    },
   },
   methods: {
     linkProps(to) {
       if (this.isExternal) {
         return {
-          target: '_blank',
-          rel: 'noopener'
+          target: "_blank",
+          rel: "noopener",
         };
       }
       return {
-        to: to
+        to: to,
       };
-    }
-  }
+    },
+  },
 };
 </script>

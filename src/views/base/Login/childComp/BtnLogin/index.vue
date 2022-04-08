@@ -1,21 +1,12 @@
 <template>
-  <div class="BtnLogin" @click="login">
-    <audio src="@/assets/audio/login.mp3" ref="login" hidden="true"></audio>
+  <div class="BtnLogin">
     <span>登录</span>
     <span>LOGIN</span>
   </div>
 </template>
 <script>
 export default {
-  name: 'BtnLogin',
-  data() {
-    return {};
-  },
-  methods: {
-    login() {
-      this.$refs.login.play();
-    }
-  }
+  name: "BtnLogin",
 };
 </script>
 <style scoped lang="less">
@@ -26,17 +17,17 @@ export default {
   align-items: center;
   width: 400px;
   height: 80px;
-  background: url('./img/login.png') no-repeat center center;
+  background: url("./img/login.png") no-repeat center center;
   background-size: 100%;
   span {
     &:nth-of-type(1) {
       color: #fff;
-      font-size: 36px;
+      font-size: var(--font-s-35);
       text-shadow: 0px 0px 25px #bf681d;
     }
     &:nth-of-type(2) {
       color: #895c36;
-      font-size: 16px;
+      font-size: var(--font-s-16);
       letter-spacing: 2px;
       line-height: 14px;
       text-shadow: 0px 0px 5px #8b5e37;

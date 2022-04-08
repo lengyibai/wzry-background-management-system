@@ -1,8 +1,14 @@
 :root {
   --gap-25: 25px;
   --gap-15: 15px;
+  --font-s-12: 12px;
+  --font-s-14: 14px;
+  --font-s-16: 16px;
+  --font-s-18: 18px;
   --font-s-20: 20px;
+  --font-s-25: 25px;
   --font-s-30: 30px;
+  --font-s-35: 35px;
 }
 
 /* 背景色 */

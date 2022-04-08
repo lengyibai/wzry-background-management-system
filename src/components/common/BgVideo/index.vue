@@ -7,13 +7,13 @@
 </template>
 <script>
 export default {
-  name: 'BgVideo',
+  name: "BgVideo",
   props: {
     video: {
       type: String,
-      default: ''
-    }
-  }
+      default: "",
+    },
+  },
 };
 </script>
 <style scoped lang="less">

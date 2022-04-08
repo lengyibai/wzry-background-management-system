@@ -3,12 +3,12 @@
 </template>
 <script>
 export default {
-  name: 'index',
+  name: "index",
   data() {
     return {};
   },
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="less">

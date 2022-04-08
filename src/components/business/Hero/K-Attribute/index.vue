@@ -6,7 +6,7 @@
       <i
         :style="{
           backgroundColor: bgc[attr],
-          width: length
+          width: length,
         }"
       ></i>
     </div>
@@ -17,36 +17,36 @@ export default {
   props: {
     attr: {
       type: String,
-      default: ''
+      default: "",
     },
     length: {
       type: String,
-      default: '50%'
-    }
+      default: "50%",
+    },
   },
-  name: 'KAttribute',
+  name: "KAttribute",
   data() {
     return {
       y: {
-        survival: '0 -170px',
-        attack: '-30px -170px',
-        skill: '-60px -170px',
-        difficulty: '-90px -170px'
+        survival: "0 -170px",
+        attack: "-30px -170px",
+        skill: "-60px -170px",
+        difficulty: "-90px -170px",
       },
       bgc: {
-        survival: '#1c8fea',
-        attack: '#e7ca63',
-        skill: '#5dd473',
-        difficulty: '#e84a33'
+        survival: "#1c8fea",
+        attack: "#e7ca63",
+        skill: "#5dd473",
+        difficulty: "#e84a33",
       },
       text: {
-        survival: '生存能力',
-        attack: '攻击伤害',
-        skill: '技能效果',
-        difficulty: '上手难度'
-      }
+        survival: "生存能力",
+        attack: "攻击伤害",
+        skill: "技能效果",
+        difficulty: "上手难度",
+      },
     };
-  }
+  },
 };
 </script>
 <style scoped lang="less">
@@ -56,13 +56,13 @@ export default {
   height: 26px;
   span {
     color: #fff;
-    font-size: 16px;
+    font-size: var(--font-s-16);
     margin-right: 1em;
   }
   .ico {
     width: 26px;
     height: 26px;
-    background-image: url('./img/item.png');
+    background-image: url("./img/item.png");
     background-repeat: no-repeat;
     background-position: 0 0;
   }

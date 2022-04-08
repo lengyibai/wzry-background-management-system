@@ -11,8 +11,15 @@
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <div class="submenu">
-            <span v-if="onlyOneChild.meta.icon" v-html="icon[onlyOneChild.meta.icon]"></span>
-            <span v-else style="font-size: 25px; font-weight: bold">{{ onlyOneChild.meta.title[0] }}</span>
+            <span
+              v-if="onlyOneChild.meta.icon"
+              v-html="icon[onlyOneChild.meta.icon]"
+            ></span>
+            <span
+              v-else
+              style="font-size: var(--font-s-25); font-weight: bold"
+              >{{ onlyOneChild.meta.title[0] }}</span
+            >
             <span>{{ onlyOneChild.meta && onlyOneChild.meta.title }}</span>
           </div>
         </el-menu-item>
@@ -20,11 +27,18 @@
     </template>
 
     <!-- 二级菜单 -->
-    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    <el-submenu
+      v-else
+      ref="subMenu"
+      :index="resolvePath(item.path)"
+      popper-append-to-body
+    >
       <template slot="title">
         <div class="submenu">
           <span v-if="item.meta.icon" v-html="icon[item.meta.icon]"></span>
-          <span v-else style="font-size: 25px; font-weight: bold">{{ item.meta.title[0] }}</span>
+          <span v-else style="font-size: var(--font-s-25); font-weight: bold">{{
+            item.meta.title[0]
+          }}</span>
           <span>{{ item.meta && item.meta.title }}</span>
         </div>
       </template>
@@ -41,23 +55,23 @@
 </template>
 
 <script>
-import path from 'path';
+import path from "path";
 /* 用于路由跳转 */
-import AppLink from './Link';
-import icon from '@/assets/icon/svg/index.js';
+import AppLink from "./Link";
+import icon from "@/assets/icon/svg/index.js";
 
 export default {
-  name: 'SidebarItem',
+  name: "SidebarItem",
   components: { AppLink },
   props: {
     item: {
       type: Object,
-      required: true
+      required: true,
     },
     basePath: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   data() {
     this.onlyOneChild = null;
@@ -67,11 +81,11 @@ export default {
     //#####··········图标··········#####//
     icon() {
       return icon;
-    }
+    },
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
-      const showingChildren = children.filter(item => {
+      const showingChildren = children.filter((item) => {
         if (item.hidden) {
           return false;
         } else {
@@ -84,7 +98,7 @@ export default {
       }
 
       if (showingChildren.length === 0) {
-        this.onlyOneChild = { ...parent, path: '', noShowingChildren: true };
+        this.onlyOneChild = { ...parent, path: "", noShowingChildren: true };
         return true;
       }
 
@@ -98,7 +112,7 @@ export default {
         return this.basePath;
       }
       return path.resolve(this.basePath, routePath);
-    }
-  }
+    },
+  },
 };
 </script>

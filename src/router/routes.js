@@ -1,192 +1,192 @@
-import Layout from '@/layout';
+import Layout from "@/layout";
 export default [
   {
-    path: '/',
-    redirect: '/home'
+    path: "/",
+    redirect: "/home",
   },
   {
-    path: '/login',
+    path: "/login",
     meta: {
-      title: '登录',
-      noVerify: true
+      title: "登录",
+      noVerify: true,
     },
-    component: () => import('@/views/Base/Login'),
+    component: () => import("@/views/Base/Login"),
     hidden: true,
-    Hidden: true
+    Hidden: true,
   },
   {
-    path: '/home',
+    path: "/home",
     component: Layout,
-    redirect: '',
+    redirect: "",
     children: [
       {
-        path: '',
+        path: "",
         meta: {
-          title: '主页',
-          icon: 'HOME'
+          title: "主页",
+          icon: "HOME",
         },
-        component: () => import('@/views/Base/Home')
-      }
+        component: () => import("@/views/Base/Home"),
+      },
     ],
-    Hidden: true
+    Hidden: true,
   },
   {
-    path: '/hero',
+    path: "/hero",
     component: Layout,
-    redirect: '/Hero/profession',
+    redirect: "/Hero/profession",
     meta: {
-      title: '英雄',
-      icon: 'HERO'
+      title: "英雄",
+      icon: "HERO",
     },
     children: [
       {
-        path: 'profession',
+        path: "profession",
         meta: {
-          title: '职业',
-          icon: 'PROFESSION'
+          title: "职业",
+          icon: "PROFESSION",
         },
-        component: () => import('@/views/Hero'),
-        redirect: '/hero/profession/tank',
+        component: () => import("@/views/Hero"),
+        redirect: "/hero/profession/tank",
         children: [
           {
-            path: 'tank',
-            component: () => import('@/views/Hero/childViews/Tank'),
-            meta: { title: '坦克', icon: 'TANK' }
+            path: "tank",
+            component: () => import("@/views/Hero/childViews/Tank"),
+            meta: { title: "坦克", icon: "TANK" },
           },
           {
-            path: 'warrior',
-            component: () => import('@/views/Hero/childViews/Warrior'),
-            meta: { title: '战士', icon: 'WARRIOR' }
+            path: "warrior",
+            component: () => import("@/views/Hero/childViews/Warrior"),
+            meta: { title: "战士", icon: "WARRIOR" },
           },
           {
-            path: 'assassin',
-            component: () => import('@/views/Hero/childViews/Assassin'),
-            meta: { title: '刺客', icon: 'ASSASSIN' }
+            path: "assassin",
+            component: () => import("@/views/Hero/childViews/Assassin"),
+            meta: { title: "刺客", icon: "ASSASSIN" },
           },
           {
-            path: 'mage',
-            component: () => import('@/views/Hero/childViews/Mage'),
-            meta: { title: '法师', icon: 'MAGE' }
+            path: "mage",
+            component: () => import("@/views/Hero/childViews/Mage"),
+            meta: { title: "法师", icon: "MAGE" },
           },
           {
-            path: 'striker',
-            component: () => import('@/views/Hero/childViews/Striker'),
-            meta: { title: '射手', icon: 'STRIKER' }
+            path: "striker",
+            component: () => import("@/views/Hero/childViews/Striker"),
+            meta: { title: "射手", icon: "STRIKER" },
           },
           {
-            path: 'assist',
-            component: () => import('@/views/Hero/childViews/Assist'),
-            meta: { title: '辅助', icon: 'ASSIST' }
-          }
+            path: "assist",
+            component: () => import("@/views/Hero/childViews/Assist"),
+            meta: { title: "辅助", icon: "ASSIST" },
+          },
         ],
-        hidden: true
-      }
-    ]
+        hidden: true,
+      },
+    ],
   },
   {
-    path: '/equip',
+    path: "/equip",
     component: Layout,
-    redirect: '/equip/category',
+    redirect: "/equip/category",
     meta: {
-      title: '装备',
-      icon: 'EQUIP'
+      title: "装备",
+      icon: "EQUIP",
     },
     children: [
       {
-        path: 'category',
+        path: "category",
         meta: {
-          title: '类型',
-          icon: 'CATEGORY'
+          title: "类型",
+          icon: "CATEGORY",
         },
-        component: () => import('@/views/Equip'),
-        redirect: '/equip/category/attack',
+        component: () => import("@/views/Equip"),
+        redirect: "/equip/category/attack",
         children: [
           {
-            path: 'attack',
-            component: () => import('@/views/Equip/childViews/Attack'),
-            meta: { title: '攻击', icon: 'ATTACK' }
+            path: "attack",
+            component: () => import("@/views/Equip/childViews/Attack"),
+            meta: { title: "攻击", icon: "ATTACK" },
           },
           {
-            path: 'magic',
-            component: () => import('@/views/Equip/childViews/Magic'),
-            meta: { title: '法术', icon: 'MAGIC' }
+            path: "magic",
+            component: () => import("@/views/Equip/childViews/Magic"),
+            meta: { title: "法术", icon: "MAGIC" },
           },
           {
-            path: 'defense',
-            component: () => import('@/views/Equip/childViews/Defense'),
-            meta: { title: '防御', icon: 'DEFENSE' }
+            path: "defense",
+            component: () => import("@/views/Equip/childViews/Defense"),
+            meta: { title: "防御", icon: "DEFENSE" },
           },
           {
-            path: 'move',
-            component: () => import('@/views/Equip/childViews/Move'),
-            meta: { title: '移动', icon: 'MOVE' }
+            path: "move",
+            component: () => import("@/views/Equip/childViews/Move"),
+            meta: { title: "移动", icon: "MOVE" },
           },
           {
-            path: 'jungle',
-            component: () => import('@/views/Equip/childViews/Jungle'),
-            meta: { title: '打野', icon: 'JUNGLE' }
+            path: "jungle",
+            component: () => import("@/views/Equip/childViews/Jungle"),
+            meta: { title: "打野", icon: "JUNGLE" },
           },
           {
-            path: 'migration',
-            component: () => import('@/views/Equip/childViews/Migration'),
-            meta: { title: '游走', icon: 'MIGRATION' }
-          }
+            path: "migration",
+            component: () => import("@/views/Equip/childViews/Migration"),
+            meta: { title: "游走", icon: "MIGRATION" },
+          },
         ],
-        hidden: true
-      }
-    ]
+        hidden: true,
+      },
+    ],
   },
   {
-    path: '/system',
+    path: "/system",
     component: Layout,
-    redirect: '/system/hero',
+    redirect: "/system/hero",
     meta: {
-      title: '系统管理',
-      icon: 'SYSTEM'
+      title: "系统管理",
+      icon: "SYSTEM",
     },
     children: [
       {
-        path: 'hero',
-        component: () => import('@/views/Equip/childViews/Move'),
+        path: "hero",
+        component: () => import("@/views/Equip/childViews/Move"),
         meta: {
-          title: '添加英雄',
-          icon: 'ADDHERO'
-        }
+          title: "添加英雄",
+          icon: "ADDHERO",
+        },
       },
       {
-        path: 'skin',
-        component: () => import('@/views/Equip/childViews/Move'),
+        path: "skin",
+        component: () => import("@/views/Equip/childViews/Move"),
         meta: {
-          title: '添加皮肤',
-          icon: 'ADDSKIN'
-        }
+          title: "添加皮肤",
+          icon: "ADDSKIN",
+        },
       },
       {
-        path: 'equip',
-        component: () => import('@/views/Equip/childViews/Magic'),
+        path: "equip",
+        component: () => import("@/views/Equip/childViews/Magic"),
         meta: {
-          title: '添加装备',
-          icon: 'ADDEQUIP'
-        }
+          title: "添加装备",
+          icon: "ADDEQUIP",
+        },
       },
       {
-        path: 'components',
-        component: () => import('@/views/System/childViews/Components'),
+        path: "components",
+        component: () => import("@/views/System/childViews/Components"),
         meta: {
-          title: '项目组件',
-          icon: 'COMPONENTS'
-        }
-      }
+          title: "项目组件",
+          icon: "COMPONENTS",
+        },
+      },
     ],
-    Hidden: true
+    Hidden: true,
   },
   {
-    path: '*',
+    path: "*",
     meta: {
-      title: '404 NotFound'
+      title: "404 NotFound",
     },
-    component: () => import('@/views/Base/NotFound'),
+    component: () => import("@/views/Base/NotFound"),
     hidden: true,
-    Hidden: true
-  }
+    Hidden: true,
+  },
 ];

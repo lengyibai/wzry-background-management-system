@@ -25,6 +25,7 @@
       active-text-color="var(--theme-font-light)"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
+      @select="$click"
     >
       <!-- 菜单 -->
       <sidebar-item
@@ -32,17 +33,16 @@
         :key="route.path"
         :item="route"
         :base-path="route.path"
-        @click.native="$click"
       />
     </el-menu>
   </div>
 </template>
 
 <script>
-import SidebarItem from './SidebarItem';
+import SidebarItem from "./SidebarItem";
 
 export default {
-  name: 'Sidebar',
+  name: "Sidebar",
   components: { SidebarItem },
   data() {
     return { isCollapse: false, hidden_text: false };
@@ -58,28 +58,28 @@ export default {
         return meta.activeMenu;
       }
       return path;
-    }
+    },
   },
   created() {
-    this.$bus.$on('collapse', () => {
+    this.$bus.$on("collapse", () => {
       this.isCollapse = !this.isCollapse;
       setTimeout(
         () => {
           this.hidden_text = !this.hidden_text;
         },
-        this.hidden_text ? 250 : 0
+        this.hidden_text ? 250 : 0,
       );
     });
   },
   beforeDestroy() {
-    this.$bus.$off('collapse');
-  }
+    this.$bus.$off("collapse");
+  },
 };
 </script>
 <style scoped lang="less">
 .Sidebar {
   height: 100vh;
-  background: url('./img/bg.png') no-repeat center;
+  background: url("./img/bg.png") no-repeat center;
   .game {
     margin: 0 auto;
     width: 72.5%;

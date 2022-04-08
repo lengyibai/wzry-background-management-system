@@ -4,7 +4,7 @@
 </template>
 <script>
 export default {
-  name: 'Copyright'
+  name: "Copyright",
 };
 </script>
 <style scoped lang="less">

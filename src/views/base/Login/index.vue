@@ -1,7 +1,13 @@
 <template>
   <div class="Login">
     <h1>登录</h1>
-    <el-form :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
+    <el-form
+      :model="form"
+      :rules="rules"
+      ref="form"
+      label-width="100px"
+      class="demo-ruleForm"
+    >
       <el-form-item label="帐号" prop="id">
         <el-input v-model="form.id"></el-input>
       </el-form-item>
@@ -15,37 +21,38 @@
   </div>
 </template>
 <script>
-import BtnLogin from './childComp/BtnLogin/index.vue';
+import BtnLogin from "./childComp/BtnLogin/index.vue";
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       /* 表单 */
       form: {
         id: 1329670984,
-        password: 'lengyibai.'
+        password: "lengyibai.",
       },
       /* 表单验证 */
       rules: {
-        id: [{ required: true, message: '请输入帐号', trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
-      }
+        id: [{ required: true, message: "请输入帐号", trigger: "blur" }],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+      },
     };
   },
   methods: {
     login() {
-      this.$refs.form.validate(valid => {
+      this.$click("login");
+      this.$refs.form.validate((valid) => {
         if (valid) {
-          this.$store.dispatch('login', this.form);
+          this.$store.dispatch("login", this.form);
         }
       });
     },
     reset() {
       this.form = {};
       this.$refs.form.resetFields();
-    }
+    },
   },
-  components: { BtnLogin }
+  components: { BtnLogin },
 };
 </script>
 <style scoped lang="less">

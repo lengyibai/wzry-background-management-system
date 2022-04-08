@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'Equip'
+  name: "Equip",
 };
 </script>
 <style scoped lang="less">

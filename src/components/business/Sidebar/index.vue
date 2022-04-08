@@ -7,6 +7,7 @@
         background-color="transparent"
         text-color="var(--theme-font-dark)"
         active-text-color="var(--theme-font-light)"
+        @select="$click"
       >
         <!-- 菜单 -->
         <sidebar-item
@@ -15,7 +16,6 @@
           :key="route.path"
           :item="route"
           :base-path="route.path"
-          @click.native="$click"
         />
       </el-menu>
     </div>
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import SidebarItem from './SidebarItem';
+import SidebarItem from "./SidebarItem";
 
 export default {
-  name: 'Sidebar',
+  name: "Sidebar",
   components: { SidebarItem },
   data() {
     return { hidden_text: false, isShow: false };
@@ -42,13 +42,13 @@ export default {
         return meta.activeMenu;
       }
       return path;
-    }
+    },
   },
   mounted() {
     setTimeout(() => {
       this.isShow = true;
     }, 500);
-  }
+  },
 };
 </script>
 <style scoped lang="less">
@@ -58,7 +58,7 @@ export default {
   right: 0;
   width: 250px;
   height: calc(100vh - 75px - 56px);
-  background: url('./img/bg.png') no-repeat center;
+  background: url("./img/bg.png") no-repeat center;
   overflow: auto !important;
 }
 

@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-  name: 'Jungle',
+  name: "Jungle",
   data() {
     return {};
   },
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="less">

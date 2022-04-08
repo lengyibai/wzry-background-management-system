@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import 'element-ui/lib/theme-chalk/index.css';
+import Vue from "vue";
+import "element-ui/lib/theme-chalk/index.css";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,8 +13,8 @@ import {
   MenuItem,
   Message,
   Row,
-  Submenu
-} from 'element-ui';
+  Submenu,
+} from "element-ui";
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
 Vue.use(Button);

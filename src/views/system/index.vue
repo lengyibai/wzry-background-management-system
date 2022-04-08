@@ -3,12 +3,12 @@
 </template>
 <script>
 export default {
-  name: 'system',
+  name: "system",
   data() {
     return {};
   },
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="less">

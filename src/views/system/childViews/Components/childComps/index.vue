@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-  name: 'bg-comp',
+  name: "bg-comp",
   data() {
     return {};
   },
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="less">
