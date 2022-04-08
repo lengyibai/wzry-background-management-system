@@ -33,8 +33,8 @@ export default {
         },
         yellow: {
           color: "#fceb8e",
-          brc: "#d8be2a",
-          bgc: "#c3a82d",
+          brc: "#ebc51f",
+          bgc: "#b1982a",
         },
         green: {
           color: "#8efc8e",
