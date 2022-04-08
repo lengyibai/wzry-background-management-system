@@ -1,8 +1,6 @@
 <template>
   <div class="BgVideo">
-    <video class="video" autoplay loop>
-      <source :src="video" />
-    </video>
+    <video class="video" ref="videoPlayer" autoplay :src="video" loop></video>
   </div>
 </template>
 <script>
@@ -13,6 +11,13 @@ export default {
       type: String,
       default: "",
     },
+  },
+  mounted() {
+    document.body.addEventListener("mousedown", play.bind(this));
+    function play() {
+      this.$refs.videoPlayer.play();
+      document.body.removeEventListener("mousedown", play);
+    }
   },
 };
 </script>

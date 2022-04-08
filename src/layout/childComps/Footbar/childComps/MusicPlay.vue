@@ -29,10 +29,10 @@ export default {
       status: "play", //当前音乐状态
       timer: null, //进度条计时器
       musics: [
-        "http://lengyibai.gitee.io/wzry/music/王者战歌.mp3",
-        "http://lengyibai.gitee.io/wzry/music/英雄归来.mp3",
-        "http://lengyibai.gitee.io/wzry/music/荣耀主题.mp3",
-        "http://lengyibai.gitee.io/wzry/music/荣耀之路.mp3",
+        require("@/assets/music/王者战歌.mp3"),
+        require("@/assets/music/英雄归来.mp3"),
+        require("@/assets/music/荣耀主题.mp3"),
+        require("@/assets/music/荣耀之路.mp3"),
       ],
     };
   },
