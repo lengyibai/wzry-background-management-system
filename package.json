@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
-    "element-ui": "^2.15.6",
+    "element-ui": "^2.10.1",
     "json-server": "^0.17.0",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "vue": "^2.6.14",

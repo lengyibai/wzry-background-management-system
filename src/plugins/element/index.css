@@ -62,3 +62,10 @@
 .el-menu--vertical .el-menu {
   background-color: #1a2842 !important;
 }
+.el-submenu .el-submenu__title i {
+  color: transparent;
+  width: 25px;
+  height: 15px;
+  background: url('img/arrow.png') no-repeat;
+  background-size: contain;
+}

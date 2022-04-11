@@ -1,6 +1,7 @@
 <template>
   <div class="Components">
-    <div style="margin-bottom: var(--gap-25)">
+    <div>
+      <!-- 标签 -->
       <ChildComps class="flex">
         <K-TagSmall color="blue" text="生存" />
         <K-TagSmall color="yellow" text="攻击" />
@@ -10,28 +11,40 @@
     </div>
 
     <div>
+      <!-- 英雄职业 -->
       <ChildComps class="flex">
-        <KHeroSort occ="tank" />
-        <KHeroSort occ="mage" />
-        <KHeroSort occ="warrior" />
-        <KHeroSort occ="assist" />
-        <KHeroSort occ="assassin" />
-        <KHeroSort occ="striker" />
+        <K-HeroSort occ="tank" />
+        <K-HeroSort occ="mage" />
+        <K-HeroSort occ="warrior" />
+        <K-HeroSort occ="assist" />
+        <K-HeroSort occ="assassin" />
+        <K-HeroSort occ="striker" />
       </ChildComps>
+      <!-- 英雄属性 -->
       <ChildComps class="flex">
-        <KAttribute attr="survival" length="25%" />
-        <KAttribute attr="attack" length="50%" />
-        <KAttribute attr="skill" length="75%" />
-        <KAttribute attr="difficulty" length="100%" />
+        <K-Attribute attr="survival" length="25%" />
+        <K-Attribute attr="attack" length="50%" />
+        <K-Attribute attr="skill" length="75%" />
+        <K-Attribute attr="difficulty" length="100%" />
+      </ChildComps>
+    </div>
+
+    <div>
+      <!-- 按钮 -->
+      <ChildComps class="flex">
+        <K-Button /><!-- <K-Button type="default" /> -->
+        <K-Button type="warn" />
+        <K-Button type="danger" />
       </ChildComps>
     </div>
   </div>
 </template>
 <script>
 import ChildComps from "./childComps";
+import KButton from "../../../../components/business/Parts/Button/K-Button";
 export default {
   name: "Components",
-  components: { ChildComps },
+  components: { ChildComps, KButton },
 };
 </script>
 <style scoped lang="less">
@@ -39,6 +52,9 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden auto;
+  > div {
+    margin-bottom: var(--gap-25);
+  }
 }
 .flex {
   display: flex;

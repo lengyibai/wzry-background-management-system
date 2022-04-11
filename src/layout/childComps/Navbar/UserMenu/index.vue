@@ -8,7 +8,9 @@
         </div>
       </template>
       <template #f>
-        <div class="logout cursor-pointer flex" @click="logout">退出登录</div>
+        <K-Button @click.native="logout" type="danger" :autoSize="true"
+          >退出登录</K-Button
+        >
       </template>
     </LybFlipBox>
   </div>
@@ -17,6 +19,7 @@
 //#####··········公共方法··········#####//
 //方法信息：{ 根据时间问候 }
 import { $timeGreet } from "@/utils/lyb.js";
+import KButton from "../../../../components/business/Parts/Button/K-Button/index.vue";
 export default {
   name: "UserMenu",
   data() {
@@ -36,6 +39,7 @@ export default {
       this.$store.dispatch("logout");
     },
   },
+  components: { KButton },
 };
 </script>
 <style scoped lang="less">
@@ -62,15 +66,6 @@ export default {
       color: var(--theme-font-dark);
       margin-right: var(--gap-15);
     }
-  }
-  .logout {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--red);
-    color: var(--white);
-    border-radius: 0 0 0 10px;
-    font-size: var(--font-s-25);
   }
 }
 </style>

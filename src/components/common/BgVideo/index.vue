@@ -13,11 +13,18 @@ export default {
     },
   },
   mounted() {
-    document.body.addEventListener("mousedown", play.bind(this));
-    function play() {
+    console.warn("已创建");
+    document.body.addEventListener("mousedown", this.play);
+  },
+  methods: {
+    play() {
+      console.warn("点击");
       this.$refs.videoPlayer.play();
-      document.body.removeEventListener("mousedown", play);
-    }
+      document.body.removeEventListener("mousedown", this.play);
+    },
+  },
+  destroyed() {
+    // document.body.removeEventListener("mousedown", this.play);
   },
 };
 </script>
