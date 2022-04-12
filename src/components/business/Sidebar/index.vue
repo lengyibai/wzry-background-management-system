@@ -59,7 +59,7 @@ export default {
   width: 250px;
   height: calc(100vh - 75px - 56px);
   background: url("./img/bg.png") no-repeat center;
-  overflow: auto !important;
+  overflow: hidden auto !important;
 }
 
 .fade-transform-enter {

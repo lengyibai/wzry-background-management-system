@@ -1,5 +1,5 @@
 <template>
-  <div class="BtnLogin">
+  <div class="BtnLogin cursor-pointer">
     <span>登录</span>
     <span>LOGIN</span>
   </div>

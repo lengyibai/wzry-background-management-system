@@ -98,12 +98,5 @@ export default {
       font-size: var(--font-s-30);
     }
   }
-  .el-menu-vertical-demo {
-    height: calc(100% - 75px);
-    overflow: hidden auto;
-  }
-}
-.el-menu-vertical-demo {
-  overflow: auto !important;
 }
 </style>

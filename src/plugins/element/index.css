@@ -7,6 +7,11 @@
   border: none !important;
   height: 100%;
 }
+/* 菜单栏支持滚动条 */
+.el-menu-vertical-demo {
+  height: calc(100% - 75px);
+  overflow: hidden auto;
+}
 /* 侧边栏背景 */
 .sidebar-container {
   background-color: rgba(35, 60, 91, 0.25) !important;
@@ -46,10 +51,12 @@
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 250px;
 }
+.el-menu-vertical-demo .el-icon-arrow-right {
+  display: none !important;
+}
 .el-menu--vertical .el-icon-arrow-right {
   display: none !important;
 }
-/* 折叠隐藏文字 */
 /* 折叠后父级 */
 .el-menu--vertical .el-menu .el-submenu .el-submenu__title {
   background-color: transparent !important;
@@ -66,6 +73,6 @@
   color: transparent;
   width: 25px;
   height: 15px;
-  background: url('img/arrow.png') no-repeat;
+  background: url("img/arrow.png") no-repeat;
   background-size: contain;
 }

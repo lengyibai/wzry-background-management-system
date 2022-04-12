@@ -33,6 +33,8 @@ export default {
         require("@/assets/music/英雄归来.mp3"),
         require("@/assets/music/荣耀主题.mp3"),
         require("@/assets/music/荣耀之路.mp3"),
+        require("@/assets/music/王者冰刃.mp3"),
+        require("@/assets/music/五五狂欢.mp3"),
       ],
     };
   },

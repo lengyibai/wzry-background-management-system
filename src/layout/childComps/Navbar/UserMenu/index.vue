@@ -19,7 +19,6 @@
 //#####··········公共方法··········#####//
 //方法信息：{ 根据时间问候 }
 import { $timeGreet } from "@/utils/lyb.js";
-import KButton from "../../../../components/business/Parts/Button/K-Button/index.vue";
 export default {
   name: "UserMenu",
   data() {
@@ -39,7 +38,6 @@ export default {
       this.$store.dispatch("logout");
     },
   },
-  components: { KButton },
 };
 </script>
 <style scoped lang="less">

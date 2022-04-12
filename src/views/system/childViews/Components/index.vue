@@ -8,6 +8,17 @@
         <K-TagSmall color="green" text="技能" />
         <K-TagSmall color="red" text="上手" />
       </ChildComps>
+      <!-- 按钮 -->
+      <ChildComps class="flex">
+        <K-Button /><!-- <K-Button type="default" /> -->
+        <K-Button type="warn" />
+        <K-Button type="danger" />
+      </ChildComps>
+      <!-- 复选框 -->
+      <ChildComps class="flex">
+        <K-Checkbox v-model="checked" />
+        <K-Checkbox v-model="show_dialog" />
+      </ChildComps>
     </div>
 
     <div>
@@ -29,22 +40,25 @@
       </ChildComps>
     </div>
 
-    <div>
-      <!-- 按钮 -->
-      <ChildComps class="flex">
-        <K-Button /><!-- <K-Button type="default" /> -->
-        <K-Button type="warn" />
-        <K-Button type="danger" />
-      </ChildComps>
-    </div>
+    <K-Dialog v-model="show_dialog" />
   </div>
 </template>
 <script>
 import ChildComps from "./childComps";
-import KButton from "../../../../components/business/Parts/Button/K-Button";
 export default {
   name: "Components",
-  components: { ChildComps, KButton },
+  data() {
+    return {
+      checked: false, //复选框
+      show_dialog: false, //显示弹窗
+    };
+  },
+  watch: {
+    checked(v) {
+      console.log(v);
+    },
+  },
+  components: { ChildComps },
 };
 </script>
 <style scoped lang="less">
