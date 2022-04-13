@@ -84,6 +84,59 @@ export default [
     ],
   },
   {
+    path: "/epigraph",
+    component: Layout,
+    redirect: "/epigraph/category",
+    meta: {
+      title: "铭文",
+      icon: "EPIGRAPH",
+    },
+    children: [
+      {
+        path: "category",
+        meta: {
+          title: "类型",
+          icon: "CATEGORY",
+        },
+        component: () => import("@/views/Epigraph"),
+        redirect: "/epigraph/category/attack",
+        children: [
+          {
+            path: "attack",
+            component: () => import("@/views/Epigraph/childViews/Attack"),
+            meta: { title: "攻击", icon: "ATTACK" },
+          },
+          {
+            path: "magic",
+            component: () => import("@/views/Epigraph/childViews/Magic"),
+            meta: { title: "法术", icon: "MAGIC" },
+          },
+          {
+            path: "defense",
+            component: () => import("@/views/Epigraph/childViews/Defense"),
+            meta: { title: "防御", icon: "DEFENSE" },
+          },
+          {
+            path: "move",
+            component: () => import("@/views/Epigraph/childViews/Move"),
+            meta: { title: "移动", icon: "MOVE" },
+          },
+          {
+            path: "jungle",
+            component: () => import("@/views/Epigraph/childViews/Jungle"),
+            meta: { title: "打野", icon: "JUNGLE" },
+          },
+          {
+            path: "migration",
+            component: () => import("@/views/Epigraph/childViews/Migration"),
+            meta: { title: "游走", icon: "MIGRATION" },
+          },
+        ],
+        hidden: true,
+      },
+    ],
+  },
+  {
     path: "/equip",
     component: Layout,
     redirect: "/equip/category",
