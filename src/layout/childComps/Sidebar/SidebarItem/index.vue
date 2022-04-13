@@ -34,7 +34,7 @@
       popper-append-to-body
     >
       <template slot="title">
-        <div class="submenu">
+        <div class="submenu" @click="$click('展开')">
           <span v-if="item.meta.icon" v-html="icon[item.meta.icon]"></span>
           <span v-else style="font-size: var(--font-s-25); font-weight: bold">{{
             item.meta.title[0]

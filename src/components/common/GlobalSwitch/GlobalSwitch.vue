@@ -17,6 +17,7 @@ export default {
       sound: {
         login: require("./audios/login.mp3"),
         default: require("./audios/default.mp3"),
+        关闭抽屉: require("./audios/关闭抽屉.mp3"),
         模式选择: require("./audios/模式选择.mp3"),
         英雄列表: require("./audios/英雄列表.mp3"),
         查看详情: require("./audios/查看详情.mp3"),
@@ -43,6 +44,7 @@ export default {
   methods: {
     //#####··········全局点击音效··········#####//
     click(name) {
+      console.log(name);
       if (!this.$refs.click) return;
       const obj = {
         login: ["login"],
@@ -52,6 +54,7 @@ export default {
         装备相关: ["/system/equip", "/equip"],
         皮肤相关: ["/system/skin"],
         项目组件: ["/system/components"],
+        关闭抽屉: ["收起侧边栏"],
       };
       this.sound_name =
         (name &&
