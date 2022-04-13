@@ -1,6 +1,6 @@
 <template>
   <LybMask :show="value">
-    <transition name="dialog">
+    <transition :name="type">
       <div class="K-Dialog" v-show="value">
         <img
           class="close cursor-pointer"
@@ -24,12 +24,18 @@ export default {
       type: Boolean,
       default: true,
     },
+    type: {
+      type: String,
+      default: "default",
+    },
   },
-
   name: "K-Dialog",
+  data() {
+    return {};
+  },
   methods: {
     close() {
-      console.log("关闭");
+      this.$click("关闭");
       this.$emit("input", false);
     },
   },
@@ -55,15 +61,30 @@ export default {
   }
 }
 
-/* 淡入淡出 */
-.dialog-enter,
-.dialog-leave-active {
+/* 缩放 */
+.default-enter,
+.default-leave-active {
   transform: scale(0.9);
   opacity: 0;
 }
 
-.dialog-enter-active,
-.dialog-leave-active {
+.default-enter-active {
   transition: all 0.25s;
+}
+.default-leave-active {
+  transition: all 0.2s 0.25s;
+}
+
+/* 由下而上 */
+.confirm-enter,
+.confirm-leave-active {
+  transform: translateY(15%);
+}
+
+.confirm-enter-active {
+  transition: all 0.35s ease-out;
+}
+.confirm-leave-active {
+  transition: all 0.1s 0.25s;
 }
 </style>

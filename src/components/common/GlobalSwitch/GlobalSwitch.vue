@@ -18,6 +18,11 @@ export default {
         login: require("./audios/login.mp3"),
         default: require("./audios/default.mp3"),
         关闭抽屉: require("./audios/关闭抽屉.mp3"),
+        确定: require("./audios/确定.mp3"),
+        查看: require("./audios/查看.mp3"),
+        取消: require("./audios/取消.mp3"),
+        关闭: require("./audios/关闭.mp3"),
+        确认弹窗: require("./audios/确认弹窗.mp3"),
         模式选择: require("./audios/模式选择.mp3"),
         英雄列表: require("./audios/英雄列表.mp3"),
         查看详情: require("./audios/查看详情.mp3"),
@@ -44,7 +49,6 @@ export default {
   methods: {
     //#####··········全局点击音效··········#####//
     click(name) {
-      console.log(name);
       if (!this.$refs.click) return;
       const obj = {
         login: ["login"],
@@ -55,9 +59,14 @@ export default {
         皮肤相关: ["/system/skin"],
         项目组件: ["/system/components"],
         关闭抽屉: ["收起侧边栏"],
+        确认弹窗: ["确认弹窗"],
+        确定: ["确定"],
+        查看: ["查看"],
+        取消: ["取消"],
+        关闭: ["关闭"],
       };
       this.sound_name =
-        (name &&
+        (typeof name === "string" &&
           Object.keys(obj).find((item) => {
             return obj[item].find((item) => {
               return name.startsWith(item);

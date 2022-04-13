@@ -1,8 +1,6 @@
 <template>
   <div class="K-Checkbox" @click="fn">
-    <transition name="fade">
-      <img :src="require('./img/' + value + '.png')" />
-    </transition>
+    <img :src="require('./img/' + value + '.png')" />
   </div>
 </template>
 <script>

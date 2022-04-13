@@ -10,14 +10,18 @@
       </ChildComps>
       <!-- 按钮 -->
       <ChildComps class="flex">
-        <K-Button /><!-- <K-Button type="default" /> -->
-        <K-Button type="warn" />
-        <K-Button type="danger" />
+        <!-- <K-Button type="default" /> -->
+        <K-Button @click.native="$click('查看')">查看</K-Button>
+        <K-Button type="warn" @click.native="$click('确定')">领取</K-Button>
+        <K-Button type="danger" @click.native="$click('取消')">取消</K-Button>
       </ChildComps>
       <!-- 复选框 -->
       <ChildComps class="flex">
-        <K-Checkbox v-model="checked" />
-        <K-Checkbox v-model="show_dialog" />
+        <K-Checkbox v-model="show_dialog" @click.native="$click('确定')" />
+        <K-Checkbox
+          v-model="show_confirm_dialog"
+          @click.native="$click('确认弹窗')"
+        />
       </ChildComps>
     </div>
 
@@ -40,7 +44,11 @@
       </ChildComps>
     </div>
 
+    <!-- 普通弹窗 -->
+    <!-- <K-Dialog type="default" /> -->
     <K-Dialog v-model="show_dialog" />
+    <!-- 确认弹窗 -->
+    <K-Dialog type="confirm" v-model="show_confirm_dialog" />
   </div>
 </template>
 <script>
@@ -49,14 +57,9 @@ export default {
   name: "Components",
   data() {
     return {
-      checked: false, //复选框
-      show_dialog: false, //显示弹窗
+      show_dialog: false, //显示普通动画弹窗
+      show_confirm_dialog: false, //显示确认动画弹窗
     };
-  },
-  watch: {
-    checked(v) {
-      console.log(v);
-    },
   },
   components: { ChildComps },
 };

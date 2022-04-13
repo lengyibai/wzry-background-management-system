@@ -57,7 +57,7 @@ export default {
       this.$refs.bgm
         .play()
         .then(() => {
-          this.$refs.bgm.volume = 0.45;
+          this.$refs.bgm.volume = 0.35;
           this.$refs.bgm.play();
         })
         .catch(() => {
