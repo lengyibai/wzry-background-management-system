@@ -103,32 +103,32 @@ export default [
         children: [
           {
             path: "attack",
-            component: () => import("@/views/Epigraph/childViews/Attack"),
+            // component: () => import("@/views/Epigraph/childViews/Attack"),
             meta: { title: "攻击", icon: "ATTACK" },
           },
           {
             path: "magic",
-            component: () => import("@/views/Epigraph/childViews/Magic"),
+            // component: () => import("@/views/Epigraph/childViews/Magic"),
             meta: { title: "法术", icon: "MAGIC" },
           },
           {
             path: "defense",
-            component: () => import("@/views/Epigraph/childViews/Defense"),
+            // component: () => import("@/views/Epigraph/childViews/Defense"),
             meta: { title: "防御", icon: "DEFENSE" },
           },
           {
             path: "move",
-            component: () => import("@/views/Epigraph/childViews/Move"),
+            // component: () => import("@/views/Epigraph/childViews/Move"),
             meta: { title: "移动", icon: "MOVE" },
           },
           {
             path: "jungle",
-            component: () => import("@/views/Epigraph/childViews/Jungle"),
+            // component: () => import("@/views/Epigraph/childViews/Jungle"),
             meta: { title: "打野", icon: "JUNGLE" },
           },
           {
             path: "migration",
-            component: () => import("@/views/Epigraph/childViews/Migration"),
+            // component: () => import("@/views/Epigraph/childViews/Migration"),
             meta: { title: "游走", icon: "MIGRATION" },
           },
         ],

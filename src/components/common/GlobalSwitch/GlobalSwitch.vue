@@ -22,6 +22,7 @@ export default {
         查看: require("./audios/查看.mp3"),
         取消: require("./audios/取消.mp3"),
         关闭: require("./audios/关闭.mp3"),
+        tab: require("./audios/tab栏切换.mp3"),
         确认弹窗: require("./audios/确认弹窗.mp3"),
         模式选择: require("./audios/模式选择.mp3"),
         英雄列表: require("./audios/英雄列表.mp3"),
@@ -64,6 +65,7 @@ export default {
         查看: ["查看"],
         取消: ["取消"],
         关闭: ["关闭"],
+        tab: ["tab"],
       };
       this.sound_name =
         (typeof name === "string" &&
