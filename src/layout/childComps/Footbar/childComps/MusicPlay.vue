@@ -74,12 +74,10 @@ export default {
 
       /* 播放结束后执行下一次播放 */
       this.$refs.bgm.onended = function () {
-        console.warn("播放结束");
         that.bgm_show = false;
         that.bgmIndex = $random(0, 3);
         that.bgm_show = true;
         setTimeout(() => {
-          console.warn("播放下一首");
           that.musicPlay();
         }, 1000);
       };

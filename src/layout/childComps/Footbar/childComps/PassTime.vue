@@ -24,7 +24,6 @@ export default {
     }, 1000);
   },
   destroyed() {
-    console.warn("过去时定时器已清除");
     clearInterval(this.timer);
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-parallax-body>
+  <div id="app">
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>

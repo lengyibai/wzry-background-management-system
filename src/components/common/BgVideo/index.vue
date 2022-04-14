@@ -32,6 +32,7 @@ export default {
   width: 100vw;
   height: 100vh;
   z-index: -1;
+  transition: transform 0.25s ease-out;
   .video {
     width: 100%;
     height: 100%;
