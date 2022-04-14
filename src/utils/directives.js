@@ -27,15 +27,13 @@ const parallaxBody = {
   inserted() {
     const multiple = 10;
     const body = document.body;
-
     function transformElement(x, y) {
       let box = body.getBoundingClientRect();
       let calcY = (box.height / 2 - (y - box.y)) / multiple;
       let calcX = (box.width / 2 - (x - box.x)) / multiple;
       // background-size: 110% 110%;
-      body.style.backgroundPosition = `calc(${calcX}px - 5vw) calc(${calcY}px - 5vh)`;
+      body.style.backgroundPosition = `calc(${calcX}px - 1vw) calc(${calcY}px - 5vh)`;
     }
-
     body.addEventListener("mousemove", (e) => {
       window.requestAnimationFrame(function () {
         transformElement(e.clientX, e.clientY);
