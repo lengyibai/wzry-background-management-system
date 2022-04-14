@@ -1,25 +1,27 @@
 <template>
   <!-- 主体结构 -->
   <div class="Epigraph">
+    <epigraph-category />
     <div class="EpigraphMain">
       <transition name="fade-transform" mode="out-in">
         <router-view />
       </transition>
     </div>
-    <!-- 英雄和装备和铭文的右边都会额外展示一个侧边栏，传递对方的路由进行排斥 -->
-    <Sidebar path="/epigraph" />
   </div>
 </template>
 
 <script>
+import EpigraphCategory from "./childComps/epigraph-category/index.vue";
 export default {
   name: "Epigraph",
+  components: { EpigraphCategory },
 };
 </script>
 <style scoped lang="less">
 .Epigraph {
   width: 100%;
   display: flex;
+  flex-direction: column;
   .EpigraphMain {
     flex: 1;
     padding-right: calc(var(--gap-25) * 10);
