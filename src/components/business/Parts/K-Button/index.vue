@@ -1,6 +1,8 @@
 <template>
   <div class="K-Button cursor-pointer" :class="{ auto: autoSize }">
-    <span class="cursor-pointer flex"><slot>按钮</slot></span>
+    <span class="cursor-pointer flex">
+      <slot>按钮</slot>
+    </span>
     <img class="cursor-pointer" :src="bg_img[type]" />
   </div>
 </template>

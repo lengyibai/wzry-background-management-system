@@ -1,5 +1,5 @@
 <template>
-  <div class="BgVideo">
+  <div class="BgVideo" v-parallax-video>
     <video class="video" ref="videoPlayer" autoplay :src="video" loop></video>
   </div>
 </template>
