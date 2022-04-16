@@ -103,39 +103,57 @@ export default [
         children: [
           {
             path: "all-epigraph",
-            title: "全部",
+            meta: {
+              title: "全部",
+            },
           },
           {
             path: "attack",
-            title: "攻击",
+            meta: {
+              title: "攻击",
+            },
           },
           {
             path: "life",
-            title: "生命",
+            meta: {
+              title: "生命",
+            },
           },
           {
             path: "defense",
-            title: "防御",
+            meta: {
+              title: "防御",
+            },
           },
           {
             path: "function",
-            title: "功能",
+            meta: {
+              title: "功能",
+            },
           },
           {
             path: "vampire",
-            title: "吸血",
+            meta: {
+              title: "吸血",
+            },
           },
           {
             path: "attack-speed",
-            title: "攻速",
+            meta: {
+              title: "攻速",
+            },
           },
           {
             path: "crit",
-            title: "暴击",
+            meta: {
+              title: "暴击",
+            },
           },
           {
             path: "penetrate",
-            title: "穿透",
+            meta: {
+              title: "穿透",
+            },
           },
         ],
         hidden: true,

@@ -11,6 +11,12 @@ export function $potEoPct(str, ret = 4) {
     return Number((str * 100).toFixed(ret));
   }
 }
+
+//全局替换指定字符串
+export function $repStr(str, match, rep = "") {
+  return str.replace(new RegExp(match, "g"), rep);
+}
+
 // 时间格式化
 export function $fmtTime(date, fmt = "YYYY-MM-DD hh:mm:ss") {
   date = new Date(date);
