@@ -15,6 +15,7 @@
         <Footbar v-if="show_footbar" />
       </transition>
     </div>
+    <BgVideo :video="require('./video/bg.mp4')" />
   </div>
 </template>
 

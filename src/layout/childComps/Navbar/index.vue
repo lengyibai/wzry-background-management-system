@@ -35,7 +35,8 @@ export default {
   width: 100%;
   height: 75px;
   position: relative;
-  background: url("./img/bg.png") no-repeat center;
+  // background: url("./img/bg.png") no-repeat center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   background-size: cover;
   .Hamburger {
     margin-left: var(--gap-15);

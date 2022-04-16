@@ -36,9 +36,6 @@
   color: var(--theme-font-light) !important;
 }
 /* 子级菜单 */
-.el-submenu .el-menu {
-  background-color: #17253f !important;
-}
 .el-submenu .el-submenu__title {
   background-color: transparent !important;
 }

@@ -99,3 +99,8 @@ export default {
   position: absolute;
 }
 </style>
+<style>
+.el-breadcrumb__separator {
+  color: var(--theme-font-dark);
+}
+</style>

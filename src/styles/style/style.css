@@ -31,9 +31,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: url("@/assets/img/bg.jpg") no-repeat fixed;
   background-color: #000;
-  background-repeat: no-repeat;
   /* 虽然自定义指令设置了这行代码，但是此处不写当前这行，加载的时候会闪白 */
   background-size: 110% 110%;
   transform-style: preserve-3d;
