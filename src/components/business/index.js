@@ -1,8 +1,9 @@
 //#####··········项目组件··········#####//
 import Sidebar from "./Sidebar"; //侧边栏
-import KButton from "./Parts/K-Button"; //按钮、
+import KButton from "./Parts/K-Button"; //按钮
 import KCheckbox from "./Parts/K-Checkbox"; //复选框
 import KDialog from "./Parts/K-Dialog"; //弹窗
+import KMessage from "./Parts/K-Message"; //消息提醒
 import KTagsmall from "./Parts/K-TagSmall"; //标签
 //####········英雄相关········####//
 import KAttribute from "./Hero/K-Attribute"; //英雄属性
@@ -15,6 +16,7 @@ const components = [
   KCheckbox,
   KButton,
   KDialog,
+  KMessage,
   KTagsmall,
   // 英雄相关
   KAttribute,

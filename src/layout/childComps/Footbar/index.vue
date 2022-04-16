@@ -4,7 +4,7 @@
     class="Footbar cursor-pointer"
     @click="getPoint"
     ref="Footbar"
-    v-particle="{ color: '#84ade2', filter: false }"
+    v-particle="{ color: '#84ade2', filter: false, size: 20 }"
   >
     <Time class="Time" />
     <PassTime />

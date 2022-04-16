@@ -11,7 +11,9 @@
       <!-- 按钮 -->
       <ChildComps class="flex">
         <!-- <K-Button type="default" /> -->
-        <K-Button @click.native="$click('查看')">查看</K-Button>
+        <K-Button @click.native="$click('查看')" @mouseup.native="showTip"
+          >查看</K-Button
+        >
         <K-Button type="warn" @click.native="$click('确定')">领取</K-Button>
         <K-Button type="danger" @click.native="$click('取消')">取消</K-Button>
       </ChildComps>
@@ -44,8 +46,8 @@
       </ChildComps>
     </div>
 
+    <!---------- 调用出现 ---------->
     <!-- 普通弹窗 -->
-    <!-- <K-Dialog type="default" /> -->
     <K-Dialog v-model="show_dialog" />
     <!-- 确认弹窗 -->
     <K-Dialog type="confirm" v-model="show_confirm_dialog" />
@@ -62,6 +64,11 @@ export default {
     };
   },
   components: { ChildComps },
+  methods: {
+    showTip() {
+      this.$tip.success();
+    },
+  },
 };
 </script>
 <style scoped lang="less">

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="LybLoading" v-show="isShow">
+    <div class="LybLoading" v-show="show">
       <img src="./img/daji.png" alt="妲己" />
       <span
         v-for="(item, index) in color"
@@ -18,7 +18,7 @@
 <script>
 export default {
   props: {
-    isShow: {
+    show: {
       type: Boolean,
       default: false,
     },

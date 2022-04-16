@@ -89,7 +89,7 @@ const particle = {
           c.remove();
         }, time * 1000);
       });
-    }, 100);
+    }, 50);
     el.addEventListener("mouseenter", () => {
       if (!filter) return;
       el.style.filter = `brightness(${brightness * 100}%) contrast(${

@@ -8,7 +8,7 @@
           src="./img/close.png"
           @click="close"
         />
-        <img class="bg" src="./img/dialog.png" />
+        <img class="bg" style="opacity: 0.75" src="./img/dialog.png" />
       </div>
     </transition>
   </LybMask>
@@ -47,12 +47,14 @@ export default {
   position: absolute;
   width: 1280px;
   height: 760px;
+  z-index: 3;
   .close {
     position: absolute;
     top: 32px;
     right: 27px;
     width: 40px;
     filter: drop-shadow(0px 0px 3px #cce5ff);
+    z-index: 2;
   }
   .bg {
     width: 100%;

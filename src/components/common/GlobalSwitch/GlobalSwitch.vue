@@ -3,7 +3,9 @@
     <!-- 点击音效 -->
     <audio :src="sound[sound_name]" ref="click" hidden="true"></audio>
     <!-- loading -->
-    <LybLoading :isShow="loading_show" />
+    <LybLoading :show="show_loading" />
+    <!-- 消息提醒 -->
+    <KMessage :show="show_KMessage" text="你好，我是冷弋白！" />
   </div>
 </template>
 <script>
@@ -12,7 +14,14 @@ export default {
   name: "GlobalSwitch",
   data() {
     return {
-      loading_show: false, //是否显示加载动画
+      //##····消息提醒相关····##//
+      show_KMessage: false, //是否显示
+      timer_KMessage: null, //定时器
+
+      //##····加载动画相关····##//
+      show_loading: false, //是否显示
+
+      //##····音效相关相关····##//
       sound_name: "default", //音效名
       sound: {
         login: require("./audios/login.mp3"),
@@ -36,14 +45,27 @@ export default {
   mounted() {
     //#####··········全局点击音效··········#####//
     Vue.prototype.$click = this.click;
+
     //#####··········全局loading··········#####//
     const that = this;
     Vue.prototype.$lybLoad = {
       show() {
-        that.loading_show = true;
+        that.show_loading = true;
       },
       close() {
-        that.loading_show = false;
+        that.show_loading = false;
+      },
+    };
+
+    //#####··········全局消息提醒··········#####//
+    Vue.prototype.$tip = {
+      success() {
+        that.show_KMessage = false;
+        clearTimeout(that.timer_KMessage);
+        that.show_KMessage = true;
+        that.timer_KMessage = setTimeout(() => {
+          that.show_KMessage = false;
+        }, 2000);
       },
     };
   },

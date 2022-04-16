@@ -9,7 +9,7 @@
         <Navbar v-if="show_navbar" />
       </transition>
       <transition name="appMain">
-        <AppMain v-show="show_appMain" />
+        <AppMain v-if="show_appMain" />
       </transition>
       <transition name="footbar">
         <Footbar v-if="show_footbar" />
@@ -75,7 +75,7 @@ export default {
 /* 侧边栏动画 */
 .sidebar-enter {
   opacity: 0;
-  transform: translateX(-50px);
+  transform: translateX(-100%);
 }
 .sidebar-leave-to {
   opacity: 0;
@@ -84,7 +84,7 @@ export default {
 /* 顶部栏动画 */
 .navbar-enter {
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(-100%);
 }
 .navbar-leave-to {
   opacity: 0;
@@ -92,7 +92,7 @@ export default {
 /* 底部栏动画 */
 .footbar-enter {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(100%);
 }
 .footbar-leave-to {
   opacity: 0;
@@ -100,7 +100,7 @@ export default {
 /* 路由视图动画 */
 .appMain-enter {
   opacity: 0;
-  transform: scale(0.5);
+  transform: translateX(100%);
 }
 .appMain-leave-to {
   opacity: 0;

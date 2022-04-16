@@ -4,6 +4,10 @@
 }
 
 * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-family: "方正正准黑";
   cursor: url("../../assets/icon/cur/default.png"), auto;
 }
