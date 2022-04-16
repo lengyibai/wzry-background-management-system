@@ -69,20 +69,20 @@ export default {
 }
 
 .default-enter-active {
-  transition: all 0.25s;
+  transition: all 0.25s cubic-bezier(0.08, 0.82, 0.17, 1);
 }
 .default-leave-active {
-  transition: all 0.2s 0.25s;
+  transition: all 0.2s 0.5s;
 }
 
 /* 由下而上 */
 .confirm-enter,
 .confirm-leave-active {
-  transform: translateY(15%);
+  transform: translateY(20%);
 }
 
 .confirm-enter-active {
-  transition: all 0.35s ease-out;
+  transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.27);
 }
 .confirm-leave-active {
   transition: all 0.1s 0.25s;
