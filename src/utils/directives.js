@@ -1,4 +1,5 @@
-/* 全屏视频背景视差 */
+//#####··········全屏背景视差··········#####//
+//####········视频········####//
 const parallaxVideo = {
   inserted(el) {
     const multiple = 5;
@@ -19,7 +20,7 @@ const parallaxVideo = {
   },
 };
 
-/* 全屏图片背景视差 */
+//####········图片········####//
 const parallaxBody = {
   inserted() {
     const multiple = 10;
@@ -39,8 +40,9 @@ const parallaxBody = {
   },
 };
 
+//#####··········粒子效果··········#####//
 import { $random } from "@/utils/lyb.js";
-/* 粒子效果 */
+//####········纵向········####//
 const particle = {
   inserted(el, binding) {
     const box = el;
@@ -100,7 +102,7 @@ const particle = {
   },
 };
 
-/* 纵向 */
+//####········横向········####//
 // const particle1 = {
 //   inserted(el, binding) {
 //     const box = el;
