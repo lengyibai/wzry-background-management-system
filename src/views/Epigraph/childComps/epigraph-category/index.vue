@@ -52,14 +52,14 @@ export default {
   position: relative;
   padding-bottom: 0.5em;
   display: flex;
-  border-bottom: 1px solid #324a68;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   align-items: center;
   img {
     width: 11.25%;
     position: absolute;
     left: 0;
     height: 150%;
-    bottom: -5px;
+    bottom: -6px;
     transition: left 0.5s;
   }
   .title {

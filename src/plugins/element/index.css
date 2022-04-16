@@ -1,6 +1,6 @@
 .color {
   color: var(--theme-font-light) !important;
-  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+  background-image: linear-gradient(25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%);
 }
 /* 侧边栏主体 */
 .el-menu {
@@ -22,7 +22,7 @@
 /* 菜单激活色 */
 .el-menu-item.is-active {
   color: var(--theme-font-light) !important;
-  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+  background-image: linear-gradient(25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%);
 }
 /* 父级菜单 */
 .el-menu .el-menu-item {
@@ -30,7 +30,7 @@
 }
 .el-menu .el-menu-item:hover {
   color: var(--theme-font-light) !important;
-  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+  background-image: linear-gradient(25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%);
 }
 .el-submenu.is-active > .el-submenu__title .submenu span {
   color: var(--theme-font-light) !important;
@@ -41,7 +41,7 @@
 }
 .el-submenu .el-submenu__title:hover {
   color: var(--theme-font-light) !important;
-  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+  background-image: linear-gradient(25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%);
 }
 .el-menu .el-submenu .el-submenu__title .submenu span,
 .el-menu .el-menu-item .submenu span {
@@ -63,7 +63,7 @@
 }
 .el-menu--vertical .el-menu .el-submenu .el-submenu__title:hover {
   color: var(--theme-font-light) !important;
-  background-image: linear-gradient(62deg, #223a5ea1 0%, #2282c7a6 100%);
+  background-image: linear-gradient(25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%);
 }
 /* 折叠后菜单背景 */
 .el-menu--vertical .el-menu {
