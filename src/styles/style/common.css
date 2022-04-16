@@ -1,14 +1,12 @@
 :root {
-  --gap-25: 25px;
   --gap-15: 15px;
-  --font-s-12: 12px;
-  --font-s-14: 14px;
+  --gap-25: 25px;
   --font-s-16: 16px;
-  --font-s-18: 18px;
   --font-s-20: 20px;
   --font-s-25: 25px;
   --font-s-30: 30px;
   --font-s-35: 35px;
+  --font-s-75: 75px;
 }
 
 /* 背景色 */
@@ -50,17 +48,16 @@
 
 /* 鼠标样式 */
 .cursor-default {
-  cursor: url('../../assets/icon/cur/default.png'), auto;
+  cursor: url("../../assets/icon/cur/default.png"), auto;
 }
 
 .cursor-pointer {
-  cursor: url('../../assets/icon/cur/pointer.png'), auto;
+  cursor: url("../../assets/icon/cur/pointer.png"), auto;
 }
 
 .cursor-not-allowed {
-  cursor: url('../../assets/icon/cur/not-allowed.png'), auto;
+  cursor: url("../../assets/icon/cur/not-allowed.png"), auto;
 }
-
 
 /* 溢出省略号显示单行 */
 .lyb-one-line {
@@ -93,9 +90,9 @@
   justify-content: center;
   align-items: center;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* 布局 */

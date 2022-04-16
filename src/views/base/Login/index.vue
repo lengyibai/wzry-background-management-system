@@ -1,23 +1,14 @@
 <template>
   <div class="Login">
-    <h1>登录</h1>
-    <el-form
-      :model="form"
-      :rules="rules"
-      ref="form"
-      label-width="100px"
-      class="demo-ruleForm"
-    >
-      <el-form-item label="帐号" prop="id">
-        <el-input v-model="form.id"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password"></el-input>
-      </el-form-item>
-    </el-form>
+    <div class="logo">
+      <img src="./img/logo.png" alt="" />
+    </div>
+    <h1>王者荣耀后台管理系统</h1>
+    <input type="text" v-model="form.id" />
+    <input type="password" v-model="form.password" />
 
     <BtnLogin @click.native="login" />
-    <BgVideo :video="require('@/assets/video/video.mp4')" />
+    <BgVideo class="BgVideo" :video="require('@/assets/video/video.mp4')" />
   </div>
 </template>
 <script>
@@ -31,25 +22,12 @@ export default {
         id: 1329670984,
         password: "lengyibai.",
       },
-      /* 表单验证 */
-      rules: {
-        id: [{ required: true, message: "请输入帐号", trigger: "blur" }],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-      },
     };
   },
   methods: {
     login() {
       this.$click("login");
-      this.$refs.form.validate((valid) => {
-        if (valid) {
-          this.$store.dispatch("login", this.form);
-        }
-      });
-    },
-    reset() {
-      this.form = {};
-      this.$refs.form.resetFields();
+      this.$store.dispatch("login", this.form);
     },
   },
   components: { BtnLogin },
@@ -63,9 +41,33 @@ export default {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  .logo {
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    width: 300px;
+    img {
+      width: 100%;
+      opacity: 0.5;
+    }
+  }
   h1 {
     color: var(--white);
-    margin-bottom: 25px;
+    margin-bottom: 1em;
+    font-size: var(--font-s-75);
+  }
+  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: var(--font-s-35);
+    color: var(--white);
+    margin-bottom: 1em;
+    text-align: center;
+    border-bottom: 2px solid var(--white);
+    &:nth-of-type(2) {
+      margin-bottom: 2em;
+    }
   }
 }
 </style>

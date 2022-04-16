@@ -22,7 +22,7 @@ export default {
   background-size: 100%;
   span {
     &:nth-of-type(1) {
-      color: #fff;
+      color: var(--white);
       font-size: var(--font-s-35);
       text-shadow: 0px 0px 25px #bf681d;
     }
