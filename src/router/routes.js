@@ -102,34 +102,40 @@ export default [
         redirect: "/epigraph/category/attack",
         children: [
           {
-            path: "attack",
-            // component: () => import("@/views/Epigraph/childViews/Attack"),
-            meta: { title: "攻击", icon: "ATTACK" },
+            path: "all-epigraph",
+            title: "全部",
           },
           {
-            path: "magic",
-            // component: () => import("@/views/Epigraph/childViews/Magic"),
-            meta: { title: "法术", icon: "MAGIC" },
+            path: "attack",
+            title: "攻击",
+          },
+          {
+            path: "life",
+            title: "生命",
           },
           {
             path: "defense",
-            // component: () => import("@/views/Epigraph/childViews/Defense"),
-            meta: { title: "防御", icon: "DEFENSE" },
+            title: "防御",
           },
           {
-            path: "move",
-            // component: () => import("@/views/Epigraph/childViews/Move"),
-            meta: { title: "移动", icon: "MOVE" },
+            path: "function",
+            title: "功能",
           },
           {
-            path: "jungle",
-            // component: () => import("@/views/Epigraph/childViews/Jungle"),
-            meta: { title: "打野", icon: "JUNGLE" },
+            path: "vampire",
+            title: "吸血",
           },
           {
-            path: "migration",
-            // component: () => import("@/views/Epigraph/childViews/Migration"),
-            meta: { title: "游走", icon: "MIGRATION" },
+            path: "attack-speed",
+            title: "攻速",
+          },
+          {
+            path: "crit",
+            title: "暴击",
+          },
+          {
+            path: "penetrate",
+            title: "穿透",
           },
         ],
         hidden: true,

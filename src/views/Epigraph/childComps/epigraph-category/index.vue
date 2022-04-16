@@ -11,12 +11,13 @@
     <div
       class="title cursor-pointer"
       :class="{ active: currentIndex === index }"
-      @click="toggle(index)"
+      @click="toggle(item, index)"
       v-for="(item, index) in epigraph"
       :key="index"
     >
       <span class="cursor-pointer">{{ item.title }}</span>
     </div>
+    <router-view />
   </div>
 </template>
 <script>
@@ -25,25 +26,16 @@ export default {
   data() {
     return {
       currentIndex: 0,
-      epigraph: [
-        { title: "全部" },
-        { title: "攻击" },
-        { title: "生命" },
-        { title: "防御" },
-        { title: "功能" },
-        { title: "吸血" },
-        { title: "攻速" },
-        { title: "暴击" },
-        { title: "穿透" },
-      ],
+      epigraph: [],
     };
   },
   created() {
-    console.log(this.$route);
+    this.epigraph = this.$router.options.routes[4].children[0].children;
   },
   methods: {
-    toggle(index) {
+    toggle(item, index) {
       this.$click("tab");
+      this.$router.replace(`/epigraph/category/${item.path}`);
       this.currentIndex = index;
     },
   },
