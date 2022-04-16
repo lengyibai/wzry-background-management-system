@@ -7,10 +7,9 @@
   scroll-behavior: smooth;
 }
 
-
 .clear-fix::after {
   clear: both;
-  content: '';
+  content: "";
   display: block;
   width: 0;
   height: 0;
@@ -57,8 +56,6 @@ a {
   text-decoration: none;
 }
 
-
-
 ul,
 ol,
 li {
@@ -84,6 +81,9 @@ a {
 
 img {
   /* 禁止用户鼠标在页面上选中文字/图片等 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   /* 清除图片与图片、文字之间的缝隙缝隙 */
   vertical-align: middle;

@@ -45,15 +45,23 @@ export default {
     },
   },
   mounted() {
-    this.musicPlay();
+    this.$nextTick(() => {
+      this.musicPlay(); //如果从登录页过来，可直接播放背景音乐
+    });
+    const that = this;
+    document.body.addEventListener("mousedown", fn); //如果在管理页刷新，则需要点击才能播放
+    function fn() {
+      that.musicPlay();
+      document.body.removeEventListener("mousedown", fn);
+    }
   },
   methods: {
     //#####··········解决音频加载失败··········#####//
     musicPlay(isReset = true) {
       const that = this;
+      // 判断是否为播放下一首，否则不执行随机播放，是则继续播放当前
       if (isReset) this.bgmIndex = $random(0, this.musics.length - 1);
-
-      /* 解决音频加载失败 */
+      // 解决音频播放失败，失败后重新调用，或直到用户与页面交互
       this.$refs.bgm
         .play()
         .then(() => {
@@ -61,7 +69,9 @@ export default {
           this.$refs.bgm.play();
         })
         .catch(() => {
-          this.musicPlay();
+          setTimeout(() => {
+            this.musicPlay();
+          }, 500);
         });
 
       /* 实时设置播放进度 */
@@ -74,9 +84,7 @@ export default {
 
       /* 播放结束后执行下一次播放 */
       this.$refs.bgm.onended = function () {
-        that.bgm_show = false;
         that.bgmIndex = $random(0, 3);
-        that.bgm_show = true;
         setTimeout(() => {
           that.musicPlay();
         }, 1000);
