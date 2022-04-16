@@ -1,5 +1,5 @@
 <template>
-  <div class="BgVideo" v-parallax-video>
+  <div class="BgVideo" v-parallax-video="parallaxSize">
     <video class="video" ref="videoPlayer" autoplay :src="video" loop></video>
   </div>
 </template>
@@ -10,6 +10,10 @@ export default {
     video: {
       type: String,
       default: "",
+    },
+    parallaxSize: {
+      type: String,
+      default: "big",
     },
   },
   mounted() {

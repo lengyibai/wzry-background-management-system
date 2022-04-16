@@ -1,6 +1,6 @@
 <template>
   <!-- 主体结构 -->
-  <div class="layout" v-parallaxBody>
+  <div class="layout">
     <transition name="sidebar">
       <Sidebar v-if="show_sidebar" />
     </transition>
@@ -15,7 +15,7 @@
         <Footbar v-if="show_footbar" />
       </transition>
     </div>
-    <BgVideo :video="require('./video/bg.mp4')" />
+    <BgVideo :video="require('./video/bg.mp4')" parallaxSize="small" />
   </div>
 </template>
 
@@ -52,9 +52,17 @@ export default {
 };
 </script>
 <style scoped lang="less">
-* {
-  transition: all 1s !important;
+.sidebar-leave-active,
+.sidebar-enter-active,
+.navbar-leave-active,
+.navbar-enter-active,
+.footbar-leave-active,
+.footbar-enter-active,
+.appMain-leave-active,
+.appMain-enter-active {
+  transition: all 1s;
 }
+
 .layout {
   width: 100vw;
   display: flex;
@@ -67,7 +75,7 @@ export default {
 /* 侧边栏动画 */
 .sidebar-enter {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(-50px);
 }
 .sidebar-leave-to {
   opacity: 0;
@@ -76,7 +84,7 @@ export default {
 /* 顶部栏动画 */
 .navbar-enter {
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateY(-50px);
 }
 .navbar-leave-to {
   opacity: 0;
@@ -84,7 +92,7 @@ export default {
 /* 底部栏动画 */
 .footbar-enter {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(50px);
 }
 .footbar-leave-to {
   opacity: 0;
@@ -92,7 +100,7 @@ export default {
 /* 路由视图动画 */
 .appMain-enter {
   opacity: 0;
-  transform: translateX(100%);
+  transform: scale(0.5);
 }
 .appMain-leave-to {
   opacity: 0;

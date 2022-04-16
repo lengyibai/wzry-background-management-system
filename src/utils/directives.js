@@ -1,15 +1,15 @@
 //#####··········全屏背景视差··········#####//
 //####········视频········####//
 const parallaxVideo = {
-  inserted(el) {
-    const multiple = 5;
+  inserted(el, binding) {
+    const size = binding.value === "small" ? [15, 1.1] : [5, 1.25];
+    const multiple = size[0];
     const body = document.body;
-
     function transformElement(x, y) {
       let box = el.getBoundingClientRect();
       let calcY = (box.height / 2 - (y - box.y)) / multiple;
       let calcX = (box.width / 2 - (x - box.x)) / multiple;
-      el.style.transform = `translateY(${calcY}px) translateX(${calcX}px) scale(1.25)`;
+      el.style.transform = `translateY(${calcY}px) translateX(${calcX}px) scale(${size[1]})`;
     }
 
     body.addEventListener("mousemove", (e) => {
