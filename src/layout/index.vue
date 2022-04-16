@@ -1,6 +1,6 @@
 <template>
   <!-- 主体结构 -->
-  <div class="layout">
+  <div class="layout" v-parallaxBody>
     <transition name="sidebar">
       <Sidebar v-if="show_sidebar" />
     </transition>

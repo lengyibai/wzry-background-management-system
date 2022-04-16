@@ -1,11 +1,14 @@
 @font-face {
-  font-family: '方正正准黑';
-  src: url('../../assets/font/方正正准黑简体.ttf');
+  font-family: "方正正准黑";
+  src: url("../../assets/font/方正正准黑简体.ttf");
 }
 
 * {
-  font-family: '方正正准黑';
-  cursor: url('../../assets/icon/cur/default.png'), auto;
+  font-family: "方正正准黑";
+  cursor: url("../../assets/icon/cur/default.png"), auto;
+}
+input {
+  cursor: text;
 }
 
 /* 滚动条里面可以拖动的那部分 */
@@ -28,12 +31,11 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: url('@/assets/img/bg.jpg') no-repeat fixed;
+  background: url("@/assets/img/bg.jpg") no-repeat fixed;
   background-color: #000;
   background-repeat: no-repeat;
   /* 虽然自定义指令设置了这行代码，但是此处不写当前这行，加载的时候会闪白 */
   background-size: 110% 110%;
-  transition: background-position 0.25s ease-out;
   transform-style: preserve-3d;
   perspective: 1000px;
 }

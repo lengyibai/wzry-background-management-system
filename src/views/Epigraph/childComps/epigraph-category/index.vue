@@ -38,9 +38,6 @@ export default {
       ],
     };
   },
-  created() {
-    console.log(this.$route);
-  },
   methods: {
     toggle(index) {
       this.$click("tab");
