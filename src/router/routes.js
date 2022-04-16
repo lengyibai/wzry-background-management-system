@@ -1,3 +1,7 @@
+/**
+ * noVerify 不需要登录验证
+ * leftHidden 在右侧自侧边栏隐藏
+ */
 import Layout from "@/layout";
 export default [
   {
@@ -12,7 +16,7 @@ export default [
     },
     component: () => import("@/views/base/Login"),
     hidden: true,
-    Hidden: true,
+    leftHidden: true,
   },
   {
     path: "/home",
@@ -28,7 +32,7 @@ export default [
         component: () => import("@/views/base/Home"),
       },
     ],
-    Hidden: true,
+    leftHidden: true,
   },
   {
     path: "/hero",
@@ -86,79 +90,18 @@ export default [
   {
     path: "/epigraph",
     component: Layout,
-    redirect: "/epigraph/category",
-    meta: {
-      title: "铭文",
-      icon: "EPIGRAPH",
-    },
+    redirect: "",
     children: [
       {
-        path: "category",
+        path: "",
         meta: {
-          title: "类型",
-          icon: "CATEGORY",
+          title: "铭文",
+          icon: "EPIGRAPH",
         },
         component: () => import("@/views/Epigraph"),
-        redirect: "/epigraph/category/attack",
-        children: [
-          {
-            path: "all-epigraph",
-            meta: {
-              title: "全部",
-            },
-          },
-          {
-            path: "attack",
-            meta: {
-              title: "攻击",
-            },
-          },
-          {
-            path: "life",
-            meta: {
-              title: "生命",
-            },
-          },
-          {
-            path: "defense",
-            meta: {
-              title: "防御",
-            },
-          },
-          {
-            path: "function",
-            meta: {
-              title: "功能",
-            },
-          },
-          {
-            path: "vampire",
-            meta: {
-              title: "吸血",
-            },
-          },
-          {
-            path: "attack-speed",
-            meta: {
-              title: "攻速",
-            },
-          },
-          {
-            path: "crit",
-            meta: {
-              title: "暴击",
-            },
-          },
-          {
-            path: "penetrate",
-            meta: {
-              title: "穿透",
-            },
-          },
-        ],
-        hidden: true,
       },
     ],
+    leftHidden: true,
   },
   {
     path: "/equip",
@@ -255,7 +198,7 @@ export default [
         },
       },
     ],
-    Hidden: true,
+    leftHidden: true,
   },
   {
     path: "*",
@@ -264,6 +207,6 @@ export default [
     },
     component: () => import("@/views/base/NotFound"),
     hidden: true,
-    Hidden: true,
+    leftHidden: true,
   },
 ];

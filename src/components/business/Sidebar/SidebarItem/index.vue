@@ -1,6 +1,6 @@
 <template>
   <!-- 根据路由对象属性是否显示栏目 -->
-  <div v-if="!item.Hidden && item.path !== path">
+  <div v-if="!item.leftHidden && item.path !== path">
     <template
       v-if="
         hasOneShowingChild(item.children, item) &&
@@ -90,7 +90,7 @@ export default {
   methods: {
     hasOneShowingChild(children = [], parent) {
       const showingChildren = children.filter((item) => {
-        if (item.Hidden) {
+        if (item.leftHidden) {
           return false;
         } else {
           this.onlyOneChild = item;

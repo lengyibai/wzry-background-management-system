@@ -2,11 +2,7 @@
   <!-- 主体结构 -->
   <div class="Epigraph">
     <epigraph-category />
-    <div class="EpigraphMain">
-      <transition name="fade-transform" mode="out-in">
-        <router-view />
-      </transition>
-    </div>
+    <div class="EpigraphMain"></div>
   </div>
 </template>
 

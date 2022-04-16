@@ -11,44 +11,39 @@
     <div
       class="title cursor-pointer"
       :class="{ active: currentIndex === index }"
-      @click="toggle(item, index)"
+      @click="toggle(index)"
       v-for="(item, index) in epigraph"
       :key="index"
     >
-      <span class="cursor-pointer">{{ item.meta.title }}</span>
+      <span class="cursor-pointer">{{ item.title }}</span>
     </div>
-    <router-view />
   </div>
 </template>
 <script>
-//#####··········公共方法··········#####//
-//方法信息：{ 全局替换指定字符串 }
-import { $repStr } from "@/utils/lyb.js";
 export default {
   name: "epigraph-category",
   data() {
     return {
-      currentIndex: 0, //当前被点击标题的索引号
-      epigraph: [], //铭文子路由列表
+      currentIndex: 0,
+      epigraph: [
+        { title: "全部" },
+        { title: "攻击" },
+        { title: "生命" },
+        { title: "防御" },
+        { title: "功能" },
+        { title: "吸血" },
+        { title: "攻速" },
+        { title: "暴击" },
+        { title: "穿透" },
+      ],
     };
   },
   created() {
-    this.epigraph = this.$router.options.routes[4].children[0].children; //获取铭文子路由列表
-    const path = $repStr(this.$route.path, "/epigraph/category/", ""); //获取当前处于活跃状态的铭文属性
-    /* 获取铭文所有子路由的path */
-    const path_list = this.epigraph.map((item) => {
-      return item.path;
-    });
-    /* 获取处于活跃状态的铭文属性索引号 */
-    const index = path_list.findIndex((item) => {
-      return item === path;
-    });
-    this.currentIndex = index; //用于纠正tab栏显示
+    console.log(this.$route);
   },
   methods: {
-    toggle(item, index) {
+    toggle(index) {
       this.$click("tab");
-      this.$router.replace(`/epigraph/category/${item.path}`);
       this.currentIndex = index;
     },
   },
