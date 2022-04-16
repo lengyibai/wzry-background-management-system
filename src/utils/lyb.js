@@ -1,7 +1,7 @@
 /* 功能 */
 //随机数
-export function $random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+export function $random(min, max, num = 0) {
+  return parseFloat((Math.random() * (max - min) + min).toFixed(num));
 }
 //小数百分比互转
 export function $potEoPct(str, ret = 4) {

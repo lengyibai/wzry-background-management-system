@@ -1,6 +1,6 @@
 <template>
   <!-- 主体结构 -->
-  <div class="layout" v-parallax-body>
+  <div class="layout">
     <Sidebar />
     <div class="layout-container">
       <Navbar />

@@ -1,9 +1,9 @@
-@import url('./style/default.css');
-@import url('../plugins/element/index.css');
-@import url('./style/element-ui.css');
-@import url('./style/animate.css');
-@import url('./style/common.css');
-@import url('./style/style.css');
+@import url("./style/default.css");
+@import url("../plugins/element/index.css");
+@import url("./style/element-ui.css");
+@import url("./style/animate.css");
+@import url("./style/common.css");
+@import url("./style/style.css");
 
 :root {
   --white: #e0e0e0;

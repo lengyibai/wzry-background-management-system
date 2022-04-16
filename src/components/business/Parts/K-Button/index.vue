@@ -1,5 +1,14 @@
 <template>
-  <div class="K-Button cursor-pointer" :class="{ auto: autoSize }">
+  <div
+    class="K-Button cursor-pointer"
+    :class="{ auto: autoSize }"
+    v-particle="{
+      color: particle_color[type],
+      size: 5,
+      brightness: 1.25,
+      contrast: 1.1,
+    }"
+  >
     <span class="cursor-pointer flex">
       <slot>按钮</slot>
     </span>
@@ -25,6 +34,11 @@ export default {
         default: require("./img/btn-defaule.png"),
         danger: require("./img/btn-danger.png"),
         warn: require("./img/btn-warn.png"),
+      },
+      particle_color: {
+        default: "#3f9ed3",
+        danger: "#d83e41",
+        warn: "#e1c673",
       },
     };
   },

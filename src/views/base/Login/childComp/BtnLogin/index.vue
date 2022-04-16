@@ -1,5 +1,5 @@
 <template>
-  <div class="BtnLogin cursor-pointer">
+  <div class="BtnLogin cursor-pointer" v-particle>
     <span>登录</span>
     <span>LOGIN</span>
   </div>
@@ -11,6 +11,7 @@ export default {
 </script>
 <style scoped lang="less">
 .BtnLogin {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;

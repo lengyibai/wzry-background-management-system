@@ -1,6 +1,11 @@
 <template>
   <!-- 导航栏 -->
-  <div class="Footbar" @click="getPoint" ref="Footbar">
+  <div
+    class="Footbar cursor-pointer"
+    @click="getPoint"
+    ref="Footbar"
+    v-particle="{ color: '#84ade2', filter: false }"
+  >
     <Time class="Time" />
     <PassTime />
     <Copyright class="Copyright" />
