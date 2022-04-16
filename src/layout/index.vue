@@ -1,11 +1,19 @@
 <template>
   <!-- 主体结构 -->
   <div class="layout">
-    <Sidebar />
+    <transition name="sidebar">
+      <Sidebar v-if="show_sidebar" />
+    </transition>
     <div class="layout-container">
-      <Navbar />
-      <AppMain />
-      <Footbar />
+      <transition name="navbar">
+        <Navbar v-if="show_navbar" />
+      </transition>
+      <transition name="appMain">
+        <AppMain v-show="show_appMain" />
+      </transition>
+      <transition name="footbar">
+        <Footbar v-if="show_footbar" />
+      </transition>
     </div>
   </div>
 </template>
@@ -24,9 +32,28 @@ export default {
     AppMain,
     Footbar,
   },
+  data() {
+    return {
+      show_sidebar: false,
+      show_navbar: false,
+      show_footbar: false,
+      show_appMain: false,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.show_sidebar = true;
+      this.show_navbar = true;
+      this.show_footbar = true;
+      this.show_appMain = true;
+    }, 500);
+  },
 };
 </script>
 <style scoped lang="less">
+* {
+  transition: all 1s !important;
+}
 .layout {
   width: 100vw;
   display: flex;
@@ -34,5 +61,39 @@ export default {
 .layout-container {
   flex: 1;
   height: 100vh;
+}
+
+/* 侧边栏动画 */
+.sidebar-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.sidebar-leave-to {
+  opacity: 0;
+}
+
+/* 顶部栏动画 */
+.navbar-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.navbar-leave-to {
+  opacity: 0;
+}
+/* 底部栏动画 */
+.footbar-enter {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.footbar-leave-to {
+  opacity: 0;
+}
+/* 路由视图动画 */
+.appMain-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.appMain-leave-to {
+  opacity: 0;
 }
 </style>

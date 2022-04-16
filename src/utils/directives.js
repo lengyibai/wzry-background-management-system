@@ -46,7 +46,6 @@ import { $random } from "@/utils/lyb.js";
 const particle = {
   inserted(el, binding) {
     const box = el;
-    el.style.transition = "all 0.25s";
     let {
       color = "#cfb45c",
       size = 10,
@@ -54,6 +53,7 @@ const particle = {
       contrast = 1.1,
       filter = true,
     } = binding.value || {};
+    if (filter) el.style.transition = "all 0.25s";
     const style = `
       position: absolute;
       background-color: ${color};

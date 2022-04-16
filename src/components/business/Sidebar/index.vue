@@ -1,6 +1,6 @@
 <template>
   <!-- 侧边栏(英雄和装备的额外侧边栏) -->
-  <transition name="fade-transform">
+  <transition name="sidebar">
     <div class="Sidebar" v-show="isShow">
       <el-menu
         :default-active="activeMenu"
@@ -60,19 +60,5 @@ export default {
   height: calc(100vh - 75px - 56px);
   background: url("./img/bg.png") no-repeat center;
   overflow: hidden auto !important;
-}
-
-.fade-transform-enter {
-  opacity: 0;
-  transform: translateX(50px);
-}
-
-.fade-transform-leave-to {
-  opacity: 0;
-}
-
-.fade-transform-leave-active,
-.fade-transform-enter-active {
-  transition: all 0.5s;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <!-- 路由视图 -->
   <div class="AppMain">
-    <transition name="fade-transform" mode="out-in">
+    <transition name="sidebar_router" mode="out-in">
       <router-view />
     </transition>
   </div>

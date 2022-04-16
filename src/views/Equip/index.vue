@@ -2,7 +2,7 @@
   <!-- 主体结构 -->
   <div class="Equip">
     <div class="EquipMain">
-      <transition name="fade-transform" mode="out-in">
+      <transition name="sidebar_router" mode="out-in">
         <router-view />
       </transition>
     </div>

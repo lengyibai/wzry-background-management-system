@@ -17,38 +17,32 @@
   position: absolute;
 }
 
-/* 路由 */
-.fade-transform-enter {
+/* 侧边栏出场 */
+.sidebar-enter {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.sidebar-leave-to {
+  opacity: 0;
+}
+
+.sidebar-leave-active,
+.sidebar-enter-active {
+  transition: all 0.5s;
+}
+
+/* 侧边栏切换路由 */
+.sidebar_router-enter {
   opacity: 0;
   transform: translateY(50px);
 }
 
-.fade-transform-leave-to {
+.sidebar_router-leave-to {
   opacity: 0;
 }
 
-.fade-transform-leave-active,
-.fade-transform-enter-active {
+.sidebar_router-leave-active,
+.sidebar_router-enter-active {
   transition: all 0.5s;
-}
-
-
-/* 面包屑 */
-.breadcrumb-enter-active,
-.breadcrumb-leave-active {
-  transition: all 0.5s;
-}
-
-.breadcrumb-enter,
-.breadcrumb-leave-active {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.breadcrumb-move {
-  transition: all 0.5s;
-}
-
-.breadcrumb-leave-active {
-  position: absolute;
 }

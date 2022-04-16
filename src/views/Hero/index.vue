@@ -2,7 +2,7 @@
   <!-- 主体结构 -->
   <div class="Hero">
     <div class="HeroMain">
-      <transition name="fade-transform" mode="out-in">
+      <transition name="sidebar_router" mode="out-in">
         <router-view />
       </transition>
     </div>
