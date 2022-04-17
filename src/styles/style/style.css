@@ -43,6 +43,10 @@ body {
   perspective: 1000px;
 }
 
+a {
+  cursor: url("../../assets/icon/cur/pointer.png"), auto !important;
+}
+
 .icon {
   width: 35px;
   height: 35px;
