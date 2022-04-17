@@ -32,7 +32,6 @@ export default {
             throw "请求失败";
           // 获取成功后存储用户信息
           context.state.userStatus = true;
-          console.log(res.data);
           context.state.userInfo = res.data[0];
           resolve();
         })
@@ -44,7 +43,6 @@ export default {
   },
   //#####··········退出登录··········#####//
   logout(context) {
-    console.log(context.state.userInfo.id);
     logout(context.state.userInfo.id).then(() => {
       context.commit("clearToken");
     });

@@ -5,7 +5,6 @@ import Vue from "vue";
 import { getUserInfo, updateUser } from "./transfer.js";
 
 function tip(code, msg) {
-  console.log(code);
   if (code === 200) {
     Vue.prototype.$tip(msg);
   } else {
