@@ -11,7 +11,7 @@ export default new Vuex.Store({
     token: localStorage.getItem("token"), //token
     userStatus: false, // 用户状态
     userInfo: {}, // 用户相关信息
-    smooth: true,
+    smooth: false,
   },
   mutations,
   actions,

@@ -1,6 +1,5 @@
 <template>
-  <div class="LybBgVideo">
-    <!-- v-parallax-video="parallaxSize" -->
+  <div class="LybBgVideo" v-parallax-video="parallaxSize">
     <video class="video" ref="videoPlayer" autoplay :src="video" loop></video>
   </div>
 </template>
