@@ -5,7 +5,7 @@
     <!-- loading -->
     <LybLoading :show="show_loading" />
     <!-- 消息提醒 -->
-    <KMessage :show="show_KMessage" text="你好，我是冷弋白！" />
+    <KMessage :show="show_KMessage" :messages="messages" />
   </div>
 </template>
 <script>
@@ -17,6 +17,7 @@ export default {
       //##····消息提醒相关····##//
       show_KMessage: false, //是否显示
       timer_KMessage: null, //定时器
+      messages: [], //消息提醒队列
 
       //##····加载动画相关····##//
       show_loading: false, //是否显示
@@ -60,11 +61,9 @@ export default {
     //#####··········全局消息提醒··········#####//
     Vue.prototype.$tip = {
       success() {
-        that.show_KMessage = false;
-        clearTimeout(that.timer_KMessage);
-        that.show_KMessage = true;
+        that.messages.push({ id: new Date().getTime(), text: "你好！" });
         that.timer_KMessage = setTimeout(() => {
-          that.show_KMessage = false;
+          that.messages.splice(0, 1);
         }, 2000);
       },
     };

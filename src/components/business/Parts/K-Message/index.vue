@@ -1,29 +1,38 @@
 <template>
   <transition name="K-Message">
-    <div class="K-Message" v-show="show">
-      <transition name="message">
-        <div class="message" v-show="show">
-          <span>{{ text }}</span>
+    <div class="K-Message" v-show="messages.length">
+      <transition-group name="message">
+        <div
+          class="message"
+          v-for="(item, index) in messages"
+          :key="item.id"
+          :style="{
+            transform:
+              'translateX(-50%) translateY(' +
+              (index * 100 + index * 25) +
+              '%)',
+          }"
+        >
+          <span>{{ item.text }}</span>
           <div class="bg">
             <img src="./img/left.png" />
             <img src="./img/center.png" />
             <img src="./img/right.png" />
           </div>
         </div>
-      </transition>
+      </transition-group>
     </div>
   </transition>
 </template>
 <script>
 export default {
   props: {
-    show: {
-      type: Boolean,
-      default: false,
-    },
-    text: {
-      type: String,
-      default: "",
+    // 消息提醒队列
+    messages: {
+      type: Array,
+      default() {
+        return [];
+      },
     },
   },
   name: "KMessage",
@@ -38,21 +47,20 @@ export default {
   left: 0;
   pointer-events: none;
   z-index: 3;
-  // background-image: linear-gradient(180deg, #000000 -25%, transparent 25%);
+  background-image: linear-gradient(180deg, #000000 -25%, transparent 25%);
 
   .message {
+    display: flex;
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) translateY(-3px);
-    display: flex;
-    width: fit-content;
-    padding: var(--gap-25) var(--gap-35);
-    display: flex;
     justify-content: center;
     align-items: center;
+    width: fit-content;
+    padding: var(--gap-25) var(--gap-35);
     border-radius: 0 0 10px 10px;
     overflow: hidden;
+    transform: translateX(-50%) translateY(-3px);
     span {
       font-size: var(--font-s-20);
       color: var(--theme-font-dark);
@@ -63,7 +71,7 @@ export default {
       display: flex;
       width: 100%;
       height: 100%;
-      pointer-events: none;
+      // pointer-events: none;
       filter: brightness(1.35);
       opacity: 0.75;
       img {
