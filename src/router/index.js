@@ -20,7 +20,7 @@ const router = new VueRouter({
 
 import store from "@/store/index.js";
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title;
+  document.title = to.meta.title + "-王者荣耀后台管理系统";
   /* 如果未找到路由，跳转404 */
   if (!to.path) {
     next("/404");
