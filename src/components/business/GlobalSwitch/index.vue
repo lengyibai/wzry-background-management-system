@@ -2,10 +2,10 @@
   <div class="GlobalSwitch">
     <!-- 点击音效 -->
     <audio
-      :src="sound[sound_name]"
-      ref="click"
+      :src="sound[item.name]"
+      :ref="item.id"
       hidden="true"
-      v-for="(item, index) in 3"
+      v-for="(item, index) in sounds"
       :key="index"
     ></audio>
     <!-- loading -->
@@ -30,6 +30,7 @@ export default {
 
       //##····音效相关相关····##//
       sound_name: "default", //音效名
+      sounds: [], //消息提醒队列
       sound: {
         login: require("./audios/login.mp3"),
         default: require("./audios/default.mp3"),
@@ -68,23 +69,32 @@ export default {
     //#####··········全局消息提醒··········#####//
     Vue.prototype.$tip = {
       success() {
+        /* 延迟提醒，避免与点击操作同时播放 */
         setTimeout(() => {
-          that.$click("消息提示");
-        });
-        that.messages.push({
-          id: new Date().getTime(),
-          text: "你好啊啊啊啊啊！" + new Date().getTime(),
-        });
-        that.timer_KMessage = setTimeout(() => {
-          that.messages.splice(0, 1);
-        }, 2000);
+          that.play("消息提示");
+          that.messages.push({
+            id: new Date().getTime(),
+            text: "你好啊啊啊啊啊！" + new Date().getTime(),
+          });
+          that.timer_KMessage = setTimeout(() => {
+            that.messages.splice(0, 1);
+          }, 2000);
+        }, 250);
       },
     };
   },
   methods: {
     //#####··········全局点击音效··········#####//
+    play(name) {
+      console.log(name);
+      let id = new Date().getTime();
+      this.sounds.push({ id: id, name: name });
+      this.$nextTick(() => {
+        let audio = this.$refs[id][0];
+        audio.play();
+      });
+    },
     click(name) {
-      if (!this.$refs.click) return;
       const obj = {
         tab: ["tab"],
         login: ["login"],
@@ -110,20 +120,7 @@ export default {
             });
           })) ||
         "default";
-      this.$refs.click.pause();
-      this.$refs.click.currentTime = 0;
-
-      /* 解决音频加载失败 */
-      setTimeout(() => {
-        this.$refs.click
-          .play()
-          .then(() => {
-            this.$refs.click.play();
-          })
-          .catch(() => {
-            this.click(name);
-          });
-      });
+      this.play(this.sound_name);
     },
   },
 };
