@@ -39,19 +39,25 @@ export default {
   data() {
     return {
       color: {
-        red: "#e28484",
-        blue: "#84ade2",
+        default: "#84ade2",
+        warning: "#e2c484",
+        danger: "#e28484",
       },
       imgs: {
-        red: {
-          left: require("./img/left_red.png"),
-          center: require("./img/center_red.png"),
-          right: require("./img/right_red.png"),
+        default: {
+          left: require("./img/left_default.png"),
+          center: require("./img/center_default.png"),
+          right: require("./img/right_default.png"),
         },
-        blue: {
-          left: require("./img/left_blue.png"),
-          center: require("./img/center_blue.png"),
-          right: require("./img/right_blue.png"),
+        warning: {
+          left: require("./img/left_warning.png"),
+          center: require("./img/center_warning.png"),
+          right: require("./img/right_warning.png"),
+        },
+        danger: {
+          left: require("./img/left_danger.png"),
+          center: require("./img/center_danger.png"),
+          right: require("./img/right_danger.png"),
         },
       },
     };

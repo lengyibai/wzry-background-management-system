@@ -1,12 +1,12 @@
 <template>
-  <div class="BgVideo">
+  <div class="LybBgVideo">
     <!-- v-parallax-video="parallaxSize" -->
     <video class="video" ref="videoPlayer" autoplay :src="video" loop></video>
   </div>
 </template>
 <script>
 export default {
-  name: "BgVideo",
+  name: "LybBgVideo",
   props: {
     video: {
       type: String,
@@ -33,7 +33,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.BgVideo {
+.LybBgVideo {
   position: absolute;
   width: 100vw;
   height: 100vh;

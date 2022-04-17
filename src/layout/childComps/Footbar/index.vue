@@ -1,5 +1,5 @@
 <template>
-  <!-- 导航栏 -->
+  <!-- 底部导航栏 -->
   <div
     class="Footbar cursor-pointer"
     @click="getPoint"

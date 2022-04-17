@@ -4,8 +4,8 @@
 </template>
 <script>
 //#####··········公共方法··········#####//
-//方法信息：{ 记录已过去时间或倒计时 }
-import { $getCountTime } from "@/utils/lyb.js";
+//方法信息：{ 记录已过去时间或倒计时，requestAnimationFrame计时器 }
+import { $getCountTime, $frameInterval } from "@/utils/lyb.js";
 
 export default {
   name: "PassTime",
@@ -16,7 +16,7 @@ export default {
     };
   },
   created() {
-    this.timer = setInterval(() => {
+    this.timer = $frameInterval(() => {
       const { y, mon, d, h, min, s } = $getCountTime("2022-3-17");
       let year = y != "00" ? y + "y" : "";
       let month = mon != "00" ? mon + "mon" : "";

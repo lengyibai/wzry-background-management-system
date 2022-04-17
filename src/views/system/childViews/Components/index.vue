@@ -11,11 +11,21 @@
       <!-- 按钮 -->
       <ChildComps class="flex">
         <!-- <K-Button type="default" /> -->
-        <K-Button @click.native="$click('查看')" @mouseup.native="showTip"
+        <K-Button @click.native="$click('查看')" @mouseup.native="showTip(0)"
           >查看</K-Button
         >
-        <K-Button type="warn" @click.native="$click('确定')">领取</K-Button>
-        <K-Button type="danger" @click.native="$click('取消')">取消</K-Button>
+        <K-Button
+          type="warn"
+          @click.native="$click('确定')"
+          @mouseup.native="showTip(1)"
+          >领取</K-Button
+        >
+        <K-Button
+          type="danger"
+          @click.native="$click('取消')"
+          @mouseup.native="showTip(2)"
+          >取消</K-Button
+        >
       </ChildComps>
       <!-- 复选框 -->
       <ChildComps class="flex">
@@ -65,9 +75,14 @@ export default {
   },
   components: { ChildComps },
   methods: {
-    showTip() {
-      this.$click("错误提示");
-      this.$tip("你好，我是冷弋白！");
+    showTip(flag) {
+      if (flag === 0) {
+        this.$tip("显示普通弹窗并播放正常音效", "default");
+      } else if (flag === 1) {
+        this.$tip("显示警告弹窗并播放警告音效", "warning");
+      } else {
+        this.$tip("显示错误弹窗并播放错误音效", "danger");
+      }
     },
   },
 };

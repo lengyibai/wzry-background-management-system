@@ -50,6 +50,6 @@ server.interceptors.response.use(
   },
   () => {
     Vue.prototype.$lybLoad.close();
-    Vue.prototype.$tip("请求失败！", "red");
+    Vue.prototype.$tip("请求失败！", "danger");
   },
 );

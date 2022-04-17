@@ -94,3 +94,17 @@ export function $getCountTime(time = "2022-04-01 10:45:00") {
   });
   return timeObj;
 }
+
+// requestAnimationFrame计时器
+export function $frameInterval(fn, fre = 0) {
+  let time = 0;
+  f();
+  function f() {
+    time += 10;
+    if (time > fre) {
+      fn();
+      time = 0;
+    }
+    requestAnimationFrame(f);
+  }
+}

@@ -41,7 +41,7 @@ const parallaxBody = {
 };
 
 //#####··········粒子效果··········#####//
-import { $random } from "@/utils/lyb.js";
+import { $random, $frameInterval } from "@/utils/lyb.js";
 //####········纵向········####//
 const particle = {
   inserted(el, binding) {
@@ -68,7 +68,7 @@ const particle = {
     const box_width = box.offsetWidth;
     const box_height = box.offsetHeight;
 
-    setInterval(() => {
+    $frameInterval(() => {
       const left = $random(0, box_width - size),
         top = $random(box_height / 2, box_height),
         scale = $random(0.5, 1, 1),
@@ -128,7 +128,7 @@ const particle = {
 //     const box_width = box.offsetWidth;
 //     const box_height = box.offsetHeight;
 
-//     setInterval(() => {
+//     $frameInterval(() => {
 //       const top = $random(0, box_height - size),
 //         left = $random(box_width / 2, box_width),
 //         scale = $random(0.5, 1, 1),

@@ -167,7 +167,7 @@ export default [
     children: [
       {
         path: "hero",
-        component: () => import("@/views/Equip/childViews/Move"),
+        component: () => import("@/views/System/childViews/Hero"),
         meta: {
           title: "添加英雄",
           icon: "ADDHERO",
@@ -175,7 +175,7 @@ export default [
       },
       {
         path: "skin",
-        component: () => import("@/views/Equip/childViews/Move"),
+        component: () => import("@/views/System/childViews/Skin"),
         meta: {
           title: "添加皮肤",
           icon: "ADDSKIN",
@@ -183,7 +183,7 @@ export default [
       },
       {
         path: "equip",
-        component: () => import("@/views/Equip/childViews/Magic"),
+        component: () => import("@/views/System/childViews/Equip"),
         meta: {
           title: "添加装备",
           icon: "ADDEQUIP",
@@ -191,10 +191,10 @@ export default [
       },
       {
         path: "epigraph",
-        component: () => import("@/views/Equip/childViews/Magic"),
+        component: () => import("@/views/System/childViews/Epigraph"),
         meta: {
           title: "添加铭文",
-          icon: "ADDEQUIP",
+          icon: "ADDEPIGRAPH",
         },
       },
       {

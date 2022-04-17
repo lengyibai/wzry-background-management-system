@@ -11,8 +11,8 @@
 </template>
 <script>
 //#####··········公共方法··········#####//
-//方法信息：{ 随机数，小数百分比互转 }
-import { $random, $potEoPct } from "@/utils/lyb.js";
+//方法信息：{ 随机数，小数百分比互转，requestAnimationFrame计时器 }
+import { $random, $potEoPct, $frameInterval } from "@/utils/lyb.js";
 export default {
   props: {
     playProgress: {
@@ -79,7 +79,7 @@ export default {
       });
 
       /* 实时设置播放进度 */
-      this.timer = setInterval(() => {
+      this.timer = $frameInterval(() => {
         // that.$refs.bgm 为了避免保存后报错undefined
         that.progress =
           that.$refs.bgm &&

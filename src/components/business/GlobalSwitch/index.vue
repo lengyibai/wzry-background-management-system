@@ -38,6 +38,7 @@ export default {
         关闭: require("@/assets/audios/关闭.mp3"),
         取消: require("@/assets/audios/取消.mp3"),
         消息提示: require("@/assets/audios/消息提示.mp3"),
+        警告提示: require("@/assets/audios/警告提示.mp3"),
         错误提示: require("@/assets/audios/错误提示.mp3"),
         关闭抽屉: require("@/assets/audios/关闭抽屉.mp3"),
         查看详情: require("@/assets/audios/查看详情.mp3"),
@@ -66,13 +67,18 @@ export default {
     };
 
     //#####··········全局消息提醒··········#####//
-    Vue.prototype.$tip = function (text = "未设置提示", type = "blue") {
+    Vue.prototype.$tip = function (text = "未设置提示", type = "default") {
       const text_length = text.split("").length / 3; //获取文字长度
       const time = text_length > 3 ? text_length : text_length + 1; //通过文字长度，设置显示时长
       /* 延迟提醒，避免与点击操作同时播放 */
       setTimeout(
         function () {
-          this.play(type === "blue" ? "消息提示" : "错误提示");
+          const obj = {
+            default: "消息提示",
+            warning: "警告提示",
+            danger: "错误提示",
+          };
+          this.$click(obj[type]);
           this.messages.push({
             id: new Date().getTime(),
             text: text,
@@ -82,20 +88,12 @@ export default {
             this.messages.splice(0, 1);
           }, time * 1000);
         }.bind(that),
-        250,
+        500,
       );
     };
   },
   methods: {
     //#####··········全局点击音效··········#####//
-    play(name) {
-      const id = new Date().getTime();
-      this.sounds.push({ id: id, name: name });
-      this.$nextTick(() => {
-        const audio = this.$refs[id][0];
-        audio.play();
-      });
-    },
     click(name) {
       const obj = {
         tab: ["tab"],
@@ -110,10 +108,14 @@ export default {
         关闭: ["关闭"],
         取消: ["取消"],
         消息提示: ["消息提示"],
+        警告提示: ["警告提示"],
+        错误提示: ["错误提示"],
         确认弹窗: ["确认弹窗"],
         关闭抽屉: ["收起侧边栏"],
         项目组件: ["/system/components"],
       };
+
+      /* 获取点击触发的音效名 */
       this.sound_name =
         (typeof name === "string" &&
           Object.keys(obj).find((item) => {
@@ -122,7 +124,14 @@ export default {
             });
           })) ||
         "default";
-      this.play(this.sound_name);
+
+      /* 将音效加入播放队列 */
+      const id = new Date().getTime();
+      this.sounds.push({ id: id, name: this.sound_name });
+      this.$nextTick(() => {
+        const audio = this.$refs[id][0];
+        audio.play();
+      });
     },
   },
 };

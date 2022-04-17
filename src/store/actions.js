@@ -37,7 +37,7 @@ export default {
           resolve();
         })
         .catch(() => {
-          Vue.prototype.$tip("token已过期", "red");
+          Vue.prototype.$tip("token已过期", "danger");
           context.commit("clearToken");
         });
     });

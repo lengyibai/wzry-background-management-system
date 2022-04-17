@@ -6,6 +6,7 @@
           class="close cursor-pointer"
           v-if="showClose"
           src="./img/close.png"
+          @dragstart.prevent
           @click="close"
         />
         <img class="bg" style="opacity: 0.75" src="./img/dialog.png" />

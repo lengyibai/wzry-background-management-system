@@ -8,7 +8,7 @@
     <input type="password" v-model="form.password" />
 
     <BtnLogin @click.native="login" />
-    <BgVideo
+    <LybBgVideo
       :video="require('@/assets/video/loginBg.mp4')"
       v-if="!this.$store.state.smooth"
     />
