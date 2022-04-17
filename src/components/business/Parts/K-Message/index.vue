@@ -60,6 +60,7 @@ export default {
     padding: var(--gap-25) var(--gap-35);
     border-radius: 0 0 10px 10px;
     overflow: hidden;
+    transition: all 0.5s;
     transform: translateX(-50%) translateY(-3px);
     span {
       font-size: var(--font-s-20);
@@ -84,6 +85,7 @@ export default {
   }
 }
 
+/* 消息蒙版 */
 .K-Message-enter,
 .K-Message-leave-to {
   opacity: 0;
@@ -94,13 +96,13 @@ export default {
   transition: all 0.5s;
 }
 
-.message-leave-to,
-.message-enter {
-  transform: translateX(-50%) translateY(-100px) !important;
+/* 消息框 */
+.message-enter,
+.message-leave-to {
+  transform: translateX(-50%) translateY(-100%) !important;
 }
-
-.message-leave-active,
-.message-enter-active {
+.message-enter-active,
+.message-leave-active {
   transition: all 0.5s;
 }
 </style>
