@@ -8,9 +8,11 @@ export default {
     login(account).then((res) => {
       if (res.code === 200) {
         // 存储 token 到本地
+        context.state.userStatus = true;
         context.state.token = res.data.token;
         window.localStorage.setItem("token", res.data.token);
         // 获取用户信息
+        context.state.userInfo = res.data;
         router.push("/");
       }
     });
@@ -29,18 +31,20 @@ export default {
           )
             throw "请求失败";
           // 获取成功后存储用户信息
-          context.state.userInfo = res.data[0];
           context.state.userStatus = true;
+          console.log(res.data);
+          context.state.userInfo = res.data[0];
           resolve();
         })
         .catch(() => {
-          Vue.prototype.$message.error("token已过期");
+          Vue.prototype.$tip("token已过期", "red");
           context.commit("clearToken");
         });
     });
   },
   //#####··········退出登录··········#####//
   logout(context) {
+    console.log(context.state.userInfo.id);
     logout(context.state.userInfo.id).then(() => {
       context.commit("clearToken");
     });

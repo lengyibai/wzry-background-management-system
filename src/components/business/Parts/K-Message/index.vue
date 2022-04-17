@@ -13,11 +13,11 @@
               '%)',
           }"
         >
-          <span>{{ item.text }}</span>
+          <span :style="{ color: color[item.type] }">{{ item.text }}</span>
           <div class="bg">
-            <img src="./img/left.png" />
-            <img src="./img/center.png" />
-            <img src="./img/right.png" />
+            <img :src="imgs[item.type].left" />
+            <img :src="imgs[item.type].center" />
+            <img :src="imgs[item.type].right" />
           </div>
         </div>
       </transition-group>
@@ -27,7 +27,7 @@
 <script>
 export default {
   props: {
-    // 消息提醒队列
+    // 消息队列
     messages: {
       type: Array,
       default() {
@@ -36,6 +36,26 @@ export default {
     },
   },
   name: "KMessage",
+  data() {
+    return {
+      color: {
+        red: "#e28484",
+        blue: "#84ade2",
+      },
+      imgs: {
+        red: {
+          left: require("./img/left_red.png"),
+          center: require("./img/center_red.png"),
+          right: require("./img/right_red.png"),
+        },
+        blue: {
+          left: require("./img/left_blue.png"),
+          center: require("./img/center_blue.png"),
+          right: require("./img/right_blue.png"),
+        },
+      },
+    };
+  },
 };
 </script>
 <style scoped lang="less">
@@ -57,7 +77,7 @@ export default {
     justify-content: center;
     align-items: center;
     width: fit-content;
-    padding: var(--gap-25) var(--gap-35);
+    padding: var(--gap-15) var(--gap-50);
     border-radius: 0 0 10px 10px;
     overflow: hidden;
     transition: all 0.5s;

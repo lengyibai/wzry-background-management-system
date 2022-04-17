@@ -11,7 +11,7 @@
     <!-- loading -->
     <LybLoading :show="show_loading" />
     <!-- 消息提醒 -->
-    <KMessage :show="show_KMessage" :messages="messages" />
+    <KMessage :messages="messages" />
   </div>
 </template>
 <script>
@@ -20,22 +20,25 @@ export default {
   name: "GlobalSwitch",
   data() {
     return {
-      //##····消息提醒相关····##//
-      show_KMessage: false, //是否显示
-      timer_KMessage: null, //定时器
-      messages: [], //消息提醒队列
+      //#····消息提醒相关····#//
+      messages: [], //消息队列
 
-      //##····加载动画相关····##//
+      //#····加载动画相关····#//
       show_loading: false, //是否显示
 
-      //##····音效相关相关····##//
+      //#····音效相关相关····#//
       sound_name: "default", //音效名
-      sounds: [], //消息提醒队列
+      sounds: [], //音效队列
       sound: {
         login: require("./audios/login.mp3"),
         default: require("./audios/default.mp3"),
         tab: require("./audios/tab栏切换.mp3"),
+        查看: require("./audios/查看.mp3"),
+        确定: require("./audios/确定.mp3"),
+        关闭: require("./audios/关闭.mp3"),
+        取消: require("./audios/取消.mp3"),
         消息提示: require("./audios/消息提示.mp3"),
+        错误提示: require("./audios/错误提示.mp3"),
         关闭抽屉: require("./audios/关闭抽屉.mp3"),
         查看详情: require("./audios/查看详情.mp3"),
         确认弹窗: require("./audios/确认弹窗.mp3"),
@@ -44,10 +47,6 @@ export default {
         装备相关: require("./audios/装备相关.mp3"),
         英雄列表: require("./audios/英雄列表.mp3"),
         项目组件: require("./audios/项目组件.mp3"),
-        查看: require("./audios/查看.mp3"),
-        确定: require("./audios/确定.mp3"),
-        关闭: require("./audios/关闭.mp3"),
-        取消: require("./audios/取消.mp3"),
       },
     };
   },
@@ -67,30 +66,33 @@ export default {
     };
 
     //#####··········全局消息提醒··········#####//
-    Vue.prototype.$tip = {
-      success() {
-        /* 延迟提醒，避免与点击操作同时播放 */
-        setTimeout(() => {
-          that.play("消息提示");
-          that.messages.push({
+    Vue.prototype.$tip = function (text = "未设置提示", type = "blue") {
+      const text_length = text.split("").length / 3; //获取文字长度
+      const time = text_length > 3 ? text_length : text_length + 1; //通过文字长度，设置显示时长
+      /* 延迟提醒，避免与点击操作同时播放 */
+      setTimeout(
+        function () {
+          this.play(type === "blue" ? "消息提示" : "错误提示");
+          this.messages.push({
             id: new Date().getTime(),
-            text: "你好啊啊啊啊啊！" + new Date().getTime(),
+            text: text,
+            type: type,
           });
-          that.timer_KMessage = setTimeout(() => {
-            that.messages.splice(0, 1);
-          }, 2000);
-        }, 250);
-      },
+          setTimeout(() => {
+            this.messages.splice(0, 1);
+          }, time * 1000);
+        }.bind(that),
+        250,
+      );
     };
   },
   methods: {
     //#####··········全局点击音效··········#####//
     play(name) {
-      console.log(name);
-      let id = new Date().getTime();
+      const id = new Date().getTime();
       this.sounds.push({ id: id, name: name });
       this.$nextTick(() => {
-        let audio = this.$refs[id][0];
+        const audio = this.$refs[id][0];
         audio.play();
       });
     },

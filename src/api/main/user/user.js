@@ -6,7 +6,7 @@ import { getUserInfo, updateUser } from "./transfer.js";
 
 function tip(code, msg) {
   if (code === 200) {
-    Vue.prototype.$message.success(msg);
+    Vue.prototype.$tip(msg);
   }
 }
 //#####··········基本··········#####//

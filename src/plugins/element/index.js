@@ -17,15 +17,8 @@ import {
 } from "element-ui";
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
-Vue.use(Button);
-Vue.use(Cascader);
-Vue.use(Col);
-Vue.use(Form);
-Vue.use(FormItem);
-Vue.use(Input);
 Vue.use(Menu);
 Vue.use(MenuItem);
-Vue.use(Row);
 Vue.use(Submenu);
 Vue.prototype.$message = Message;
 // //#####··········封装··········!//

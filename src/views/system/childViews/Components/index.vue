@@ -66,7 +66,8 @@ export default {
   components: { ChildComps },
   methods: {
     showTip() {
-      this.$tip.success();
+      this.$click("错误提示");
+      this.$tip("你好，我是冷弋白！");
     },
   },
 };

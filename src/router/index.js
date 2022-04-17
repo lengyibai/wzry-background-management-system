@@ -35,6 +35,7 @@ router.beforeEach((to, from, next) => {
         return;
       }
       next();
+      Vue.prototype.$tip("自动登录成功");
     });
     return;
   }

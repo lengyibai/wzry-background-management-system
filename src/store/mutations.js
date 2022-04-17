@@ -9,7 +9,4 @@ export default {
     window.localStorage.removeItem("token");
     router.push("/login");
   },
-  developing() {
-    Vue.prototype.$message.warning("开发中...");
-  },
 };

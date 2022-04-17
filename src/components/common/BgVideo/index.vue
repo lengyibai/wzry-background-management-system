@@ -1,5 +1,6 @@
 <template>
-  <div class="BgVideo" v-parallax-video="parallaxSize">
+  <div class="BgVideo">
+    <!-- v-parallax-video="parallaxSize" -->
     <video class="video" ref="videoPlayer" autoplay :src="video" loop></video>
   </div>
 </template>
@@ -17,6 +18,7 @@ export default {
     },
   },
   mounted() {
+    this.$refs.videoPlayer.volume = 0.1;
     document.body.addEventListener("mousedown", this.play);
   },
   methods: {
