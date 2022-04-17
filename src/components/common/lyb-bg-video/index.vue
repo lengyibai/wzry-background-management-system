@@ -17,7 +17,7 @@ export default {
     },
   },
   mounted() {
-    this.$refs.videoPlayer.volume = 0.1;
+    this.$refs.videoPlayer.volume = 0.25;
     document.body.addEventListener("mousedown", this.play);
   },
   methods: {
