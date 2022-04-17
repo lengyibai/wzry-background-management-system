@@ -8,7 +8,10 @@
     <input type="password" v-model="form.password" />
 
     <BtnLogin @click.native="login" />
-    <BgVideo :video="require('@/assets/video/video.mp4')" />
+    <BgVideo
+      :video="require('@/assets/video/video.mp4')"
+      v-if="!this.$store.state.smooth"
+    />
   </div>
 </template>
 <script>
