@@ -88,22 +88,6 @@ export default [
     ],
   },
   {
-    path: "/epigraph",
-    component: Layout,
-    redirect: "",
-    children: [
-      {
-        path: "",
-        meta: {
-          title: "铭文",
-          icon: "EPIGRAPH",
-        },
-        component: () => import("@/views/Epigraph"),
-      },
-    ],
-    leftHidden: true,
-  },
-  {
     path: "/equip",
     component: Layout,
     redirect: "/equip/category",
@@ -157,6 +141,22 @@ export default [
     ],
   },
   {
+    path: "/epigraph",
+    component: Layout,
+    redirect: "",
+    children: [
+      {
+        path: "",
+        meta: {
+          title: "铭文",
+          icon: "EPIGRAPH",
+        },
+        component: () => import("@/views/Epigraph"),
+      },
+    ],
+    leftHidden: true,
+  },
+  {
     path: "/system",
     component: Layout,
     redirect: "/system/hero",
@@ -186,6 +186,14 @@ export default [
         component: () => import("@/views/Equip/childViews/Magic"),
         meta: {
           title: "添加装备",
+          icon: "ADDEQUIP",
+        },
+      },
+      {
+        path: "epigraph",
+        component: () => import("@/views/Equip/childViews/Magic"),
+        meta: {
+          title: "添加铭文",
           icon: "ADDEQUIP",
         },
       },
