@@ -15,7 +15,7 @@
         <Footbar v-if="show_footbar" />
       </transition>
     </div>
-    <BgVideo :video="require('./video/bg.mp4')" parallaxSize="small" />
+    <BgVideo :video="require('@/assets/video/bg.mp4')" parallaxSize="small" />
   </div>
 </template>
 

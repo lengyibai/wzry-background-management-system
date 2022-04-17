@@ -79,7 +79,7 @@ export default {
 <style scoped lang="less">
 .Sidebar {
   height: 100vh;
-  // background: url("./img/bg.png") no-repeat center;
+  // background: url("@/assets/img/sidebar_bg.png") no-repeat center;
   border-right: 1px solid rgba(255, 255, 255, 0.05);
   .game {
     margin: 0 auto;

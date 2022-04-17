@@ -46,7 +46,7 @@ export default {
   position: relative;
   width: 100%;
   height: 56px;
-  // background: url("./img/bg.png") no-repeat center;
+  // background: url("@/assets/img/footbar_bg.png") no-repeat center;
   // background-size: cover;
 
   border-top: 1px solid rgba(255, 255, 255, 0.05);

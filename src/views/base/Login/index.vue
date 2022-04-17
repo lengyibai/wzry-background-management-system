@@ -1,7 +1,7 @@
 <template>
   <div class="Login">
     <div class="logo">
-      <img src="./img/logo.png" alt="" />
+      <img src="@/assets/img/logo.png" alt="" />
     </div>
     <h1>王者荣耀后台管理系统</h1>
     <input type="text" v-model="form.id" />
@@ -9,7 +9,7 @@
 
     <BtnLogin @click.native="login" />
     <BgVideo
-      :video="require('@/assets/video/video.mp4')"
+      :video="require('@/assets/video/loginBg.mp4')"
       v-if="!this.$store.state.smooth"
     />
   </div>
