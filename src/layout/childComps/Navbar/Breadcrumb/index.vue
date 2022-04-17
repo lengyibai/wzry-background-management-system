@@ -8,7 +8,9 @@
           class="no-redirect"
           >{{ item.meta.title }}</span
         >
-        <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+        <a class="cursor-pointer" v-else @click.prevent="handleLink(item)">{{
+          item.meta.title
+        }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>

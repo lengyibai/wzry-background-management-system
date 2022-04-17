@@ -9,7 +9,7 @@
   -ms-user-select: none;
   user-select: none;
   font-family: "方正正准黑";
-  cursor: url("../../assets/icon/cur/default.png"), auto;
+  cursor: url("../../assets/icon/cur/default.png"), auto !important;
 }
 input {
   cursor: text;
@@ -43,8 +43,8 @@ body {
   perspective: 1000px;
 }
 
-a {
-  cursor: url("../../assets/icon/cur/pointer.png"), auto !important;
+input {
+  cursor: url("../../assets/icon/cur/text.png"), auto !important;
 }
 
 .icon {

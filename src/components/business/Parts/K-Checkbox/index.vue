@@ -1,6 +1,6 @@
 <template>
   <div class="K-Checkbox" @click="fn">
-    <img :src="require('./img/' + value + '.png')" />
+    <img class="cursor-pointer" :src="require('./img/' + value + '.png')" />
   </div>
 </template>
 <script>

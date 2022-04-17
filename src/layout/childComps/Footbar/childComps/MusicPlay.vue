@@ -64,7 +64,7 @@ export default {
       // 判断是否为播放下一首，否则不执行随机播放，是则继续播放当前
       if (isReset) this.bgmIndex = $random(0, this.musics.length - 1);
       // 解决音频播放失败，失败后重新调用，或直到用户与页面交互
-      bgm.volume = 0.25;
+      bgm.volume = 0.15;
       setTimeout(() => {
         bgm
           .play()
