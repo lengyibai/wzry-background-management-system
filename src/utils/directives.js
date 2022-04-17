@@ -13,7 +13,7 @@ const parallaxVideo = {
     }
 
     body.addEventListener("mousemove", (e) => {
-      window.requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
         transformElement(e.clientX, e.clientY);
       });
     });
@@ -33,7 +33,7 @@ const parallaxBody = {
       body.style.backgroundPosition = `calc(${calcX}px - 5vw) calc(${calcY}px - 5vh)`;
     }
     body.addEventListener("mousemove", (e) => {
-      window.requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
         transformElement(e.clientX, e.clientY);
       });
     });
