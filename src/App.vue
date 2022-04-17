@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import GlobalSwitch from "./components/common/GlobalSwitch/GlobalSwitch.vue";
+import GlobalSwitch from "@/components/business/GlobalSwitch";
 export default {
   name: "App",
   data() {
