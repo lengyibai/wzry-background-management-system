@@ -37,22 +37,18 @@ export function login(form) {
     });
   });
 }
-//####········用户详情········####//
+//####········自动登录········####//
 export function userInfo(form) {
   return getUserInfo(form);
 }
+
 //####········登出········####//
 export function logout(id) {
   const token = localStorage.getItem("token");
   return new Promise((resolve) => {
-    if (token) {
-      // 清除数据库token
-      updateUser(id, { token: "" });
-      tip(200, "退出成功");
-      resolve({ code: 200, msg: "退出成功" });
-    } else {
-      tip(401, "token验证失败");
-      resolve({ code: 401, msg: "token验证失败" });
-    }
+    // 清除数据库token
+    updateUser(id, { token: "" });
+    tip(200, "退出成功");
+    resolve({ code: 200, msg: "退出成功" });
   });
 }
