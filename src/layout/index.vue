@@ -63,7 +63,7 @@ export default {
 .footbar-enter-active,
 .appMain-leave-active,
 .appMain-enter-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 .layout {

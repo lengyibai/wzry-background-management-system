@@ -60,7 +60,7 @@ export default {
     left: 0;
     height: 150%;
     bottom: -6px;
-    transition: left 0.5s;
+    transition: left 0.25s;
   }
   .title {
     text-align: center;
@@ -68,7 +68,7 @@ export default {
     font-size: 25px;
     flex: 1;
     color: var(--theme-font-dark);
-    transition: color 0.25s 0.25s;
+    transition: color 0.25s 0.1s;
   }
 }
 .active {

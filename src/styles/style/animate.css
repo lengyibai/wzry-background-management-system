@@ -6,11 +6,11 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 
 .fade-move {
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 
 .fade-leave-active {
@@ -29,7 +29,7 @@
 
 .sidebar-leave-active,
 .sidebar-enter-active {
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 
 /* 侧边栏切换路由 */
@@ -44,5 +44,5 @@
 
 .sidebar_router-leave-active,
 .sidebar_router-enter-active {
-  transition: all 0.5s;
+  transition: all 0.25s;
 }

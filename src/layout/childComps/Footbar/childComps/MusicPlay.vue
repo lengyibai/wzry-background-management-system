@@ -115,7 +115,7 @@ export default {
   width: 0%;
   height: 5px;
   background-color: var(--theme-font-dark);
-  transition: all 0.5s ease-out;
+  transition: all 0.25s ease-out;
   &:hover {
     background-color: var(--red);
   }

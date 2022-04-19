@@ -48,6 +48,6 @@ export default {
 
 .epigraph-leave-active,
 .epigraph-enter-active {
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 </style>

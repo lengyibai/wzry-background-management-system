@@ -127,8 +127,4 @@ export default {
 .message-leave-to {
   transform: translateX(-50%) translateY(-100%) !important;
 }
-.message-enter-active,
-.message-leave-active {
-  transition: all 0.5s;
-}
 </style>

@@ -41,10 +41,6 @@ export default {
 };
 </script>
 <style scoped lang="less">
-* {
-  transition: all 0.5s;
-  font-size: var(--font-s-20);
-}
 .UserMenu {
   width: 240px;
   height: 100%;
@@ -61,6 +57,7 @@ export default {
       margin-left: var(--gap-15);
     }
     span {
+      font-size: var(--font-s-20);
       color: var(--theme-font-dark);
       margin-right: var(--gap-15);
     }

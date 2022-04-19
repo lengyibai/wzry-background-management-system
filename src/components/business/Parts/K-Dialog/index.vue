@@ -67,7 +67,7 @@ export default {
 /* 缩放 */
 .default-enter,
 .default-leave-active {
-  transform: scale(0.9);
+  transform: scale(0.75);
   opacity: 0;
 }
 
@@ -75,19 +75,19 @@ export default {
   transition: all 0.25s cubic-bezier(0.08, 0.82, 0.17, 1);
 }
 .default-leave-active {
-  transition: all 0.2s 0.5s;
+  transition: all 0.25s 0.25s;
 }
 
 /* 由下而上 */
 .confirm-enter,
 .confirm-leave-active {
-  transform: translateY(20%);
+  transform: translateY(25%);
 }
 
 .confirm-enter-active {
-  transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.27);
+  transition: all 0.25s cubic-bezier(0.26, 0.89, 0.29, 1.4);
 }
 .confirm-leave-active {
-  transition: all 0.1s 0.25s;
+  transition: all 0.25s 0.25s;
 }
 </style>

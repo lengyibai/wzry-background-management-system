@@ -25,7 +25,7 @@ export default {
   display: inline-block;
   vertical-align: middle;
   fill: var(--theme-font-dark);
-  transition: transform 0.5s;
+  transition: all 0.25s;
   &:hover {
     fill: var(--theme-font-light);
   }
