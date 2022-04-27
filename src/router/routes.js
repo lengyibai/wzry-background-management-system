@@ -14,7 +14,8 @@ export default [
       title: "登录",
       noVerify: true,
     },
-    component: () => import("@/views/base/Login"),
+    component: () =>
+      import(/* webpackChunkName: "login" */ "@/views/base/Login"),
     hidden: true,
     leftHidden: true,
   },
@@ -29,7 +30,8 @@ export default [
           title: "主页",
           icon: "HOME",
         },
-        component: () => import("@/views/base/Home"),
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/base/Home"),
       },
     ],
     leftHidden: true,
@@ -49,37 +51,56 @@ export default [
           title: "职业",
           icon: "PROFESSION",
         },
-        component: () => import("@/views/Hero"),
+        component: () =>
+          import(/* webpackChunkName: "profession" */ "@/views/Hero"),
         redirect: "/hero/profession/tank",
         children: [
           {
             path: "tank",
-            component: () => import("@/views/Hero/childViews/Tank"),
+            component: () =>
+              import(
+                /* webpackChunkName: "profession/tank" */ "@/views/Hero/childViews/Tank"
+              ),
             meta: { title: "坦克", icon: "TANK" },
           },
           {
             path: "warrior",
-            component: () => import("@/views/Hero/childViews/Warrior"),
+            component: () =>
+              import(
+                /* webpackChunkName: "profession/warrior" */ "@/views/Hero/childViews/Warrior"
+              ),
             meta: { title: "战士", icon: "WARRIOR" },
           },
           {
             path: "assassin",
-            component: () => import("@/views/Hero/childViews/Assassin"),
+            component: () =>
+              import(
+                /* webpackChunkName: "profession/assassin" */ "@/views/Hero/childViews/Assassin"
+              ),
             meta: { title: "刺客", icon: "ASSASSIN" },
           },
           {
             path: "mage",
-            component: () => import("@/views/Hero/childViews/Mage"),
+            component: () =>
+              import(
+                /* webpackChunkName: "profession/mage" */ "@/views/Hero/childViews/Mage"
+              ),
             meta: { title: "法师", icon: "MAGE" },
           },
           {
             path: "striker",
-            component: () => import("@/views/Hero/childViews/Striker"),
+            component: () =>
+              import(
+                /* webpackChunkName: "profession/striker" */ "@/views/Hero/childViews/Striker"
+              ),
             meta: { title: "射手", icon: "STRIKER" },
           },
           {
             path: "assist",
-            component: () => import("@/views/Hero/childViews/Assist"),
+            component: () =>
+              import(
+                /* webpackChunkName: "profession/assist" */ "@/views/Hero/childViews/Assist"
+              ),
             meta: { title: "辅助", icon: "ASSIST" },
           },
         ],
@@ -102,37 +123,56 @@ export default [
           title: "类型",
           icon: "CATEGORY",
         },
-        component: () => import("@/views/Equip"),
+        component: () =>
+          import(/* webpackChunkName: "category" */ "@/views/Equip"),
         redirect: "/equip/category/attack",
         children: [
           {
             path: "attack",
-            component: () => import("@/views/Equip/childViews/Attack"),
+            component: () =>
+              import(
+                /* webpackChunkName: "category/attack" */ "@/views/Equip/childViews/Attack"
+              ),
             meta: { title: "攻击", icon: "ATTACK" },
           },
           {
             path: "magic",
-            component: () => import("@/views/Equip/childViews/Magic"),
+            component: () =>
+              import(
+                /* webpackChunkName: "category/magic" */ "@/views/Equip/childViews/Magic"
+              ),
             meta: { title: "法术", icon: "MAGIC" },
           },
           {
             path: "defense",
-            component: () => import("@/views/Equip/childViews/Defense"),
+            component: () =>
+              import(
+                /* webpackChunkName: "category/defense" */ "@/views/Equip/childViews/Defense"
+              ),
             meta: { title: "防御", icon: "DEFENSE" },
           },
           {
             path: "move",
-            component: () => import("@/views/Equip/childViews/Move"),
+            component: () =>
+              import(
+                /* webpackChunkName: "category/move" */ "@/views/Equip/childViews/Move"
+              ),
             meta: { title: "移动", icon: "MOVE" },
           },
           {
             path: "jungle",
-            component: () => import("@/views/Equip/childViews/Jungle"),
+            component: () =>
+              import(
+                /* webpackChunkName: "category/jungle" */ "@/views/Equip/childViews/Jungle"
+              ),
             meta: { title: "打野", icon: "JUNGLE" },
           },
           {
             path: "migration",
-            component: () => import("@/views/Equip/childViews/Migration"),
+            component: () =>
+              import(
+                /* webpackChunkName: "category/migration" */ "@/views/Equip/childViews/Migration"
+              ),
             meta: { title: "游走", icon: "MIGRATION" },
           },
         ],
@@ -151,7 +191,8 @@ export default [
           title: "铭文",
           icon: "EPIGRAPH",
         },
-        component: () => import("@/views/Epigraph"),
+        component: () =>
+          import(/* webpackChunkName: "epigraph" */ "@/views/Epigraph"),
       },
     ],
     leftHidden: true,
@@ -167,7 +208,10 @@ export default [
     children: [
       {
         path: "hero",
-        component: () => import("@/views/System/childViews/Hero"),
+        component: () =>
+          import(
+            /* webpackChunkName: "system/hero" */ "@/views/System/childViews/Hero"
+          ),
         meta: {
           title: "添加英雄",
           icon: "ADDHERO",
@@ -175,7 +219,10 @@ export default [
       },
       {
         path: "skin",
-        component: () => import("@/views/System/childViews/Skin"),
+        component: () =>
+          import(
+            /* webpackChunkName: "system/skin" */ "@/views/System/childViews/Skin"
+          ),
         meta: {
           title: "添加皮肤",
           icon: "ADDSKIN",
@@ -183,7 +230,10 @@ export default [
       },
       {
         path: "equip",
-        component: () => import("@/views/System/childViews/Equip"),
+        component: () =>
+          import(
+            /* webpackChunkName: "system/equip" */ "@/views/System/childViews/Equip"
+          ),
         meta: {
           title: "添加装备",
           icon: "ADDEQUIP",
@@ -191,7 +241,10 @@ export default [
       },
       {
         path: "epigraph",
-        component: () => import("@/views/System/childViews/Epigraph"),
+        component: () =>
+          import(
+            /* webpackChunkName: "system/epigraph" */ "@/views/System/childViews/Epigraph"
+          ),
         meta: {
           title: "添加铭文",
           icon: "ADDEPIGRAPH",
@@ -199,7 +252,10 @@ export default [
       },
       {
         path: "components",
-        component: () => import("@/views/System/childViews/Components"),
+        component: () =>
+          import(
+            /* webpackChunkName: "system/components" */ "@/views/System/childViews/Components"
+          ),
         meta: {
           title: "项目组件",
           icon: "COMPONENTS",
@@ -213,7 +269,8 @@ export default [
     meta: {
       title: "404 NotFound",
     },
-    component: () => import("@/views/base/NotFound"),
+    component: () =>
+      import(/* webpackChunkName: "NotFound" */ "@/views/base/NotFound"),
     hidden: true,
     leftHidden: true,
   },
