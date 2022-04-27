@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import EpigraphCategory from "./childComps/epigraph-category/index.vue";
+import EpigraphCategory from "./childComps/epigraph-category";
 export default {
   name: "Epigraph",
   components: { EpigraphCategory },

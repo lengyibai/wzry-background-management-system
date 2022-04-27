@@ -16,7 +16,7 @@
 import Breadcrumb from "./Breadcrumb";
 import Hamburger from "./Hamburger";
 import UserMenu from "./UserMenu";
-import Search from "./Search/index.vue";
+import Search from "./Search";
 
 export default {
   components: {
