@@ -39,72 +39,16 @@ export default [
   {
     path: "/hero",
     component: Layout,
-    redirect: "/Hero/profession",
-    meta: {
-      title: "英雄",
-      icon: "HERO",
-    },
+    redirect: "",
     children: [
       {
-        path: "profession",
+        path: "",
         meta: {
-          title: "职业",
-          icon: "PROFESSION",
+          title: "英雄",
+          icon: "HERO",
         },
         component: () =>
           import(/* webpackChunkName: "profession" */ "@/views/Hero"),
-        redirect: "/hero/profession/tank",
-        children: [
-          {
-            path: "tank",
-            component: () =>
-              import(
-                /* webpackChunkName: "profession/tank" */ "@/views/Hero/childViews/Tank"
-              ),
-            meta: { title: "坦克", icon: "TANK" },
-          },
-          {
-            path: "warrior",
-            component: () =>
-              import(
-                /* webpackChunkName: "profession/warrior" */ "@/views/Hero/childViews/Warrior"
-              ),
-            meta: { title: "战士", icon: "WARRIOR" },
-          },
-          {
-            path: "assassin",
-            component: () =>
-              import(
-                /* webpackChunkName: "profession/assassin" */ "@/views/Hero/childViews/Assassin"
-              ),
-            meta: { title: "刺客", icon: "ASSASSIN" },
-          },
-          {
-            path: "mage",
-            component: () =>
-              import(
-                /* webpackChunkName: "profession/mage" */ "@/views/Hero/childViews/Mage"
-              ),
-            meta: { title: "法师", icon: "MAGE" },
-          },
-          {
-            path: "striker",
-            component: () =>
-              import(
-                /* webpackChunkName: "profession/striker" */ "@/views/Hero/childViews/Striker"
-              ),
-            meta: { title: "射手", icon: "STRIKER" },
-          },
-          {
-            path: "assist",
-            component: () =>
-              import(
-                /* webpackChunkName: "profession/assist" */ "@/views/Hero/childViews/Assist"
-              ),
-            meta: { title: "辅助", icon: "ASSIST" },
-          },
-        ],
-        hidden: true,
       },
     ],
   },
