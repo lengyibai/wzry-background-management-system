@@ -20,7 +20,9 @@
               style="font-size: var(--font-s-25); font-weight: bold"
               >{{ onlyOneChild.meta.title[0] }}</span
             >
-            <span>{{ onlyOneChild.meta && onlyOneChild.meta.title }}</span>
+            <span class="cursor-pointer">{{
+              onlyOneChild.meta && onlyOneChild.meta.title
+            }}</span>
           </div>
         </el-menu-item>
       </app-link>

@@ -6,19 +6,21 @@
         <router-view />
       </transition>
     </div>
-    <!-- 英雄和装备的右边都会额外展示一个侧边栏，传递对方的路由进行排斥 -->
-    <Sidebar path="/equip" />
+    <Sidebar />
   </div>
 </template>
 
 <script>
+import Sidebar from "./childComps/Sidebar";
 export default {
   name: "Hero",
+  components: { Sidebar },
 };
 </script>
 <style scoped lang="less">
 .Hero {
   width: 100%;
+  height: 100%;
   display: flex;
   .HeroMain {
     flex: 1;
