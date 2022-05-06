@@ -45,7 +45,7 @@ export default {
     max-height: 100%;
     transition: all 0.5s;
     &:hover {
-      transform: scale(1.3) !important;
+      transform: scale(1.35) !important;
     }
   }
 }
