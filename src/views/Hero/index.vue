@@ -1,12 +1,10 @@
 <template>
   <!-- 主体结构 -->
   <div class="Hero">
-    <div class="HeroMain">
-      <transition name="sidebar_router" mode="out-in">
-        <router-view />
-      </transition>
-    </div>
-    <Sidebar />
+    <div class="HeroMain"></div>
+    <transition name="sidebar">
+      <Sidebar v-show="show" />
+    </transition>
   </div>
 </template>
 
@@ -14,7 +12,17 @@
 import Sidebar from "./childComps/Sidebar";
 export default {
   name: "Hero",
+  data() {
+    return {
+      show: false,
+    };
+  },
   components: { Sidebar },
+  mounted() {
+    setTimeout(() => {
+      this.show = true;
+    }, 250);
+  },
 };
 </script>
 <style scoped lang="less">

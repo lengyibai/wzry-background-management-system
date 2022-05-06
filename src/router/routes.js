@@ -55,72 +55,16 @@ export default [
   {
     path: "/equip",
     component: Layout,
-    redirect: "/equip/category",
-    meta: {
-      title: "装备",
-      icon: "EQUIP",
-    },
+    redirect: "",
     children: [
       {
-        path: "category",
+        path: "",
         meta: {
-          title: "类型",
-          icon: "CATEGORY",
+          title: "装备",
+          icon: "EQUIP",
         },
         component: () =>
           import(/* webpackChunkName: "category" */ "@/views/Equip"),
-        redirect: "/equip/category/attack",
-        children: [
-          {
-            path: "attack",
-            component: () =>
-              import(
-                /* webpackChunkName: "category/attack" */ "@/views/Equip/childViews/Attack"
-              ),
-            meta: { title: "攻击", icon: "ATTACK" },
-          },
-          {
-            path: "magic",
-            component: () =>
-              import(
-                /* webpackChunkName: "category/magic" */ "@/views/Equip/childViews/Magic"
-              ),
-            meta: { title: "法术", icon: "MAGIC" },
-          },
-          {
-            path: "defense",
-            component: () =>
-              import(
-                /* webpackChunkName: "category/defense" */ "@/views/Equip/childViews/Defense"
-              ),
-            meta: { title: "防御", icon: "DEFENSE" },
-          },
-          {
-            path: "move",
-            component: () =>
-              import(
-                /* webpackChunkName: "category/move" */ "@/views/Equip/childViews/Move"
-              ),
-            meta: { title: "移动", icon: "MOVE" },
-          },
-          {
-            path: "jungle",
-            component: () =>
-              import(
-                /* webpackChunkName: "category/jungle" */ "@/views/Equip/childViews/Jungle"
-              ),
-            meta: { title: "打野", icon: "JUNGLE" },
-          },
-          {
-            path: "migration",
-            component: () =>
-              import(
-                /* webpackChunkName: "category/migration" */ "@/views/Equip/childViews/Migration"
-              ),
-            meta: { title: "游走", icon: "MIGRATION" },
-          },
-        ],
-        hidden: true,
       },
     ],
   },

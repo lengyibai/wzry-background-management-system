@@ -1,19 +1,28 @@
 <template>
   <!-- 主体结构 -->
   <div class="Equip">
-    <div class="EquipMain">
-      <transition name="sidebar_router" mode="out-in">
-        <router-view />
-      </transition>
-    </div>
-    <!-- 英雄和装备的右边都会额外展示一个侧边栏，传递对方的路由进行排斥 -->
-    <Sidebar path="/hero" />
+    <div class="EquipMain"></div>
+    <transition name="sidebar">
+      <Sidebar v-show="show" />
+    </transition>
   </div>
 </template>
 
 <script>
+import Sidebar from "./childComps/Sidebar";
 export default {
   name: "Equip",
+  data() {
+    return {
+      show: false,
+    };
+  },
+  components: { Sidebar },
+  mounted() {
+    setTimeout(() => {
+      this.show = true;
+    }, 250);
+  },
 };
 </script>
 <style scoped lang="less">

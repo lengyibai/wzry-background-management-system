@@ -133,9 +133,15 @@ export default {
       /* 将音效加入播放队列 */
       const id = new Date().getTime();
       this.sounds.push({ id: id, name: this.sound_name });
-      this.$nextTick(() => {
-        const audio = this.$refs[id][0];
-        audio.play();
+      setTimeout(() => {
+        this.$nextTick(() => {
+          try {
+            const audio = this.$refs[id][0];
+            audio.play();
+          } catch (error) {
+            /*  */
+          }
+        });
       });
     },
   },
