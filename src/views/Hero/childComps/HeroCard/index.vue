@@ -43,7 +43,7 @@ export default {
     position: absolute;
     min-width: 100%;
     max-height: 100%;
-    transition: all 0.25s;
+    transition: all 0.5s;
     &:hover {
       transform: scale(1.3) !important;
     }
