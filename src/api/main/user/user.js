@@ -18,7 +18,7 @@ export function login(form) {
     /* 获取用户表 */
     return new Promise((resolve) => {
       // 判断是否存在用户
-      if (!res.data.length) {
+      if (!res?.data.length) {
         tip(401, "帐号不存在");
         resolve({ code: 401, msg: "帐号不存在" });
       } else if (form.password === res.data[0].password) {
