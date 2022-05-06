@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     toggle(index) {
-      this.$click("tab");
+      this.$click("tab" + index); //由于连续点击同样的音效名会触发重复，所以追加索引号实现唯一性
       this.currentIndex = index;
     },
   },

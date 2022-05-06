@@ -96,9 +96,11 @@ export default {
   methods: {
     //#####··········全局点击音效··········#####//
     click(name) {
+      console.log(name);
       if (this.click_name === name) return;
       this.click_name = name;
       const obj = {
+        default: ["默认"],
         tab: ["tab"],
         login: ["login"],
         模式选择: ["/home"],

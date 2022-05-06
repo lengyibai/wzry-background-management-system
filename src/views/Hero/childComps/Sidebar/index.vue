@@ -4,7 +4,7 @@
       class="hero-type cursor-pointer"
       :class="{ active: item.name === currentName }"
       v-for="(item, index) in hero_type"
-      @click="select(item.name)"
+      @click="select(item.name, index)"
       :key="index"
     >
       <span v-html="icon[item.icon]"></span>
@@ -38,8 +38,8 @@ export default {
     },
   },
   methods: {
-    select(name) {
-      console.log(name);
+    select(name, index) {
+      this.$click("默认" + index);
       this.currentName = name;
     },
   },

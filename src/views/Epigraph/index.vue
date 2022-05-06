@@ -2,8 +2,8 @@
   <!-- 主体结构 -->
   <div class="Epigraph">
     <transition name="epigraph">
-      <epigraph-category v-show="show_epigraph"
-    /></transition>
+      <epigraph-category v-show="show_epigraph" />
+    </transition>
     <div class="EpigraphMain"></div>
   </div>
 </template>
