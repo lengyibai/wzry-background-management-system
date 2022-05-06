@@ -25,10 +25,6 @@ export default {
   data() {
     return {};
   },
-  created() {
-    console.log(this.data);
-  },
-  components: {},
   methods: {},
 };
 </script>
