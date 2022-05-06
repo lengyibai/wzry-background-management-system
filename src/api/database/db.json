@@ -5,13 +5,15 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "token": "1651847"
+      "token": "1651853"
     }
   ],
   "heroList": [
     {
+      "id": 67,
       "name": "鬼谷子",
       "headimg": "http://lengyibai.gitee.io/wzry/hero/67/67.png",
+      "cover": "http://lengyibai.gitee.io/wzry/hero/67/feng_mian.jpg",
       "poster": "http://lengyibai.gitee.io/wzry/hero/67/hai_bao.jpg",
       "mark": "万物有灵",
       "profession": "辅助",
@@ -23,6 +25,11 @@
       "effect": "60%",
       "difficulty": "50%",
       "time": "2017-06-29",
+      "offset": {
+        "top": "10%",
+        "left": "-40%",
+        "transform": "scale(1.2)"
+      },
       "skins": [
         {
           "name": "阿莫斯公爵",

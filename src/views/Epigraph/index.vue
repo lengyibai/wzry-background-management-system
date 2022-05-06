@@ -32,7 +32,6 @@ export default {
   flex-direction: column;
   .EpigraphMain {
     flex: 1;
-    padding-right: calc(var(--gap-25) * 10);
   }
 }
 

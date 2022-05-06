@@ -3,13 +3,13 @@
   <div class="Equip">
     <div class="EquipMain"></div>
     <transition name="sidebar">
-      <Sidebar v-show="show" />
+      <EquipSidebar v-show="show" />
     </transition>
   </div>
 </template>
 
 <script>
-import Sidebar from "./childComps/Sidebar";
+import EquipSidebar from "./childComps/EquipSidebar";
 export default {
   name: "Equip",
   data() {
@@ -17,7 +17,7 @@ export default {
       show: false,
     };
   },
-  components: { Sidebar },
+  components: { EquipSidebar },
   mounted() {
     setTimeout(() => {
       this.show = true;
@@ -31,7 +31,7 @@ export default {
   display: flex;
   .EquipMain {
     flex: 1;
-    padding-right: calc(var(--gap-25) * 10);
+    padding-right: calc(var(--gap-25) * 8);
   }
 }
 </style>

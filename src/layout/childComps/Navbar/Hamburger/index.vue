@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     toggleClick() {
-      this.$click("收起侧边栏");
+      this.$click("收起侧边栏" + this.isActive);
       this.isActive = !this.isActive;
       this.$bus.$emit("collapse");
     },

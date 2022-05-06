@@ -1,5 +1,5 @@
 <template>
-  <div class="Sidebar">
+  <div class="EquipSidebar">
     <div
       class="hero-type cursor-pointer"
       :class="{ active: item.name === currentName }"
@@ -15,18 +15,18 @@
 <script>
 import icon from "@/assets/icon/svg/index.js";
 export default {
-  name: "Sidebar",
+  name: "EquipSidebar",
   data() {
     return {
       currentName: "全部",
       hero_type: [
         { name: "全部", icon: "ALL" },
-        { name: "坦克", icon: "TANK" },
-        { name: "战士", icon: "WARRIOR" },
-        { name: "刺客", icon: "ASSASSIN" },
-        { name: "法师", icon: "MAGE" },
-        { name: "射手", icon: "STRIKER" },
-        { name: "辅助", icon: "ASSIST" },
+        { name: "攻击", icon: "ATTACK" },
+        { name: "法术", icon: "MAGIC" },
+        { name: "防御", icon: "DEFENSE" },
+        { name: "移动", icon: "MOVE" },
+        { name: "打野", icon: "JUNGLE" },
+        { name: "游走", icon: "MIGRATION" },
       ],
     };
   },
@@ -46,7 +46,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.Sidebar {
+.EquipSidebar {
   position: absolute;
   display: flex;
   flex-direction: column;
