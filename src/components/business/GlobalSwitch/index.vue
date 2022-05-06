@@ -27,6 +27,7 @@ export default {
       show_loading: false, //是否显示
 
       //#····音效相关相关····#//
+      click_name: "", //点击的标识，用于解决重复点击会重复播放问题
       sound_name: "default", //音效名
       sounds: [], //音效队列
       sound: {
@@ -95,6 +96,8 @@ export default {
   methods: {
     //#####··········全局点击音效··········#####//
     click(name) {
+      if (this.click_name === name) return;
+      this.click_name = name;
       const obj = {
         tab: ["tab"],
         login: ["login"],

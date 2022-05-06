@@ -44,7 +44,6 @@ export function userInfo(form) {
 
 //####········登出········####//
 export function logout(id) {
-  const token = localStorage.getItem("token");
   return new Promise((resolve) => {
     // 清除数据库token
     updateUser(id, { token: "" });
