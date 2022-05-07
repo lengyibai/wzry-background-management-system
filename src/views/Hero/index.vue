@@ -5,7 +5,7 @@
       <lyb-grid
         gap="15px"
         v-if="hero_list.length"
-        :count="5"
+        :count="6"
         :eqhMultiple="0.64"
       >
         <div class="box" v-for="(item, index) in hero_list" :key="index">

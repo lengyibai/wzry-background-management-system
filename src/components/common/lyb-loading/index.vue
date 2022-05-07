@@ -49,6 +49,7 @@ export default {
   height: 100vh;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
+  z-index: 999;
   img {
     position: absolute;
     width: 40vw;

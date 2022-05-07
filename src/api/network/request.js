@@ -45,7 +45,7 @@ server.interceptors.response.use(
   (res) => {
     setTimeout(() => {
       Vue.prototype.$lybLoad.close();
-    }, 1000);
+    }, 500);
     return res;
   },
   () => {

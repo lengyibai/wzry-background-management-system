@@ -161,10 +161,25 @@ const particle = {
   },
 }; */
 
+const maskGradient = {
+  inserted(el) {
+    const mask = document.createElement("div");
+    el.style.position = "relative";
+    mask.style.cssText = `
+    position: absolute;
+    inset:0;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 50%);
+    pointer-events: none;
+    `;
+    el.appendChild(mask);
+  },
+};
+
 let directives = {
   parallaxVideo,
   parallaxBody,
   particle,
+  maskGradient,
 };
 export default {
   install(Vue) {

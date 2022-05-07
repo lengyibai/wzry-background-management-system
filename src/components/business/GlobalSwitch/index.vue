@@ -136,7 +136,9 @@ export default {
         this.$nextTick(() => {
           try {
             const audio = this.$refs[id][0];
-            audio.play();
+            audio.play().catch(() => {
+              console.warn("用户需要与网页交互才能播放音效");
+            });
           } catch (error) {
             /*  */
           }

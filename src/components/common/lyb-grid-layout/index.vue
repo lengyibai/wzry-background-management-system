@@ -25,22 +25,13 @@ export default {
   name: "lyb-grid",
   mounted() {
     this.updateHeight();
-    window.addEventListener(
-      "resize",
-      function () {
-        const box = document.querySelectorAll(".box");
-        box.forEach((item) => {
-          item.style.height = item.offsetWidth / this.eqhMultiple + "px";
-        });
-      }.bind(this),
-    );
+    window.addEventListener("resize", this.updateHeight.bind(this));
   },
   methods: {
     updateHeight() {
       const box = document.querySelectorAll(".box");
       box.forEach((item) => {
         //只对新加的盒子设置高度
-        if (item.offsetHeight) return;
         item.style.height = item.offsetWidth / this.eqhMultiple + "px";
       });
     },

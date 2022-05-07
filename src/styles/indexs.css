@@ -6,7 +6,8 @@
 @import url("./style/style.css");
 
 :root {
-  --white: rgba(255, 255, 255, 0.75);
+  --gray:rgba(255, 255, 255, 0.75);
+  --white: #fff;
   --black: #333;
   --red: #e74c3c;
   --orange: #e67e22;
