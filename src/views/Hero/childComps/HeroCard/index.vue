@@ -1,15 +1,18 @@
 <template>
   <div class="HeroCard cursor-pointer" v-maskGradient>
     <div class="id">No.{{ data.id }}</div>
+    <div class="select-mask">
+      <img :src="data.head_img" alt="" class="head" />
+      <h1 class="view cursor-pointer">查看详情</h1>
+    </div>
     <img
-      class="cursor-pointer"
+      class="bg"
       :src="data.cover"
       :style="{
         top: data.offset.top,
         left: data.offset.left,
         transform: data.offset.transform,
       }"
-      alt=""
     />
     <div class="bottom">
       <div class="name">{{ data.name }}</div>
@@ -43,11 +46,23 @@ export default {
   height: 100%;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.25);
-  transition: all 0.25s cubic-bezier(0, 0.88, 0.52, 1.67);
+  transition: all 0.35s cubic-bezier(0, 0.88, 0.52, 1.67);
   box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.75);
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.75);
+    .select-mask {
+      opacity: 1;
+      transition: all 0.5s 0.25s;
+      .head {
+        transform: scale(1);
+        transition: all 0.5s 0.35s;
+      }
+      .view {
+        height: 50px;
+        transition: all 0.5s 0.35s;
+      }
+    }
     .bottom {
       @keyframes springbackL {
         33% {
@@ -90,11 +105,42 @@ export default {
     color: var(--white);
     margin: var(--gap-15);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
   }
-  img {
+  .select-mask {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.5s;
+    .head {
+      border-radius: 50%;
+      width: 50%;
+      margin-bottom: var(--gap-15);
+      transition: all 0.5s 0.25s;
+      transform: scale(0);
+    }
+    .view {
+      height: 0;
+      overflow: hidden;
+      color: var(--white);
+      transition: all 0.5s 0.25s;
+      &:hover {
+        transition: all 0.1s;
+        color: var(--blue);
+      }
+    }
+  }
+  .bg {
     position: absolute;
     min-width: 100%;
     max-height: 100%;
+    pointer-events: none;
   }
   .bottom {
     display: flex;
@@ -105,6 +151,7 @@ export default {
     padding: var(--gap-15);
     flex-direction: column;
     align-items: center;
+    pointer-events: none;
     .name {
       width: fit-content;
       color: var(--white);

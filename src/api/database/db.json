@@ -5,14 +5,14 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "token": "1651942"
+      "token": "1651943"
     }
   ],
   "heroList": [
     {
       "id": 67,
       "name": "鬼谷子",
-      "headimg": "http://lengyibai.gitee.io/wzry/hero/67/67.png",
+      "head_img": "http://lengyibai.gitee.io/wzry/hero/67/67.png",
       "cover": "http://lengyibai.gitee.io/wzry/hero/67/feng_mian.jpg",
       "poster": "http://lengyibai.gitee.io/wzry/hero/67/hai_bao.jpg",
       "mark": "万物有灵",
