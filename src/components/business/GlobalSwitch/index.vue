@@ -148,9 +148,3 @@ export default {
   },
 };
 </script>
-<style scoped lang="less">
-.GlobalSwitch {
-  width: 100%;
-  height: 100%;
-}
-</style>

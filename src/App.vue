@@ -23,4 +23,13 @@ export default {
   width: 100vw;
   height: 100vh;
 }
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s 0.25s;
+}
 </style>
