@@ -16,12 +16,12 @@ export default {
   data() {
     return {
       y: {
-        tank: 0,
-        mage: 70,
-        warrior: 140,
-        assist: 210,
-        assassin: 280,
-        striker: 350,
+        坦克: 0,
+        法师: 70,
+        战士: 140,
+        辅助: 210,
+        刺客: 280,
+        射手: 350,
       },
     };
   },

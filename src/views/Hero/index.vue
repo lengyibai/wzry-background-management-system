@@ -15,8 +15,12 @@
         </lyb-grid>
       </transition>
     </div>
+    <!-- 英雄职业分类侧边栏 -->
     <transition name="sidebar">
       <HeroSidebar v-show="show" />
+    </transition>
+    <transition name="sidebar">
+      <HeroDetail :data="hero_list[0]" />
     </transition>
   </div>
 </template>
@@ -26,8 +30,9 @@
 //接口信息：{ 获取用户信息，修改用户 }
 import { heroList } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
-import HeroSidebar from "./childComps/HeroSidebar";
 import HeroCard from "./childComps/HeroCard";
+import HeroDetail from "./childComps/HeroDetail";
+import HeroSidebar from "./childComps/HeroSidebar";
 export default {
   name: "Hero",
   data() {
@@ -36,7 +41,7 @@ export default {
       hero_list: [],
     };
   },
-  components: { HeroSidebar, HeroCard },
+  components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
     heroList().then((res) => {
       this.hero_list = res.data;

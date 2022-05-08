@@ -76,7 +76,7 @@ export default {
     color: var(--theme-font-dark);
   }
   .no-redirect {
-    color: var(--theme-font-light);
+    color: var(--white);
     cursor: text;
   }
 }

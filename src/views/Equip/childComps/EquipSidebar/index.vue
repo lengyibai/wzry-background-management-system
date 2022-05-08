@@ -68,7 +68,7 @@ export default {
     );
     transition: all 0.25s;
     &:hover {
-      color: var(--theme-font-light);
+      color: var(--white);
       background-image: linear-gradient(
         -25deg,
         rgba(34, 58, 94, 0) 25%,
@@ -81,7 +81,7 @@ export default {
   }
 }
 .active {
-  color: var(--theme-font-light) !important;
+  color: var(--white) !important;
   background-image: linear-gradient(
     -25deg,
     rgba(34, 58, 94, 0) 25%,

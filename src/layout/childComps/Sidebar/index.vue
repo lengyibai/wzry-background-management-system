@@ -22,7 +22,7 @@
       :default-active="activeMenu"
       background-color="transparent"
       text-color="var(--theme-font-dark)"
-      active-text-color="var(--theme-font-light)"
+      active-text-color="var(--white)"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
       @select="$click"

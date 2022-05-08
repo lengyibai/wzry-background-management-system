@@ -6,7 +6,7 @@
         :default-active="activeMenu"
         background-color="transparent"
         text-color="var(--theme-font-dark)"
-        active-text-color="var(--theme-font-light)"
+        active-text-color="var(--white)"
         @select="$click"
       >
         <!-- 菜单 -->

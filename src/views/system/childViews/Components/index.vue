@@ -40,12 +40,12 @@
     <div>
       <!-- 英雄职业 -->
       <ChildComps class="flex">
-        <K-HeroSort occ="tank" />
-        <K-HeroSort occ="mage" />
-        <K-HeroSort occ="warrior" />
-        <K-HeroSort occ="assist" />
-        <K-HeroSort occ="assassin" />
-        <K-HeroSort occ="striker" />
+        <K-HeroSort occ="坦克" />
+        <K-HeroSort occ="法师" />
+        <K-HeroSort occ="战士" />
+        <K-HeroSort occ="辅助" />
+        <K-HeroSort occ="刺客" />
+        <K-HeroSort occ="射手" />
       </ChildComps>
       <!-- 英雄属性 -->
       <ChildComps class="flex">

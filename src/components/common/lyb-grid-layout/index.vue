@@ -1,6 +1,7 @@
 <template>
   <div
     class="lyb-grid"
+    ref="lybGrid"
     :style="{ gridTemplateColumns: 'repeat(' + count + ', 1fr)', gridGap: gap }"
   >
     <slot></slot>
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     updateHeight() {
-      const box = document.querySelectorAll(".box");
+      const box = this.$refs.lybGrid.querySelectorAll(".box");
       box.forEach((item) => {
         //只对新加的盒子设置高度
         item.style.height = item.offsetWidth / this.eqhMultiple + "px";

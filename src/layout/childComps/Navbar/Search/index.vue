@@ -27,7 +27,7 @@ export default {
   fill: var(--theme-font-dark);
   transition: all 0.25s;
   &:hover {
-    fill: var(--theme-font-light);
+    fill: var(--white);
   }
 }
 </style>

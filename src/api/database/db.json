@@ -5,7 +5,7 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "token": "1651998"
+      "token": "1652011"
     }
   ],
   "heroList": [
@@ -20,6 +20,11 @@
       "location": "进攻辅助",
       "specialty": "团控",
       "period": "均衡",
+      "energy": "魔道",
+      "height": "150",
+      "identity": "博学者",
+      "camp": "云梦泽",
+      "area": "大河流域",
       "survival": "50%",
       "attack": "20%",
       "effect": "60%",
