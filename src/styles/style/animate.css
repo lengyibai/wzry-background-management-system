@@ -5,12 +5,9 @@
 }
 
 .fade-enter-active,
-.fade-leave-active {
-  transition: all 0.25s;
-}
-
+.fade-leave-active,
 .fade-move {
-  transition: all 0.25s;
+  transition: all 0.5s;
 }
 
 .fade-leave-active {

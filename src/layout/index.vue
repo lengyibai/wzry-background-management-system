@@ -103,7 +103,6 @@ export default {
 /* 路由视图动画 */
 .appMain-enter {
   opacity: 0;
-  transform: translateX(100%);
 }
 .appMain-leave-to {
   opacity: 0;
