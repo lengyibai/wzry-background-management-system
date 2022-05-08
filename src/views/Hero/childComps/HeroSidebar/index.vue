@@ -55,6 +55,7 @@ export default {
   width: 200px;
   height: 100%;
   border-left: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.5);
   .hero-type {
     display: flex;
     align-items: center;
