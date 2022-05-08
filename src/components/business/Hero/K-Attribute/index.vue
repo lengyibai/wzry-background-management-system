@@ -6,7 +6,7 @@
       <i
         :style="{
           backgroundColor: bgc[attr],
-          width: length,
+          width: progress,
         }"
       ></i>
     </div>
@@ -27,6 +27,7 @@ export default {
   name: "KAttribute",
   data() {
     return {
+      progress: "0%",
       y: {
         survival: "0 -170px",
         attack: "-30px -170px",
@@ -46,6 +47,11 @@ export default {
         difficulty: "上手难度",
       },
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.progress = this.length;
+    }, 1250);
   },
 };
 </script>
@@ -79,7 +85,7 @@ export default {
       height: 100%;
       background-color: #fff;
       border-radius: 0 5px 5px 0;
-      transition: all 0.5s 1s;
+      transition: all 0.75s;
     }
   }
 }

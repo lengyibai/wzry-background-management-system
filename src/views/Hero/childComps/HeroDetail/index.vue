@@ -81,14 +81,14 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.show_info = true;
       const list = this.$refs.left.querySelectorAll(".info");
       list.forEach((item, index) => {
         item.style.transitionDelay = `${index / 10}s`;
         setTimeout(() => {
           item.style.transform = "translateX(0)";
-        }, 500);
+        }, 250);
       });
+      this.show_info = true;
     }, 1000);
   },
   components: {},
