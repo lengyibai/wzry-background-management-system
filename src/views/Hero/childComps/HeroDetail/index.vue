@@ -5,49 +5,49 @@
       backgroundImage: 'url(' + data.poster + ')',
     }"
   >
-    <div class="left">
+    <div class="left" ref="left">
       <div class="name">
-        <span>{{ data.name }}</span>
+        <span>{{ data.name || "未知" }}</span>
         <div class="box">
-          <span>{{ data.mark }}</span>
+          <span>{{ data.mark || "未知" }}</span>
           <span>BACKGROUND</span>
         </div>
       </div>
       <div class="info">
         <LybIcon :imgUrl="require('./img/定位.svg')" right="5px" />定位：{{
-          data.location
+          data.location || "未知"
         }}
       </div>
       <div class="info">
         <LybIcon :imgUrl="require('./img/特长.svg')" right="5px" />特长：{{
-          data.specialty
+          data.specialty || "未知"
         }}
       </div>
       <div class="info">
         <LybIcon :imgUrl="require('./img/时期.svg')" right="5px" />时期：{{
-          data.period
+          data.period || "未知"
         }}
       </div>
       <div class="info">
         <LybIcon :imgUrl="require('./img/阵营.svg')" right="5px" />阵营：{{
-          data.camp
+          data.camp || "未知"
         }}
       </div>
       <div class="info">
         <LybIcon :imgUrl="require('./img/区域.svg')" right="5px" />区域：{{
-          data.area
+          data.area || "未知"
         }}
       </div>
       <div class="info">
         <LybIcon :imgUrl="require('./img/身高.svg')" right="5px" />身高：{{
-          data.height
+          data.height || "未知"
         }}CM
       </div>
       <div class="info">
         <LybIcon
           :imgUrl="require('./img/上架时间.svg')"
           right="5px"
-        />上架时间：{{ data.time }}
+        />上架时间：{{ data.time || "未知" }}
       </div>
     </div>
     <div class="right">
@@ -74,6 +74,15 @@ export default {
   name: "HeroDetail",
   data() {
     return {};
+  },
+  mounted() {
+    const list = this.$refs.left.querySelectorAll(".info");
+    list.forEach((item, index) => {
+      item.style.transitionDelay = `${index / 10}s`;
+      setTimeout(() => {
+        item.style.transform = "translateX(0)";
+      }, 750);
+    });
   },
   components: {},
   methods: {},
@@ -138,6 +147,8 @@ export default {
       color: var(--white);
       font-size: var(--font-s-25);
       margin-bottom: var(--gap-15);
+      transform: translateX(-100%);
+      transition: all 0.5s;
     }
   }
   .right {

@@ -21,7 +21,7 @@ export default {
     },
     length: {
       type: String,
-      default: "50%",
+      default: "0%",
     },
   },
   name: "KAttribute",
@@ -79,6 +79,7 @@ export default {
       height: 100%;
       background-color: #fff;
       border-radius: 0 5px 5px 0;
+      transition: all 0.5s 0.75s;
     }
   }
 }
