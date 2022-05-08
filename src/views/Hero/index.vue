@@ -10,18 +10,16 @@
           :eqhMultiple="0.64"
         >
           <div class="box" v-for="(item, index) in hero_list" :key="index">
-            <HeroCard :data="item" />
+            <HeroCard :data="item" @view="viewClick" />
           </div>
         </lyb-grid>
       </transition>
     </div>
     <!-- 英雄职业分类侧边栏 -->
     <transition name="sidebar">
-      <HeroSidebar v-show="show" />
+      <HeroSidebar v-show="show_HeroSidebar" />
     </transition>
-    <transition name="sidebar">
-      <HeroDetail :data="hero_list[0]" />
-    </transition>
+    <HeroDetail v-model="show_HeroDetail" :data="hero_list[0]" />
   </div>
 </template>
 
@@ -37,7 +35,8 @@ export default {
   name: "Hero",
   data() {
     return {
-      show: false,
+      show_HeroSidebar: false,
+      show_HeroDetail: false,
       hero_list: [],
     };
   },
@@ -49,8 +48,13 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.show = true;
+      this.show_HeroSidebar = true;
     }, 250);
+  },
+  methods: {
+    viewClick() {
+      this.show_HeroDetail = true;
+    },
   },
 };
 </script>

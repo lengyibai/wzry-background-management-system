@@ -1,69 +1,73 @@
 <template>
-  <div
-    class="HeroDetail"
-    :style="{
-      backgroundImage: 'url(' + data.poster + ')',
-    }"
-  >
-    <transition name="fade">
-      <div class="left" ref="left" v-show="show_info">
-        <div class="name">
-          <span>{{ data.name || "未知" }}</span>
-          <div class="box">
-            <span>{{ data.mark || "未知" }}</span>
-            <span>BACKGROUND</span>
+  <transition name="clip">
+    <div
+      class="HeroDetail"
+      @click="hide"
+      :style="{
+        backgroundImage: 'url(' + data.poster + ')',
+      }"
+      v-if="value"
+    >
+      <transition name="fade">
+        <div class="left" ref="left" v-show="show_info">
+          <div class="name">
+            <span>{{ data.name || "未知" }}</span>
+            <div class="box">
+              <span>{{ data.mark || "未知" }}</span>
+              <span>BACKGROUND</span>
+            </div>
+          </div>
+          <div class="info">
+            <LybIcon :imgUrl="require('./img/定位.svg')" right="5px" />定位：{{
+              data.location || "未知"
+            }}
+          </div>
+          <div class="info">
+            <LybIcon :imgUrl="require('./img/特长.svg')" right="5px" />特长：{{
+              data.specialty || "未知"
+            }}
+          </div>
+          <div class="info">
+            <LybIcon :imgUrl="require('./img/时期.svg')" right="5px" />时期：{{
+              data.period || "未知"
+            }}
+          </div>
+          <div class="info">
+            <LybIcon :imgUrl="require('./img/阵营.svg')" right="5px" />阵营：{{
+              data.camp || "未知"
+            }}
+          </div>
+          <div class="info">
+            <LybIcon :imgUrl="require('./img/区域.svg')" right="5px" />区域：{{
+              data.area || "未知"
+            }}
+          </div>
+          <div class="info">
+            <LybIcon :imgUrl="require('./img/身高.svg')" right="5px" />身高：{{
+              data.height || "未知"
+            }}CM
+          </div>
+          <div class="info">
+            <LybIcon
+              :imgUrl="require('./img/上架时间.svg')"
+              right="5px"
+            />上架时间：{{ data.time || "未知" }}
           </div>
         </div>
-        <div class="info">
-          <LybIcon :imgUrl="require('./img/定位.svg')" right="5px" />定位：{{
-            data.location || "未知"
-          }}
-        </div>
-        <div class="info">
-          <LybIcon :imgUrl="require('./img/特长.svg')" right="5px" />特长：{{
-            data.specialty || "未知"
-          }}
-        </div>
-        <div class="info">
-          <LybIcon :imgUrl="require('./img/时期.svg')" right="5px" />时期：{{
-            data.period || "未知"
-          }}
-        </div>
-        <div class="info">
-          <LybIcon :imgUrl="require('./img/阵营.svg')" right="5px" />阵营：{{
-            data.camp || "未知"
-          }}
-        </div>
-        <div class="info">
-          <LybIcon :imgUrl="require('./img/区域.svg')" right="5px" />区域：{{
-            data.area || "未知"
-          }}
-        </div>
-        <div class="info">
-          <LybIcon :imgUrl="require('./img/身高.svg')" right="5px" />身高：{{
-            data.height || "未知"
-          }}CM
-        </div>
-        <div class="info">
-          <LybIcon
-            :imgUrl="require('./img/上架时间.svg')"
-            right="5px"
-          />上架时间：{{ data.time || "未知" }}
-        </div>
-      </div>
-    </transition>
-    <transition name="fade">
-      <div class="right" v-show="show_info">
-        <div class="title">英雄属性</div>
+      </transition>
+      <transition name="fade">
+        <div class="right" v-show="show_info">
+          <div class="title">英雄属性</div>
 
-        <K-HeroSort class="HeroSort" :occ="data.profession" />
-        <K-Attribute attr="survival" :length="data.survival" />
-        <K-Attribute attr="attack" :length="data.attack" />
-        <K-Attribute attr="skill" :length="data.skill" />
-        <K-Attribute attr="difficulty" :length="data.difficulty" />
-      </div>
-    </transition>
-  </div>
+          <K-HeroSort class="HeroSort" :occ="data.profession" />
+          <K-Attribute attr="survival" :length="data.survival" />
+          <K-Attribute attr="attack" :length="data.attack" />
+          <K-Attribute attr="skill" :length="data.skill" />
+          <K-Attribute attr="difficulty" :length="data.difficulty" />
+        </div>
+      </transition>
+    </div>
+  </transition>
 </template>
 <script>
 export default {
@@ -74,25 +78,39 @@ export default {
         return {};
       },
     },
+    value: {
+      type: Boolean,
+      default: false,
+    },
   },
   name: "HeroDetail",
   data() {
     return { show_info: false };
   },
-  mounted() {
-    setTimeout(() => {
-      const list = this.$refs.left.querySelectorAll(".info");
-      list.forEach((item, index) => {
-        item.style.transitionDelay = `${index / 10}s`;
+  watch: {
+    value(v) {
+      if (v) {
         setTimeout(() => {
-          item.style.transform = "translateX(0)";
-        }, 250);
-      });
-      this.show_info = true;
-    }, 1000);
+          const list = this.$refs.left.querySelectorAll(".info");
+          list.forEach((item, index) => {
+            item.style.transitionDelay = `${index / 10}s`;
+            setTimeout(() => {
+              item.style.transform = "translateX(0)";
+            }, 250);
+          });
+          this.show_info = true;
+        }, 1000);
+      } else {
+        this.show_info = false;
+      }
+    },
   },
   components: {},
-  methods: {},
+  methods: {
+    hide() {
+      this.$emit("input", false);
+    },
+  },
 };
 </script>
 <style scoped lang="less">
@@ -185,5 +203,14 @@ export default {
       margin-bottom: var(--gap-25);
     }
   }
+}
+
+/* 缩小放大 */
+.clip-enter-active {
+  animation: clip-in 0.75s;
+}
+
+.clip-leave-active {
+  animation: clip-out 0.75s;
 }
 </style>

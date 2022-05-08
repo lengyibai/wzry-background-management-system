@@ -5,6 +5,7 @@
       <img :src="data.head_img" alt="" class="head" />
       <h1
         class="view cursor-pointer"
+        @click="viewClick"
         @mouseenter="lineActive = true"
         @mouseleave="lineActive = false"
         v-textHoverColor
@@ -44,7 +45,12 @@ export default {
       lineActive: false,
     };
   },
-  methods: {},
+  methods: {
+    //#####··········查看详情··········#####//
+    viewClick() {
+      this.$emit("view");
+    },
+  },
 };
 </script>
 <style scoped lang="less">
