@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <transition name="clip" mode="out-in">
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </transition>
     <!-- 全局开关 -->
     <GlobalSwitch />
@@ -25,11 +27,11 @@ export default {
 }
 
 .clip-enter-active {
-  animation: clip-in 1s;
+  animation: clip-in 0.5s;
 }
 
 .clip-leave-active {
-  animation: clip-out 1s 0.75s;
+  animation: clip-out 1.5s 0.75s;
 }
 
 @keyframes clip-in {

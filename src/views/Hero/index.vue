@@ -2,16 +2,18 @@
   <!-- 主体结构 -->
   <div class="Hero">
     <div class="HeroMain">
-      <lyb-grid
-        gap="15px"
-        v-if="hero_list.length"
-        :count="6"
-        :eqhMultiple="0.64"
-      >
-        <div class="box" v-for="(item, index) in hero_list" :key="index">
-          <HeroCard :data="item" />
-        </div>
-      </lyb-grid>
+      <transition name="fade">
+        <lyb-grid
+          gap="15px"
+          v-if="hero_list.length"
+          :count="6"
+          :eqhMultiple="0.64"
+        >
+          <div class="box" v-for="(item, index) in hero_list" :key="index">
+            <HeroCard :data="item" />
+          </div>
+        </lyb-grid>
+      </transition>
     </div>
     <transition name="sidebar">
       <HeroSidebar v-show="show" />
