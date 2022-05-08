@@ -13,13 +13,42 @@
           <span>BACKGROUND SETTING</span>
         </div>
       </div>
-      <div class="info">上架时间：{{ data.time }}</div>
-      <div class="info">特长：{{ data.specialty }}</div>
-      <div class="info">定位：{{ data.location }}</div>
-      <div class="info">时期：{{ data.period }}</div>
-      <div class="info">身高：{{ data.height }}CM</div>
-      <div class="info">阵营：{{ data.camp }}</div>
-      <div class="info">区域：{{ data.area }}</div>
+      <div class="info">
+        <LybIcon :imgUrl="require('./img/定位.svg')" right="5px" />定位：{{
+          data.location
+        }}
+      </div>
+      <div class="info">
+        <LybIcon :imgUrl="require('./img/特长.svg')" right="5px" />特长：{{
+          data.specialty
+        }}
+      </div>
+      <div class="info">
+        <LybIcon :imgUrl="require('./img/时期.svg')" right="5px" />时期：{{
+          data.period
+        }}
+      </div>
+      <div class="info">
+        <LybIcon :imgUrl="require('./img/阵营.svg')" right="5px" />阵营：{{
+          data.camp
+        }}
+      </div>
+      <div class="info">
+        <LybIcon :imgUrl="require('./img/区域.svg')" right="5px" />区域：{{
+          data.area
+        }}
+      </div>
+      <div class="info">
+        <LybIcon :imgUrl="require('./img/身高.svg')" right="5px" />身高：{{
+          data.height
+        }}CM
+      </div>
+      <div class="info">
+        <LybIcon
+          :imgUrl="require('./img/上架时间.svg')"
+          right="5px"
+        />上架时间：{{ data.time }}
+      </div>
     </div>
     <div class="right">
       <div class="title">英雄属性</div>
@@ -69,8 +98,8 @@ export default {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     padding: var(--gap-25);
-    transform-origin: right center;
-    transform: translateX(35px) translateY(-10px) translateZ(75px)
+    transform-origin: left center;
+    transform: translateX(216px) translateY(0px) translateZ(335px)
       rotateY(45deg) rotateX(10deg) scale(0.8);
     .name {
       display: flex;
@@ -98,6 +127,7 @@ export default {
       }
     }
     .info {
+      display: flex;
       color: var(--white);
       font-size: var(--font-s-20);
     }
@@ -111,6 +141,9 @@ export default {
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    transform-origin: right center;
+    transform: translateX(-176px) translateY(0px) translateZ(250px)
+      rotateY(-45deg) rotateX(10deg) scale(0.8);
     .title {
       color: var(--white);
       font-size: var(--font-s-75);

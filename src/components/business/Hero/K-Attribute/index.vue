@@ -54,7 +54,7 @@ export default {
   display: flex;
   align-items: center;
   height: 26px;
-  margin-bottom: var(--gap-5);
+  margin-bottom: var(--gap-15);
   span {
     color: #fff;
     font-size: var(--font-s-16);
