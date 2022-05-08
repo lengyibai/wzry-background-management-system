@@ -3,7 +3,15 @@
     <div class="id">No.{{ data.id }}</div>
     <div class="select-mask">
       <img :src="data.head_img" alt="" class="head" />
-      <h1 class="view cursor-pointer" v-textHoverColor>查看详情</h1>
+      <h1
+        class="view cursor-pointer"
+        @mouseenter="lineActive = true"
+        @mouseleave="lineActive = false"
+        v-textHoverColor
+      >
+        查看详情
+      </h1>
+      <div class="line" :class="{ lineActive: lineActive }" ref="line"></div>
     </div>
     <img
       class="bg"
@@ -32,7 +40,9 @@ export default {
   },
   name: "HeroCard",
   data() {
-    return {};
+    return {
+      lineActive: false,
+    };
   },
   methods: {},
 };
@@ -118,6 +128,16 @@ export default {
     .view {
       color: var(--blue);
       transition: all 0.5s;
+    }
+
+    .line {
+      width: 0%;
+      height: 3px;
+      transition: all 0.25s;
+      background-color: var(--blue);
+    }
+    .lineActive {
+      width: 8em !important;
     }
   }
   .bg {
