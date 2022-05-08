@@ -161,7 +161,7 @@ const particle = {
   },
 }; */
 
-/* 底部渐变 */
+//#####··········底部渐变··········#####//
 const maskGradient = {
   inserted(el) {
     const mask = document.createElement("div");
@@ -176,7 +176,7 @@ const maskGradient = {
   },
 };
 
-/* 卡片扫光 */
+//#####··········卡片扫光··········#####//
 const sweepLight = {
   inserted(el, binding) {
     const auto = binding.value !== false ? true : false;
@@ -196,7 +196,6 @@ const sweepLight = {
     `;
     el.appendChild(light);
     if (auto) {
-      console.log(binding.value);
       light.style.transitionDelay = ` ${binding.value}s`;
       light.style.transform = `skewX(45deg) translateX(${
         -el.offsetWidth * 1.5
@@ -217,7 +216,7 @@ const sweepLight = {
   },
 };
 
-/* 打字机 */
+//#####··········打字机··········#####//
 const typewriter = {
   inserted(el, binding) {
     setTimeout(() => {
@@ -238,6 +237,35 @@ const typewriter = {
   },
 };
 
+//#####··········文字悬浮变色··········#####//
+const textHoverColor = {
+  inserted(el) {
+    const mask = document.createElement("div");
+    el.style.position = "relative";
+    mask.innerHTML = el.innerHTML;
+    mask.style.cssText = `
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    background-color: #fff;
+    transition: all 0.25s;
+    animation: light 3s infinite;
+    -webkit-background-clip: text;
+    clip-path: circle(75% at 50% 50%);
+    `;
+
+    el.appendChild(mask);
+    el.addEventListener("mouseenter", () => {
+      mask.style.clipPath = "circle(0% at 50% 50%)";
+    });
+    el.addEventListener("mouseleave", () => {
+      mask.style.clipPath = "circle(75% at 50% 50%)";
+    });
+  },
+};
+
 let directives = {
   parallaxVideo,
   parallaxBody,
@@ -245,6 +273,7 @@ let directives = {
   maskGradient,
   sweepLight,
   typewriter,
+  textHoverColor,
 };
 export default {
   install(Vue) {

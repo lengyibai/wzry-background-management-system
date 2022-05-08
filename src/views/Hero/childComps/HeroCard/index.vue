@@ -3,7 +3,7 @@
     <div class="id">No.{{ data.id }}</div>
     <div class="select-mask">
       <img :src="data.head_img" alt="" class="head" />
-      <h1 class="view cursor-pointer" v-typewriter="'查看详情'"></h1>
+      <h1 class="view cursor-pointer" v-textHoverColor>查看详情</h1>
     </div>
     <img
       class="bg"
@@ -54,11 +54,6 @@ export default {
     .select-mask {
       opacity: 1;
       transition: all 0.5s 0.25s;
-
-      .view {
-        height: 50px;
-        transition: all 0.5s 0.35s;
-      }
     }
     .bottom {
       @keyframes springbackL {
@@ -121,14 +116,8 @@ export default {
       margin-bottom: var(--gap-15);
     }
     .view {
-      height: 0;
-      overflow: hidden;
-      color: var(--white);
-      transition: all 0.5s 0.25s;
-      &:hover {
-        transition: all 0.1s;
-        color: var(--blue);
-      }
+      color: var(--blue);
+      transition: all 0.5s;
     }
   }
   .bg {
