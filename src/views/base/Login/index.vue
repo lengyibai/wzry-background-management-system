@@ -1,5 +1,6 @@
 <template>
   <div class="Login">
+    <div class="mask"></div>
     <div class="logo">
       <img src="@/assets/img/logo.png" alt="" />
     </div>
@@ -44,6 +45,7 @@ export default {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  transition: all 0.5s;
   .logo {
     position: absolute;
     top: 1vw;
