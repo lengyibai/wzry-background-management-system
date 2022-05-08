@@ -10,7 +10,7 @@
         <span>{{ data.name }}</span>
         <div class="box">
           <span>{{ data.mark }}</span>
-          <span>BACKGROUND SETTING</span>
+          <span>BACKGROUND</span>
         </div>
       </div>
       <div class="info">
@@ -53,7 +53,7 @@
     <div class="right">
       <div class="title">英雄属性</div>
 
-      <K-HeroSort :occ="data.profession" />
+      <K-HeroSort class="HeroSort" :occ="data.profession" />
       <K-Attribute attr="survival" :length="data.survival" />
       <K-Attribute attr="attack" :length="data.attack" />
       <K-Attribute attr="skill" :length="data.skill" />
@@ -101,9 +101,16 @@ export default {
     transform-origin: left center;
     transform: translateX(216px) translateY(0px) translateZ(335px)
       rotateY(45deg) rotateX(10deg) scale(0.8);
+    animation: updownleft 2.5s infinite;
+    @keyframes updownleft {
+      50% {
+        transform: translateX(216px) translateY(-20px) translateZ(335px)
+          rotateY(45deg) rotateX(10deg) scale(0.8);
+      }
+    }
     .name {
       display: flex;
-      flex-direction: row;
+      margin-bottom: var(--gap-25);
       > span {
         color: var(--white);
         font-size: var(--font-s-75);
@@ -129,7 +136,8 @@ export default {
     .info {
       display: flex;
       color: var(--white);
-      font-size: var(--font-s-20);
+      font-size: var(--font-s-25);
+      margin-bottom: var(--gap-15);
     }
   }
   .right {
@@ -139,14 +147,24 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
     padding: var(--gap-25);
     display: flex;
-    align-items: flex-end;
     flex-direction: column;
     transform-origin: right center;
-    transform: translateX(-176px) translateY(0px) translateZ(250px)
-      rotateY(-45deg) rotateX(10deg) scale(0.8);
+    transform: translateX(-185px) translateZ(275px) rotateY(-45deg)
+      rotateX(10deg) scale(0.8);
+    animation: updownright 2.5s 1s infinite;
+    @keyframes updownright {
+      50% {
+        transform: translateX(-185px) translateY(-20px) translateZ(275px)
+          rotateY(-45deg) rotateX(10deg) scale(0.8);
+      }
+    }
     .title {
       color: var(--white);
       font-size: var(--font-s-75);
+      margin-bottom: var(--gap-15);
+    }
+    .HeroSort {
+      margin-bottom: var(--gap-25);
     }
   }
 }

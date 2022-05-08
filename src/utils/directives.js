@@ -22,17 +22,16 @@ const parallaxVideo = {
 
 //####········图片········####//
 const parallaxBody = {
-  inserted() {
+  inserted(el) {
     const multiple = 10;
-    const body = document.body;
 
     function transformElement(x, y) {
-      let box = body.getBoundingClientRect();
+      let box = el.getBoundingClientRect();
       let calcY = (box.height / 2 - (y - box.y)) / multiple;
       let calcX = (box.width / 2 - (x - box.x)) / multiple;
-      body.style.backgroundPosition = `calc(${calcX}px - 5vw) calc(${calcY}px - 5vh)`;
+      el.style.backgroundPosition = `calc(${calcX}px - 5vw) calc(${calcY}px - 5vh)`;
     }
-    body.addEventListener("mousemove", (e) => {
+    el.addEventListener("mousemove", (e) => {
       requestAnimationFrame(function () {
         transformElement(e.clientX, e.clientY);
       });

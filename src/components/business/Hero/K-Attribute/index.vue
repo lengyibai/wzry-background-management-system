@@ -57,7 +57,7 @@ export default {
   margin-bottom: var(--gap-15);
   span {
     color: #fff;
-    font-size: var(--font-s-16);
+    font-size: var(--font-s-25);
     margin-right: 1em;
   }
   .ico {
