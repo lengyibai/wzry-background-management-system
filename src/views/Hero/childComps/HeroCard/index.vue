@@ -1,9 +1,9 @@
 <template>
-  <div class="HeroCard cursor-pointer" v-maskGradient>
+  <div class="HeroCard cursor-pointer" v-maskGradient v-sweepLight="false">
     <div class="id">No.{{ data.id }}</div>
     <div class="select-mask">
       <img :src="data.head_img" alt="" class="head" />
-      <h1 class="view cursor-pointer">查看详情</h1>
+      <h1 class="view cursor-pointer" v-typewriter="'查看详情'"></h1>
     </div>
     <img
       class="bg"
@@ -15,7 +15,7 @@
       }"
     />
     <div class="bottom">
-      <div class="name">{{ data.name }}</div>
+      <div class="name" v-typewriter="data.name"></div>
       <div class="mark">{{ data.mark }}</div>
     </div>
   </div>
@@ -54,10 +54,7 @@ export default {
     .select-mask {
       opacity: 1;
       transition: all 0.5s 0.25s;
-      .head {
-        transform: scale(1);
-        transition: all 0.5s 0.35s;
-      }
+
       .view {
         height: 50px;
         transition: all 0.5s 0.35s;
@@ -122,8 +119,6 @@ export default {
       border-radius: 50%;
       width: 50%;
       margin-bottom: var(--gap-15);
-      transition: all 0.5s 0.25s;
-      transform: scale(0);
     }
     .view {
       height: 0;

@@ -161,6 +161,7 @@ const particle = {
   },
 }; */
 
+/* 底部渐变 */
 const maskGradient = {
   inserted(el) {
     const mask = document.createElement("div");
@@ -175,11 +176,75 @@ const maskGradient = {
   },
 };
 
+/* 卡片扫光 */
+const sweepLight = {
+  inserted(el, binding) {
+    const auto = binding.value !== false ? true : false;
+    const light = document.createElement("div");
+    el.style.position = "relative";
+    light.style.cssText = `
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: ${el.offsetWidth / 3}px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      transform: skewX(45deg) translateX(${el.offsetWidth * 2}px);
+      transition: all 1s;
+      z-index: 3;
+      filter: blur(5px)
+    `;
+    el.appendChild(light);
+    if (auto) {
+      console.log(binding.value);
+      light.style.transitionDelay = ` ${binding.value}s`;
+      light.style.transform = `skewX(45deg) translateX(${
+        -el.offsetWidth * 1.5
+      }px)`;
+    } else {
+      el.addEventListener("mouseenter", () => {
+        light.style.transform = `skewX(45deg) translateX(${
+          -el.offsetWidth * 1.5
+        }px)`;
+      });
+
+      el.addEventListener("mouseleave", () => {
+        light.style.transform = `skewX(45deg) translateX(${
+          el.offsetWidth * 2
+        }px)`;
+      });
+    }
+  },
+};
+
+/* 打字机 */
+const typewriter = {
+  inserted(el, binding) {
+    setTimeout(() => {
+      let say = binding.value;
+      let timer;
+      let num = 0, //用于累加遍历字符串
+        text = ""; //用于输出在屏幕上
+      timer = setInterval(() => {
+        text += say[num]; //遍历输出的文字
+        el.innerHTML = text; //输出在屏幕上
+        num++;
+        if (num == say.length) {
+          //如果文字输出完毕
+          clearInterval(timer); //清除用于输出文字的计时器
+        }
+      }, 100);
+    }, 750);
+  },
+};
+
 let directives = {
   parallaxVideo,
   parallaxBody,
   particle,
   maskGradient,
+  sweepLight,
+  typewriter,
 };
 export default {
   install(Vue) {
