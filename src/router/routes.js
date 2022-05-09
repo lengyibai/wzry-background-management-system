@@ -98,7 +98,7 @@ export default [
         path: "hero",
         component: () =>
           import(
-            /* webpackChunkName: "system/hero" */ "@/views/System/childViews/Hero"
+            /* webpackChunkName: "system/hero" */ "@/views/system/childViews/Hero"
           ),
         meta: {
           title: "添加英雄",
@@ -109,7 +109,7 @@ export default [
         path: "skin",
         component: () =>
           import(
-            /* webpackChunkName: "system/skin" */ "@/views/System/childViews/Skin"
+            /* webpackChunkName: "system/skin" */ "@/views/system/childViews/Skin"
           ),
         meta: {
           title: "添加皮肤",
@@ -120,7 +120,7 @@ export default [
         path: "equip",
         component: () =>
           import(
-            /* webpackChunkName: "system/equip" */ "@/views/System/childViews/Equip"
+            /* webpackChunkName: "system/equip" */ "@/views/system/childViews/Equip"
           ),
         meta: {
           title: "添加装备",
@@ -131,7 +131,7 @@ export default [
         path: "epigraph",
         component: () =>
           import(
-            /* webpackChunkName: "system/epigraph" */ "@/views/System/childViews/Epigraph"
+            /* webpackChunkName: "system/epigraph" */ "@/views/system/childViews/Epigraph"
           ),
         meta: {
           title: "添加铭文",
@@ -142,7 +142,7 @@ export default [
         path: "components",
         component: () =>
           import(
-            /* webpackChunkName: "system/components" */ "@/views/System/childViews/Components"
+            /* webpackChunkName: "system/components" */ "@/views/system/childViews/Components"
           ),
         meta: {
           title: "项目组件",
