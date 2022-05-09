@@ -39,6 +39,10 @@ export default {
   transform: translateX(-185px) translateZ(275px) rotateY(-45deg) rotateX(10deg)
     scale(0.8);
   animation: updownright 2.5s 1s infinite;
+  &:hover {
+    animation: none;
+    transform: none;
+  }
   @keyframes updownright {
     50% {
       transform: translateX(-185px) translateY(-20px) translateZ(275px)

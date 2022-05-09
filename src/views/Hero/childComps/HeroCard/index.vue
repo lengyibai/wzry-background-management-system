@@ -1,19 +1,31 @@
 <template>
-  <div class="HeroCard cursor-pointer" v-maskGradient v-sweepLight="false">
+  <div
+    class="HeroCard cursor-pointer"
+    v-maskGradient
+    v-sweepLight="false"
+    @mouseenter="selectMaskShow"
+    @mouseleave="selectMaskHide"
+  >
     <div class="id">No.{{ data.id }}</div>
-    <div class="select-mask">
-      <img :src="data.head_img" alt="" class="head" />
-      <h1
-        class="view cursor-pointer"
-        @click="viewClick"
-        @mouseenter="lineActive = true"
-        @mouseleave="lineActive = false"
-        v-textHoverColor
-      >
-        查看详情
-      </h1>
-      <div class="line" :class="{ lineActive: lineActive }" ref="line"></div>
-    </div>
+    <transition name="fade">
+      <div class="select-mask" v-if="show">
+        <img :src="data.head_img" class="head" />
+        <h1
+          class="view cursor-pointer"
+          @click="viewClick"
+          @mouseenter="lineActive = true"
+          @mouseleave="lineActive = false"
+          v-textHoverColor
+        >
+          查看详情
+        </h1>
+        <div
+          class="line"
+          :class="{ lineActive: lineActive }"
+          ref="line"
+        ></div></div
+    ></transition>
+
     <img
       class="bg"
       :src="data.cover"
@@ -42,13 +54,25 @@ export default {
   name: "HeroCard",
   data() {
     return {
+      show: false,
       lineActive: false,
+      timer: null,
     };
   },
   methods: {
     //#####··········查看详情··········#####//
     viewClick() {
       this.$emit("view");
+    },
+
+    selectMaskShow() {
+      this.timer = setTimeout(() => {
+        this.show = true;
+      }, 250);
+    },
+    selectMaskHide() {
+      clearTimeout(this.timer);
+      this.show = false;
     },
   },
 };
@@ -67,10 +91,6 @@ export default {
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.75);
-    .select-mask {
-      opacity: 1;
-      transition: all 0.5s 0.25s;
-    }
     .bottom {
       @keyframes springbackL {
         33% {
@@ -124,16 +144,35 @@ export default {
     align-items: center;
     backdrop-filter: blur(10px);
     z-index: 2;
-    opacity: 0;
     transition: all 0.5s;
     .head {
       border-radius: 50%;
       width: 50%;
       margin-bottom: var(--gap-15);
+      animation: rotate 0.5s 0.3s;
+      @keyframes rotate {
+        35%,
+        65% {
+          transform: scale(0.75);
+        }
+        75% {
+          transform: scale(1.35);
+        }
+      }
     }
     .view {
       color: var(--blue);
       transition: all 0.5s;
+      animation: scale 0.25s 0.65s forwards;
+      transform: scale(0);
+      @keyframes scale {
+        75% {
+          transform: scale(1.25);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
     }
 
     .line {
