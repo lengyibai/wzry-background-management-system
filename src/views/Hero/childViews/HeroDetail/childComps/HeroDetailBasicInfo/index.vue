@@ -80,16 +80,21 @@ export default {
   padding: var(--gap-25);
   transform-origin: left center;
   transition: all 0.5s;
-  transform: translateX(216px) translateY(0px) translateZ(335px) rotateY(45deg)
-    rotateX(10deg) scale(0.8);
-  animation: updownleft 2.5s infinite;
-  &:hover {
-    animation: none;
-    transform: none;
-  }
+  animation: updownleft 2.5s 1s infinite, into 1s;
   @keyframes updownleft {
+    0%,
+    100% {
+      transform: translateX(216px) translateY(0px) translateZ(335px)
+        rotateY(45deg) rotateX(10deg) scale(0.8);
+    }
     50% {
       transform: translateX(216px) translateY(-20px) translateZ(335px)
+        rotateY(45deg) rotateX(10deg) scale(0.8);
+    }
+  }
+  @keyframes into {
+    100% {
+      transform: translateX(216px) translateY(0px) translateZ(335px)
         rotateY(45deg) rotateX(10deg) scale(0.8);
     }
   }
