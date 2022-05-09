@@ -29,8 +29,9 @@
 import { heroList } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroCard from "./childComps/HeroCard";
-import HeroDetail from "./childComps/HeroDetail";
 import HeroSidebar from "./childComps/HeroSidebar";
+//#####··········子页面··········#####//
+import HeroDetail from "./childViews/HeroDetail";
 export default {
   name: "Hero",
   data() {

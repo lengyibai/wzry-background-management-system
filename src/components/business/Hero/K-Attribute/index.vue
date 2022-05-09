@@ -49,9 +49,10 @@ export default {
     };
   },
   mounted() {
+    /* 为了显示时播放进度条动画 */
     setTimeout(() => {
       this.progress = this.length;
-    }, 1250);
+    }, 500);
   },
 };
 </script>
@@ -85,7 +86,7 @@ export default {
       height: 100%;
       background-color: #fff;
       border-radius: 0 5px 5px 0;
-      transition: all 0.75s;
+      transition: all 0.5s;
     }
   }
 }
