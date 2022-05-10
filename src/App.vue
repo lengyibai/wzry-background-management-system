@@ -18,7 +18,7 @@ export default {
   name: "App",
   data() {
     return {
-      TIME_WATERMARK_NOW: "5.10.10",
+      TIME_WATERMARK_NOW: "5.10.23",
     };
   },
   components: { GlobalSwitch },
