@@ -1,19 +1,35 @@
 <template>
   <transition name="clip">
-    <div
-      class="HeroDetail"
-      @click="hide"
-      :style="{
-        backgroundImage: 'url(' + data.poster + ')',
-      }"
-      v-if="value"
-    >
-      <transition name="fade">
-        <HeroDetailBasicInfo :data="data" v-if="show_info" />
-      </transition>
-      <transition name="fade">
-        <HeroDetAilattribute :data="data" v-if="show_info" />
-      </transition>
+    <div class="HeroDetail" v-if="value">
+      <div
+        class="hero"
+        @click="hide"
+        :style="{
+          backgroundImage: 'url(' + data.poster + ')',
+        }"
+      >
+        <transition name="fade">
+          <HeroDetailBasicInfo :data="data" v-if="show_info" />
+        </transition>
+        <transition name="fade">
+          <HeroDetAilattribute :data="data" v-if="show_info" />
+        </transition>
+      </div>
+
+      <div
+        class="hero"
+        @click="hide"
+        :style="{
+          backgroundImage: 'url(' + data.skins[1].img + ')',
+        }"
+      >
+        <transition name="fade">
+          <HeroDetailBasicInfo :data="data" v-if="show_info" />
+        </transition>
+        <transition name="fade">
+          <HeroDetAilattribute :data="data" v-if="show_info" />
+        </transition>
+      </div>
     </div>
   </transition>
 </template>
@@ -66,13 +82,21 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 2;
-  background: no-repeat center center fixed;
-  background-color: #333;
-  background-size: cover;
-  display: flex;
-  justify-content: space-between;
-  transform-style: preserve-3d;
-  perspective: 2000px;
+  overflow: auto;
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: no-repeat center center fixed;
+    background-color: #333;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    overflow: hidden;
+  }
 }
 
 /* 缩小放大 */

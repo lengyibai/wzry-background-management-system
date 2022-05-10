@@ -1,8 +1,8 @@
 //#####··········公共组件··········#####//
 import LybBgVideo from "./lyb-bg-video"; //视频背景
 import LybFlipBox from "./lyb-flip-box"; //卡片翻转
-import LybGridLayout from "./lyb-grid-layout";
-import LybIcon from "./lyb-icon";
+import LybGridLayout from "./lyb-grid-layout"; //Grid经典布局
+import LybIcon from "./lyb-icon"; //图标
 import LybLoading from "./lyb-loading"; //加载动画
 import LybMask from "./lyb-mask"; //蒙版
 
