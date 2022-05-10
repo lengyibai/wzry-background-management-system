@@ -9,8 +9,8 @@ export default {
       if (res.code === 200) {
         // 存储 token 到本地
         context.state.userStatus = true;
-        context.state.token = res.data.token;
-        window.localStorage.setItem("token", res.data.token);
+        context.state.wzryToken = res.data.wzryToken;
+        window.localStorage.setItem("wzryToken", res.data.wzryToken);
         // 获取用户信息
         context.state.userInfo = res.data;
         router.push("/");
@@ -21,13 +21,14 @@ export default {
   userInfo(context) {
     return new Promise((resolve) => {
       userInfo({
-        token: context.state.token,
+        wzryToken: context.state.wzryToken,
       })
         .then((res) => {
           // token 1000 秒后过期
           if (
             // res.data.length === 0 ||
-            context.state.token !== new Date().getTime().toString().slice(0, 7)
+            context.state.wzryToken !==
+            new Date().getTime().toString().slice(0, 7)
           )
             throw "请求失败";
           // 获取成功后存储用户信息

@@ -27,7 +27,7 @@ router.beforeEach((to, from, next) => {
     return;
   }
   /* 如果本地存在token，但状态为false，则自动登录 */
-  if (!store.state.userStatus && store.state.token) {
+  if (!store.state.userStatus && store.state.wzryToken) {
     store.dispatch("userInfo").then(() => {
       // 如果是想进入登录页面，则直接跳转到首页
       if (to.meta.noVerify) {
@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => {
     return;
   }
   /* 如果不存在token，则跳转登录 */
-  if (!store.state.token) {
+  if (!store.state.wzryToken) {
     // 如果是想进入登录页面，则直接进入
     if (to.meta.noVerify) {
       next();

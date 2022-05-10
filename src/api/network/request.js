@@ -37,7 +37,7 @@ export function deleteReq(url) {
 //####·······请求拦截器········####//
 server.interceptors.request.use((config) => {
   Vue.prototype.$lybLoad.show();
-  config.headers.authorization = localStorage.getItem("token");
+  config.headers.authorization = localStorage.getItem("wzryToken");
   return config;
 });
 //####·······响应拦截器········####//

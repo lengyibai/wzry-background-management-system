@@ -27,7 +27,7 @@ export function login(form) {
       } else if (form.password === res.data[0].password) {
         // 数据库写入token
         updateUser(form.id, {
-          token: new Date().getTime().toString().slice(0, 7),
+          wzryToken: new Date().getTime().toString().slice(0, 7),
         }).then((res) => {
           // 返回请求状态及数据
           resolve({ data: res.data, code: 200, msg: "登录成功" });
@@ -49,7 +49,7 @@ export function userInfo(form) {
 export function logout(id) {
   return new Promise((resolve) => {
     // 清除数据库token
-    updateUser(id, { token: "" });
+    updateUser(id, { wzryToken: "" });
     tip(200, "退出成功");
     resolve({ code: 200, msg: "退出成功" });
   });
