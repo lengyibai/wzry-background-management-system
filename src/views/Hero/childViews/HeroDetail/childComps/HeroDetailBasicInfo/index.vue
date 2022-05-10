@@ -80,6 +80,7 @@ export default {
   padding: var(--gap-25);
   transform-origin: left center;
   transition: all 0.5s;
+  transform: translateZ(335px);
   animation: updownleft 2.5s 1s infinite, into 1s;
   @keyframes updownleft {
     0%,

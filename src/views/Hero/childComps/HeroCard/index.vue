@@ -149,7 +149,7 @@ export default {
       border-radius: 50%;
       width: 50%;
       margin-bottom: var(--gap-15);
-      animation: rotate 0.5s 0.3s;
+      animation: rotate 0.5s 0.1s;
       @keyframes rotate {
         35%,
         65% {
@@ -163,7 +163,7 @@ export default {
     .view {
       color: var(--blue);
       transition: all 0.5s;
-      animation: scale 0.25s 0.65s forwards;
+      animation: scale 0.25s 0.45s forwards;
       transform: scale(0);
       @keyframes scale {
         75% {
