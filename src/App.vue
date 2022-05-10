@@ -5,6 +5,10 @@
     </transition>
     <!-- 全局开关 -->
     <GlobalSwitch />
+    <div class="watermark">
+      <span>当前版本：2022/5/10 21:40</span>
+      <span>最新版本：</span>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,11 @@ export default {
     return {};
   },
   components: { GlobalSwitch },
+  mounted() {
+    setInterval(() => {
+      console.log(window.TIME_WATERMARK);
+    }, 1000);
+  },
 };
 </script>
 <style scoped lang="less">
