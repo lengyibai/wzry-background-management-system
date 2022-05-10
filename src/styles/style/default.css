@@ -6,6 +6,9 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+html{
+  overflow: auto;
+}
 
 .clear-fix::after {
   clear: both;

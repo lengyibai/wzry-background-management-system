@@ -6,8 +6,8 @@
     <!-- 全局开关 -->
     <GlobalSwitch />
     <div class="watermark">
-      <span>当前版本：2022/5/10 21:40</span>
-      <span>最新版本：</span>
+      <p>当前版本：{{ TIME_WATERMARK_NOW }}</p>
+      <p>最新版本：{{ TIME_WATERMARK }}</p>
     </div>
   </div>
 </template>
@@ -17,13 +17,20 @@ import GlobalSwitch from "@/components/business/GlobalSwitch";
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      TIME_WATERMARK_NOW: "5.10.10",
+    };
   },
   components: { GlobalSwitch },
+  computed: {
+    TIME_WATERMARK() {
+      return window.TIME_WATERMARK;
+    },
+  },
   mounted() {
-    setInterval(() => {
-      console.log(window.TIME_WATERMARK);
-    }, 1000);
+    if (this.TIME_WATERMARK !== this.TIME_WATERMARK_NOW) {
+      // alert("当前并非最新项目，请拉取或重新clone");
+    }
   },
 };
 </script>
@@ -31,6 +38,14 @@ export default {
 #app {
   width: 100vw;
   height: 100vh;
+  .watermark {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 999;
+  }
 }
 
 .clip-enter-active {

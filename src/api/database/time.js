@@ -1,1 +1,1 @@
-window.TIME_WATERMARK = "2022.05.10 22:03";
+window.TIME_WATERMARK = "5.10.10";

@@ -2,7 +2,7 @@
 //####········视频········####//
 const parallaxVideo = {
   inserted(el, binding) {
-    const size = binding.value === "small" ? [15, 1.1] : [5, 1.25];
+    const size = binding.value === "small" ? [15, 1.1] : [5, 1.35];
     const multiple = size[0];
     const body = document.body;
     function transformElement(x, y) {
