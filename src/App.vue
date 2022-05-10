@@ -29,7 +29,9 @@ export default {
   },
   mounted() {
     if (this.TIME_WATERMARK !== this.TIME_WATERMARK_NOW) {
-      alert("当前并非最新项目，请拉取或重新clone替换");
+      alert(
+        "作者已推送最新代码至gitee，git pull或重新克隆进行更新\n如果自己是最新版，请尝试Ctrl + F5强制刷新\n如果依旧有问题，请提Issuse",
+      );
     }
   },
 };
