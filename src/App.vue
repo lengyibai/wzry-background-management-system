@@ -18,7 +18,7 @@ export default {
   name: "App",
   data() {
     return {
-      TIME_WATERMARK_NOW: "5.10.23",
+      TIME_WATERMARK_NOW: "5.11.0",
     };
   },
   components: { GlobalSwitch },
@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     if (this.TIME_WATERMARK !== this.TIME_WATERMARK_NOW) {
-      // alert("当前并非最新项目，请拉取或重新clone");
+      alert("当前并非最新项目，请拉取或重新clone替换");
     }
   },
 };
