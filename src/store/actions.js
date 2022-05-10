@@ -26,7 +26,7 @@ export default {
         .then((res) => {
           // token 1000 秒后过期
           if (
-            res.data.length === 0 ||
+            // res.data.length === 0 ||
             context.state.token !== new Date().getTime().toString().slice(0, 7)
           )
             throw "请求失败";
@@ -36,7 +36,7 @@ export default {
           resolve();
         })
         .catch(() => {
-          Vue.prototype.$tip("token已过期", "danger");
+          Vue.prototype.$tip("身份验证已过期，请重新登录", "danger");
           context.commit("clearToken");
         });
     });

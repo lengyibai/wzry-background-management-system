@@ -13,6 +13,6 @@
 
 > 首先`npm run serve`运行项目
 >
-> 再`npm run json-serve`启动本地服务器
+> 再`npm run wzry`启动本地服务器
 
 > 目前还在制作中，有优化的地方可以提出来，大家一起学习

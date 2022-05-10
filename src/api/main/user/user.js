@@ -17,8 +17,11 @@ export function login(form) {
   return getUserInfo({ id: form.id }).then((res) => {
     /* 获取用户表 */
     return new Promise((resolve) => {
-      // 判断是否存在用户
-      if (!res?.data.length) {
+      if (res === undefined) {
+        tip(404, "请求失败，请检查是否启动本地服务器：npm run wzry");
+        resolve({ code: 404, msg: "请求错误" });
+      } else if (!res?.data.length) {
+        // 判断是否存在用户
         tip(401, "帐号不存在");
         resolve({ code: 401, msg: "帐号不存在" });
       } else if (form.password === res.data[0].password) {
