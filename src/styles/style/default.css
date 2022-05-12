@@ -6,8 +6,12 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-html{
+html {
   overflow: auto;
+}
+
+.clear-fix {
+  zoom: 1;
 }
 
 .clear-fix::after {
@@ -17,10 +21,6 @@ html{
   width: 0;
   height: 0;
   visibility: hidden;
-}
-
-.clear-fix {
-  zoom: 1;
 }
 
 /* 滚动条整体背景 */
@@ -123,4 +123,8 @@ input {
   -moz-appearance: none;
   /* 在移动端iOS加上这个属性才能修改input样式 */
   appearance: none;
+}
+
+label {
+  margin-bottom: 0;
 }
