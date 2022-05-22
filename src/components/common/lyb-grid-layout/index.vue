@@ -24,13 +24,19 @@ export default {
     },
   },
   name: "lyb-grid",
+  data() {
+    return {
+      lybGrid: null,
+    };
+  },
   mounted() {
+    this.lybGrid = this.$refs.lybGrid;
     this.updateHeight();
     window.addEventListener("resize", this.updateHeight.bind(this));
   },
   methods: {
     updateHeight() {
-      const box = this.$refs.lybGrid.querySelectorAll(".box");
+      const box = this.lybGrid.querySelectorAll(".box");
       box.forEach((item) => {
         //只对新加的盒子设置高度
         item.style.height = item.offsetWidth / this.eqhMultiple + "px";
