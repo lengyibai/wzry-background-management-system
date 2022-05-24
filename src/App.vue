@@ -30,7 +30,7 @@ export default {
   mounted() {
     if (this.TIME_WATERMARK !== this.TIME_WATERMARK_NOW) {
       alert(
-        "作者已推送最新代码至gitee，git pull或重新克隆进行更新\n如果自己是最新版，请尝试Ctrl + F5强制刷新更新本地缓存",
+        "作者已推送最新代码至gitee，请git pull或重新克隆进行更新\n如果自己已是最新版，请尝试Ctrl + F5强制刷新更新本地缓存",
       );
     }
   },

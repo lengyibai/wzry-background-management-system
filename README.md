@@ -9,7 +9,6 @@
 >
 >更新至Vue-Cli5：`npm install -g @vue/cli@5`
 >
->如果依旧不能运行，尝试安装项目内提供的`node-v14.17.0-x64.msi`
 
 > 首先`npm run serve`运行项目
 >
