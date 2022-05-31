@@ -18,20 +18,27 @@ export default {
   name: "App",
   data() {
     return {
-      TIME_WATERMARK_NOW: "5.31.23",
+      LOCAL_VERSION: "5.31.23",
     };
   },
   components: { GlobalSwitch },
   computed: {
-    TIME_WATERMARK() {
-      return window.TIME_WATERMARK;
+    REMOTE_VERSION() {
+      return window.REMOTE_VERSION;
     },
   },
   mounted() {
-    if (this.TIME_WATERMARK !== this.TIME_WATERMARK_NOW) {
-      alert(
+    const local_version = this.LOCAL_VERSION.replaceAll(".", "");
+    const remote_version = this.REMOTE_VERSION.replaceAll(".", "");
+    const test = remote_version - local_version;
+    console.log(local_version, remote_version);
+    if (test > 0) {
+      this.$tip(
         "作者已推送最新代码至gitee，请git pull或重新克隆进行更新\n如果自己已是最新版，请尝试Ctrl + F5强制刷新更新本地缓存",
+        "warning",
       );
+    } else if (test < 0) {
+      this.$tip("只有作者才可以改版本号哦！", "danger");
     }
   },
 };

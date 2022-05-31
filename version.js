@@ -1,1 +1,1 @@
-window.TIME_WATERMARK = "5.31.23";
+window.REMOTE_VERSION = "5.31.23";
