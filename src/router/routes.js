@@ -15,7 +15,7 @@ export default [
       noVerify: true,
     },
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/base/Login"),
+      import(/* webpackChunkName: "login" */ "@/views/Base/Login"),
     hidden: true,
     leftHidden: true,
   },
@@ -31,7 +31,7 @@ export default [
           icon: "HOME",
         },
         component: () =>
-          import(/* webpackChunkName: "home" */ "@/views/base/Home"),
+          import(/* webpackChunkName: "home" */ "@/views/Base/Home"),
       },
     ],
     leftHidden: true,
@@ -88,7 +88,7 @@ export default [
   {
     path: "/system",
     component: Layout,
-    redirect: "/system/hero",
+    redirect: "/System/hero",
     meta: {
       title: "系统管理",
       icon: "SYSTEM",
@@ -98,7 +98,7 @@ export default [
         path: "hero",
         component: () =>
           import(
-            /* webpackChunkName: "system/hero" */ "@/views/system/childViews/Hero"
+            /* webpackChunkName: "system/hero" */ "@/views/System/childViews/Hero"
           ),
         meta: {
           title: "添加英雄",
@@ -109,7 +109,7 @@ export default [
         path: "skin",
         component: () =>
           import(
-            /* webpackChunkName: "system/skin" */ "@/views/system/childViews/Skin"
+            /* webpackChunkName: "system/skin" */ "@/views/System/childViews/Skin"
           ),
         meta: {
           title: "添加皮肤",
@@ -120,7 +120,7 @@ export default [
         path: "equip",
         component: () =>
           import(
-            /* webpackChunkName: "system/equip" */ "@/views/system/childViews/Equip"
+            /* webpackChunkName: "system/equip" */ "@/views/System/childViews/Equip"
           ),
         meta: {
           title: "添加装备",
@@ -131,7 +131,7 @@ export default [
         path: "epigraph",
         component: () =>
           import(
-            /* webpackChunkName: "system/epigraph" */ "@/views/system/childViews/Epigraph"
+            /* webpackChunkName: "system/epigraph" */ "@/views/System/childViews/Epigraph"
           ),
         meta: {
           title: "添加铭文",
@@ -142,7 +142,7 @@ export default [
         path: "components",
         component: () =>
           import(
-            /* webpackChunkName: "system/components" */ "@/views/system/childViews/Components"
+            /* webpackChunkName: "system/components" */ "@/views/System/childViews/Components"
           ),
         meta: {
           title: "项目组件",
@@ -158,7 +158,7 @@ export default [
       title: "404 NotFound",
     },
     component: () =>
-      import(/* webpackChunkName: "NotFound" */ "@/views/base/NotFound"),
+      import(/* webpackChunkName: "NotFound" */ "@/views/Base/NotFound"),
     hidden: true,
     leftHidden: true,
   },

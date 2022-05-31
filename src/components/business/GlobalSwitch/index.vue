@@ -103,9 +103,9 @@ export default {
         tab: ["tab"],
         login: ["login"],
         模式选择: ["/home"],
-        查看详情: ["/system/hero"],
-        皮肤相关: ["/system/skin"],
-        装备相关: ["/system/equip", "/equip"],
+        查看详情: ["/System/hero"],
+        皮肤相关: ["/System/skin"],
+        装备相关: ["/System/equip", "/equip"],
         英雄列表: ["/hero"],
         查看: ["查看"],
         确定: ["确定"],
@@ -116,7 +116,7 @@ export default {
         错误提示: ["错误提示"],
         确认弹窗: ["确认弹窗"],
         关闭抽屉: ["收起侧边栏"],
-        项目组件: ["/system/components"],
+        项目组件: ["/System/components"],
       };
 
       /* 获取点击触发的音效名 */
