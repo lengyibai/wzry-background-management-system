@@ -14,9 +14,9 @@ function tip(code, msg) {
 //#####··········基本··········#####//
 //####········登录········####//
 export function login(form) {
-  return getUserInfo({ id: form.id }).then((res) => {
-    /* 获取用户表 */
-    return new Promise((resolve) => {
+  /* 获取用户表 */
+  return new Promise((resolve) => {
+    return getUserInfo({ id: form.id }).then((res) => {
       if (res === undefined) {
         tip(404, "请求失败，请检查是否启动本地服务器：npm run wzry");
         resolve({ code: 404, msg: "请求错误" });

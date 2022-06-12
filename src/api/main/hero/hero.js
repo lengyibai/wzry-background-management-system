@@ -1,7 +1,7 @@
 // import Vue from "vue";
 
 //#####··········网络请求··········#####//
-//接口信息：{ 获取用户信息，修改用户 }
+//接口信息：{ 获取英雄信息 }
 import { getHeroInfo } from "./transfer.js";
 
 // function tip(code, msg) {
@@ -13,11 +13,7 @@ import { getHeroInfo } from "./transfer.js";
 // }
 
 //#####··········基本··········#####//
-//####········登录········####//
+//####········获取英雄列表········####//
 export function heroList() {
-  return getHeroInfo().then((res) => {
-    return new Promise((resolve) => {
-      resolve(res);
-    });
-  });
+  return getHeroInfo();
 }
