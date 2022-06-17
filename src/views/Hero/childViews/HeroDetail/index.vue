@@ -26,6 +26,7 @@
   </transition>
 </template>
 <script>
+//#####··········网络请求··········#####//
 //#####··········子组件··········#####//
 import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动视差背景
 import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
@@ -64,6 +65,7 @@ export default {
       }
     },
   },
+  created() {},
   methods: {
     hide() {
       this.$emit("input", false);

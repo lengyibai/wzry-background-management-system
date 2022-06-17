@@ -1,10 +1,30 @@
 import { getReq, postReq, patchReq, deleteReq } from "../../network/request.js";
 
 //#####··········GET请求··········#####//
-//####········获取英雄信息········####//
-export const getHeroInfo = (data = {}) => {
-  // let { id, _page, _limit, token } = data;
+// let { id, _page, _limit, token } = data;
+//####········获取英雄列表········####//
+export const getHeroList = (data = {}) => {
   return getReq("/heroList", data);
+};
+//####········获取英雄基本资料········####//
+export const getHeroBasics = (data = {}) => {
+  return getReq("/basics", data);
+};
+//####········获取英雄关系表········####//
+export const getHeroRelations = (data = {}) => {
+  return getReq("/relations", data);
+};
+//####········获取英雄关系树········####//
+export const getHeroAppellation = (data = {}) => {
+  return getReq("/appellation", data);
+};
+//####········获取英雄技能资料········####//
+export const getHeroSkills = (data = {}) => {
+  return getReq("/skills", data);
+};
+//####········获取英雄故事········####//
+export const getHeroStorys = (data = {}) => {
+  return getReq("/storys", data);
 };
 
 //#####··········POST请求··········#####//

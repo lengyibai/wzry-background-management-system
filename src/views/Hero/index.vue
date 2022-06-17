@@ -25,7 +25,7 @@
 
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{ 获取用户信息，修改用户 }
+//接口信息：{ 英雄id列表, 英雄基本资料, 英雄故事 }
 import { heroList } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroCard from "./childComps/HeroCard";
@@ -43,8 +43,16 @@ export default {
   },
   components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
+    /* Promise.allSettled([heroList()]).then((res) => {
+      this.hero_list = res[0].value.data.map((item, index) => {
+        console.log(res[1].value.data[index]);
+        return { ...item, ...res[1].value.data[index] };
+      });
+      console.log(this.hero_list);
+    }); */
     heroList().then((res) => {
       this.hero_list = res.data;
+      console.log(this.hero_list);
     });
   },
   mounted() {
