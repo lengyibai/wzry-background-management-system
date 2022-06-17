@@ -15,6 +15,7 @@ input {
   cursor: text;
 }
 
+/* *::-webkit-scrollbar { display:none } */
 /* 滚动条里面可以拖动的那部分 */
 *::-webkit-scrollbar-thumb {
   background-color: var(--theme-font-dark);
