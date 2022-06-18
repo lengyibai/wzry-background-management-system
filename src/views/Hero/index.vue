@@ -10,7 +10,7 @@
           :eqhMultiple="0.64"
         >
           <div class="box" v-for="(item, index) in hero_list" :key="index">
-            <HeroCard :data="item" @view="viewClick" />
+            <HeroCard :data="item" @view="viewClick(item.id)" />
           </div>
         </lyb-grid>
       </transition>
@@ -19,13 +19,21 @@
     <transition name="sidebar">
       <HeroSidebar v-show="show_HeroSidebar" />
     </transition>
-    <HeroDetail v-model="show_HeroDetail" :data="hero_list[0]" />
+
+    <transition name="clip">
+      <HeroDetail
+        v-model="show_HeroDetail"
+        v-if="show_HeroDetail"
+        :data="hero_list[0]"
+        :id="hero_id"
+      />
+    </transition>
   </div>
 </template>
 
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{ 英雄id列表, 英雄基本资料, 英雄故事 }
+//接口信息：{ 英雄列表 }
 import { heroList } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroCard from "./childComps/HeroCard";
@@ -36,23 +44,16 @@ export default {
   name: "Hero",
   data() {
     return {
-      show_HeroSidebar: false,
-      show_HeroDetail: false,
-      hero_list: [],
+      hero_id: 0, //点击查看详情时的英雄id
+      show_HeroSidebar: false, //显示英雄分类侧边栏
+      show_HeroDetail: false, //显示英雄详情
+      hero_list: [], //英雄列表
     };
   },
   components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
-    /* Promise.allSettled([heroList()]).then((res) => {
-      this.hero_list = res[0].value.data.map((item, index) => {
-        console.log(res[1].value.data[index]);
-        return { ...item, ...res[1].value.data[index] };
-      });
-      console.log(this.hero_list);
-    }); */
     heroList().then((res) => {
       this.hero_list = res.data;
-      console.log(this.hero_list);
     });
   },
   mounted() {
@@ -61,8 +62,10 @@ export default {
     }, 250);
   },
   methods: {
-    viewClick() {
+    //#####··········显示英雄详情··········#####//
+    viewClick(id) {
       this.show_HeroDetail = true;
+      this.hero_id = id;
     },
   },
 };

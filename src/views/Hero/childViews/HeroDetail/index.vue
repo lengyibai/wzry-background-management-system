@@ -1,44 +1,50 @@
 <template>
-  <transition name="clip">
-    <div class="HeroDetail" v-if="value" @click="hide">
-      <!--//%%%%%··········主要资料··········%%%%%//-->
-      <HeroDetailParallaxBg class="hero" :bg="data.poster">
-        <!-- 左侧详情 -->
-        <transition name="fade">
-          <HeroDetailBasicInfo :data="data" v-if="show_info" />
-        </transition>
-        <!-- 右侧详情 -->
-        <transition name="fade">
-          <HeroDetAilattribute :data="data" v-if="show_info" />
-        </transition>
-      </HeroDetailParallaxBg>
-      <!--//%%%%%··········故事··········%%%%%//-->
-      <HeroDetailParallaxBg class="hero" :bg="data.skins[1].img">
-        <div class="story">
-          <div class="title">TA的故事</div>
-          <p class="content" v-html="data.story"></p>
-
-          <div class="title">历史上的他</div>
-          <p class="content" v-html="data.history"></p>
-        </div>
-      </HeroDetailParallaxBg>
-    </div>
-  </transition>
+  <div class="HeroDetail" @click="hide">
+    <!--//%%%%%··········主要资料··········%%%%%//-->
+    <HeroDetailParallaxBg class="hero" :bg="data.poster">
+      <!-- 左侧详情 -->
+      <transition name="fade">
+        <HeroDetailBasicInfo :data="data" v-if="show_info" />
+      </transition>
+      <!-- 右侧详情 -->
+      <transition name="fade">
+        <HeroDetAilattribute :data="data" v-if="show_info" />
+      </transition>
+    </HeroDetailParallaxBg>
+    <!--//%%%%%··········故事··········%%%%%//-->
+    <HeroDetailParallaxBg class="hero" :bg="skins[1].img">
+      <div class="story">
+        <div class="title">TA的故事</div>
+        <p class="content" v-html="heroStorys.gamestory"></p>
+        <div class="title">历史上的他</div>
+        <p class="content" v-html="heroStorys.history"></p>
+      </div>
+    </HeroDetailParallaxBg>
+  </div>
 </template>
 <script>
 //#####··········网络请求··········#####//
+//接口信息：{  英雄皮肤，英雄故事 }
+import { heroSkins, heroStorys } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动视差背景
 import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
 import HeroDetAilattribute from "./childComps/HeroDetAilattribute"; //右侧属性详情
 export default {
   props: {
+    /* 英雄id */
+    id: {
+      type: Number,
+      default: 0,
+    },
+    /* 英雄基本数据 */
     data: {
       type: Object,
       default() {
         return {};
       },
     },
+    /* 控制是否显示英雄详情 */
     value: {
       type: Boolean,
       default: false,
@@ -46,7 +52,11 @@ export default {
   },
   name: "HeroDetail",
   data() {
-    return { show_info: false };
+    return {
+      show_info: false,
+      skins: [],
+      heroStorys: {},
+    };
   },
   components: {
     HeroDetailParallaxBg,
@@ -65,8 +75,20 @@ export default {
       }
     },
   },
-  created() {},
+  created() {
+    const params = { id: this.id };
+    //#####··········获取英雄皮肤··········#####//
+    heroSkins(params).then((res) => {
+      this.skins = res.data[0].data;
+      console.log(this.skins);
+    });
+    //#####··········获取英雄故事··········#####//
+    heroStorys(params).then((res) => {
+      this.heroStorys = res.data;
+    });
+  },
   methods: {
+    //#####··········隐藏自身··········#####//
     hide() {
       this.$emit("input", false);
     },

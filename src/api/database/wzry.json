@@ -5,7 +5,7 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "wzryToken": "1655491"
+      "wzryToken": "1655520"
     }
   ],
   "heroList": [
@@ -40,7 +40,7 @@
   "skills": [
     {
       "id": 67,
-      "skills": [
+      "data": [
         {
           "name": "纵横兵法",
           "desc": "鬼谷子脱离敌方视野3秒后，玄微子会再次归巢到法杖中，下一次普通攻击变更为强化攻击，强化攻击会造成300（+45%法术加成）点法术伤害并将范围内的敌人减少50%移动速度，持续1.5秒；如果使用强化攻击时，鬼谷子不处于敌方视野，则纵横兵法的冷却时间将会增加至10秒",
@@ -90,7 +90,7 @@
   "skins": [
     {
       "id": 67,
-      "skins": [
+      "data": [
         {
           "name": "阿莫斯公爵",
           "img": "http://lengyibai.gitee.io/wzry/hero/67/pi_fu/1.jpg",
@@ -117,7 +117,7 @@
   "relations": [
     {
       "id": 67,
-      "relations": [
+      "data": [
         {
           "id": "待补充",
           "relation": 1
