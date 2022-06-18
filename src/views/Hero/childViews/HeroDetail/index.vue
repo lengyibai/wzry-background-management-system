@@ -12,7 +12,7 @@
       </transition>
     </HeroDetailParallaxBg>
     <!--//%%%%%··········故事··········%%%%%//-->
-    <HeroDetailParallaxBg class="hero" :bg="skins[1].img">
+    <HeroDetailParallaxBg class="hero" :bg="skins[1] && skins[1].img">
       <div class="story">
         <div class="title">TA的故事</div>
         <p class="content" v-html="heroStorys.gamestory"></p>
@@ -63,24 +63,17 @@ export default {
     HeroDetailBasicInfo,
     HeroDetAilattribute,
   },
-  watch: {
-    value(v) {
-      if (v) {
-        /* 延迟显示卡片 */
-        setTimeout(() => {
-          this.show_info = true;
-        }, 1000);
-      } else {
-        this.show_info = false;
-      }
-    },
-  },
   created() {
+    setTimeout(() => {
+      /* 延迟显示卡片 */
+      this.show_info = true;
+    }, 1000);
+
     const params = { id: this.id };
     //#####··········获取英雄皮肤··········#####//
     heroSkins(params).then((res) => {
       this.skins = res.data[0].data;
-      console.log(this.skins);
+      console.log(this.skins[1].img);
     });
     //#####··········获取英雄故事··········#####//
     heroStorys(params).then((res) => {
