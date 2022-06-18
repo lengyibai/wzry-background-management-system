@@ -9,18 +9,10 @@ export const getUserInfo = (data = {}) => {
 
 //#####··········POST请求··········#####//
 //####········注册用户········####//
-export const addUser = (data) => {
-  return postReq("/userList", data);
-};
+export const addUser = (data) => postReq("/userList", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改用户信息········####//
-export const updateUser = (id, data) => {
-  return patchReq(`/userList/${id}`, data);
-};
-
-//#####··········DELETE请求··········#####//
+export const updateUser = (id, data) => patchReq(`/userList/${id}`, data);
 //####········删除用户········####//
-export const delUser = (data = {}) => {
-  return deleteReq("/userList", data);
-};
+export const delUser = (data = {}) => deleteReq("/userList", data);

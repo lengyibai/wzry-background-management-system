@@ -93,6 +93,7 @@ export default {
 *::-webkit-scrollbar {
   width: 1px;
   height: 1px;
+  background: #999;
 }
 
 /* 滚动条里面可以拖动的那部分 */
@@ -116,7 +117,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 2;
-  overflow: auto;
+  overflow: hidden auto;
 
   .hero {
     display: flex;

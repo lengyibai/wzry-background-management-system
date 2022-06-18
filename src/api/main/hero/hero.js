@@ -21,26 +21,17 @@ import {
 
 //#####··········基本··········#####//
 //####········获取英雄列表········####//
-export const heroList = (data) => {
-  return getHeroList(data);
-};
+export const heroList = (data) => getHeroList(data);
 //####········获取英雄皮肤········####//
-export const heroSkins = (data) => {
-  return getHeroSkins(data);
-};
+export const heroSkins = (data) => getHeroSkins(data);
 //####········获取英雄关系树········####//
-export const heroAppellation = (data) => {
-  return getHeroAppellation(data);
-};
+export const heroAppellation = (data) => getHeroAppellation(data);
+
 //####········获取英雄关系表········####//
-export const heroRelations = (data) => {
-  return getHeroRelations(data);
-};
+export const heroRelations = (data) => getHeroRelations(data);
+
 //####········获取英雄技能资料········####//
-export const heroSkills = (data) => {
-  return getHeroSkills(data);
-};
+export const heroSkills = (data) => getHeroSkills(data);
+
 //####········获取英雄故事········####//
-export const heroStorys = (data) => {
-  return getHeroStorys(data);
-};
+export const heroStorys = (data) => getHeroStorys(data);
