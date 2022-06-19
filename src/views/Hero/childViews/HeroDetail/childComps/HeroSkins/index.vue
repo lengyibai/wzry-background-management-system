@@ -1,18 +1,18 @@
 <template>
   <div class="HeroSkins">
-    <div class="box">
+    <div class="box" v-if="data.length">
       <div class="title">皮肤</div>
       <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
       <div
         class="skin"
         v-drag="{ fn, index }"
-        v-for="(item, index) in data1"
+        v-for="(item, index) in data"
         :key="index"
         :style="{
           transform:
             lyb ||
             'rotate(' +
-              (360 / data1.length) * (index + 1) +
+              (360 / data.length) * (index + 1) +
               'deg) translateY(-200%)',
         }"
       >
@@ -58,7 +58,10 @@ export default {
       bg_imgs: [], //背景图
       toggle: true, //用于切换背景
       lyb: true,
-      data1: [],
+      active_skin: {
+        el: null,
+        transform: null,
+      }, //当前处于展示的皮肤的DOM元素及坐标
     };
   },
   components: {},
@@ -70,21 +73,21 @@ export default {
     },
   },
   created() {
-    this.data1 = [...this.data, ...this.data];
     setTimeout(() => {
       this.lyb = false;
-    }, 2000);
+    });
   },
   methods: {
-    fn(data, index) {
-      if (!$isArray(data)) {
+    fn(data, offset, index) {
+      data.style.transition = "all 0s";
+      if (offset) {
         const el = this.$refs.showSkin;
         const o = this.$refs.showSkin.getBoundingClientRect();
         let flag =
-          o.left < data.x &&
-          o.top < data.y &&
-          o.left + el.offsetWidth > data.x &&
-          o.top + el.offsetHeight > data.y;
+          o.left < offset.x &&
+          o.top < offset.y &&
+          o.left + el.offsetWidth > offset.x &&
+          o.top + el.offsetHeight > offset.y;
         this.is_into = flag;
         if (flag) {
           this.showSkin_text = "松开";
@@ -92,12 +95,21 @@ export default {
           this.showSkin_text = "拖过来";
         }
       } else if (this.is_into) {
+        if (this.active_skin.el) {
+          this.active_skin.el.style.pointerEvents = "auto";
+          this.active_skin.el.style.transition = "all 1s";
+          this.active_skin.el.style.transform = this.active_skin.transform;
+        }
+        this.active_skin.el = data;
+        this.active_skin.transform = data.style.transform;
         const el = this.$refs.showSkin;
-        data[0].style.transition = "all 0.5s";
-        data[0].style.left = el.offsetLeft - data[0].offsetWidth / 2 + "px";
-        data[0].style.top = el.offsetTop - data[0].offsetHeight / 2 + "px";
+        data.style.pointerEvents = "none";
+        data.style.transition = "all 1s";
+        data.style.left = el.offsetLeft - data.offsetWidth / 2 + "px";
+        data.style.top = el.offsetTop - data.offsetHeight / 2 + "px";
+        data.style.transform = "";
         setTimeout(() => {
-          data[0].style.transition = "all 0s";
+          data.style.transition = "all 0s";
           this.bg_img = this.data[index].img;
           if (this.toggle) {
             this.bg_imgs[1] = this.data[index].img;
@@ -105,7 +117,7 @@ export default {
             this.bg_imgs[0] = this.data[index].img;
           }
           this.toggle = !this.toggle;
-        }, 500);
+        }, 1000);
       }
     },
   },

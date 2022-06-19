@@ -287,6 +287,7 @@ const drag = {
         el.style.left = `${moveX + startX}px`;
         el.style.top = `${moveY + startY}px`;
         arg.value.fn(
+          el,
           {
             x: el.getBoundingClientRect().left + el.offsetWidth / 2,
             y: el.getBoundingClientRect().top + el.offsetHeight / 2,
@@ -297,7 +298,7 @@ const drag = {
 
       window.addEventListener("mouseup", up);
       function up() {
-        arg.value.fn([el], arg.value.index);
+        arg.value.fn(el, false, arg.value.index);
         window.removeEventListener("mousemove", fn);
         setTimeout(() => {
           window.removeEventListener("mouseup", up);
