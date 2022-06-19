@@ -264,6 +264,37 @@ const textHoverColor = {
   },
 };
 
+const drag = {
+  inserted(el, arg) {
+    el.style.userSelect = "none";
+    el.style.position = "absolute";
+    let x = 0,
+      y = 0,
+      startX = 0,
+      startY = 0,
+      moveX = 0,
+      moveY = 0;
+    el.addEventListener("mousedown", (e) => {
+      x = e.pageX;
+      y = e.pageY;
+      startX = el.offsetLeft;
+      startY = el.offsetTop;
+      window.addEventListener("mousemove", fn);
+
+      function fn(e) {
+        moveX = e.pageX - x;
+        moveY = e.pageY - y;
+        el.style.left = `${moveX + startX}px`;
+        el.style.top = `${moveY + startY}px`;
+        arg.value({ x: moveX, y: moveY });
+      }
+      window.addEventListener("mouseup", () => {
+        window.removeEventListener("mousemove", fn);
+      });
+    });
+  },
+};
+
 let directives = {
   parallaxVideo,
   parallaxBody,
@@ -272,6 +303,7 @@ let directives = {
   sweepLight,
   typewriter,
   textHoverColor,
+  drag,
 };
 export default {
   install(Vue) {

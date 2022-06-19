@@ -1,5 +1,5 @@
 <template>
-  <div class="NotFound">
+  <div class="NotFound flex">
     <h1>404 NotFound</h1>
   </div>
 </template>
@@ -17,8 +17,5 @@ export default {
 .NotFound {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

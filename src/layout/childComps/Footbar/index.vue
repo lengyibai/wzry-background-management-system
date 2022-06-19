@@ -5,7 +5,7 @@
     <Time class="Time" />
     <PassTime />
     <Copyright class="Copyright" />
-    <MusicPlay class="MusicPlay" :play-progress="playProgress" />
+    <MusicPlay class="MusicPlay" :play-progress="playProgress" v-if="false" />
   </div>
 </template>
 

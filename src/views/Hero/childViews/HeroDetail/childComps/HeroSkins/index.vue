@@ -16,7 +16,6 @@
   </div>
 </template>
 <script>
-import { $throttle } from "@/utils/lyb.js";
 export default {
   props: {
     data: {
@@ -28,12 +27,9 @@ export default {
   },
   name: "HeroSkins",
   data() {
-    return { throttle: null };
+    return {};
   },
   components: {},
-  created() {
-    this.throttle = $throttle(this.fn, 500);
-  },
   methods: {
     fn(data) {
       console.log(data);

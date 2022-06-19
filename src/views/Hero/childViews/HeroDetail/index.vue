@@ -1,7 +1,7 @@
 <template>
-  <div class="HeroDetail" @click="hide">
+  <div class="HeroDetail" @click.stop="hide">
     <!--//%%%%%··········主要资料··········%%%%%//-->
-    <HeroDetailParallaxBg class="hero" :bg="data.poster">
+    <HeroDetailParallaxBg class="basis" :bg="data.poster">
       <!-- 左侧详情 -->
       <transition name="fade">
         <HeroDetailBasicInfo :data="data" v-if="show_info" />
@@ -11,25 +11,28 @@
         <HeroDetAilattribute :data="data" v-if="show_info" />
       </transition>
     </HeroDetailParallaxBg>
+
+    <!--//%%%%%··········皮肤··········%%%%%//-->
+    <HeroDetailParallaxBg v-if="skins.length" class="hero" :bg="skins[0].img">
+      <HeroSkins :data="skins" />
+    </HeroDetailParallaxBg>
+
     <!--//%%%%%··········故事··········%%%%%//-->
-    <HeroDetailParallaxBg class="hero" :bg="skins[1] && skins[1].img">
-      <div class="story">
-        <div class="title">TA的故事</div>
-        <p class="content" v-html="heroStorys.gamestory"></p>
-        <div class="title">历史上的他</div>
-        <p class="content" v-html="heroStorys.history"></p>
-      </div>
+    <HeroDetailParallaxBg v-if="skins.length" :bg="skins[1].img">
+      <HeroStory :data="storys" />
     </HeroDetailParallaxBg>
   </div>
 </template>
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{  英雄皮肤，英雄故事 }
+//接口信息：{  英雄皮肤，英雄技能，英雄故事 }
 import { heroSkins, heroStorys } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动视差背景
 import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
 import HeroDetAilattribute from "./childComps/HeroDetAilattribute"; //右侧属性详情
+import HeroSkins from "./childComps/HeroSkins"; //皮肤页
+import HeroStory from "./childComps/HeroStory";
 export default {
   props: {
     /* 英雄id */
@@ -55,13 +58,15 @@ export default {
     return {
       show_info: false,
       skins: [],
-      heroStorys: {},
+      storys: {},
     };
   },
   components: {
     HeroDetailParallaxBg,
     HeroDetailBasicInfo,
     HeroDetAilattribute,
+    HeroSkins,
+    HeroStory,
   },
   created() {
     setTimeout(() => {
@@ -72,12 +77,11 @@ export default {
     const params = { id: this.id };
     //#####··········获取英雄皮肤··········#####//
     heroSkins(params).then((res) => {
-      this.skins = res.data[0].data;
-      console.log(this.skins[1].img);
+      this.skins = res.data;
     });
     //#####··········获取英雄故事··········#####//
     heroStorys(params).then((res) => {
-      this.heroStorys = res.data;
+      this.storys = res.data;
     });
   },
   methods: {
@@ -98,17 +102,17 @@ export default {
 
 /* 滚动条里面可以拖动的那部分 */
 *::-webkit-scrollbar-thumb {
-  background: #fff;
+  background: var(--white);
 }
 
 /* 滚动条里面可以拖动的那部分 */
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 /* 滚动条里面可以拖动的那部分 */
 *::-webkit-scrollbar-thumb:active {
-  background-color: #fff;
+  background-color: var(--white);
 }
 .HeroDetail {
   position: fixed;
@@ -118,30 +122,12 @@ export default {
   height: 100%;
   z-index: 2;
   overflow: hidden auto;
-
-  .hero {
+  .basis {
     display: flex;
     justify-content: space-between;
     transform-style: preserve-3d;
     perspective: 2000px;
     overflow: hidden;
-    .story {
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.5);
-      .title {
-        font-size: var(--font-s-35);
-        text-align: center;
-        margin-top: 1em;
-      }
-      .content {
-        font-size: var(--font-s-20);
-        text-indent: 2em;
-        padding: 2em;
-      }
-    }
   }
 }
 

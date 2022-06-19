@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="LybLoading" v-show="show">
+    <div class="LybLoading flex" v-show="show">
       <img src="./img/daji.png" alt="妲己" />
       <span
         v-for="(item, index) in color"
@@ -42,9 +42,6 @@ export default {
 <style scoped lang="less">
 .LybLoading {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   inset: 0;

@@ -23,7 +23,17 @@ import {
 //####········获取英雄列表········####//
 export const heroList = (data) => getHeroList(data);
 //####········获取英雄皮肤········####//
-export const heroSkins = (data) => getHeroSkins(data);
+export const heroSkins = (data) => {
+  return new Promise((resolve) => {
+    getHeroSkins(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
 //####········获取英雄关系树········####//
 export const heroAppellation = (data) => getHeroAppellation(data);
 
