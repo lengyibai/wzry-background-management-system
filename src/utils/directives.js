@@ -286,15 +286,18 @@ const drag = {
         moveY = e.pageY - y;
         el.style.left = `${moveX + startX}px`;
         el.style.top = `${moveY + startY}px`;
-        arg.value({
-          x: el.getBoundingClientRect().left + el.offsetWidth / 2,
-          y: el.getBoundingClientRect().top + el.offsetHeight / 2,
-        });
+        arg.value.fn(
+          {
+            x: el.getBoundingClientRect().left + el.offsetWidth / 2,
+            y: el.getBoundingClientRect().top + el.offsetHeight / 2,
+          },
+          arg.value.index,
+        );
       }
 
       window.addEventListener("mouseup", up);
       function up() {
-        arg.value([el]);
+        arg.value.fn([el], arg.value.index);
         window.removeEventListener("mousemove", fn);
         setTimeout(() => {
           window.removeEventListener("mouseup", up);

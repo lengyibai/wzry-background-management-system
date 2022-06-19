@@ -1,5 +1,4 @@
 <template>
-  <!-- 主体结构 -->
   <div class="Hero">
     <div class="HeroMain">
       <transition name="fade">
@@ -15,7 +14,7 @@
         </lyb-grid>
       </transition>
     </div>
-    <!-- 英雄职业分类侧边栏 -->
+    <!--//%%%%%··········右侧英雄职业分类侧边栏··········%%%%%//-->
     <transition name="sidebar">
       <HeroSidebar v-show="show_HeroSidebar" />
     </transition>

@@ -68,7 +68,7 @@ export default {
 </script>
 <style scoped lang="less">
 .mask-close {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 10%;

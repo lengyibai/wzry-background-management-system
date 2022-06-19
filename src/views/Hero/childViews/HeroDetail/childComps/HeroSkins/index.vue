@@ -1,5 +1,5 @@
 <template>
-  <div class="HeroSkins">
+  <div class="HeroSkins" :style="bgImg">
     <div class="title">皮肤</div>
     <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
     <div class="skins">
@@ -7,7 +7,7 @@
         <img
           @click.stop
           @dragstart.prevent
-          v-drag="fn"
+          v-drag="{ fn, index }"
           :src="item.head"
           alt=""
         />
@@ -35,8 +35,15 @@ export default {
     };
   },
   components: {},
+  computed: {
+    bgImg() {
+      return {
+        backgroundImage: `url(${this.bg_img || this.data[0]?.img})`,
+      };
+    },
+  },
   methods: {
-    fn(data) {
+    fn(data, index) {
       if (!$isArray(data)) {
         const el = this.$refs.showSkin;
         const o = this.$refs.showSkin.getBoundingClientRect();
@@ -54,11 +61,11 @@ export default {
       } else if (this.is_into) {
         const el = this.$refs.showSkin;
         data[0].style.transition = "all 0.5s";
-        data[0].style.left = el.offsetLeft + -data[0].offsetWidth / 2 + "px";
-        data[0].style.top = el.offsetTop + -data[0].offsetHeight / 2 + "px";
+        data[0].style.left = el.offsetLeft - data[0].offsetWidth / 2 + "px";
+        data[0].style.top = el.offsetTop - data[0].offsetHeight / 2 + "px";
         setTimeout(() => {
           data[0].style.transition = "all 0s";
-          this.bg_img = data[0].src;
+          this.bg_img = this.data[index].img;
         }, 500);
       }
     },
@@ -72,6 +79,8 @@ export default {
   height: 100%;
   overflow: auto;
   color: var(--white);
+  background: no-repeat center center fixed;
+  background-size: cover;
   .title {
     font-size: var(--font-s-35);
     text-align: center;
