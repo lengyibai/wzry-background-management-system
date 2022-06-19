@@ -1,1 +1,1 @@
-window.REMOTE_VERSION = "22.6.12.23";
+window.REMOTE_VERSION = "22.6.20.2";
