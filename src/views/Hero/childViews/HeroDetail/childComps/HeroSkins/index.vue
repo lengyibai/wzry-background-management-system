@@ -6,8 +6,15 @@
       <div
         class="skin"
         v-drag="{ fn, index }"
-        v-for="(item, index) in data"
+        v-for="(item, index) in data1"
         :key="index"
+        :style="{
+          transform:
+            lyb ||
+            'rotate(' +
+              (360 / data1.length) * (index + 1) +
+              'deg) translateY(-200%)',
+        }"
       >
         <img @dragstart.prevent :src="item.head" alt="" />
       </div>
@@ -50,6 +57,8 @@ export default {
       is_into: false, //拖动头像是否进入头像框范围
       bg_imgs: [], //背景图
       toggle: true, //用于切换背景
+      lyb: true,
+      data1: [],
     };
   },
   components: {},
@@ -59,6 +68,12 @@ export default {
         backgroundImage: `url(${this.bg_img || this.data[0]?.img})`,
       };
     },
+  },
+  created() {
+    this.data1 = [...this.data, ...this.data];
+    setTimeout(() => {
+      this.lyb = false;
+    }, 2000);
   },
   methods: {
     fn(data, index) {
@@ -126,9 +141,16 @@ export default {
       background-size: cover;
     }
     .skin {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      left: calc(50% - 45px);
+      top: calc(50% - 45px);
+      transform-origin: center center;
+      transition: all 1s;
       img {
-        width: 90px;
-        height: 90px;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
       }
     }
