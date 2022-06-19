@@ -1,5 +1,6 @@
 <template>
-  <div class="HeroDetail" @click.stop="hide">
+  <div class="HeroDetail">
+    <LybMaskClose @close="hide" />
     <!--//%%%%%··········主要资料··········%%%%%//-->
     <HeroDetailParallaxBg class="basis" :bg="data.poster">
       <!-- 左侧详情 -->
@@ -32,7 +33,7 @@ import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动�
 import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
 import HeroDetAilattribute from "./childComps/HeroDetAilattribute"; //右侧属性详情
 import HeroSkins from "./childComps/HeroSkins"; //皮肤页
-import HeroStory from "./childComps/HeroStory";
+import HeroStory from "./childComps/HeroStory"; //历史页
 export default {
   props: {
     /* 英雄id */
