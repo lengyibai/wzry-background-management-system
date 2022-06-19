@@ -80,7 +80,7 @@ export default {
     transparent 0%,
     rgba(0, 0, 0, 0.5) 100%
   );
-  z-index: 1;
+  z-index: 999;
   .close {
     width: 50px;
     height: 50px;

@@ -1,18 +1,35 @@
 <template>
-  <div class="HeroSkins" :style="bgImg">
-    <div class="title">皮肤</div>
-    <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
-    <div class="skins">
-      <div class="skin" v-for="(item, index) in data" :key="index">
-        <img
-          @click.stop
-          @dragstart.prevent
+  <div class="HeroSkins">
+    <div class="box">
+      <div class="title">皮肤</div>
+      <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
+      <div class="skins">
+        <div
+          class="skin"
           v-drag="{ fn, index }"
-          :src="item.head"
-          alt=""
-        />
+          v-for="(item, index) in data"
+          :key="index"
+        >
+          <img @dragstart.prevent :src="item.head" alt="" />
+        </div>
       </div>
     </div>
+    <transition-group name="clip">
+      <img
+        class="bg"
+        :src="bg_imgs[0] || data[0].img"
+        alt=""
+        v-show="toggle"
+        key="a"
+      />
+      <img
+        class="bg"
+        :src="bg_imgs[1] || data[0].img"
+        alt=""
+        v-show="!toggle"
+        key="b"
+      />
+    </transition-group>
   </div>
 </template>
 <script>
@@ -30,8 +47,9 @@ export default {
   data() {
     return {
       showSkin_text: "拖过来",
-      is_into: false, //是否进入范围
-      bg_img: "",
+      is_into: false, //拖动头像是否进入头像框范围
+      bg_imgs: [], //背景图
+      toggle: true, //用于切换背景
     };
   },
   components: {},
@@ -66,6 +84,12 @@ export default {
         setTimeout(() => {
           data[0].style.transition = "all 0s";
           this.bg_img = this.data[index].img;
+          if (this.toggle) {
+            this.bg_imgs[1] = this.data[index].img;
+          } else {
+            this.bg_imgs[0] = this.data[index].img;
+          }
+          this.toggle = !this.toggle;
         }, 500);
       }
     },
@@ -79,36 +103,57 @@ export default {
   height: 100%;
   overflow: auto;
   color: var(--white);
-  background: no-repeat center center fixed;
-  background-size: cover;
-  .title {
-    font-size: var(--font-s-35);
-    text-align: center;
-    margin-top: 1em;
-  }
-  .show-skin {
+  background-color: #000;
+  .box {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 200px;
-    height: 200px;
-    box-shadow: ;
-    border-radius: 50%;
-    background: url("./img/head_bg.png") no-repeat center center;
-    background-size: cover;
-  }
-  .skins {
-    .skin {
-      img {
-        width: 90px;
-        height: 90px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 50%;
+    inset: 0;
+    z-index: 1;
+    .title {
+      font-size: var(--font-s-35);
+      text-align: center;
+      margin-top: 1em;
+    }
+    .show-skin {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 200px;
+      height: 200px;
+      box-shadow: ;
+      border-radius: 50%;
+      background: url("./img/head_bg.png") no-repeat center center;
+      background-size: cover;
+    }
+    .skins {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      .skin {
+        img {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+        }
       }
     }
   }
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.clip-enter-active {
+  animation: clip-in 1s;
+}
+
+.clip-leave-active {
+  animation: clip-out 1s;
 }
 </style>
