@@ -308,6 +308,33 @@ const drag = {
   },
 };
 
+//#####··········单行打字机··········#####//
+const typewriterSingle = {
+  inserted(el) {
+    let lyb = el;
+
+    let say = lyb.innerHTML;
+    function again() {
+      lyb.innerHTML = "";
+      let timer;
+      let num = 0, //用于累加遍历字符串
+        text = ""; //用于输出在屏幕上
+      lyb.innerHTML = "";
+      timer = setInterval(() => {
+        text += say[num]; //遍历输出的文字
+        lyb.innerHTML = text; //输出在屏幕上
+        num++;
+
+        if (num === say.length) {
+          //如果文字输出完毕
+          clearInterval(timer); //清除用于输出文字的计时器
+        }
+      }, 150);
+    }
+    again();
+  },
+};
+
 let directives = {
   parallaxVideo,
   parallaxBody,
@@ -317,6 +344,7 @@ let directives = {
   typewriter,
   textHoverColor,
   drag,
+  typewriterSingle,
 };
 export default {
   install(Vue) {

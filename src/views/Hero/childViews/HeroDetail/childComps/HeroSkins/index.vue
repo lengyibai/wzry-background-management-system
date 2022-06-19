@@ -1,8 +1,13 @@
 <template>
-  <div class="HeroSkins">
-    <div class="box" v-if="data.length">
+  <div class="HeroSkins" ref="HeroSkins">
+    <div class="box">
       <div class="title">皮肤</div>
-      <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
+      <div class="show-skin flex" ref="showSkin">
+        {{ showSkin_text ? "松开" : "拖过来" }}
+      </div>
+      <transition name="fade">
+        <div class="show-skin flex clone" v-show="showSkin_text"></div>
+      </transition>
       <div
         class="skin"
         v-drag="{ fn, index }"
@@ -17,6 +22,22 @@
         }"
       >
         <img @dragstart.prevent :src="item.head" alt="" />
+      </div>
+      <div
+        class="skin-name"
+        v-if="skin_name_toggle && active_skin_name"
+        v-typewriterSingle
+        key="a"
+      >
+        {{ active_skin_name }}
+      </div>
+      <div
+        class="skin-name"
+        v-if="!skin_name_toggle && active_skin_name"
+        v-typewriterSingle
+        key="b"
+      >
+        {{ active_skin_name }}
       </div>
     </div>
     <transition-group name="clip">
@@ -40,7 +61,6 @@
   </div>
 </template>
 <script>
-import { $isArray } from "@/utils/lyb.js";
 export default {
   props: {
     data: {
@@ -53,11 +73,13 @@ export default {
   name: "HeroSkins",
   data() {
     return {
-      showSkin_text: "拖过来",
+      showSkin_text: false,
       is_into: false, //拖动头像是否进入头像框范围
       bg_imgs: [], //背景图
       toggle: true, //用于切换背景
       lyb: true,
+      active_skin_name: "", //皮肤名
+      skin_name_toggle: true, //皮肤切换
       active_skin: {
         el: null,
         transform: null,
@@ -72,12 +94,16 @@ export default {
       };
     },
   },
-  created() {
-    setTimeout(() => {
-      this.lyb = false;
-    });
-  },
   methods: {
+    scroll() {
+      if (
+        this.$refs.HeroSkins.getBoundingClientRect().y -
+          this.$refs.showSkin.offsetHeight <
+        0
+      ) {
+        this.lyb = false;
+      }
+    },
     fn(data, offset, index) {
       data.style.transition = "all 0s";
       if (offset) {
@@ -90,9 +116,9 @@ export default {
           o.top + el.offsetHeight > offset.y;
         this.is_into = flag;
         if (flag) {
-          this.showSkin_text = "松开";
+          this.showSkin_text = true;
         } else {
-          this.showSkin_text = "拖过来";
+          this.showSkin_text = false;
         }
       } else if (this.is_into) {
         if (this.active_skin.el) {
@@ -117,6 +143,8 @@ export default {
             this.bg_imgs[0] = this.data[index].img;
           }
           this.toggle = !this.toggle;
+          this.active_skin_name = this.data[index].name;
+          this.skin_name_toggle = !this.skin_name_toggle;
         }, 1000);
       }
     },
@@ -136,9 +164,9 @@ export default {
     inset: 0;
     z-index: 1;
     .title {
-      font-size: var(--font-s-35);
+      font-size: var(--font-s-75);
       text-align: center;
-      margin-top: 1em;
+      margin-top: 0.5em;
     }
     .show-skin {
       position: absolute;
@@ -151,6 +179,10 @@ export default {
       border-radius: 50%;
       background: url("./img/head_bg.png") no-repeat center center;
       background-size: cover;
+      &.clone {
+        filter: blur(5px) brightness(150%);
+        background-image: url("./img/head_bg_clone.png");
+      }
     }
     .skin {
       position: absolute;
@@ -165,6 +197,14 @@ export default {
         height: 100%;
         border-radius: 50%;
       }
+    }
+    .skin-name {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+      transform: translateY(-100%);
+      font-size: var(--font-s-50);
     }
   }
   .bg {

@@ -5,7 +5,7 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "wzryToken": "1655650"
+      "wzryToken": "1655656"
     }
   ],
   "heroList": [
@@ -104,7 +104,8 @@
         {
           "name": "原初探秘者",
           "img": "http://lengyibai.gitee.io/wzry/hero/67/pi_fu/3.jpg",
-          "head": "http://lengyibai.gitee.io/wzry/hero/67/tou_xiang/3.jpg"
+          "head": "http://lengyibai.gitee.io/wzry/hero/67/tou_xiang/3.jpg",
+          "type": "峡谷异闻"
         }
       ]
     }

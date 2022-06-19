@@ -1,5 +1,5 @@
 <template>
-  <div class="HeroDetail">
+  <div class="HeroDetail" @scroll="$refs.HeroSkins.scroll()">
     <LybMaskClose @close="hide" />
     <!--//%%%%%··········主要资料··········%%%%%//-->
     <HeroDetailParallaxBg class="basis" :bg="data.poster">
@@ -14,7 +14,7 @@
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········皮肤··········%%%%%//-->
-    <HeroSkins :data="skins" />
+    <HeroSkins :data="skins" ref="HeroSkins" />
 
     <!--//%%%%%··········故事··········%%%%%//-->
     <HeroDetailParallaxBg v-if="skins.length" :bg="skins[1].img">
