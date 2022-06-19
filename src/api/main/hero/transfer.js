@@ -8,6 +8,8 @@ export const getHeroList = (data) => getReq("/heroList", data);
 export const getHeroBasics = (data) => getReq("/basics", data);
 //####········获取英雄皮肤········####//
 export const getHeroSkins = (data) => getReq("/skins", data);
+//####········获取英雄皮肤类型········####//
+export const getHeroSkinType = (data) => getReq("/skinType", data);
 //####········获取英雄关系表········####//
 export const getHeroRelations = (data) => getReq("/relations", data);
 //####········获取英雄关系树········####//

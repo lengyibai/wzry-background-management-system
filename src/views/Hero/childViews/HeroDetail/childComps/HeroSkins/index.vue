@@ -1,7 +1,10 @@
 <template>
   <div class="HeroSkins" ref="HeroSkins">
     <div class="box">
-      <div class="title">皮肤</div>
+      <div class="skin-type">
+        <img v-if="active_skin_type" :src="active_skin_type" alt="" />
+        <span v-else>伴生皮肤</span>
+      </div>
       <div class="show-skin flex" ref="showSkin">
         {{ showSkin_text ? "松开" : "拖过来" }}
       </div>
@@ -61,6 +64,9 @@
   </div>
 </template>
 <script>
+//#####··········网络请求··········#####//
+//{ 皮肤类型 }
+import { HeroSkinType } from "@/api/main/hero/hero.js";
 export default {
   props: {
     data: {
@@ -79,6 +85,7 @@ export default {
       toggle: true, //用于切换背景
       lyb: true,
       active_skin_name: "", //皮肤名
+      active_skin_type: "", //皮肤类型
       skin_name_toggle: true, //皮肤切换
       active_skin: {
         el: null,
@@ -86,7 +93,6 @@ export default {
       }, //当前处于展示的皮肤的DOM元素及坐标
     };
   },
-  components: {},
   computed: {
     bgImg() {
       return {
@@ -145,6 +151,15 @@ export default {
           this.toggle = !this.toggle;
           this.active_skin_name = this.data[index].name;
           this.skin_name_toggle = !this.skin_name_toggle;
+          HeroSkinType({ id: this.data[index].type }).then((res) => {
+            if (res?.name) {
+              this.active_skin_type = require("@/assets/img/skinType/" +
+                res.name +
+                ".png");
+            } else {
+              this.active_skin_type = "";
+            }
+          });
         }, 1000);
       }
     },
@@ -163,10 +178,17 @@ export default {
     position: absolute;
     inset: 0;
     z-index: 1;
-    .title {
-      font-size: var(--font-s-75);
-      text-align: center;
-      margin-top: 0.5em;
+    .skin-type {
+      display: flex;
+      justify-content: center;
+      transform: translateY(25%);
+      span {
+        margin-top: 0.5em;
+        font-size: var(--font-s-50);
+      }
+      img {
+        width: 200px;
+      }
     }
     .show-skin {
       position: absolute;

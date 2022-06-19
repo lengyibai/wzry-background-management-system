@@ -5,6 +5,7 @@
 import {
   getHeroList,
   getHeroSkins,
+  getHeroSkinType,
   getHeroSkills,
   getHeroStorys,
   getHeroRelations,
@@ -26,6 +27,18 @@ export const heroList = (data) => getHeroList(data);
 export const heroSkins = (data) => {
   return new Promise((resolve) => {
     getHeroSkins(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
+//####········获取英雄皮肤类型········####//
+export const HeroSkinType = (data) => {
+  return new Promise((resolve) => {
+    getHeroSkinType(data).then((res) => {
       if (data) {
         resolve(res.data[0]);
       } else {
