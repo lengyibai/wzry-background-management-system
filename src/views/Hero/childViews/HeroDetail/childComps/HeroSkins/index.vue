@@ -31,6 +31,7 @@ export default {
     return {
       showSkin_text: "拖过来",
       is_into: false, //是否进入范围
+      bg_img: "",
     };
   },
   components: {},
@@ -57,6 +58,7 @@ export default {
         data[0].style.top = el.offsetTop + -data[0].offsetHeight / 2 + "px";
         setTimeout(() => {
           data[0].style.transition = "all 0s";
+          this.bg_img = data[0].src;
         }, 500);
       }
     },

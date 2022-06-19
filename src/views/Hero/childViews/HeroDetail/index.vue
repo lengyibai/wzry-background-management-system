@@ -14,9 +14,7 @@
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········皮肤··········%%%%%//-->
-    <HeroDetailParallaxBg v-if="skins.length" class="hero" :bg="skins[0].img">
-      <HeroSkins :data="skins" />
-    </HeroDetailParallaxBg>
+    <HeroSkins :data="skins" />
 
     <!--//%%%%%··········故事··········%%%%%//-->
     <HeroDetailParallaxBg v-if="skins.length" :bg="skins[1].img">
