@@ -3,15 +3,13 @@
     <div class="box">
       <div class="title">皮肤</div>
       <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
-      <div class="skins">
-        <div
-          class="skin"
-          v-drag="{ fn, index }"
-          v-for="(item, index) in data"
-          :key="index"
-        >
-          <img @dragstart.prevent :src="item.head" alt="" />
-        </div>
+      <div
+        class="skin"
+        v-drag="{ fn, index }"
+        v-for="(item, index) in data"
+        :key="index"
+      >
+        <img @dragstart.prevent :src="item.head" alt="" />
       </div>
     </div>
     <transition-group name="clip">
@@ -19,6 +17,7 @@
         class="bg"
         :src="bg_imgs[0] || data[0].img"
         alt=""
+        v-if="data[0]"
         v-show="toggle"
         key="a"
       />
@@ -26,6 +25,7 @@
         class="bg"
         :src="bg_imgs[1] || data[0].img"
         alt=""
+        v-if="data[0]"
         v-show="!toggle"
         key="b"
       />
@@ -125,19 +125,11 @@ export default {
       background: url("./img/head_bg.png") no-repeat center center;
       background-size: cover;
     }
-    .skins {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      .skin {
-        img {
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-        }
+    .skin {
+      img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
       }
     }
   }
