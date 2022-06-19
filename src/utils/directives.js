@@ -286,11 +286,20 @@ const drag = {
         moveY = e.pageY - y;
         el.style.left = `${moveX + startX}px`;
         el.style.top = `${moveY + startY}px`;
-        arg.value({ x: moveX, y: moveY });
+        arg.value({
+          x: el.getBoundingClientRect().left + el.offsetWidth / 2,
+          y: el.getBoundingClientRect().top + el.offsetHeight / 2,
+        });
       }
-      window.addEventListener("mouseup", () => {
+
+      window.addEventListener("mouseup", up);
+      function up() {
+        arg.value([el]);
         window.removeEventListener("mousemove", fn);
-      });
+        setTimeout(() => {
+          window.removeEventListener("mouseup", up);
+        });
+      }
     });
   },
 };

@@ -109,3 +109,7 @@ export function $frameInterval(fn, fre = 0) {
     requestAnimationFrame(f);
   }
 }
+// 判断是否为数组
+export function $isArray(type) {
+  return Object.prototype.toString.call(type) === "[object Array]";
+}

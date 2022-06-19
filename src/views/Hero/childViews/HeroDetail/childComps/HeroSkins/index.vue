@@ -1,7 +1,7 @@
 <template>
   <div class="HeroSkins">
     <div class="title">皮肤</div>
-    <div class="show-skin flex">拖过来</div>
+    <div class="show-skin flex" ref="showSkin">{{ showSkin_text }}</div>
     <div class="skins">
       <div class="skin" v-for="(item, index) in data" :key="index">
         <img
@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import { $isArray } from "@/utils/lyb.js";
 export default {
   props: {
     data: {
@@ -27,12 +28,37 @@ export default {
   },
   name: "HeroSkins",
   data() {
-    return {};
+    return {
+      showSkin_text: "拖过来",
+      is_into: false, //是否进入范围
+    };
   },
   components: {},
   methods: {
     fn(data) {
-      console.log(data);
+      if (!$isArray(data)) {
+        const el = this.$refs.showSkin;
+        const o = this.$refs.showSkin.getBoundingClientRect();
+        let flag =
+          o.left < data.x &&
+          o.top < data.y &&
+          o.left + el.offsetWidth > data.x &&
+          o.top + el.offsetHeight > data.y;
+        this.is_into = flag;
+        if (flag) {
+          this.showSkin_text = "松开";
+        } else {
+          this.showSkin_text = "拖过来";
+        }
+      } else if (this.is_into) {
+        const el = this.$refs.showSkin;
+        data[0].style.transition = "all 0.5s";
+        data[0].style.left = el.offsetLeft + -data[0].offsetWidth / 2 + "px";
+        data[0].style.top = el.offsetTop + -data[0].offsetHeight / 2 + "px";
+        setTimeout(() => {
+          data[0].style.transition = "all 0s";
+        }, 500);
+      }
     },
   },
 };
@@ -67,6 +93,8 @@ export default {
         width: 90px;
         height: 90px;
         position: absolute;
+        top: 0;
+        left: 0;
         border-radius: 50%;
       }
     }
