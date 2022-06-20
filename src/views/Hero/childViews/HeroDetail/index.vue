@@ -1,24 +1,12 @@
 <template>
-  <div class="HeroDetail" @scroll="$refs.HeroSkins.scroll()">
+  <div class="HeroDetail">
     <LybMaskClose @close="hide" />
-    <!--//%%%%%··········主要资料··········%%%%%//-->
-    <HeroDetailParallaxBg class="basis stick" :bg="data.poster">
-      <!-- 左侧详情 -->
-      <transition name="fade">
-        <HeroDetailBasicInfo :data="data" v-if="show_info" />
-      </transition>
-      <!-- 右侧详情 -->
-      <transition name="fade">
-        <HeroDetAilattribute :data="data" v-if="show_info" />
-      </transition>
-    </HeroDetailParallaxBg>
-
-    <!--//%%%%%··········皮肤··········%%%%%//-->
-    <HeroSkins
+    <!--//%%%%%··········资料皮肤··········%%%%%//-->
+    <HeroMaterialSkins
       class="stick"
       v-if="skins.length"
-      :data="skins"
-      ref="HeroSkins"
+      :skins="skins"
+      :data="data"
     />
 
     <!--//%%%%%··········故事··········%%%%%//-->
@@ -33,9 +21,7 @@
 import { heroSkins, heroStorys } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动视差背景
-import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
-import HeroDetAilattribute from "./childComps/HeroDetAilattribute"; //右侧属性详情
-import HeroSkins from "./childComps/HeroSkins"; //皮肤页
+import HeroMaterialSkins from "./childComps/HeroMaterialSkins"; //资料、皮肤页
 import HeroStory from "./childComps/HeroStory"; //历史页
 export default {
   props: {
@@ -67,9 +53,7 @@ export default {
   },
   components: {
     HeroDetailParallaxBg,
-    HeroDetailBasicInfo,
-    HeroDetAilattribute,
-    HeroSkins,
+    HeroMaterialSkins,
     HeroStory,
   },
   created() {

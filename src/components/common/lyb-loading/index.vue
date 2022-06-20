@@ -55,16 +55,16 @@ export default {
   }
   span {
     display: inline-block;
-    width: 3vw;
-    height: 3vw;
+    width: 1.5vw;
+    height: 1.5vw;
     transform: scale(0.2);
     animation: animate 1s infinite;
   }
   h1 {
     position: absolute;
-    right: 3.5vh;
-    top: 3.5vh;
-    font-size: 3.5vw;
+    right: 2vh;
+    top: 2vh;
+    font-size: 2vw;
     color: #fff;
   }
 }

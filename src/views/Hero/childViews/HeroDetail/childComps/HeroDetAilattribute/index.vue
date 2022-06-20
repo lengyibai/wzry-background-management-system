@@ -28,7 +28,7 @@ export default {
 </script>
 <style scoped lang="less">
 .HeroDetAilattribute {
-  position: relative;
+  position: absolute;
   right: 0;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);

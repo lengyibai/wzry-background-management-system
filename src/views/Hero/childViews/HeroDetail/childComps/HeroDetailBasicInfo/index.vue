@@ -75,6 +75,7 @@ export default {
 </script>
 <style scoped lang="less">
 .HeroDetailBasicInfo {
+  position: absolute;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   padding: var(--gap-25);

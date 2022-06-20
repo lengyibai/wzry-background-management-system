@@ -49,7 +49,7 @@ export default {
   position: relative;
   width: 224px;
   height: 56px;
-  font-size: 26px;
+  font-size: var(--font-s-24);
   color: var(--white);
   &:active {
     img {
