@@ -2,7 +2,7 @@
   <div class="HeroDetail" @scroll="$refs.HeroSkins.scroll()">
     <LybMaskClose @close="hide" />
     <!--//%%%%%··········主要资料··········%%%%%//-->
-    <HeroDetailParallaxBg class="basis" :bg="data.poster">
+    <HeroDetailParallaxBg class="basis stick" :bg="data.poster">
       <!-- 左侧详情 -->
       <transition name="fade">
         <HeroDetailBasicInfo :data="data" v-if="show_info" />
@@ -14,10 +14,15 @@
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········皮肤··········%%%%%//-->
-    <HeroSkins v-if="skins.length" :data="skins" ref="HeroSkins" />
+    <HeroSkins
+      class="stick"
+      v-if="skins.length"
+      :data="skins"
+      ref="HeroSkins"
+    />
 
     <!--//%%%%%··········故事··········%%%%%//-->
-    <HeroDetailParallaxBg v-if="skins.length" :bg="skins[1].img">
+    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="skins[1].img">
       <HeroStory :data="storys" />
     </HeroDetailParallaxBg>
   </div>
@@ -113,6 +118,10 @@ export default {
 *::-webkit-scrollbar-thumb:active {
   background-color: var(--white);
 }
+
+.stick {
+  scroll-snap-align: start;
+}
 .HeroDetail {
   position: fixed;
   top: 0;
@@ -121,6 +130,7 @@ export default {
   height: 100%;
   z-index: 2;
   overflow: hidden auto;
+  scroll-snap-type: y mandatory;
   .basis {
     display: flex;
     justify-content: space-between;
