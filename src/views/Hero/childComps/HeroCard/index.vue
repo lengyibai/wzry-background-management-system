@@ -213,5 +213,31 @@ export default {
       font-size: var(--font-s-16);
     }
   }
+  @media screen and (max-width: 1390px) {
+    .name,
+    .view {
+      font-size: var(--font-s-25) !important;
+    }
+    .mark,
+    .id {
+      font-size: var(--font-s-12) !important;
+    }
+    .select-mask {
+      .lineActive {
+        width: 6em !important;
+      }
+    }
+  }
+  @media screen and (max-width: 1210px) {
+    .name,
+    .view {
+      font-size: var(--font-s-16) !important;
+    }
+    .select-mask {
+      .lineActive {
+        width: 4em !important;
+      }
+    }
+  }
 }
 </style>

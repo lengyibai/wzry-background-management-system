@@ -20,5 +20,6 @@ export default {
 <style scoped lang="less">
 .Time {
   color: var(--theme-font-dark);
+  font-size: var(--font-s-20);
 }
 </style>

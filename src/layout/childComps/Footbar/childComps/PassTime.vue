@@ -31,5 +31,6 @@ export default {
 <style scoped lang="less">
 .PassTime {
   color: var(--theme-font-dark);
+  font-size: var(--font-s-20);
 }
 </style>

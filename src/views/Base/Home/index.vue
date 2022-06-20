@@ -17,5 +17,6 @@ export default {
 .Home {
   width: 100%;
   height: 100%;
+  font-size: var(--font-s-25);
 }
 </style>
