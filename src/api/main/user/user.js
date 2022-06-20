@@ -18,7 +18,6 @@ export function login(form) {
   return new Promise((resolve) => {
     return getUserInfo({ id: form.id }).then((res) => {
       if (res === undefined) {
-        tip(404, "请求失败，请检查是否启动本地服务器：npm run wzry");
         resolve({ code: 404, msg: "请求错误" });
       } else if (!res?.data.length) {
         // 判断是否存在用户

@@ -49,6 +49,10 @@ server.interceptors.response.use(
     return res;
   },
   () => {
+    Vue.prototype.$tip(
+      "请求失败，请检查是否启动本地服务器：npm run wzry",
+      "danger",
+    );
     Vue.prototype.$lybLoad.close();
   },
 );
