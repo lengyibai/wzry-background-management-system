@@ -18,7 +18,6 @@ Vue.use(businessUI);
 
 //####········公共CSS、JS········####//
 import "@/styles/indexs.css";
-// import "@/utils/flexible.js";
 
 //#####··········其他··········#####//
 //####········事件总线········####//
