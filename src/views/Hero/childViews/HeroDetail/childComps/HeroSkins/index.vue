@@ -1,15 +1,25 @@
 <template>
   <div class="HeroSkins" ref="HeroSkins">
     <div class="box">
-      <div class="skin-type">
-        <img v-if="active_skin_type" :src="active_skin_type" alt="" />
-        <span v-else>伴生皮肤</span>
+      <div class="skin-type" is="transition-group" name="fade">
+        <img
+          v-if="active_skin_type && skin_type_toggle"
+          :src="active_skin_type"
+          alt=""
+          key="a"
+        />
+        <img
+          v-if="active_skin_type && !skin_type_toggle"
+          :src="active_skin_type"
+          alt=""
+          key="b"
+        />
       </div>
       <div class="show-skin flex" ref="showSkin">
-        {{ showSkin_text ? "松开" : "拖过来" }}
+        {{ is_into_drap ? "松开" : "拖过来" }}
       </div>
       <transition name="fade">
-        <div class="show-skin flex clone" v-show="showSkin_text"></div>
+        <div class="show-skin flex clone" v-show="is_into_drap"></div>
       </transition>
       <div
         class="skin"
@@ -18,7 +28,7 @@
         :key="index"
         :style="{
           transform:
-            lyb ||
+            show_skin_head ||
             'rotate(' +
               (360 / data.length) * (index + 1) +
               'deg) translateY(-200%)',
@@ -44,22 +54,8 @@
       </div>
     </div>
     <transition-group name="clip">
-      <img
-        class="bg"
-        :src="bg_imgs[0] || data[0].img"
-        alt=""
-        v-if="data[0]"
-        v-show="toggle"
-        key="a"
-      />
-      <img
-        class="bg"
-        :src="bg_imgs[1] || data[0].img"
-        alt=""
-        v-if="data[0]"
-        v-show="!toggle"
-        key="b"
-      />
+      <img class="bg" :src="bg_imgs[0]" alt="" v-show="toggle" key="a" />
+      <img class="bg" :src="bg_imgs[1]" alt="" v-show="!toggle" key="b" />
     </transition-group>
   </div>
 </template>
@@ -79,87 +75,107 @@ export default {
   name: "HeroSkins",
   data() {
     return {
-      showSkin_text: false,
-      is_into: false, //拖动头像是否进入头像框范围
+      is_into_drap: false, //拖动头像是否进入头像框范围
       bg_imgs: [], //背景图
       toggle: true, //用于切换背景
-      lyb: true,
+      show_skin_head: true,
       active_skin_name: "", //皮肤名
       active_skin_type: "", //皮肤类型
       skin_name_toggle: true, //皮肤切换
+      skin_type_toggle: true, //皮肤类型切换
       active_skin: {
         el: null,
         transform: null,
       }, //当前处于展示的皮肤的DOM元素及坐标
     };
   },
-  computed: {
-    bgImg() {
-      return {
-        backgroundImage: `url(${this.bg_img || this.data[0]?.img})`,
-      };
-    },
+  created() {
+    //#####··········获取皮肤类型中文名，用于图片路径拼接··········#####//
+    this.data.forEach((item) => {
+      HeroSkinType({ id: item.type }).then((res) => {
+        item.type = res.name;
+      });
+    });
   },
   methods: {
+    //#####··········父组件滚动调用此方法，滚动到一定位置播放皮肤头像动画··········#####//
     scroll() {
       if (
         this.$refs.HeroSkins.getBoundingClientRect().y -
           this.$refs.showSkin.offsetHeight <
         0
       ) {
-        this.lyb = false;
+        this.show_skin_head = false;
       }
     },
+
+    //#####··········皮肤头像拖动事件··········#####//
     fn(data, offset, index) {
-      data.style.transition = "all 0s";
+      data.style.transition = "all 0s"; //清除正在拖拽的皮肤头像动画，避免拖拽高延迟
+
+      /* offset用来判断是移动触发的还是松开触发的 */
       if (offset) {
         const el = this.$refs.showSkin;
         const o = this.$refs.showSkin.getBoundingClientRect();
+
+        /* 判断头像是否进入头像框可吸附范围 */
         let flag =
           o.left < offset.x &&
           o.top < offset.y &&
           o.left + el.offsetWidth > offset.x &&
           o.top + el.offsetHeight > offset.y;
-        this.is_into = flag;
-        if (flag) {
-          this.showSkin_text = true;
-        } else {
-          this.showSkin_text = false;
-        }
-      } else if (this.is_into) {
+        this.is_into_drap = flag;
+      } /* 松手触发，并且头像已进入头像框吸附范围 */ else if (
+        this.is_into_drap
+      ) {
+        /* 判断是否存在正在展示的皮肤，存在就将此皮肤头像过渡到初始位置 */
         if (this.active_skin.el) {
           this.active_skin.el.style.pointerEvents = "auto";
           this.active_skin.el.style.transition = "all 1s";
           this.active_skin.el.style.transform = this.active_skin.transform;
         }
+
+        /* 记录正在展示的皮肤头像DOM元素及坐标 */
         this.active_skin.el = data;
         this.active_skin.transform = data.style.transform;
+
+        /* 将要展示的皮肤头像过渡到头像框的位置 */
         const el = this.$refs.showSkin;
         data.style.pointerEvents = "none";
         data.style.transition = "all 1s";
         data.style.left = el.offsetLeft - data.offsetWidth / 2 + "px";
         data.style.top = el.offsetTop - data.offsetHeight / 2 + "px";
         data.style.transform = "";
+
+        /* 有一秒的过渡动画，动画结束后执行以下 */
         setTimeout(() => {
-          data.style.transition = "all 0s";
-          this.bg_img = this.data[index].img;
+          data.style.transition = "all 0s"; //清除正在展示的皮肤头像的动画效果，避免拖拽高延迟
+          this.bg_img = this.data[index].img; //通过展示的皮肤头像的索引号，将对应皮肤设置为背景
+
+          /* 用于皮肤背景的切换动画 */
           if (this.toggle) {
             this.bg_imgs[1] = this.data[index].img;
           } else {
             this.bg_imgs[0] = this.data[index].img;
           }
           this.toggle = !this.toggle;
+
+          /* 设置皮肤名，皮肤名需要有切换时的打字机效果 */
           this.active_skin_name = this.data[index].name;
           this.skin_name_toggle = !this.skin_name_toggle;
-          HeroSkinType({ id: this.data[index].type }).then((res) => {
-            if (res?.name) {
+
+          /* 切换时延迟设置顶部皮肤类型标志 */
+          setTimeout(() => {
+            const skin_type = this.data[index].type;
+            if (skin_type) {
               this.active_skin_type = require("@/assets/img/skinType/" +
-                res.name +
+                skin_type +
                 ".png");
             } else {
-              this.active_skin_type = "";
+              this.active_skin_type = false; //伴生皮肤没有标志
             }
-          });
+            this.skin_type_toggle = !this.skin_type_toggle; //使切换标志时有淡入淡出效果
+          }, 250);
         }, 1000);
       }
     },

@@ -5,7 +5,7 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "wzryToken": "1655661"
+      "wzryToken": "1655735"
     }
   ],
   "heroList": [
@@ -603,6 +603,10 @@
     }
   ],
   "skinType": [
+    {
+      "id": 0,
+      "name": null
+    },
     {
       "id": 1,
       "name": "520限定"
