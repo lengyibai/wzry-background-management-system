@@ -30,7 +30,6 @@ export default {
       ],
     };
   },
-  components: {},
   computed: {
     //#####··········图标··········#####//
     icon() {

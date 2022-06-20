@@ -3,8 +3,8 @@
     class="HeroCard cursor-pointer"
     v-maskGradient
     v-sweepLight="false"
-    @mouseenter="selectMaskShow"
-    @mouseleave="selectMaskHide"
+    @mouseenter="show = true"
+    @mouseleave="show = false"
   >
     <div class="id">No.{{ data.id }}</div>
     <transition name="fade">
@@ -56,23 +56,12 @@ export default {
     return {
       show: false,
       lineActive: false,
-      timer: null,
     };
   },
   methods: {
     //#####··········查看详情··········#####//
     viewClick() {
       this.$emit("view");
-    },
-
-    selectMaskShow() {
-      this.timer = setTimeout(() => {
-        this.show = true;
-      }, 250);
-    },
-    selectMaskHide() {
-      clearTimeout(this.timer);
-      this.show = false;
     },
   },
 };
@@ -149,21 +138,21 @@ export default {
       border-radius: 50%;
       width: 50%;
       margin-bottom: var(--gap-15);
-      animation: rotate 0.5s 0.1s;
+      animation: rotate 0.5s;
       @keyframes rotate {
         35%,
         65% {
           transform: scale(0.75);
         }
         75% {
-          transform: scale(1.35);
+          transform: scale(1.25);
         }
       }
     }
     .view {
       color: var(--blue);
       transition: all 0.5s;
-      animation: scale 0.25s 0.45s forwards;
+      animation: scale 0.25s 0.25s forwards;
       transform: scale(0);
       @keyframes scale {
         75% {

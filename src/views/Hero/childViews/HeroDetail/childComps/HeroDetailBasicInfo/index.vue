@@ -7,35 +7,10 @@
         <span>BACKGROUND</span>
       </div>
     </div>
-    <div class="info">
-      <LybIcon :imgUrl="require('./img/定位.svg')" right="5px" />定位：{{
-        data.location || "未知"
-      }}
-    </div>
-    <div class="info">
-      <LybIcon :imgUrl="require('./img/特长.svg')" right="5px" />特长：{{
-        data.specialty || "未知"
-      }}
-    </div>
-    <div class="info">
-      <LybIcon :imgUrl="require('./img/时期.svg')" right="5px" />时期：{{
-        data.period || "未知"
-      }}
-    </div>
-    <div class="info">
-      <LybIcon :imgUrl="require('./img/阵营.svg')" right="5px" />阵营：{{
-        data.camp || "未知"
-      }}
-    </div>
-    <div class="info">
-      <LybIcon :imgUrl="require('./img/区域.svg')" right="5px" />区域：{{
-        data.area || "未知"
-      }}
-    </div>
-    <div class="info">
-      <LybIcon :imgUrl="require('./img/身高.svg')" right="5px" />身高：{{
-        data.height || "未知"
-      }}CM
+    <div class="info" v-for="(item, index) in hero_info" :key="index">
+      <LybIcon :imgUrl="require('./img/' + item[1] + '.svg')" right="5px" />{{
+        item[1]
+      }}：{{ item[0] || "未知" }}
     </div>
     <div class="info">
       <LybIcon
@@ -57,9 +32,21 @@ export default {
   },
   name: "HeroDetailBasicInfo",
   data() {
-    return {};
+    return {
+      hero_info: {},
+    };
   },
-  components: {},
+  created() {
+    let a = this.data;
+    this.hero_info = [
+      [a.location, "定位"],
+      [a.specialty, "特长"],
+      [a.period, "时期"],
+      [a.camp, "阵营"],
+      [a.area, "区域"],
+      [a.height, "身高"],
+    ];
+  },
   mounted() {
     const list = this.$refs.HeroDetailBasicInfo.querySelectorAll(".info");
     list.forEach((item, index) => {

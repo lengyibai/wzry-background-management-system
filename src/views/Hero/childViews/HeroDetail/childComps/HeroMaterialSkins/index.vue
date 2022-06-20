@@ -146,6 +146,7 @@ export default {
     //#####··········皮肤头像拖动事件··········#####//
     fn(data, offset, index) {
       data.style.transition = "all 0s"; //清除正在拖拽的皮肤头像动画，避免拖拽高延迟
+      data.style.zIndex = 2;
 
       /* offset用来判断是移动触发的还是松开触发的 */
       if (offset) {
@@ -184,6 +185,7 @@ export default {
         /* 有一秒的过渡动画，动画结束后执行以下 */
         setTimeout(() => {
           data.style.transition = "all 0s"; //清除正在展示的皮肤头像的动画效果，避免拖拽高延迟
+          data.style.zIndex = 1;
           this.bg_img = this.skins[index].img; //通过展示的皮肤头像的索引号，将对应皮肤设置为背景
 
           /* 用于皮肤背景的切换动画 */
