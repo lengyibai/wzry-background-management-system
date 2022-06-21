@@ -306,28 +306,28 @@ export default {
 
 /* 蒙版裁剪 */
 .clip-enter-active {
-  animation: clip-in 0.75s;
+  animation: clip-in 1s;
 }
 .clip-leave-active {
-  animation: clip-out 1.25s;
+  animation: clip-out 1s;
 }
 
 @keyframes clip-in {
   0% {
-    clip-path: circle(0% at 50% 50%);
+    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
   }
 
   100% {
-    clip-path: circle(100% at 50% 50%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
 
 @keyframes clip-out {
   0% {
-    clip-path: circle(100% at 50% 50%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
   100% {
-    clip-path: circle(0% at 50% 50%);
+    clip-path: polygon(50% 50%, 100% 0, 50% 50%, 0 100%);
   }
 }
 </style>
