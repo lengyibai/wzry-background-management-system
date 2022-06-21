@@ -111,59 +111,26 @@ export default {
 .clip-leave-active {
   animation: clip-out 1.25s;
 }
-
 @keyframes clip-in {
   0% {
-    clip-path: polygon(
-      0 0,
-      50% 50%,
-      100% 0,
-      50% 50%,
-      100% 100%,
-      50% 50%,
-      0 100%,
-      50% 50%
-    );
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+  50% {
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 0);
   }
   100% {
-    clip-path: polygon(
-      0 0,
-      50% 0,
-      100% 0,
-      100% 50%,
-      100% 100%,
-      50% 100%,
-      0 100%,
-      0 50%
-    );
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
-
 @keyframes clip-out {
   0% {
-    clip-path: polygon(
-      0 0,
-      50% 0,
-      100% 0,
-      100% 50%,
-      100% 100%,
-      50% 100%,
-      0 100%,
-      0 50%
-    );
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
-
+  50% {
+    clip-path: polygon(0 0, 100% 100%, 100% 0, 0 100%);
+  }
   100% {
-    clip-path: polygon(
-      0 0,
-      50% 50%,
-      100% 0,
-      50% 50%,
-      100% 100%,
-      50% 50%,
-      0 100%,
-      50% 50%
-    );
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
   }
 }
 </style>

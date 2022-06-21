@@ -312,48 +312,21 @@ export default {
   animation: clip-out 1.25s;
 }
 
-@-webkit-keyframes clip-in {
-  0% {
-    -webkit-clip-path: circle(0% at 50% 50%);
-    clip-path: circle(0% at 50% 50%);
-  }
-
-  100% {
-    -webkit-clip-path: circle(100% at 50% 50%);
-    clip-path: circle(100% at 50% 50%);
-  }
-}
-
 @keyframes clip-in {
   0% {
-    -webkit-clip-path: circle(0% at 50% 50%);
     clip-path: circle(0% at 50% 50%);
   }
 
   100% {
-    -webkit-clip-path: circle(100% at 50% 50%);
     clip-path: circle(100% at 50% 50%);
-  }
-}
-
-@-webkit-keyframes clip-out {
-  0% {
-    -webkit-clip-path: circle(100% at 50% 50%);
-    clip-path: circle(100% at 50% 50%);
-  }
-  100% {
-    -webkit-clip-path: circle(0% at 50% 50%);
-    clip-path: circle(0% at 50% 50%);
   }
 }
 
 @keyframes clip-out {
   0% {
-    -webkit-clip-path: circle(100% at 50% 50%);
     clip-path: circle(100% at 50% 50%);
   }
   100% {
-    -webkit-clip-path: circle(0% at 50% 50%);
     clip-path: circle(0% at 50% 50%);
   }
 }
