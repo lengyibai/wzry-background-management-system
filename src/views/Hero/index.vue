@@ -121,22 +121,22 @@ export default {
     clip-path: polygon(0 0, 0 100%, 0 50%, 0 100%);
   }
   50% {
-    clip-path: polygon(0 0, 0 100%, 0 50%, 100% 0);
+    clip-path: polygon(0 0, 100% 0, 0 50%, 0% 100%);
   }
   100% {
-    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
 
 @keyframes clip-out {
   0% {
-    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
   50% {
-    clip-path: polygon(100% 50%, 0 100%, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 50%);
   }
   100% {
-    clip-path: polygon(100% 50%, 100% 50%, 100% 100%, 100% 0);
+    clip-path: polygon(100% 100%, 100% 0, 100% 100%, 100% 50%);
   }
 }
 </style>
