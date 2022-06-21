@@ -22,7 +22,17 @@ import {
 
 //#####··········基本··········#####//
 //####········获取英雄列表········####//
-export const heroList = (data) => getHeroList(data);
+export const heroList = (data) => {
+  return new Promise((resolve) => {
+    getHeroList(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
 //####········获取英雄皮肤········####//
 export const heroSkins = (data) => {
   return new Promise((resolve) => {
@@ -36,7 +46,7 @@ export const heroSkins = (data) => {
   });
 };
 //####········获取英雄皮肤类型········####//
-export const HeroSkinType = (data) => {
+export const heroSkinType = (data) => {
   return new Promise((resolve) => {
     getHeroSkinType(data).then((res) => {
       if (data) {

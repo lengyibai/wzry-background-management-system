@@ -12,7 +12,7 @@
       </transition>
 
       <!--//%%%%%··········皮肤类型··········%%%%%//-->
-      <div class="skin-type" is="transition-group" name="fade">
+      <div class="skin-type" is="transition-group" name="updown">
         <img
           v-if="active_skin_type && skin_type_toggle"
           :src="active_skin_type"
@@ -88,10 +88,6 @@
   </div>
 </template>
 <script>
-//#####··········网络请求··········#####//
-//{ 皮肤类型 }
-import { HeroSkinType } from "@/api/main/hero/hero.js";
-
 //#####··········子组件··········#####//
 import HeroDetailBasicInfo from "../../childComps/HeroDetailBasicInfo"; //左侧资料详情
 import HeroDetAilattribute from "../../childComps/HeroDetAilattribute"; //右侧属性详情
@@ -135,12 +131,6 @@ export default {
       this.show_info = true;
       this.show_skin_head = false;
     }, 1000);
-    //#####··········获取皮肤类型中文名，用于图片路径拼接··········#####//
-    this.skins.forEach((item) => {
-      HeroSkinType({ id: item.type }).then((res) => {
-        item.type = res.name;
-      });
-    });
   },
   methods: {
     //#####··········皮肤头像拖动事件··········#####//
@@ -150,16 +140,16 @@ export default {
 
       /* offset用来判断是移动触发的还是松开触发的 */
       if (offset) {
-        const el = this.$refs.showSkin;
-        const o = this.$refs.showSkin.getBoundingClientRect();
-
         /* 判断头像是否进入头像框可吸附范围 */
-        let flag =
-          o.left < offset.x &&
-          o.top < offset.y &&
-          o.left + el.offsetWidth > offset.x &&
-          o.top + el.offsetHeight > offset.y;
-        this.is_into_drap = flag;
+        this.is_into_drap =
+          this.$refs.showSkin.getBoundingClientRect().left < offset.x &&
+          this.$refs.showSkin.getBoundingClientRect().top < offset.y &&
+          this.$refs.showSkin.getBoundingClientRect().left +
+            this.$refs.showSkin.offsetWidth >
+            offset.x &&
+          this.$refs.showSkin.getBoundingClientRect().top +
+            this.$refs.showSkin.offsetHeight >
+            offset.y;
       } /* 松手触发，并且头像已进入头像框吸附范围 */ else if (
         this.is_into_drap
       ) {
@@ -290,12 +280,81 @@ export default {
     object-fit: cover;
   }
 }
-
-.clip-enter-active {
-  animation: clip-in 1s;
+/* 进入前状态 */
+.updown-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.updown-leave-active {
+  opacity: 0;
+  transform: translateY(100%);
+}
+/* 进入和离开动画属性 */
+.updown-leave-active,
+.updown-enter-active {
+  transition: all 0.5s;
 }
 
+/* 解决添加元素占位时无动画，替代 width: 0 与 overflow: hidden */
+.updown-move {
+  transition: all 0.5s;
+}
+/* 解决删除元素时，其他元素补位无动画 */
+.updown-leave-active {
+  position: absolute; /* 必须为绝对定位 */
+}
+
+/* 蒙版裁剪 */
+.clip-enter-active {
+  animation: clip-in 0.75s;
+}
 .clip-leave-active {
-  animation: clip-out 1s;
+  animation: clip-out 1.25s;
+}
+
+@-webkit-keyframes clip-in {
+  0% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  100% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+@keyframes clip-in {
+  0% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  100% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+@-webkit-keyframes clip-out {
+  0% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+  100% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
+}
+
+@keyframes clip-out {
+  0% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+  100% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
 }
 </style>

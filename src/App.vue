@@ -56,11 +56,32 @@ export default {
   }
 }
 
+/* 蒙版裁剪 */
 .clip-enter-active {
-  animation: clip-in 0.5s;
+  animation: clip-in 0.75s;
 }
-
 .clip-leave-active {
-  animation: clip-out 1.5s;
+  animation: clip-out 1.25s;
+}
+@keyframes clip-in {
+  0% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  100% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+@keyframes clip-out {
+  0% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+  100% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
 }
 </style>

@@ -13,7 +13,7 @@ function tip(code, msg) {
 }
 //#####··········基本··········#####//
 //####········登录········####//
-export function login(form) {
+export const login = (form) => {
   /* 获取用户表 */
   return new Promise((resolve) => {
     return getUserInfo({ id: form.id }).then((res) => {
@@ -38,18 +38,16 @@ export function login(form) {
       }
     });
   });
-}
+};
 //####········自动登录········####//
-export function userInfo(form) {
-  return getUserInfo(form);
-}
+export const userInfo = (form) => getUserInfo(form);
 
 //####········登出········####//
-export function logout(id) {
+export const logout = (id) => {
   return new Promise((resolve) => {
     // 清除数据库token
     updateUser(id, { wzryToken: "" });
     tip(200, "退出成功");
     resolve({ code: 200, msg: "退出成功" });
   });
-}
+};

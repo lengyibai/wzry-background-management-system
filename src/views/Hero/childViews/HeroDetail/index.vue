@@ -16,22 +16,28 @@
   </div>
 </template>
 <script>
-//#####··········网络请求··········#####//
-//接口信息：{  英雄皮肤，英雄技能，英雄故事 }
-import { heroSkins, heroStorys } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动视差背景
 import HeroMaterialSkins from "./childComps/HeroMaterialSkins"; //资料、皮肤页
 import HeroStory from "./childComps/HeroStory"; //历史页
 export default {
   props: {
-    /* 英雄id */
-    id: {
-      type: Number,
-      default: 0,
-    },
     /* 英雄基本数据 */
     data: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+    /* 英雄皮肤 */
+    skins: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    /* 英雄故事 */
+    storys: {
       type: Object,
       default() {
         return {};
@@ -47,8 +53,6 @@ export default {
   data() {
     return {
       show_info: false,
-      skins: [],
-      storys: {},
     };
   },
   components: {
@@ -61,16 +65,6 @@ export default {
       /* 延迟显示卡片 */
       this.show_info = true;
     }, 1000);
-
-    const params = { id: this.id };
-    //#####··········获取英雄皮肤··········#####//
-    heroSkins(params).then((res) => {
-      this.skins = res.data;
-    });
-    //#####··········获取英雄故事··········#####//
-    heroStorys(params).then((res) => {
-      this.storys = res.data;
-    });
   },
   methods: {
     //#####··········隐藏自身··········#####//
@@ -122,15 +116,6 @@ export default {
     perspective: 2000px;
     overflow: hidden;
   }
-}
-
-/* 缩小放大 */
-.clip-enter-active {
-  animation: clip-in 0.75s;
-}
-
-.clip-leave-active {
-  animation: clip-out 0.75s;
 }
 /* 从左到右 */
 .leftToRight-enter,

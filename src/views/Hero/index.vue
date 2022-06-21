@@ -24,7 +24,8 @@
         v-model="show_HeroDetail"
         v-if="show_HeroDetail"
         :data="hero_list[0]"
-        :id="hero_id"
+        :skins="hero_skins"
+        :storys="hero_storys"
       />
     </transition>
   </div>
@@ -32,8 +33,13 @@
 
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{ 英雄列表 }
-import { heroList } from "@/api/main/hero/hero.js";
+//接口信息：{ 英雄列表，英雄皮肤，皮肤类型，英雄故事  }
+import {
+  heroList,
+  heroSkins,
+  heroSkinType,
+  heroStorys,
+} from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
 import HeroCard from "./childComps/HeroCard";
 import HeroSidebar from "./childComps/HeroSidebar";
@@ -43,19 +49,22 @@ export default {
   name: "Hero",
   data() {
     return {
-      hero_id: 0, //点击查看详情时的英雄id
-      show_HeroSidebar: false, //显示英雄分类侧边栏
-      show_HeroDetail: false, //显示英雄详情
       hero_list: [], //英雄列表
+      hero_skins: [], //英雄皮肤
+      hero_storys: {}, //英雄故事
+      show_HeroDetail: false, //显示英雄详情
+      show_HeroSidebar: false, //显示英雄分类侧边栏
     };
   },
   components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
+    //#####··········获取英雄列表··········#####//
     heroList().then((res) => {
-      this.hero_list = res.data;
+      this.hero_list = res;
     });
   },
   mounted() {
+    //#####··········延迟显示右侧边栏··········#####//
     setTimeout(() => {
       this.show_HeroSidebar = true;
     }, 250);
@@ -63,8 +72,24 @@ export default {
   methods: {
     //#####··········显示英雄详情··········#####//
     viewClick(id) {
-      this.show_HeroDetail = true;
-      this.hero_id = id;
+      const params = { id };
+      //####··········获取英雄皮肤··········####//
+      heroSkins(params).then((res) => {
+        this.hero_skins = res.data;
+        /* 获取皮肤类型中文名，用于图片路径拼接 */
+        this.hero_skins.forEach((item) => {
+          heroSkinType({ id: item.type }).then((res) => {
+            item.type = res.name;
+          });
+        });
+        setTimeout(() => {
+          this.show_HeroDetail = true;
+        }, 750);
+      });
+      //####··········获取英雄故事··········####//
+      heroStorys(params).then((res) => {
+        this.hero_storys = res.data;
+      });
     },
   },
 };
@@ -77,6 +102,68 @@ export default {
   .HeroMain {
     flex: 1;
     padding-right: calc(var(--gap-25) * 8);
+  }
+}
+/* 蒙版裁剪 */
+.clip-enter-active {
+  animation: clip-in 0.75s;
+}
+.clip-leave-active {
+  animation: clip-out 1.25s;
+}
+
+@keyframes clip-in {
+  0% {
+    clip-path: polygon(
+      0 0,
+      50% 50%,
+      100% 0,
+      50% 50%,
+      100% 100%,
+      50% 50%,
+      0 100%,
+      50% 50%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0 100%,
+      0 50%
+    );
+  }
+}
+
+@keyframes clip-out {
+  0% {
+    clip-path: polygon(
+      0 0,
+      50% 0,
+      100% 0,
+      100% 50%,
+      100% 100%,
+      50% 100%,
+      0 100%,
+      0 50%
+    );
+  }
+
+  100% {
+    clip-path: polygon(
+      0 0,
+      50% 50%,
+      100% 0,
+      50% 50%,
+      100% 100%,
+      50% 50%,
+      0 100%,
+      50% 50%
+    );
   }
 }
 </style>

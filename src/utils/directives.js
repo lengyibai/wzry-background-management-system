@@ -264,6 +264,7 @@ const textHoverColor = {
   },
 };
 
+//#####··········元素支持拖动··········#####//
 const drag = {
   inserted(el, arg) {
     el.style.userSelect = "none";
@@ -282,18 +283,20 @@ const drag = {
       window.addEventListener("mousemove", fn);
 
       function fn(e) {
-        moveX = e.pageX - x;
-        moveY = e.pageY - y;
-        el.style.left = `${moveX + startX}px`;
-        el.style.top = `${moveY + startY}px`;
-        arg.value.fn(
-          el,
-          {
-            x: el.getBoundingClientRect().left + el.offsetWidth / 2,
-            y: el.getBoundingClientRect().top + el.offsetHeight / 2,
-          },
-          arg.value.index,
-        );
+        requestAnimationFrame(function () {
+          moveX = e.pageX - x;
+          moveY = e.pageY - y;
+          el.style.left = `${moveX + startX}px`;
+          el.style.top = `${moveY + startY}px`;
+          arg.value.fn(
+            el,
+            {
+              x: el.getBoundingClientRect().left + el.offsetWidth / 2,
+              y: el.getBoundingClientRect().top + el.offsetHeight / 2,
+            },
+            arg.value.index,
+          );
+        });
       }
 
       window.addEventListener("mouseup", up);
