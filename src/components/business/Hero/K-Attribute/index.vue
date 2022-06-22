@@ -31,19 +31,19 @@ export default {
       y: {
         survival: "0 -170px",
         attack: "-30px -170px",
-        skill: "-60px -170px",
+        effect: "-60px -170px",
         difficulty: "-90px -170px",
       },
       bgc: {
         survival: "#1c8fea",
         attack: "#e7ca63",
-        skill: "#5dd473",
+        effect: "#5dd473",
         difficulty: "#e84a33",
       },
       text: {
         survival: "生存能力",
         attack: "攻击伤害",
-        skill: "技能效果",
+        effect: "技能效果",
         difficulty: "上手难度",
       },
     };

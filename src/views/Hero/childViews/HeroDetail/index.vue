@@ -2,15 +2,17 @@
   <div class="HeroDetail">
     <LybMaskClose @close="hide" />
     <!--//%%%%%··········资料皮肤··········%%%%%//-->
-    <HeroMaterialSkins
-      class="stick"
-      v-if="skins.length"
-      :skins="skins"
-      :data="data"
-    />
+    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="data.poster">
+      <HeroMaterialSkins v-if="skins.length" :skins="skins" :data="data" />
+    </HeroDetailParallaxBg>
+
+    <!--//%%%%%··········技能··········%%%%%//-->
+    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="data.poster">
+      <HeroSkill :data="storys" />
+    </HeroDetailParallaxBg>
 
     <!--//%%%%%··········故事··········%%%%%//-->
-    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="skins[1].img">
+    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="data.poster">
       <HeroStory :data="storys" />
     </HeroDetailParallaxBg>
   </div>
@@ -19,6 +21,7 @@
 //#####··········子组件··········#####//
 import HeroDetailParallaxBg from "./childComps/HeroDetailParallaxBg"; //滚动视差背景
 import HeroMaterialSkins from "./childComps/HeroMaterialSkins"; //资料、皮肤页
+import HeroSkill from "./childComps/HeroSkill"; //技能页
 import HeroStory from "./childComps/HeroStory"; //历史页
 export default {
   props: {
@@ -58,6 +61,7 @@ export default {
   components: {
     HeroDetailParallaxBg,
     HeroMaterialSkins,
+    HeroSkill,
     HeroStory,
   },
   created() {

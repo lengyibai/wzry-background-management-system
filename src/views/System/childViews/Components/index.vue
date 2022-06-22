@@ -51,7 +51,7 @@
       <ChildComps class="flex">
         <K-Attribute attr="survival" length="25%" />
         <K-Attribute attr="attack" length="50%" />
-        <K-Attribute attr="skill" length="75%" />
+        <K-Attribute attr="effect" length="75%" />
         <K-Attribute attr="difficulty" length="100%" />
       </ChildComps>
     </div>

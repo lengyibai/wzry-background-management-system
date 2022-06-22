@@ -4,7 +4,7 @@
     <K-HeroSort class="HeroSort" :occ="data.profession" />
     <K-Attribute attr="survival" :length="data.survival" />
     <K-Attribute attr="attack" :length="data.attack" />
-    <K-Attribute attr="skill" :length="data.skill" />
+    <K-Attribute attr="effect" :length="data.effect" />
     <K-Attribute attr="difficulty" :length="data.difficulty" />
   </div>
 </template>

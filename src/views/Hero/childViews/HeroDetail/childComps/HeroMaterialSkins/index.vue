@@ -77,8 +77,8 @@
     <transition-group name="clip">
       <img
         class="bg"
-        v-if="data.poster"
-        :src="bg_imgs[0] || data.poster"
+        v-if="bg_imgs[0]"
+        :src="bg_imgs[0]"
         alt=""
         v-show="toggle"
         key="a"
@@ -89,8 +89,8 @@
 </template>
 <script>
 //#####··········子组件··········#####//
-import HeroDetailBasicInfo from "../../childComps/HeroDetailBasicInfo"; //左侧资料详情
-import HeroDetAilattribute from "../../childComps/HeroDetAilattribute"; //右侧属性详情
+import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
+import HeroDetAilattribute from "./childComps/HeroDetAilattribute"; //右侧属性详情
 export default {
   props: {
     skins: {
@@ -215,7 +215,6 @@ export default {
   height: 100%;
   overflow: auto;
   color: var(--white);
-  background-color: #000;
   .box {
     position: absolute;
     inset: 0;
@@ -233,6 +232,7 @@ export default {
       }
       img {
         width: 200px;
+        filter: drop-shadow(0px 3px 3px #000);
       }
     }
     .show-skin {
@@ -272,6 +272,7 @@ export default {
       text-align: center;
       transform: translateY(-100%);
       font-size: var(--font-s-50);
+      text-shadow: 0 5px 3px #000;
     }
   }
   .bg {
