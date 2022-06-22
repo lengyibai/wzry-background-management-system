@@ -105,15 +105,13 @@ export default {
   }
 }
 
-/* 圆形蒙版裁剪 */
+/* 蒙版裁剪 */
 .clip-enter-active {
-  -webkit-animation: clip-in 0.75s;
   animation: clip-in 0.75s;
 }
 
 .clip-leave-active {
-  -webkit-animation: clip-out 1.25s;
-  animation: clip-out 1.25s;
+  animation: clip-out 1.5s;
 }
 
 @keyframes clip-in {
