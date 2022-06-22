@@ -7,6 +7,8 @@ import {
   getHeroSkins,
   getHeroSkinType,
   getHeroSkills,
+  getHeroSkillType,
+  getHeroSkillEffect,
   getHeroStorys,
   getHeroRelations,
   getHeroAppellation,
@@ -64,7 +66,41 @@ export const heroAppellation = (data) => getHeroAppellation(data);
 export const heroRelations = (data) => getHeroRelations(data);
 
 //####········获取英雄技能资料········####//
-export const heroSkills = (data) => getHeroSkills(data);
+export const heroSkills = (data) => {
+  return new Promise((resolve) => {
+    getHeroSkills(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
+//####········获取英雄技能类型········####//
+export const heroSkillType = (data) => {
+  return new Promise((resolve) => {
+    getHeroSkillType(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
+//####········获取英雄技能效果········####//
+export const heroSkillEffect = (data) => {
+  return new Promise((resolve) => {
+    getHeroSkillEffect(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
 
 //####········获取英雄故事········####//
 export const heroStorys = (data) => getHeroStorys(data);

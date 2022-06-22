@@ -21,10 +21,10 @@
 
     <transition name="clip">
       <HeroDetail
-        v-model="show_HeroDetail"
         v-if="show_HeroDetail"
         :data="hero_list[0]"
         :skins="hero_skins"
+        :skills="hero_skills"
         :storys="hero_storys"
       />
     </transition>
@@ -33,11 +33,14 @@
 
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{ 英雄列表，英雄皮肤，皮肤类型，英雄故事  }
+//接口信息：{ 英雄列表，英雄皮肤，皮肤类型，英雄技能，英雄技能效果，英雄技能类型，英雄故事  }
 import {
   heroList,
   heroSkins,
   heroSkinType,
+  heroSkills,
+  heroSkillType,
+  heroSkillEffect,
   heroStorys,
 } from "@/api/main/hero/hero.js";
 //#####··········子组件··········#####//
@@ -51,6 +54,7 @@ export default {
     return {
       hero_list: [], //英雄列表
       hero_skins: [], //英雄皮肤
+      hero_skills: {}, //英雄技能
       hero_storys: {}, //英雄故事
       show_HeroDetail: false, //显示英雄详情
       show_HeroSidebar: false, //显示英雄分类侧边栏
@@ -85,6 +89,22 @@ export default {
         setTimeout(() => {
           this.show_HeroDetail = true;
         }, 750);
+      });
+      //####········获取英雄技能类型及效果········####//
+      heroSkills(params).then((res) => {
+        this.hero_skills = res.data;
+        this.hero_skills.forEach((item) => {
+          item.effect?.forEach((item) => {
+            heroSkillEffect({ id: item.type }).then((res) => {
+              item.type = res.name;
+            });
+          });
+          item.type?.forEach((item, index, arr) => {
+            heroSkillType({ id: item }).then((res) => {
+              arr[index] = res.name;
+            });
+          });
+        });
       });
       //####··········获取英雄故事··········####//
       heroStorys(params).then((res) => {

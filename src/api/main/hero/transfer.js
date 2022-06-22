@@ -16,8 +16,13 @@ export const getHeroRelations = (data) => getReq("/relations", data);
 export const getHeroAppellation = (data) => getReq("/appellation", data);
 //####········获取英雄技能资料········####//
 export const getHeroSkills = (data) => getReq("/skills", data);
+//####········获取英雄技能类型········####//
+export const getHeroSkillType = (data) => getReq("/skillType", data);
+//####········获取英雄技能效果········####//
+export const getHeroSkillEffect = (data) => getReq("/skillEffect", data);
 //####········获取英雄故事········####//
 export const getHeroStorys = (data) => getReq("/storys", data);
+
 //#####··········POST请求··········#####//
 //####········注册英雄········####//
 export const addHero = (data) => postReq("/heroList", data);

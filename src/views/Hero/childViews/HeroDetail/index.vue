@@ -2,18 +2,18 @@
   <div class="HeroDetail">
     <LybMaskClose @close="hide" />
     <!--//%%%%%··········资料皮肤··········%%%%%//-->
-    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="data.poster">
-      <HeroMaterialSkins v-if="skins.length" :skins="skins" :data="data" />
+    <HeroDetailParallaxBg class="stick" :bg="data.poster">
+      <HeroMaterialSkins v-bind="$attrs" :data="data" />
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········技能··········%%%%%//-->
-    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="data.poster">
-      <HeroSkill :data="storys" />
+    <HeroDetailParallaxBg class="stick" :bg="data.poster">
+      <HeroSkill v-bind="$attrs" />
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········故事··········%%%%%//-->
-    <HeroDetailParallaxBg class="stick" v-if="skins.length" :bg="data.poster">
-      <HeroStory :data="storys" />
+    <HeroDetailParallaxBg class="stick" :bg="data.poster">
+      <HeroStory v-bind="$attrs" />
     </HeroDetailParallaxBg>
   </div>
 </template>
@@ -31,25 +31,6 @@ export default {
       default() {
         return {};
       },
-    },
-    /* 英雄皮肤 */
-    skins: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    /* 英雄故事 */
-    storys: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-    /* 控制是否显示英雄详情 */
-    value: {
-      type: Boolean,
-      default: false,
     },
   },
   name: "HeroDetail",

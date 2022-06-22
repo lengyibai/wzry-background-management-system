@@ -1,15 +1,15 @@
 <template>
   <div class="HeroStory">
     <div class="title">TA的故事</div>
-    <p class="content" v-html="data.gamestory"></p>
+    <p class="content" v-html="storys.gamestory"></p>
     <div class="title">历史上的他</div>
-    <p class="content" v-html="data.history"></p>
+    <p class="content" v-html="storys.history"></p>
   </div>
 </template>
 <script>
 export default {
   props: {
-    data: {
+    storys: {
       type: Object,
       default() {
         return {};
@@ -32,7 +32,7 @@ export default {
   color: var(--white);
   background-color: rgba(0, 0, 0, 0.5);
   .title {
-    font-size: var(--font-s-35);
+    font-size: var(--font-s-50);
     text-align: center;
     margin-top: 1em;
   }
