@@ -107,7 +107,7 @@ export default {
 
 /* 蒙版裁剪 */
 .clip-enter-active {
-  animation: clip-in 0.75s;
+  animation: clip-in 1s;
 }
 
 .clip-leave-active {

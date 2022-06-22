@@ -222,6 +222,7 @@ export default {
     z-index: 1;
     transform-style: preserve-3d;
     perspective: 2000px;
+    box-shadow: 0px 0px 100px 25px #000 inset;
     .skin-type {
       display: flex;
       justify-content: center;
@@ -280,7 +281,6 @@ export default {
     object-fit: cover;
   }
 }
-/* 进入前状态 */
 .updown-enter {
   opacity: 0;
   transform: translateY(-100%);
@@ -289,19 +289,16 @@ export default {
   opacity: 0;
   transform: translateY(100%);
 }
-/* 进入和离开动画属性 */
 .updown-leave-active,
 .updown-enter-active {
   transition: all 0.5s;
 }
 
-/* 解决添加元素占位时无动画，替代 width: 0 与 overflow: hidden */
 .updown-move {
   transition: all 0.5s;
 }
-/* 解决删除元素时，其他元素补位无动画 */
 .updown-leave-active {
-  position: absolute; /* 必须为绝对定位 */
+  position: absolute;
 }
 
 /* 蒙版裁剪 */
