@@ -1,6 +1,21 @@
 <template>
   <div class="HeroSkill">
     <div class="title">技能</div>
+    <div class="skill-icon">
+      <div
+        class="border"
+        :style="{
+          left: skill_border_offset + 'px',
+        }"
+      ></div>
+      <img
+        ref="skillImg"
+        :src="item.img"
+        @click="selectSkill($event, index)"
+        v-for="(item, index) in skills"
+        :key="index"
+      />
+    </div>
     <div class="content">
       <div class="left">
         <!--//%%%%%··········名称及类型··········%%%%%//-->
@@ -17,8 +32,13 @@
 
         <!--//%%%%%··········数字相关··········%%%%%//-->
         <div class="cd-consume">
-          <div class="cd">CD：{{ active_skill.cd }}秒</div>
-          <div class="consume">法力消耗：{{ active_skill.consume }}</div>
+          <div class="cd" v-if="active_skill.cd">
+            CD：{{ active_skill.cd }}秒
+          </div>
+          <div class="consume" v-if="active_skill.cd">
+            法力消耗：{{ active_skill.consume }}
+          </div>
+          <div class="passive" v-else>被动</div>
         </div>
 
         <!--//%%%%%··········描述··········%%%%%//-->
@@ -62,15 +82,26 @@ export default {
   name: "index",
   data() {
     return {
-      active_skill: {},
+      skill_border_offset: 0, //技能框坐标
+      active_skill: {}, //处于展示的技能信息
+      currentIndex: 0, //处于展示的技能索引
     };
   },
   created() {
-    this.active_skill = this.skills[2];
-    console.log(this.active_skill);
+    this.active_skill = this.skills[0];
+    console.log(this.skills);
   },
-  components: {},
-  methods: {},
+  mounted() {
+    this.skill_border_offset = this.$refs.skillImg[0].offsetLeft;
+  },
+  methods: {
+    //#####··········点击需要展示的技能··········#####//
+    selectSkill(e, index) {
+      this.skill_border_offset = e.target.offsetLeft;
+      this.currentIndex = index;
+      this.active_skill = this.skills[index];
+    },
+  },
 };
 </script>
 <style scoped lang="less">
@@ -84,6 +115,46 @@ export default {
     font-size: var(--font-s-50);
     text-align: center;
     margin-top: 1em;
+  }
+  .skill-icon {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: var(--gap-25);
+    .border {
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      border: 5px solid #f9ca24;
+      border-radius: 50%;
+      left: 0;
+      transition: all 0.25s cubic-bezier(0.18, 0.89, 0, 1.08);
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        width: 20px;
+        left: 50%;
+        transform: translatex(-50%);
+        border-style: solid;
+        border-width: 10px;
+        box-sizing: border-box;
+      }
+      &::before {
+        top: -1px;
+        border-color: #f9ca24 transparent transparent transparent;
+      }
+      &::after {
+        bottom: -1px;
+        border-color: transparent transparent #f9ca24 transparent;
+      }
+    }
+    img {
+      width: 90px;
+      height: 90px;
+    }
   }
   .content {
     position: relative;
@@ -106,9 +177,13 @@ export default {
         display: flex;
         margin-bottom: var(--gap-15);
         .cd,
-        .consume {
+        .consume,
+        .passive {
           font-size: var(--font-s-35);
           margin-right: var(--gap-35);
+        }
+        .passive {
+          color: #ccc;
         }
       }
       .desc {

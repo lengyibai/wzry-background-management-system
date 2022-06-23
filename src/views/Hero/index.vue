@@ -22,6 +22,7 @@
     <transition name="clip">
       <HeroDetail
         v-if="show_HeroDetail"
+        v-model="show_HeroDetail"
         :data="hero_list[0]"
         :skins="hero_skins"
         :skills="hero_skills"
