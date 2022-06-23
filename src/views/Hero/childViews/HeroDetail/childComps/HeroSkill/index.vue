@@ -20,7 +20,10 @@
 
     <!--//%%%%%··········主体内容··········%%%%%//-->
     <div class="content">
-      <div class="left">
+      <div
+        class="left"
+        :style="{ width: active_skill.effect ? '45%' : '100%' }"
+      >
         <!--//%%%%%··········名称及类型··········%%%%%//-->
         <div class="name-type">
           <div class="name">{{ active_skill.name }}</div>
@@ -120,14 +123,13 @@ export default {
     text-align: center;
     margin-top: 1em;
     text-shadow: var(--t-shadow);
+    margin-bottom: var(--gap-25);
   }
   .skill-icon {
     position: relative;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: var(--gap-25);
-    margin-bottom: var(--gap-15);
     .border {
       width: 90px;
       height: 90px;
@@ -218,7 +220,7 @@ export default {
           font-weight: bold;
         }
         .effect {
-          font-size: var(--font-s-25);
+          font-size: var(--font-s-30);
           text-shadow: var(--t-shadow);
           font-weight: bold;
         }
