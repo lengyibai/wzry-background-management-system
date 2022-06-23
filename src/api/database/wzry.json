@@ -5,7 +5,7 @@
       "password": "lengyibai.",
       "name": "冷弋白",
       "headImg": "http://lengyibai.gitee.io/img-bed/img/lyb.png",
-      "wzryToken": "1655996"
+      "wzryToken": "1656002"
     }
   ],
   "heroList": [
@@ -82,11 +82,11 @@
           "effect": [
             {
               "type": 1,
-              "parser": [450, 540, 630, 720, 810, 900]
+              "phase": [450, 540, 630, 720, 810, 900]
             },
             {
               "type": 2,
-              "parser": ["25%", "28%", "31%", "34%", "37%", "40%"]
+              "phase": ["25%", "28%", "31%", "34%", "37%", "40%"]
             }
           ]
         },
@@ -121,7 +121,7 @@
           "effect": [
             {
               "type": 3,
-              "parser": [35, 30, 25]
+              "phase": [35, 30, 25]
             }
           ]
         }

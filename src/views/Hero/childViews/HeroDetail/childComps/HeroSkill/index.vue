@@ -24,17 +24,11 @@
         <!--//%%%%%··········名称及类型··········%%%%%//-->
         <div class="name-type">
           <div class="name">{{ active_skill.name }}</div>
-          <!-- <div
-            class="type"
+          <HeroSkillTypeTag
             v-for="(item, index) in active_skill.type"
+            :type="item"
             :key="index"
-          >
-            {{ item }}
-          </div> -->
-          <div class="skill-type skill-type-zs flex">真实</div>
-          <div class="skill-type skill-type-wl flex">物理</div>
-          <div class="skill-type skill-type-fs flex">法术</div>
-          <div class="skill-type skill-type-kz flex">控制</div>
+          />
         </div>
 
         <!--//%%%%%··········数字相关··········%%%%%//-->
@@ -51,19 +45,19 @@
         <!--//%%%%%··········描述··········%%%%%//-->
         <div class="desc" v-html="active_skill.desc"></div>
       </div>
-      <div class="right">
+      <div class="right" v-if="active_skill.effect">
         <table class="table">
           <tr>
             <td></td>
             <td
               class="lv"
-              v-for="(item, index) in this.skills[2].effect[0].phase.length"
+              v-for="(item, index) in active_skill.effect[0].phase.length"
               :key="index"
             >
               LV{{ item }}
             </td>
           </tr>
-          <tr v-for="(item, index) in this.skills[2].effect" :key="index">
+          <tr v-for="(item, index) in active_skill.effect" :key="index">
             <td class="effect">
               {{ item.type }}
             </td>
@@ -77,6 +71,8 @@
   </div>
 </template>
 <script>
+//#####··········零部件··········#####//
+import HeroSkillTypeTag from "./childParts/HeroSkillTypeTag"; //技能类别标签
 export default {
   props: {
     skills: {
@@ -94,9 +90,9 @@ export default {
       currentIndex: 0, //处于展示的技能索引
     };
   },
+  components: { HeroSkillTypeTag },
   created() {
     this.active_skill = this.skills[0];
-    console.log(this.skills);
   },
   mounted() {
     this.skill_border_offset = this.$refs.skillImg[0].offsetLeft;
@@ -107,6 +103,7 @@ export default {
       this.skill_border_offset = e.target.offsetLeft;
       this.currentIndex = index;
       this.active_skill = this.skills[index];
+      console.log(this.active_skill);
     },
   },
 };
@@ -185,31 +182,6 @@ export default {
           font-size: var(--font-s-50);
           margin-right: var(--gap-15);
           text-shadow: var(--t-shadow);
-        }
-        .skill-type {
-          height: var(--font-s-35);
-          font-size: var(--font-s-20);
-          border-radius: 5px;
-          padding: 0 25px;
-          margin-right: 5px;
-          box-shadow: 0 0px 3px 0 #000;
-        }
-        .skill-type-zs {
-          color: #e5b14b;
-          background-color: #8a7138;
-        }
-        .skill-type-wl {
-          color: #e08b88;
-          background-color: #762728;
-        }
-        .skill-type-fs {
-          color: #8b8ef7;
-          background-color: #4c4c96;
-        }
-        .skill-type-kz {
-          color: #6cd9b0;
-          border: 1px solid #6cd9b0;
-          background-color: #114433;
         }
       }
       .cd-consume {
