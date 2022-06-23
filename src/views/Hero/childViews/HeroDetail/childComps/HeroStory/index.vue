@@ -35,11 +35,13 @@ export default {
     font-size: var(--font-s-50);
     text-align: center;
     margin-top: 1em;
+    text-shadow: var(--t-shadow);
   }
   .content {
     font-size: var(--font-s-20);
     text-indent: 2em;
     padding: 2em;
+    text-shadow: var(--t-shadow);
   }
 }
 </style>

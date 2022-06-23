@@ -1,6 +1,7 @@
 <template>
   <div class="HeroSkill">
     <div class="title">技能</div>
+    <!--//%%%%%··········技能图标··········%%%%%//-->
     <div class="skill-icon">
       <div
         class="border"
@@ -16,18 +17,24 @@
         :key="index"
       />
     </div>
+
+    <!--//%%%%%··········主体内容··········%%%%%//-->
     <div class="content">
       <div class="left">
         <!--//%%%%%··········名称及类型··········%%%%%//-->
         <div class="name-type">
           <div class="name">{{ active_skill.name }}</div>
-          <div
+          <!-- <div
             class="type"
             v-for="(item, index) in active_skill.type"
             :key="index"
           >
             {{ item }}
-          </div>
+          </div> -->
+          <div class="skill-type skill-type-zs flex">真实</div>
+          <div class="skill-type skill-type-wl flex">物理</div>
+          <div class="skill-type skill-type-fs flex">法术</div>
+          <div class="skill-type skill-type-kz flex">控制</div>
         </div>
 
         <!--//%%%%%··········数字相关··········%%%%%//-->
@@ -115,13 +122,15 @@ export default {
     font-size: var(--font-s-50);
     text-align: center;
     margin-top: 1em;
+    text-shadow: var(--t-shadow);
   }
   .skill-icon {
     position: relative;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: var(--gap-25);
+    margin-top: var(--gap-25);
+    margin-bottom: var(--gap-15);
     .border {
       width: 90px;
       height: 90px;
@@ -130,6 +139,8 @@ export default {
       border-radius: 50%;
       left: 0;
       transition: all 0.25s cubic-bezier(0.18, 0.89, 0, 1.08);
+      z-index: 1;
+      box-shadow: 0 0 10px 5px #000 inset;
       &::before,
       &::after {
         content: "";
@@ -154,6 +165,7 @@ export default {
     img {
       width: 90px;
       height: 90px;
+      filter: drop-shadow(0 2px 5px #000);
     }
   }
   .content {
@@ -165,12 +177,39 @@ export default {
     .left {
       width: 45%;
       .name-type {
+        position: relative;
         display: flex;
         align-items: center;
         margin-bottom: var(--gap-15);
         .name {
           font-size: var(--font-s-50);
           margin-right: var(--gap-15);
+          text-shadow: var(--t-shadow);
+        }
+        .skill-type {
+          height: var(--font-s-35);
+          font-size: var(--font-s-20);
+          border-radius: 5px;
+          padding: 0 25px;
+          margin-right: 5px;
+          box-shadow: 0 0px 3px 0 #000;
+        }
+        .skill-type-zs {
+          color: #e5b14b;
+          background-color: #8a7138;
+        }
+        .skill-type-wl {
+          color: #e08b88;
+          background-color: #762728;
+        }
+        .skill-type-fs {
+          color: #8b8ef7;
+          background-color: #4c4c96;
+        }
+        .skill-type-kz {
+          color: #6cd9b0;
+          border: 1px solid #6cd9b0;
+          background-color: #114433;
         }
       }
       .cd-consume {
@@ -181,6 +220,7 @@ export default {
         .passive {
           font-size: var(--font-s-35);
           margin-right: var(--gap-35);
+          text-shadow: var(--t-shadow);
         }
         .passive {
           color: #ccc;
@@ -188,6 +228,7 @@ export default {
       }
       .desc {
         font-size: var(--font-s-25);
+        text-shadow: var(--t-shadow);
       }
     }
     .right {
@@ -201,14 +242,17 @@ export default {
         .lv {
           position: relative;
           font-size: var(--font-s-25);
+          text-shadow: var(--t-shadow);
           font-weight: bold;
         }
         .effect {
           font-size: var(--font-s-25);
+          text-shadow: var(--t-shadow);
           font-weight: bold;
         }
         .num {
           font-size: var(--font-s-25);
+          text-shadow: var(--t-shadow);
         }
         td {
           word-break: break-all;

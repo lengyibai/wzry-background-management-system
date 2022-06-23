@@ -59,6 +59,7 @@ export default {
     color: var(--white);
     font-size: var(--font-s-75);
     margin-bottom: var(--gap-15);
+    text-shadow: var(--t-shadow);
   }
   .HeroSort {
     margin-bottom: var(--gap-25);

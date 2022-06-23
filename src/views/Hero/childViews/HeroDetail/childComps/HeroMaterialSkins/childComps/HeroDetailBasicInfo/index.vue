@@ -94,12 +94,14 @@ export default {
       color: var(--white);
       font-size: var(--font-s-75);
       margin-right: 10px;
+      text-shadow: var(--t-shadow);
     }
     .box {
       display: flex;
       flex-direction: column;
       justify-content: center;
       span {
+        text-shadow: var(--t-shadow);
         &:nth-child(1) {
           color: var(--gray);
           font-size: var(--font-s-25);
@@ -120,6 +122,7 @@ export default {
     transform: translateX(-100%);
     opacity: 0;
     transition: all 0.5s;
+    text-shadow: var(--t-shadow);
   }
 }
 </style>

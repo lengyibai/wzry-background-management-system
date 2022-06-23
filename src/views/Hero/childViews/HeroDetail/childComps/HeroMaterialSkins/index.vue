@@ -246,6 +246,7 @@ export default {
       border-radius: 50%;
       background: url("./img/head_bg.png") no-repeat center center;
       background-size: cover;
+      filter: drop-shadow(0px 5px 3px black);
       &.clone {
         filter: blur(5px) brightness(150%);
         background-image: url("./img/head_bg_clone.png");
@@ -263,6 +264,7 @@ export default {
         width: 100%;
         height: 100%;
         border-radius: 50%;
+        filter: drop-shadow(0px 0px 3px #000);
       }
     }
     .skin-name {

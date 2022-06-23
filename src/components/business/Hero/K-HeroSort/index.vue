@@ -34,5 +34,6 @@ export default {
   background-image: url("./img/hero-sort.png");
   background-repeat: no-repeat;
   background-position: 0 0;
+  filter: drop-shadow(0px 3px 1px #000);
 }
 </style>

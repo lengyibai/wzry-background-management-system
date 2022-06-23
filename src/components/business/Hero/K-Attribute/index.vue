@@ -66,6 +66,7 @@ export default {
     color: #fff;
     font-size: var(--font-s-25);
     margin-right: 1em;
+    text-shadow: var(--t-shadow);
   }
   .ico {
     width: 26px;
