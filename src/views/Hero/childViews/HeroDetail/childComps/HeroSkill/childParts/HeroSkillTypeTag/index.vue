@@ -20,7 +20,6 @@ export default {
       type: String,
       default: "真实",
       validator: (value) => {
-        //传过来的值必须为其一
         return ["真实", "物理", "法术", "控制"].includes(value);
       },
     },

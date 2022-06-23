@@ -19,58 +19,60 @@
     </div>
 
     <!--//%%%%%··········主体内容··········%%%%%//-->
-    <div class="content">
-      <div
-        class="left"
-        :style="{ width: active_skill.effect ? '45%' : '100%' }"
-      >
-        <!--//%%%%%··········名称及类型··········%%%%%//-->
-        <div class="name-type">
-          <div class="name">{{ active_skill.name }}</div>
-          <HeroSkillTypeTag
-            v-for="(item, index) in active_skill.type"
-            :type="item"
-            :key="index"
-          />
-        </div>
-
-        <!--//%%%%%··········数字相关··········%%%%%//-->
-        <div class="cd-consume">
-          <div class="cd" v-if="active_skill.cd">
-            CD：{{ active_skill.cd }}秒
-          </div>
-          <div class="consume" v-if="active_skill.cd">
-            法力消耗：{{ active_skill.consume }}
-          </div>
-          <div class="passive" v-else>被动</div>
-        </div>
-
-        <!--//%%%%%··········描述··········%%%%%//-->
-        <div class="desc" v-html="active_skill.desc"></div>
-      </div>
-      <div class="right" v-if="active_skill.effect">
-        <table class="table">
-          <tr>
-            <td></td>
-            <td
-              class="lv"
-              v-for="(item, index) in active_skill.effect[0].phase.length"
+    <transition name="fade">
+      <div class="content" v-show="toggle">
+        <div
+          class="left"
+          :style="{ width: active_skill.effect ? '45%' : '100%' }"
+        >
+          <!--//%%%%%··········名称及类型··········%%%%%//-->
+          <div class="name-type">
+            <div class="name">{{ active_skill.name }}</div>
+            <HeroSkillTypeTag
+              v-for="(item, index) in active_skill.type"
+              :type="item"
               :key="index"
-            >
-              LV{{ item }}
-            </td>
-          </tr>
-          <tr v-for="(item, index) in active_skill.effect" :key="index">
-            <td class="effect">
-              {{ item.type }}
-            </td>
-            <td class="num" v-for="(item, index) in item.phase" :key="index">
-              {{ item }}
-            </td>
-          </tr>
-        </table>
+            />
+          </div>
+
+          <!--//%%%%%··········数字相关··········%%%%%//-->
+          <div class="cd-consume">
+            <div class="cd" v-if="active_skill.cd">
+              CD：{{ active_skill.cd }}秒
+            </div>
+            <div class="consume" v-if="active_skill.cd">
+              法力消耗：{{ active_skill.consume }}
+            </div>
+            <div class="passive" v-else>被动</div>
+          </div>
+
+          <!--//%%%%%··········描述··········%%%%%//-->
+          <div class="desc" v-html="active_skill.desc"></div>
+        </div>
+        <div class="right" v-if="active_skill.effect">
+          <table class="table">
+            <tr>
+              <td></td>
+              <td
+                class="lv"
+                v-for="(item, index) in active_skill.effect[0].phase.length"
+                :key="index"
+              >
+                LV{{ item }}
+              </td>
+            </tr>
+            <tr v-for="(item, index) in active_skill.effect" :key="index">
+              <td class="effect">
+                {{ item.type }}
+              </td>
+              <td class="num" v-for="(item, index) in item.phase" :key="index">
+                {{ item }}
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 <script>
@@ -88,25 +90,29 @@ export default {
   name: "index",
   data() {
     return {
-      skill_border_offset: 0, //技能框坐标
       active_skill: {}, //处于展示的技能信息
       currentIndex: 0, //处于展示的技能索引
+      skill_border_offset: 0, //技能框坐标
+      toggle: true,
     };
   },
   components: { HeroSkillTypeTag },
   created() {
-    this.active_skill = this.skills[0];
+    this.active_skill = this.skills[0]; //技能默认显示被动
   },
   mounted() {
-    this.skill_border_offset = this.$refs.skillImg[0].offsetLeft;
+    this.skill_border_offset = this.$refs.skillImg[0].offsetLeft; //技能图标框默认在被动图标的位置
   },
   methods: {
     //#####··········点击需要展示的技能··········#####//
     selectSkill(e, index) {
-      this.skill_border_offset = e.target.offsetLeft;
-      this.currentIndex = index;
-      this.active_skill = this.skills[index];
-      console.log(this.active_skill);
+      this.toggle = false;
+      setTimeout(() => {
+        this.skill_border_offset = e.target.offsetLeft;
+        this.currentIndex = index;
+        this.active_skill = this.skills[index];
+        this.toggle = true;
+      }, 375);
     },
   },
 };
