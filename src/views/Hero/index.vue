@@ -14,11 +14,13 @@
         </lyb-grid>
       </transition>
     </div>
+
     <!--//%%%%%··········右侧英雄职业分类侧边栏··········%%%%%//-->
     <transition name="sidebar">
       <HeroSidebar v-show="show_HeroSidebar" />
     </transition>
 
+    <!--//%%%%%··········英雄详情页··········%%%%%//-->
     <transition name="clip">
       <HeroDetail
         v-if="show_HeroDetail"

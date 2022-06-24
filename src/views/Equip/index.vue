@@ -1,5 +1,5 @@
 <template>
-  <!-- 主体结构 -->
+  <!-- 装备 -->
   <div class="Equip">
     <div class="EquipMain"></div>
     <transition name="sidebar">

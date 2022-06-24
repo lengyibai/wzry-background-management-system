@@ -1,5 +1,5 @@
 <template>
-  <!-- 主体结构 -->
+  <!-- 铭文 -->
   <div class="Epigraph">
     <transition name="epigraph">
       <epigraph-category v-show="show_epigraph" />
