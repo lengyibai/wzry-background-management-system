@@ -3,12 +3,12 @@
     <div class="box">
       <!--//%%%%%··········左侧详情··········%%%%%//-->
       <transition name="fade">
-        <HeroDetailBasicInfo :data="data" v-if="show_info" />
+        <HeroMaterialBasicInfo :data="data" v-if="show_info" />
       </transition>
 
       <!--//%%%%%··········右边侧详情··········%%%%%//-->
       <transition name="fade">
-        <HeroDetAilattribute :data="data" v-if="show_info" />
+        <HeroMaterialAttribute :data="data" v-if="show_info" />
       </transition>
 
       <!--//%%%%%··········皮肤类型··········%%%%%//-->
@@ -89,8 +89,8 @@
 </template>
 <script>
 //#####··········子组件··········#####//
-import HeroDetailBasicInfo from "./childComps/HeroDetailBasicInfo"; //左侧资料详情
-import HeroDetAilattribute from "./childComps/HeroDetAilattribute"; //右侧属性详情
+import HeroMaterialBasicInfo from "./childComps/HeroMaterialBasicInfo"; //左侧资料详情
+import HeroMaterialAttribute from "./childComps/HeroMaterialAttribute"; //右侧属性详情
 export default {
   props: {
     skins: {
@@ -124,7 +124,7 @@ export default {
       }, //当前处于展示的皮肤的DOM元素及坐标
     };
   },
-  components: { HeroDetailBasicInfo, HeroDetAilattribute },
+  components: { HeroMaterialBasicInfo, HeroMaterialAttribute },
   created() {
     setTimeout(() => {
       /* 延迟显示卡片 */

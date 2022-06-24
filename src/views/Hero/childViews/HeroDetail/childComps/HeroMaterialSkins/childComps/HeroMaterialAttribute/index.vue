@@ -1,5 +1,5 @@
 <template>
-  <div class="HeroDetAilattribute">
+  <div class="HeroMaterialAttribute">
     <div class="title">英雄属性</div>
     <K-HeroSort class="HeroSort" :occ="data.profession" />
     <K-Attribute attr="survival" :length="data.survival" />
@@ -18,7 +18,7 @@ export default {
       },
     },
   },
-  name: "HeroDetAilattribute",
+  name: "HeroMaterialAttribute",
   data() {
     return {};
   },
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.HeroDetAilattribute {
+.HeroMaterialAttribute {
   position: absolute;
   right: 0;
   height: 100%;
