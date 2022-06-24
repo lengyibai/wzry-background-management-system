@@ -26,6 +26,9 @@ export default {
   vertical-align: middle;
   fill: var(--theme-font-dark);
   transition: all 0.25s;
+  width: 35px;
+  height: 35px;
+  margin-right: var(--gap-20);
   &:hover {
     fill: var(--white);
   }

@@ -12,6 +12,7 @@
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <div class="submenu cursor-pointer">
             <span
+              class="submenu-icon"
               v-if="onlyOneChild.meta.icon"
               v-html="icon[onlyOneChild.meta.icon]"
             ></span>
@@ -37,7 +38,11 @@
     >
       <template slot="title">
         <div class="submenu cursor-pointer" @click="$click('展开')">
-          <span v-if="item.meta.icon" v-html="icon[item.meta.icon]"></span>
+          <span
+            class="submenu-icon"
+            v-if="item.meta.icon"
+            v-html="icon[item.meta.icon]"
+          ></span>
           <span v-else style="font-size: var(--font-s-25); font-weight: bold">{{
             item.meta.title[0]
           }}</span>
@@ -118,3 +123,10 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.submenu-icon /deep/ .icon {
+  width: 35px;
+  height: 35px;
+  margin-right: var(--gap-20);
+}
+</style>
