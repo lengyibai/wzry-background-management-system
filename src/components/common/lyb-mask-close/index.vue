@@ -100,18 +100,6 @@ export default {
 }
 
 /* 进入前状态 */
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-
-/* 进入和离开动画属性 */
-.fade-leave-active,
-.fade-enter-active {
-  transition: all 0.25s;
-}
-
-/* 进入前状态 */
 .move-enter,
 .move-leave-active {
   transform: translateY(-100%);

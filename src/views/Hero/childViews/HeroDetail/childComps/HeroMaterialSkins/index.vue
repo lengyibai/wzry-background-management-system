@@ -213,13 +213,13 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   color: var(--white);
   .box {
     position: absolute;
-    inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    transform-style: preserve-3d;
     perspective: 2000px;
     box-shadow: 0px 0px 100px 25px #000 inset;
     .skin-type {
