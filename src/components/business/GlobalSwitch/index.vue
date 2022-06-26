@@ -103,9 +103,9 @@ export default {
         tab: ["tab"],
         login: ["login"],
         模式选择: ["/home"],
-        查看详情: ["/System/hero"],
-        皮肤相关: ["/System/skin"],
-        装备相关: ["/System/equip", "/equip"],
+        查看详情: ["/system/hero"],
+        皮肤相关: ["/system/skin"],
+        装备相关: ["/system/equip", "/equip", "/system/epigraph"],
         英雄列表: ["/hero"],
         查看: ["查看"],
         确定: ["确定"],
@@ -116,15 +116,17 @@ export default {
         错误提示: ["错误提示"],
         确认弹窗: ["确认弹窗"],
         关闭抽屉: ["收起侧边栏"],
-        项目组件: ["/System/components"],
+        项目组件: ["/system/components"],
       };
 
       /* 获取点击触发的音效名 */
+      console.log(name);
+
       this.sound_name =
         (typeof name === "string" &&
           Object.keys(obj).find((item) => {
             return obj[item].find((item) => {
-              return name.startsWith(item);
+              return name.includes(item);
             });
           })) ||
         "default";
@@ -140,6 +142,7 @@ export default {
               console.warn("用户需要与网页交互才能播放音效");
             });
           } catch (error) {
+            console.log(error);
             /*  */
           }
         });
