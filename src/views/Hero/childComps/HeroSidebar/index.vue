@@ -78,6 +78,11 @@ export default {
     .name {
       font-size: var(--font-s-20);
     }
+    /deep/ .icon {
+      width: 35px;
+      height: 35px;
+      margin-right: 20px;
+    }
   }
 }
 .active {
