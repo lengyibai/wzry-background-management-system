@@ -27,31 +27,8 @@
         />
       </div>
 
-      <!--//%%%%%··········中心头衔框··········%%%%%//-->
-      <div class="show-skin flex" ref="showSkin">
-        {{ is_into_drap ? "松开" : "拖过来" }}
-      </div>
-      <!--//%%%%······光晕······%%%%//-->
-      <transition name="fade">
-        <div class="show-skin flex clone" v-show="is_into_drap"></div>
-      </transition>
-
-      <!--//%%%%%··········皮肤头像··········%%%%%//-->
-      <div
-        class="skin"
-        v-drag="{ fn, index }"
-        v-for="(item, index) in skins"
-        :key="index"
-        :style="{
-          transform:
-            show_skin_head ||
-            'rotate(' +
-              (360 / skins.length) * (index + 1) +
-              'deg) translateY(-200%)',
-        }"
-      >
-        <img @dragstart.prevent :src="item.head" alt="" />
-      </div>
+      <!--//%%%%%··········中心皮肤切换··········%%%%%//-->
+      <HeroSkinHeadImg :skins="skins" @bg-imgs="bgImgs" />
 
       <!--//%%%%%··········皮肤名··········%%%%%//-->
       <div
@@ -91,14 +68,17 @@
 //#####··········子组件··········#####//
 import HeroMaterialBasicInfo from "./childComps/HeroMaterialBasicInfo"; //左侧资料详情
 import HeroMaterialAttribute from "./childComps/HeroMaterialAttribute"; //右侧属性详情
+import HeroSkinHeadImg from "./childComps/HeroSkinHeadImg";
 export default {
   props: {
+    /* 皮肤数据 */
     skins: {
       type: Array,
       default() {
         return [];
       },
     },
+    /* 英雄基本数据 */
     data: {
       type: Object,
       default() {
@@ -109,101 +89,44 @@ export default {
   name: "HeroMaterialSkins",
   data() {
     return {
-      is_into_drap: false, //拖动头像是否进入头像框范围
       bg_imgs: [], //背景图
-      show_info: false,
+      show_info: false, //用于延迟显示卡片
       toggle: true, //用于切换背景
-      show_skin_head: true,
       active_skin_name: "", //皮肤名
       active_skin_type: "", //皮肤类型
       skin_name_toggle: true, //皮肤切换
       skin_type_toggle: true, //皮肤类型切换
-      active_skin: {
-        el: null,
-        transform: null,
-      }, //当前处于展示的皮肤的DOM元素及坐标
     };
   },
-  components: { HeroMaterialBasicInfo, HeroMaterialAttribute },
+  components: { HeroMaterialBasicInfo, HeroMaterialAttribute, HeroSkinHeadImg },
   created() {
+    /* 延迟显示卡片 */
     setTimeout(() => {
-      /* 延迟显示卡片 */
       this.show_info = true;
-      this.show_skin_head = false;
     }, 1000);
   },
   methods: {
-    //#####··········皮肤头像拖动事件··········#####//
-    fn(data, offset, index) {
-      data.style.transition = "all 0s"; //清除正在拖拽的皮肤头像动画，避免拖拽高延迟
-      data.style.zIndex = 2;
+    //#####··········通过切换背景图组件传过来的索引设置背景··········#####//
+    bgImgs([i, index]) {
+      this.$set(this.bg_imgs, i, this.skins[index].img); //设置背景图
+      this.toggle = !this.toggle; //用于皮肤背景的切换动画
 
-      /* offset用来判断是移动触发的还是松开触发的 */
-      if (offset) {
-        /* 判断头像是否进入头像框可吸附范围 */
-        this.is_into_drap =
-          this.$refs.showSkin.getBoundingClientRect().left < offset.x &&
-          this.$refs.showSkin.getBoundingClientRect().top < offset.y &&
-          this.$refs.showSkin.getBoundingClientRect().left +
-            this.$refs.showSkin.offsetWidth >
-            offset.x &&
-          this.$refs.showSkin.getBoundingClientRect().top +
-            this.$refs.showSkin.offsetHeight >
-            offset.y;
-      } /* 松手触发，并且头像已进入头像框吸附范围 */ else if (
-        this.is_into_drap
-      ) {
-        /* 判断是否存在正在展示的皮肤，存在就将此皮肤头像过渡到初始位置 */
-        if (this.active_skin.el) {
-          this.active_skin.el.style.pointerEvents = "auto";
-          this.active_skin.el.style.transition = "all 1s";
-          this.active_skin.el.style.transform = this.active_skin.transform;
+      /* 设置皮肤名，皮肤名需要有切换时的打字机效果 */
+      this.active_skin_name = this.skins[index].name;
+      this.skin_name_toggle = !this.skin_name_toggle;
+
+      /* 切换时延迟设置顶部皮肤类型标志 */
+      setTimeout(() => {
+        const skin_type = this.skins[index].type;
+        if (skin_type) {
+          this.active_skin_type = require("@/assets/img/skinType/" +
+            skin_type +
+            ".png");
+        } else {
+          this.active_skin_type = false; //伴生皮肤没有标志
         }
-
-        /* 记录正在展示的皮肤头像DOM元素及坐标 */
-        this.active_skin.el = data;
-        this.active_skin.transform = data.style.transform;
-
-        /* 将要展示的皮肤头像过渡到头像框的位置 */
-        const el = this.$refs.showSkin;
-        data.style.pointerEvents = "none";
-        data.style.transition = "all 1s";
-        data.style.left = el.offsetLeft - data.offsetWidth / 2 + "px";
-        data.style.top = el.offsetTop - data.offsetHeight / 2 + "px";
-        data.style.transform = "";
-
-        /* 有一秒的过渡动画，动画结束后执行以下 */
-        setTimeout(() => {
-          data.style.transition = "all 0s"; //清除正在展示的皮肤头像的动画效果，避免拖拽高延迟
-          data.style.zIndex = 1;
-          this.bg_img = this.skins[index].img; //通过展示的皮肤头像的索引号，将对应皮肤设置为背景
-
-          /* 用于皮肤背景的切换动画 */
-          if (this.toggle) {
-            this.bg_imgs[1] = this.skins[index].img;
-          } else {
-            this.bg_imgs[0] = this.skins[index].img;
-          }
-          this.toggle = !this.toggle;
-
-          /* 设置皮肤名，皮肤名需要有切换时的打字机效果 */
-          this.active_skin_name = this.skins[index].name;
-          this.skin_name_toggle = !this.skin_name_toggle;
-
-          /* 切换时延迟设置顶部皮肤类型标志 */
-          setTimeout(() => {
-            const skin_type = this.skins[index].type;
-            if (skin_type) {
-              this.active_skin_type = require("@/assets/img/skinType/" +
-                skin_type +
-                ".png");
-            } else {
-              this.active_skin_type = false; //伴生皮肤没有标志
-            }
-            this.skin_type_toggle = !this.skin_type_toggle; //使切换标志时有淡入淡出效果
-          }, 250);
-        }, 1000);
-      }
+        this.skin_type_toggle = !this.skin_type_toggle; //使切换标志时有淡入淡出效果
+      }, 250);
     },
   },
 };
@@ -233,38 +156,6 @@ export default {
       img {
         width: 200px;
         filter: drop-shadow(0px 3px 3px #000);
-      }
-    }
-    .show-skin {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      width: 200px;
-      height: 200px;
-      box-shadow: ;
-      border-radius: 50%;
-      background: url("./img/head_bg.png") no-repeat center center;
-      background-size: cover;
-      filter: drop-shadow(0px 5px 3px black);
-      &.clone {
-        filter: blur(5px) brightness(150%);
-        background-image: url("./img/head_bg_clone.png");
-      }
-    }
-    .skin {
-      position: absolute;
-      width: 90px;
-      height: 90px;
-      left: calc(50% - 45px);
-      top: calc(50% - 45px);
-      transform-origin: center center;
-      transition: all 1s;
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        filter: drop-shadow(0px 0px 3px #000);
       }
     }
     .skin-name {
