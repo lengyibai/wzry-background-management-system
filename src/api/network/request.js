@@ -4,7 +4,7 @@ import axios from "axios";
 //#####··········域名管理··········#####//
 const server = axios.create({
   baseURL: "http://localhost:9527",
-  time: 10000,
+  timeout: 10000,
 });
 
 //#####·········配置默认请求··········#####//
