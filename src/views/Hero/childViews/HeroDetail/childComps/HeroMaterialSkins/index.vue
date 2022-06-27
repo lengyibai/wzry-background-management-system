@@ -27,6 +27,9 @@
         />
       </div>
 
+      <!--//%%%%%··········英雄语音··········%%%%%//-->
+      <HeroVoice :voices="voices" />
+
       <!--//%%%%%··········中心皮肤切换··········%%%%%//-->
       <HeroSkinHeadImg :skins="skins" @bg-imgs="bgImgs" />
 
@@ -68,21 +71,29 @@
 //#####··········子组件··········#####//
 import HeroMaterialBasicInfo from "./childComps/HeroMaterialBasicInfo"; //左侧资料详情
 import HeroMaterialAttribute from "./childComps/HeroMaterialAttribute"; //右侧属性详情
-import HeroSkinHeadImg from "./childComps/HeroSkinHeadImg";
+import HeroVoice from "./childComps/HeroVoice"; //英雄语音
+import HeroSkinHeadImg from "./childComps/HeroSkinHeadImg"; //切换皮肤工具
 export default {
   props: {
-    /* 皮肤数据 */
-    skins: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
     /* 英雄基本数据 */
     data: {
       type: Object,
       default() {
         return {};
+      },
+    },
+    /* 语音数据 */
+    voices: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    /* 皮肤数据 */
+    skins: {
+      type: Array,
+      default() {
+        return [];
       },
     },
   },
@@ -98,7 +109,12 @@ export default {
       skin_type_toggle: true, //皮肤类型切换
     };
   },
-  components: { HeroMaterialBasicInfo, HeroMaterialAttribute, HeroSkinHeadImg },
+  components: {
+    HeroMaterialBasicInfo,
+    HeroMaterialAttribute,
+    HeroVoice,
+    HeroSkinHeadImg,
+  },
   created() {
     /* 延迟显示卡片 */
     setTimeout(() => {
