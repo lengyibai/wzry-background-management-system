@@ -26,6 +26,7 @@
         v-if="show_HeroDetail"
         v-model="show_HeroDetail"
         :data="hero_list[0]"
+        :voices="hero_voices"
         :skins="hero_skins"
         :skills="hero_skills"
         :storys="hero_storys"
@@ -36,9 +37,10 @@
 
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{ 英雄列表，英雄皮肤，皮肤类型，英雄技能，英雄技能效果，英雄技能类型，英雄故事  }
+//接口信息：{ 英雄列表，英雄语音，英雄皮肤，皮肤类型，英雄技能，英雄技能效果，英雄技能类型，英雄故事  }
 import {
   heroList,
+  heroVoices,
   heroSkins,
   heroSkinType,
   heroSkills,
@@ -56,6 +58,7 @@ export default {
   data() {
     return {
       hero_list: [], //英雄列表
+      hero_voices: [], //英雄语音
       hero_skins: [], //英雄皮肤
       hero_skills: {}, //英雄技能
       hero_storys: {}, //英雄故事
@@ -80,6 +83,10 @@ export default {
     //#####··········显示英雄详情··········#####//
     viewClick(id) {
       const params = { id };
+      //####········获取英雄语音········####//
+      heroVoices(params).then((res) => {
+        this.hero_voices = res.data;
+      });
       //####··········获取英雄皮肤··········####//
       heroSkins(params).then((res) => {
         this.hero_skins = res.data;

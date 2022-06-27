@@ -6,6 +6,8 @@ import { getReq, postReq, patchReq, deleteReq } from "../../network/request.js";
 export const getHeroList = (data) => getReq("/heroList", data);
 //####········获取英雄基本资料········####//
 export const getHeroBasics = (data) => getReq("/basics", data);
+//####········获取英雄语音········####//
+export const getHeroVoices = (data) => getReq("/voices", data);
 //####········获取英雄皮肤········####//
 export const getHeroSkins = (data) => getReq("/skins", data);
 //####········获取英雄皮肤类型········####//

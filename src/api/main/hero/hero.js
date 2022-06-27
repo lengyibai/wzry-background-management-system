@@ -4,6 +4,7 @@
 //接口信息：{ 获取英雄信息 }
 import {
   getHeroList,
+  getHeroVoices,
   getHeroSkins,
   getHeroSkinType,
   getHeroSkills,
@@ -35,6 +36,18 @@ export const heroList = (data) => {
     });
   });
 };
+//####········获取英雄语音········####//
+export const heroVoices = (data) => {
+  return new Promise((resolve) => {
+    getHeroVoices(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
 //####········获取英雄皮肤········####//
 export const heroSkins = (data) => {
   return new Promise((resolve) => {
@@ -47,6 +60,7 @@ export const heroSkins = (data) => {
     });
   });
 };
+
 //####········获取英雄皮肤类型········####//
 export const heroSkinType = (data) => {
   return new Promise((resolve) => {
