@@ -3,6 +3,7 @@ node_modules
 /dist
 /test
 
+
 # local env files
 .env.local
 .env.*.local
@@ -22,4 +23,3 @@ pnpm-debug.log*
 *.sln
 *.sw?
 debug.log
-package-lock.json
