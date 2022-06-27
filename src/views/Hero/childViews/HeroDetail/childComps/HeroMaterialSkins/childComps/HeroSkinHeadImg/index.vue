@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="HeroSkinHeadImg">
     <!--//%%%%%··········中心头衔框··········%%%%%//-->
     <div class="show-skin flex" ref="showSkin">
       {{ is_into_drap ? "松开" : "拖过来" }}
@@ -20,7 +20,7 @@
           show_skin_head ||
           'rotate(' +
             (360 / skins.length) * (index + 1) +
-            'deg) translateY(-200%)',
+            'deg) translateY(-150%)',
       }"
     >
       <img @dragstart.prevent :src="item.head" alt="" />
@@ -29,7 +29,7 @@
 </template>
 <script>
 export default {
-  name: "index",
+  name: "HeroSkinHeadImg",
   props: {
     /* 皮肤数据 */
     skins: {
@@ -116,36 +116,38 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.show-skin {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 200px;
-  height: 200px;
-  box-shadow: ;
-  border-radius: 50%;
-  background: url("./img/head_bg.png") no-repeat center center;
-  background-size: cover;
-  filter: drop-shadow(0px 5px 3px black);
-  &.clone {
-    filter: blur(5px) brightness(150%);
-    background-image: url("./img/head_bg_clone.png");
-  }
-}
-.skin {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  left: calc(50% - 45px);
-  top: calc(50% - 45px);
-  transform-origin: center center;
-  transition: all 1s;
-  img {
-    width: 100%;
-    height: 100%;
+.HeroSkinHeadImg {
+  .show-skin {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 200px;
+    height: 200px;
+    box-shadow: ;
     border-radius: 50%;
-    filter: drop-shadow(0px 0px 3px #000);
+    background: url("./img/head_bg.png") no-repeat center center;
+    background-size: cover;
+    filter: drop-shadow(0px 5px 3px black);
+    &.clone {
+      filter: blur(5px) brightness(150%);
+      background-image: url("./img/head_bg_clone.png");
+    }
+  }
+  .skin {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: calc(50% - 45px);
+    top: calc(70% - 45px);
+    transform-origin: center center;
+    transition: all 1s;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      filter: drop-shadow(0px 0px 3px #000);
+    }
   }
 }
 </style>
