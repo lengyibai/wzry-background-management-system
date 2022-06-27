@@ -120,8 +120,6 @@ export default {
       };
 
       /* 获取点击触发的音效名 */
-      console.log(name);
-
       this.sound_name =
         (typeof name === "string" &&
           Object.keys(obj).find((item) => {
