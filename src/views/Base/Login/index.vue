@@ -13,10 +13,12 @@
       :video="require('@/assets/video/loginBg.mp4')"
       v-if="!this.$store.state.smooth"
     />
+    <K-Dialog :showClose="false" v-model="show_KDialog" />
   </div>
 </template>
 <script>
 import BtnLogin from "./childComp/BtnLogin";
+import KDialog from "@/components/business/Parts/K-Dialog";
 export default {
   name: "Login",
   data() {
@@ -26,6 +28,7 @@ export default {
         id: 1329670984,
         password: "lengyibai.",
       },
+      show_KDialog: true,
     };
   },
   methods: {
@@ -34,7 +37,7 @@ export default {
       this.$store.dispatch("login", this.form);
     },
   },
-  components: { BtnLogin },
+  components: { BtnLogin, KDialog },
 };
 </script>
 <style scoped lang="less">
