@@ -120,7 +120,7 @@ export default {
   .show-skin {
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 75%;
     transform: translateX(-50%) translateY(-50%);
     width: 200px;
     height: 200px;
@@ -139,7 +139,7 @@ export default {
     width: 90px;
     height: 90px;
     left: calc(50% - 45px);
-    top: calc(70% - 45px);
+    top: calc(75% - 45px);
     transform-origin: center center;
     transition: all 1s;
     img {
