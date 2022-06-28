@@ -15,10 +15,8 @@
         <Footbar v-if="show_footbar" />
       </transition>
     </div>
-    <LybBgVideo
-      :video="require('@/assets/video/bg.mp4')"
-      parallaxSize="small"
-    />
+    <LybBgVideo :video="require('@/assets/video/bg.mp4')" />
+    <!-- parallaxSize="small" -->
   </div>
 </template>
 
