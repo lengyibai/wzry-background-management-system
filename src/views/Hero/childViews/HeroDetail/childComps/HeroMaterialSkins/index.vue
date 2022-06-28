@@ -28,7 +28,7 @@
       </div>
 
       <!--//%%%%%··········英雄语音··········%%%%%//-->
-      <HeroVoice :voices="voices" />
+      <HeroVoice :voices="voices" v-if="show_info" />
 
       <!--//%%%%%··········中心皮肤切换··········%%%%%//-->
       <HeroSkinHeadImg :skins="skins" @bg-imgs="bgImgs" />
