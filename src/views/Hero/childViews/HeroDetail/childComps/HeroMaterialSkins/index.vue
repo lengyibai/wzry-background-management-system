@@ -179,7 +179,7 @@ export default {
       width: 100%;
       bottom: 0;
       text-align: center;
-      transform: translateY(-100%);
+      transform: translateY(-50%);
       font-size: var(--font-s-50);
       text-shadow: 0 5px 3px #000;
     }
@@ -189,6 +189,7 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-color: #000;
   }
 }
 .updown-enter {
