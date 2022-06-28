@@ -1,6 +1,26 @@
 <template>
   <div class="HeroVoice">
-    <h1>英雄语音</h1>
+    <audio
+      @ended="ended"
+      :src="voice_url"
+      ref="voice"
+      hidden="true"
+      v-if="voice_toggle"
+    ></audio>
+    <div
+      class="voice flex cursor-pointer"
+      :class="{ active: currentIndex === index }"
+      :style="{ 'animation-duration': time + 's' }"
+      @click="play(item.voice, index)"
+      v-for="(item, index) in voices"
+      ref="voice"
+      :key="index"
+    >
+      <span v-if="currentIndex !== index"> {{ item.desc }}</span>
+      <transition name="fade">
+        <img v-if="currentIndex === index" src="./img/bugle.svg" alt="" />
+      </transition>
+    </div>
   </div>
 </template>
 <script>
@@ -15,23 +35,110 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      voice_url: "", //语音链接
+      voice_toggle: false, //用于切换语音
+      currentIndex: null, //当前播放索引
+      time: 0, //当前播放时长
+    };
   },
-  created() {
-    console.log(this.voices);
+  mounted() {
+    const list = this.$refs.voice;
+    list.forEach((item, index) => {
+      item.style.transitionDelay = `${index / 15}s`;
+      if (index % 2) {
+        item.style.transform = `translateX(-100%) translateY(500%) scale(0)`;
+      } else {
+        item.style.transform = `translateX(100%) translateY(500%) scale(0)`;
+      }
+      setTimeout(() => {
+        item.style.transform = "translateX(0%) translateY(0%) scale(1)";
+        setTimeout(() => {
+          item.style.transitionDelay = "0s";
+        }, 1000);
+      }, 250);
+    });
   },
-  components: {},
-  methods: {},
+  methods: {
+    //#####··········语音播放结束后触发··········#####//
+    ended() {
+      /* 如果播放完最后一个，则停止播放 */
+      if (this.currentIndex + 1 === this.voices.length) {
+        return;
+      }
+      /* 继续播放下一个 */
+      this.play(
+        this.voices[this.currentIndex + 1].voice,
+        this.currentIndex + 1,
+      );
+    },
+
+    //#####··········点击播放··········#####//
+    play(voice, index) {
+      // 如果再次点击，则停止播放
+      if (this.currentIndex === index) {
+        this.voice_toggle = false;
+        this.currentIndex = null;
+        return;
+      }
+      this.currentIndex = index;
+      this.voice_toggle = false;
+      setTimeout(() => {
+        this.voice_toggle = true;
+        this.voice_url = voice;
+        this.$nextTick(() => {
+          this.$refs.voice.play().then(() => {
+            this.time = this.$refs.voice.duration - 0.75;
+          });
+        });
+      }, 250);
+    },
+  },
 };
 </script>
 <style scoped lang="less">
 .HeroVoice {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   left: 50%;
-  top: 10%;
+  top: 15%;
   transform: translateX(-50%);
-  width: 50%;
-  height: 35%;
-  background-color: rgba(0, 0, 0, 0.39);
+  .voice {
+    width: 100%;
+    height: 50px;
+    font-size: var(--font-s-16);
+    transition: all 0.5s;
+    white-space: nowrap;
+    padding: 0 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    color: var(--white);
+    &:hover {
+      transition: all 0.25s cubic-bezier(0.18, 0.89, 0, 1.41) !important;
+      transform: scale(1.1) !important;
+      color: var(--blue);
+    }
+    img {
+      height: 50px;
+      padding: 10px;
+    }
+  }
+}
+.active {
+  padding: 0 !important;
+  width: 50px !important;
+  border-radius: 50%;
+  animation: rotate 0s 0.5s linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
