@@ -94,6 +94,7 @@ export default {
   z-index: 2;
   overflow: hidden auto;
   scroll-snap-type: y mandatory;
+  background-color: #000;
   .basis {
     display: flex;
     justify-content: space-between;
