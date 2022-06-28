@@ -56,7 +56,6 @@ export default {
         item.style.opacity = 1;
       }, 250);
     });
-    this.show_info = true;
   },
 };
 </script>
@@ -69,7 +68,8 @@ export default {
   transform-origin: left center;
   transition: all 0.5s;
   transform: translateZ(335px);
-  animation: updownleft 2.5s 1s infinite, into 1s;
+  animation: into 1s forwards;
+  // animation: updownleft 2.5s 1s infinite, into 1s;
   @keyframes updownleft {
     0%,
     100% {

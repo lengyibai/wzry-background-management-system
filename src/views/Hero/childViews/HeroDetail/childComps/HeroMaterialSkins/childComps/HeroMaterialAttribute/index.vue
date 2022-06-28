@@ -36,7 +36,8 @@ export default {
   display: flex;
   flex-direction: column;
   transform-origin: right center;
-  animation: updownright 2.5s 1s infinite, into 1s;
+  animation: into 1s forwards;
+  // animation: updownright 2.5s 1s infinite, into 1s;
   transform: translateZ(275px);
   @keyframes updownright {
     0%,
