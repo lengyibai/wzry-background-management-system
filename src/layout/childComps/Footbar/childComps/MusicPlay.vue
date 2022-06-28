@@ -58,41 +58,42 @@ export default {
   methods: {
     //#####··········解决音频加载失败··········#####//
     musicPlay(isReset = true) {
-      const that = this;
-      const bgm = this.$refs.bgm;
-      if (!bgm) return;
-      // 判断是否为播放下一首，否则不执行随机播放，是则继续播放当前
-      if (isReset) this.bgmIndex = $random(0, this.musics.length - 1);
-      // 解决音频播放失败，失败后重新调用，或直到用户与页面交互
-      bgm.volume = 0.15;
-      setTimeout(() => {
-        bgm
-          .play()
-          .then(() => {
-            bgm.play();
-          })
-          .catch(() => {
-            // setTimeout(() => {
-            //   this.musicPlay();
-            // }, 500);
-          });
-      });
-
-      /* 实时设置播放进度 */
-      this.timer = $frameInterval(() => {
-        // that.$refs.bgm 为了避免保存后报错undefined
-        that.progress =
-          that.$refs.bgm &&
-          $potEoPct(that.$refs.bgm.currentTime / that.$refs.bgm.duration);
-      }, 300);
-
-      /* 播放结束后执行下一次播放 */
-      bgm.onended = function () {
-        that.bgmIndex = $random(0, 3);
+      this.$nextTick(() => {
+        const that = this;
+        const bgm = this.$refs.bgm;
+        // 判断是否为播放下一首，否则不执行随机播放，是则继续播放当前
+        if (isReset) this.bgmIndex = $random(0, this.musics.length - 1);
+        // 解决音频播放失败，失败后重新调用，或直到用户与页面交互
+        bgm.volume = 0.5;
         setTimeout(() => {
-          that.musicPlay();
-        }, 1000);
-      };
+          bgm
+            .play()
+            .then(() => {
+              bgm.play();
+            })
+            .catch(() => {
+              // setTimeout(() => {
+              //   this.musicPlay();
+              // }, 500);
+            });
+        });
+
+        /* 实时设置播放进度 */
+        this.timer = $frameInterval(() => {
+          // that.$refs.bgm 为了避免保存后报错undefined
+          that.progress =
+            that.$refs.bgm &&
+            $potEoPct(that.$refs.bgm.currentTime / that.$refs.bgm.duration);
+        }, 300);
+
+        /* 播放结束后执行下一次播放 */
+        bgm.onended = function () {
+          that.bgmIndex = $random(0, 3);
+          setTimeout(() => {
+            that.musicPlay();
+          }, 1000);
+        };
+      });
     },
 
     //#####··········控制播放和暂停··········#####//
