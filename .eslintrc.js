@@ -22,5 +22,6 @@ module.exports = {
     "vue/no-unused-components": "warn",
     "vue/no-unused-vars": "warn",
     "vue/valid-v-slot": "warn",
+    "vue/require-prop-type-constructor": "off",
   },
 };
