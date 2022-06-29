@@ -3,6 +3,7 @@ import LybBgVideo from "./lyb-bg-video"; //视频背景
 import LybFlipBox from "./lyb-flip-box"; //卡片翻转
 import LybGridLayout from "./lyb-grid-layout"; //Grid经典布局
 import LybIcon from "./lyb-icon"; //图标
+import LybSvg from "./lyb-svg"; //图标
 import LybLoading from "./lyb-loading"; //加载动画
 import LybMask from "./lyb-mask"; //蒙版
 import LybMaskClose from "./lyb-mask-close"; //顶部关闭蒙版
@@ -13,6 +14,7 @@ const components = [
   LybFlipBox,
   LybGridLayout,
   LybIcon,
+  LybSvg,
   LybLoading,
   LybMask,
   LybMaskClose,
