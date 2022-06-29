@@ -1,41 +1,43 @@
 <template>
-  <LybMask :show="value">
-    <transition :name="type">
-      <div class="LoginUpdateDialog" v-show="value">
+  <transition name="default">
+    <div class="LoginUpdateDialog" v-show="value">
+      <div class="box">
         <div class="title">王者荣耀后台管理系统 6月29日 更新公告</div>
-        <img class="bg" src="./img/dialog.png" />
-        <div class="btns">
-          <K-Button
-            class="btn"
-            type="default"
-            @click.native="$click('关闭'), close()"
-            >退出</K-Button
-          >
-          <K-Button type="warn" @click.native="$click('确定'), close()"
-            >更新</K-Button
-          >
-        </div>
-        <div class="desc">
-          <span
-            >新版本已发布，请前往项目内拉取进行更新，或前往当前项目的
-            <a
-              href="https://github.com/lengyibai/wzry-background-management-system"
-              target="_blank"
-              class="link cursor-pointer"
-              >Github仓库</a
-            >
-            了解更多！</span
-          >
-
-          <span>
-            若当前版本确定为最新版，误报更新，请尝试
-            <span class="key">Ctrl + F5</span>
-            强制刷新更新缓存
-          </span>
+        <div class="content">
+          <p>亲爱的用户：</p>
         </div>
       </div>
-    </transition>
-  </LybMask>
+      <div class="btns">
+        <K-Button
+          class="btn"
+          type="default"
+          @click.native="$click('关闭'), close()"
+          >跳过</K-Button
+        >
+        <K-Button type="warn" @click.native="$click('确定'), close()"
+          >更新</K-Button
+        >
+      </div>
+      <div class="desc">
+        <span
+          >新版本已发布，请前往项目内拉取进行更新，或前往当前项目的
+          <a
+            href="https://github.com/lengyibai/wzry-background-management-system"
+            target="_blank"
+            class="link cursor-pointer"
+            >Github仓库</a
+          >
+          了解更多！</span
+        >
+
+        <span>
+          若当前版本确定为最新版，误报更新，请尝试
+          <span class="key">Ctrl + F5</span>
+          强制刷新更新缓存
+        </span>
+      </div>
+    </div>
+  </transition>
 </template>
 <script>
 export default {
@@ -67,32 +69,41 @@ export default {
 <style scoped lang="less">
 .LoginUpdateDialog {
   position: absolute;
-  top: 25px;
-  width: 1280px;
-  height: 760px;
-  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--gap-15);
   display: flex;
   flex-direction: column;
   align-items: center;
-  .title {
-    position: absolute;
-    font-size: 30px;
-    color: var(--white);
-    top: calc(15px + 1em);
-    text-shadow: var(--t-shadow);
-  }
-  .close {
-    position: absolute;
-    top: 32px;
-    right: 27px;
-    width: 40px;
-    filter: drop-shadow(0px 0px 3px #cce5ff);
-    z-index: 2;
-  }
-  .bg {
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.25);
+  .box {
+    display: flex;
+    flex-direction: column;
+    width: 1280px;
+    height: 780px;
+    padding: var(--gap-40);
+    padding-right: 0;
+    padding-bottom: 0;
+    background: url("./img/dialog.png") no-repeat center center;
+    background-size: 100% 100%;
+    .title {
+      width: 100%;
+      text-align: center;
+      font-size: var(--font-s-35);
+      color: var(--white);
+      text-shadow: var(--t-shadow);
+      z-index: 1;
+    }
+    .content {
+      width: 100%;
+      height: 100%;
+      padding: var(--gap-50);
+      font-size: var(--font-s-25);
+      color: var(--theme-font-dark);
+      p {
+        font-family: "微软雅黑";
+      }
+    }
   }
   .btns {
     display: flex;
@@ -107,7 +118,7 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: var(--gap-20);
-    color: var(--gray);
+    color: var(--theme-font-dark);
     line-height: 1.75;
     font-size: var(--font-s-16);
     .link {
@@ -124,29 +135,9 @@ export default {
 }
 
 /* 缩放 */
-.default-enter,
 .default-leave-active {
+  transition: all 0.25s;
   transform: scale(0.75);
   opacity: 0;
-}
-
-.default-enter-active {
-  transition: all 0.25s cubic-bezier(0.08, 0.82, 0.17, 1);
-}
-.default-leave-active {
-  transition: all 0.25s 0.25s;
-}
-
-/* 由下而上 */
-.confirm-enter,
-.confirm-leave-active {
-  transform: translateY(25%);
-}
-
-.confirm-enter-active {
-  transition: all 0.25s cubic-bezier(0.26, 0.89, 0.29, 1.4);
-}
-.confirm-leave-active {
-  transition: all 0.25s 0.25s;
 }
 </style>
