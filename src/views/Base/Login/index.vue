@@ -8,7 +8,7 @@
     <input type="text" v-model="form.id" />
     <input type="password" v-model="form.password" />
 
-    <BtnLogin @click.native="login" />
+    <LoginBtn @click.native="login" />
     <LybBgVideo
       :video="require('@/assets/video/loginBg.mp4')"
       v-if="!this.$store.state.smooth"
@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import BtnLogin from "./childComp/BtnLogin";
+import LoginBtn from "./childComp/LoginBtn";
 import KDialog from "@/components/business/Parts/K-Dialog";
 export default {
   name: "Login",
@@ -37,7 +37,7 @@ export default {
       this.$store.dispatch("login", this.form);
     },
   },
-  components: { BtnLogin, KDialog },
+  components: { LoginBtn, KDialog },
 };
 </script>
 <style scoped lang="less">
