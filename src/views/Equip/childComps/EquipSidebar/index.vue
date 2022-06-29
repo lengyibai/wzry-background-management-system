@@ -18,9 +18,8 @@ export default {
   name: "EquipSidebar",
   data() {
     return {
-      currentName: "全部",
+      currentName: "攻击",
       hero_type: [
-        { name: "全部", icon: "ALL" },
         { name: "攻击", icon: "ATTACK" },
         { name: "法术", icon: "MAGIC" },
         { name: "防御", icon: "DEFENSE" },
