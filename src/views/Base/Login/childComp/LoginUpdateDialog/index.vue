@@ -12,10 +12,10 @@
           class="btn"
           type="default"
           @click.native="$click('关闭'), close()"
-          >跳过</K-Button
+          >暂时跳过</K-Button
         >
         <K-Button type="warn" @click.native="$click('确定'), close()"
-          >更新</K-Button
+          >此次不再弹出</K-Button
         >
       </div>
       <div class="desc">
