@@ -2,30 +2,13 @@
   <div class="HeroMaterialSkins" ref="HeroMaterialSkins">
     <div class="box">
       <!--//%%%%%··········左侧详情··········%%%%%//-->
-      <transition name="fade">
-        <HeroMaterialBasicInfo :data="data" v-if="show_info" />
-      </transition>
+      <HeroMaterialBasicInfo :data="data" v-if="show_info" />
 
       <!--//%%%%%··········右边侧详情··········%%%%%//-->
-      <transition name="fade">
-        <HeroMaterialAttribute :data="data" v-if="show_info" />
-      </transition>
+      <HeroMaterialAttribute :data="data" v-if="show_info" />
 
       <!--//%%%%%··········皮肤类型··········%%%%%//-->
-      <div class="skin-type" is="transition-group" name="updown">
-        <img
-          v-if="active_skin_type && skin_type_toggle"
-          :src="active_skin_type"
-          alt=""
-          key="a"
-        />
-        <img
-          v-if="active_skin_type && !skin_type_toggle"
-          :src="active_skin_type"
-          alt=""
-          key="b"
-        />
-      </div>
+      <HerSkinType :skinTypeImg="active_skin_type" :toggle="skin_type_toggle" />
 
       <!--//%%%%%··········英雄语音··········%%%%%//-->
       <HeroVoice :voices="voices" v-if="show_info" />
@@ -34,45 +17,22 @@
       <HeroSkinHeadImg :skins="skins" @bg-imgs="bgImgs" />
 
       <!--//%%%%%··········皮肤名··········%%%%%//-->
-      <div
-        class="skin-name"
-        v-if="skin_name_toggle && active_skin_name"
-        v-typewriterSingle
-        key="a"
-      >
-        {{ active_skin_name }}
-      </div>
-      <!--//%%%%··········用于触发打字机··········%%%%//-->
-      <div
-        class="skin-name"
-        v-if="!skin_name_toggle && active_skin_name"
-        v-typewriterSingle
-        key="b"
-      >
-        {{ active_skin_name }}
-      </div>
+      <HeroSkinName :toggle="skin_name_toggle" :name="active_skin_name" />
     </div>
 
     <!--//%%%%%··········背景图··········%%%%%//-->
-    <transition-group name="clip">
-      <img
-        class="bg"
-        v-if="bg_imgs[0]"
-        :src="bg_imgs[0]"
-        alt=""
-        v-show="toggle"
-        key="a"
-      />
-      <img class="bg" :src="bg_imgs[1]" alt="" v-show="!toggle" key="b" />
-    </transition-group>
+    <HeroBgImg :bgImg="bg_imgs" :toggle="toggle" />
   </div>
 </template>
 <script>
 //#####··········子组件··········#####//
 import HeroMaterialBasicInfo from "./childComps/HeroMaterialBasicInfo"; //左侧资料详情
 import HeroMaterialAttribute from "./childComps/HeroMaterialAttribute"; //右侧属性详情
+import HerSkinType from "./childComps/HerSkinType"; //皮肤类型图
 import HeroVoice from "./childComps/HeroVoice"; //英雄语音
 import HeroSkinHeadImg from "./childComps/HeroSkinHeadImg"; //切换皮肤工具
+import HeroSkinName from "./childComps/HeroSkinName"; //皮肤名
+import HeroBgImg from "./childComps/HeroBgImg"; //背景图
 export default {
   props: {
     /* 英雄基本数据 */
@@ -112,8 +72,11 @@ export default {
   components: {
     HeroMaterialBasicInfo,
     HeroMaterialAttribute,
+    HerSkinType,
     HeroVoice,
     HeroSkinHeadImg,
+    HeroSkinName,
+    HeroBgImg,
   },
   created() {
     /* 延迟显示卡片 */
@@ -161,81 +124,6 @@ export default {
     z-index: 1;
     perspective: 2000px;
     box-shadow: 0px 0px 100px 25px #000 inset;
-    .skin-type {
-      display: flex;
-      justify-content: center;
-      transform: translateY(25%);
-      span {
-        margin-top: 0.5em;
-        font-size: var(--font-s-50);
-      }
-      img {
-        width: 200px;
-        filter: drop-shadow(0px 3px 3px #000);
-      }
-    }
-    .skin-name {
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      text-align: center;
-      transform: translateY(-50%);
-      font-size: var(--font-s-50);
-      text-shadow: 0 5px 3px #000;
-    }
-  }
-  .bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: #000;
-  }
-}
-.updown-enter {
-  opacity: 0;
-  transform: translateY(-100%);
-}
-.updown-leave-active {
-  opacity: 0;
-  transform: translateY(100%);
-}
-.updown-leave-active,
-.updown-enter-active {
-  transition: all 0.5s;
-}
-
-.updown-move {
-  transition: all 0.5s;
-}
-.updown-leave-active {
-  position: absolute;
-}
-
-/* 蒙版裁剪 */
-.clip-enter-active {
-  animation: clip-in 1s;
-}
-.clip-leave-active {
-  animation: clip-out 1s;
-}
-
-@keyframes clip-in {
-  0% {
-    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
-  }
-
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-}
-
-@keyframes clip-out {
-  0% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  100% {
-    clip-path: polygon(50% 50%, 100% 0, 50% 50%, 0 100%);
   }
 }
 </style>
