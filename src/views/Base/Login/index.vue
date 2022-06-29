@@ -13,12 +13,12 @@
       :video="require('@/assets/video/loginBg.mp4')"
       v-if="!this.$store.state.smooth"
     />
-    <K-Dialog :showClose="false" v-model="show_KDialog" />
+    <LoginUpdateDialog v-model="show_KDialog" />
   </div>
 </template>
 <script>
 import LoginBtn from "./childComp/LoginBtn";
-import KDialog from "@/components/business/Parts/K-Dialog";
+import LoginUpdateDialog from "./childComp/LoginUpdateDialog";
 export default {
   name: "Login",
   data() {
@@ -37,7 +37,7 @@ export default {
       this.$store.dispatch("login", this.form);
     },
   },
-  components: { LoginBtn, KDialog },
+  components: { LoginBtn, LoginUpdateDialog },
 };
 </script>
 <style scoped lang="less">

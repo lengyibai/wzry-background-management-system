@@ -3,13 +3,6 @@
     <transition :name="type">
       <div class="LoginUpdateDialog" v-show="value">
         <div class="title">王者荣耀后台管理系统 6月29日 更新公告</div>
-        <img
-          class="close cursor-pointer"
-          v-if="showClose"
-          src="./img/close.png"
-          @dragstart.prevent
-          @click="$click('关闭'), close"
-        />
         <img class="bg" src="./img/dialog.png" />
         <div class="btns">
           <K-Button
