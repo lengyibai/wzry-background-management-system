@@ -1,16 +1,16 @@
 <template>
-  <div class="BtnLogin cursor-pointer" v-particle>
+  <div class="LoginBtn cursor-pointer" v-particle>
     <span>登录</span>
     <span>LOGIN</span>
   </div>
 </template>
 <script>
 export default {
-  name: "BtnLogin",
+  name: "LoginBtn",
 };
 </script>
 <style scoped lang="less">
-.BtnLogin {
+.LoginBtn {
   position: relative;
   display: flex;
   justify-content: center;
