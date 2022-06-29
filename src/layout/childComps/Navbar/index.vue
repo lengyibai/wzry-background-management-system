@@ -6,24 +6,47 @@
     <!-- 面包屑 -->
     <Breadcrumb class="Breadcrumb" />
     <!-- 搜索 -->
-    <Search />
+    <LybSvg
+      :svg="icon.search"
+      size="35px"
+      enterColor="var(--white)"
+      color="var(--theme-font-dark)"
+      right="20px"
+      @click.native="$tip('开发中...', 'warning')"
+    />
+    <!-- 设置 -->
+    <LybSvg
+      :svg="icon.setting"
+      size="35px"
+      enterColor="var(--white)"
+      color="var(--theme-font-dark)"
+      right="20px"
+      @click.native="$tip('开发中...', 'warning')"
+    />
+
     <!-- 用户操作 -->
     <UserMenu />
   </div>
 </template>
 
 <script>
-import Breadcrumb from "./Breadcrumb";
-import Hamburger from "./Hamburger";
-import UserMenu from "./UserMenu";
-import Search from "./Search";
+//#####··········图标··········#####//
+import icon from "./img/icon.js";
+//#####··········子组件··········#####//
+import Breadcrumb from "./childComps/Breadcrumb";
+import Hamburger from "./childComps/Hamburger";
+import UserMenu from "./childComps/UserMenu";
 
 export default {
+  data() {
+    return {
+      icon,
+    };
+  },
   components: {
     Breadcrumb,
     Hamburger,
     UserMenu,
-    Search,
   },
 };
 </script>
