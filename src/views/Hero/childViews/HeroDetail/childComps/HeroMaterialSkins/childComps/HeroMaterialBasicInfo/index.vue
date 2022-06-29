@@ -61,14 +61,15 @@ export default {
 </script>
 <style scoped lang="less">
 .HeroDetailBasicInfo {
+  opacity: 0;
   position: absolute;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: var(--gap-25);
-  transform-origin: left center;
+  background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.5s;
-  transform: translateZ(335px);
   animation: into 1s forwards;
+  transform: translateZ(335px);
+  transform-origin: left center;
   // animation: updownleft 2.5s 1s infinite, into 1s;
   @keyframes updownleft {
     0%,
@@ -83,6 +84,7 @@ export default {
   }
   @keyframes into {
     100% {
+      opacity: 1;
       transform: translateX(216px) translateY(0px) translateZ(335px)
         rotateY(45deg) rotateX(10deg) scale(0.8);
     }

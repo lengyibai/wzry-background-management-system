@@ -19,26 +19,22 @@ export default {
     },
   },
   name: "HeroMaterialAttribute",
-  data() {
-    return {};
-  },
-  components: {},
-  methods: {},
 };
 </script>
 <style scoped lang="less">
 .HeroMaterialAttribute {
+  display: flex;
+  opacity: 0;
   position: absolute;
   right: 0;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: var(--gap-25);
-  display: flex;
   flex-direction: column;
-  transform-origin: right center;
+  height: 100%;
+  padding: var(--gap-25);
+  background-color: rgba(0, 0, 0, 0.5);
   animation: into 1s forwards;
-  // animation: updownright 2.5s 1s infinite, into 1s;
   transform: translateZ(275px);
+  transform-origin: right center;
+  // animation: updownright 2.5s 1s infinite, into 1s;
   @keyframes updownright {
     0%,
     100% {
@@ -52,6 +48,7 @@ export default {
   }
   @keyframes into {
     100% {
+      opacity: 1;
       transform: translateX(-185px) translateZ(275px) rotateY(-45deg)
         rotateX(10deg) scale(0.8);
     }
