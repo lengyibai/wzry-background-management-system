@@ -22,5 +22,6 @@
 :root {
   --theme-color-dark: #1c293b;
   --theme-color-light: #233c5b;
-  --theme-font-dark: #84ade2;
+  --theme-font-light: #84ade2;
+  --theme-font-dark: #8097bb;
 }
