@@ -38,7 +38,7 @@ export default {
     text-shadow: var(--t-shadow);
   }
   .content {
-    font-size: var(--font-s-30);
+    font-size: var(--font-s-25);
     text-indent: 2em;
     padding: 2em;
     text-shadow: var(--t-shadow);
