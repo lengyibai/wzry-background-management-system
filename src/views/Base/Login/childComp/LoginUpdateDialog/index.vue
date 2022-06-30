@@ -5,6 +5,9 @@
         <div class="title">王者荣耀后台管理系统 6月29日 更新公告</div>
         <div class="content">
           <p>亲爱的用户：</p>
+          <p style="text-indent: 2em">
+            更新日志功能正在开发中，目前在开发装备页
+          </p>
         </div>
       </div>
       <div class="btns">
@@ -118,7 +121,7 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: var(--gap-20);
-    color: var(--theme-font-dark);
+    color: var(--white);
     line-height: 1.75;
     font-size: var(--font-s-16);
     .link {
