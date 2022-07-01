@@ -17,6 +17,9 @@
   --blue: #3498db;
   --purple: #9b59b6;
   --pink: #fd79a8;
+  --black-25: rgba(0, 0, 0, 0.25);
+  --black-50: rgba(0, 0, 0, 0.5);
+  --black-75: rgba(0, 0, 0, 0.75);
 }
 
 :root {
@@ -24,4 +27,6 @@
   --theme-color-light: #233c5b;
   --theme-font-light: #84ade2;
   --theme-font-dark: #8097bb;
+  --theme-font-color: #73b1d5;
+  --theme-font-white: #cdd0e2;
 }
