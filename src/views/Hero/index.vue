@@ -118,7 +118,7 @@ export default {
       });
       //####··········获取英雄故事··········####//
       heroStorys(params).then((res) => {
-        this.hero_storys = res.data;
+        this.hero_storys = res;
       });
     },
   },
