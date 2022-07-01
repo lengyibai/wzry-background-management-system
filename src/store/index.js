@@ -5,7 +5,7 @@ Vue.use(Vuex);
 import mutations from "./mutations";
 import actions from "./actions";
 import getters from "./getters";
-import network from "./modules/network";
+import equip from "./modules/equip";
 export default new Vuex.Store({
   state: {
     wzryToken: localStorage.getItem("wzryToken"), //token
@@ -17,6 +17,6 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    network,
+    equip,
   },
 });
