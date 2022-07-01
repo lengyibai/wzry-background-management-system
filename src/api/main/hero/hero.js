@@ -1,7 +1,6 @@
 // import Vue from "vue";
 
 //#####··········网络请求··········#####//
-//接口信息：{ 获取英雄信息 }
 import {
   getHeroList,
   getHeroVoices,
@@ -117,4 +116,15 @@ export const heroSkillEffect = (data) => {
 };
 
 //####········获取英雄故事········####//
-export const heroStorys = (data) => getHeroStorys(data);
+export const heroStorys = (data) => {
+  return new Promise((resolve) => {
+    getHeroStorys(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+        console.log(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
