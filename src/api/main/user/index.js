@@ -1,6 +1,5 @@
 import Vue from "vue";
 
-//#####··········网络请求··········#####//
 import { getUserInfo, updateUser } from "./transfer.js";
 
 function tip(code, msg) {

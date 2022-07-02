@@ -38,16 +38,14 @@
 <script>
 //#####··········网络请求··········#####//
 //接口信息：{ 英雄列表，英雄语音，英雄皮肤，皮肤类型，英雄技能，英雄技能效果，英雄技能类型，英雄故事  }
-import {
-  heroList,
-  heroVoices,
-  heroSkins,
-  heroSkinType,
-  heroSkills,
-  heroSkillType,
-  heroSkillEffect,
-  heroStorys,
-} from "@/api/main/hero/hero.js";
+import { heroList } from "@/api/main/hero";
+import { getVoice } from "@/api/main/voice";
+import { getSkin } from "@/api/main/skins/skin";
+import { getSkinType } from "@/api/main/skins/skinType";
+import { getSkill } from "@/api/main/skills/skill";
+import { getSkillType } from "@/api/main/skills/skillType";
+import { getSkillEffect } from "@/api/main/skills/skillEffect";
+import { getStory } from "@/api/main/story";
 //#####··········子组件··········#####//
 import HeroCard from "./childComps/HeroCard";
 import HeroSidebar from "./childComps/HeroSidebar";
@@ -84,15 +82,15 @@ export default {
     viewClick(id) {
       const params = { id };
       //####········获取英雄语音········####//
-      heroVoices(params).then((res) => {
+      getVoice(params).then((res) => {
         this.hero_voices = res.data;
       });
       //####··········获取英雄皮肤··········####//
-      heroSkins(params).then((res) => {
+      getSkin(params).then((res) => {
         this.hero_skins = res.data;
         /* 获取皮肤类型中文名，用于图片路径拼接 */
         this.hero_skins.forEach((item) => {
-          heroSkinType({ id: item.type }).then((res) => {
+          getSkinType({ id: item.type }).then((res) => {
             item.type = res.name;
           });
         });
@@ -101,23 +99,23 @@ export default {
         }, 750);
       });
       //####········获取英雄技能类型及效果········####//
-      heroSkills(params).then((res) => {
+      getSkill(params).then((res) => {
         this.hero_skills = res.data;
         this.hero_skills.forEach((item) => {
           item.effect?.forEach((item) => {
-            heroSkillEffect({ id: item.type }).then((res) => {
+            getSkillEffect({ id: item.type }).then((res) => {
               item.type = res.name;
             });
           });
           item.type?.forEach((item, index, arr) => {
-            heroSkillType({ id: item }).then((res) => {
+            getSkillType({ id: item }).then((res) => {
               arr[index] = res.name;
             });
           });
         });
       });
       //####··········获取英雄故事··········####//
-      heroStorys(params).then((res) => {
+      getStory(params).then((res) => {
         this.hero_storys = res;
       });
     },

@@ -5,7 +5,6 @@ export default {
   mutations: {
     editActive(state, payload) {
       state.active_id = payload;
-      console.warn(state.active_id);
     },
   },
   namespaced: true,

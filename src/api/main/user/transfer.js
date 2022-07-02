@@ -1,9 +1,8 @@
-import { getReq, postReq, patchReq, deleteReq } from "../../network/request.js";
+import { getReq, postReq, patchReq, deleteReq } from "@/api/network";
 
 //#####··········GET请求··········#####//
 //####········获取用户信息········####//
 export const getUserInfo = (data = {}) => {
-  // let { id, _page, _limit, token } = data;
   return getReq("/userList", data);
 };
 
@@ -13,6 +12,8 @@ export const addUser = (data) => postReq("/userList", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改用户信息········####//
-export const updateUser = (id, data) => patchReq(`/userList/${id}`, data);
+export const updateUser = (id) => patchReq(`/userList/${id}`);
+
+//#####··········DELETE请求··········#####//
 //####········删除用户········####//
-export const delUser = (data = {}) => deleteReq("/userList", data);
+export const delUser = (id) => deleteReq(`/userList/${id}`);
