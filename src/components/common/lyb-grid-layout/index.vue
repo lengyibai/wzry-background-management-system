@@ -1,6 +1,6 @@
 <template>
   <div
-    class="lyb-grid"
+    class="LybGridLayout"
     ref="lybGrid"
     :style="{ gridTemplateColumns: 'repeat(' + count + ', 1fr)', gridGap: gap }"
   >
@@ -20,10 +20,10 @@ export default {
     },
     eqhMultiple: {
       type: Number,
-      default: 1,
+      default: 0,
     },
   },
-  name: "lyb-grid",
+  name: "LybGridLayout",
   data() {
     return {
       lybGrid: null,
@@ -31,22 +31,46 @@ export default {
   },
   mounted() {
     this.lybGrid = this.$refs.lybGrid;
-    this.updateHeight();
-    window.addEventListener("resize", this.updateHeight.bind(this));
+    let a = null;
+    const _this = this;
+    (function fn() {
+      if (_this.eqhMultiple > 0 && _this.$slots.default.length) {
+        _this.updateHeight();
+        return;
+      }
+      a = requestAnimationFrame(fn);
+    })();
+    // 3秒后还未获取到插槽元素，则取消获取
+    setTimeout(() => {
+      cancelAnimationFrame(a);
+    }, 3000);
   },
   methods: {
     updateHeight() {
-      const box = this.lybGrid.querySelectorAll(".box");
+      const box = this.$slots.default;
       box.forEach((item) => {
-        //只对新加的盒子设置高度
-        item.style.height = item.offsetWidth / this.eqhMultiple + "px";
+        item.elm.style.height = item.elm.scrollWidth * this.eqhMultiple + "px";
       });
+      window.addEventListener(
+        "resize",
+        function () {
+          requestAnimationFrame(
+            function () {
+              const box = this.$slots.default;
+              box.forEach((item) => {
+                item.elm.style.height =
+                  item.elm.offsetWidth * this.eqhMultiple + "px";
+              });
+            }.bind(this),
+          );
+        }.bind(this),
+      );
     },
   },
 };
 </script>
 <style scoped lang="less">
-.lyb-grid {
+.LybGridLayout {
   width: 100%;
   height: 100%;
   display: grid;
