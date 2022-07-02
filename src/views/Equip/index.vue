@@ -13,7 +13,7 @@
 
 <script>
 //#####··········网络请求··········#####//
-import { equipList } from "@/api/main/equip/equip.js";
+import { equipList } from "@/api/main/equip";
 //#####··········子组件··········#####//
 import EquipList from "./childComps/EquipList"; //装备列表
 import EquipDetail from "./childComps/EquipDetail"; //装备详情
@@ -32,7 +32,6 @@ export default {
     //#####··········获取装备列表··········#####//
     equipList().then((res) => {
       this.equip_list = res;
-      console.log(res);
     });
   },
   computed: {
