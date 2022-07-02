@@ -162,13 +162,19 @@ const particle = {
 
 //#####··········底部渐变··········#####//
 const maskGradient = {
-  inserted(el) {
+  inserted(el, binding) {
+    const {
+      color = "rgba(0, 0, 0, 0.75)",
+      rotate = "0deg",
+      num1 = "0%",
+      num2 = "50%",
+    } = binding.value || {};
     const mask = document.createElement("div");
     el.style.position = "relative";
     mask.style.cssText = `
     position: absolute;
     inset:0;
-    background-image: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 50%);
+    background-image: linear-gradient(${rotate}, ${color} ${num1}, transparent ${num2});
     pointer-events: none;
     `;
     el.appendChild(mask);
