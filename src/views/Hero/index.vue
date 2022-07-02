@@ -2,16 +2,16 @@
   <div class="Hero">
     <div class="HeroMain">
       <transition name="fade">
-        <lyb-grid
+        <LybGridLayout
           gap="15px"
           v-if="hero_list.length"
           :count="6"
-          :eqhMultiple="0.64"
+          :eqhMultiple="1.5"
         >
           <div class="box" v-for="(item, index) in hero_list" :key="index">
             <HeroCard :data="item" @view="viewClick(item.id)" />
           </div>
-        </lyb-grid>
+        </LybGridLayout>
       </transition>
     </div>
 
