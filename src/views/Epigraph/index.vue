@@ -2,17 +2,21 @@
   <!-- 铭文 -->
   <div class="Epigraph">
     <transition name="epigraph">
-      <epigraph-category v-show="show_epigraph" />
+      <EpigraphCategory v-show="show_epigraph" />
     </transition>
-    <div class="EpigraphMain"></div>
+    <div class="EpigraphMain">
+      <EpigraphList />
+    </div>
   </div>
 </template>
 
 <script>
-import EpigraphCategory from "./childComps/epigraph-category";
+//#####··········子组件··········#####//
+import EpigraphCategory from "./childComps/EpigraphCategory"; //铭文类型分类
+import EpigraphList from "./childComps/EpigraphList"; //铭文列表
 export default {
   name: "Epigraph",
-  components: { EpigraphCategory },
+  components: { EpigraphCategory, EpigraphList },
   data() {
     return {
       show_epigraph: false,
