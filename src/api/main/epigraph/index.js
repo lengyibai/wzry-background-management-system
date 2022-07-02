@@ -1,0 +1,18 @@
+// import Vue from "vue";
+
+//#####··········网络请求··········#####//
+import { getEpigraphList } from "./transfer.js";
+
+//#####··········基本··········#####//
+//####········获取铭文列表········####//
+export const epigraphList = (data) => {
+  return new Promise((resolve) => {
+    getEpigraphList(data).then((res) => {
+      if (data) {
+        resolve(res.data[0]);
+      } else {
+        resolve(res.data);
+      }
+    });
+  });
+};
