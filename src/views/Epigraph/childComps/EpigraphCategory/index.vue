@@ -1,13 +1,11 @@
 <template>
-  <div class="epigraph-category">
-    <transition>
-      <img
-        class="cursor-pointer"
-        :style="{ left: currentIndex * 11.11 + '%' }"
-        src="./img/active.png"
-        alt
-      />
-    </transition>
+  <div class="EpigraphCategory">
+    <img
+      class="cursor-pointer"
+      :style="{ left: currentIndex * 11.11 + '%' }"
+      src="./img/active.png"
+      alt
+    />
     <div
       class="title cursor-pointer"
       :class="{ active: currentIndex === index }"
@@ -21,7 +19,7 @@
 </template>
 <script>
 export default {
-  name: "epigraph-category",
+  name: "EpigraphCategory",
   data() {
     return {
       currentIndex: 0,
@@ -47,7 +45,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.epigraph-category {
+.EpigraphCategory {
   width: 100%;
   position: relative;
   padding-bottom: 0.5em;
