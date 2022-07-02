@@ -5,11 +5,11 @@ import { getReq, postReq, patchReq, deleteReq } from "../../network/request.js";
 export const getEquipList = (data) => getReq("/equip", data);
 
 //#####··········POST请求··········#####//
-//####········注册装备········####//
+//####········添加装备········####//
 export const addEquip = (data) => postReq("/equip", data);
 
 //#####··········PATCH请求··········#####//
-//####········修改装备信息········####//
+//####········修改装备········####//
 export const updateEquip = (id, data) => patchReq(`/equip/${id}`, data);
 
 //#####··········DELETE请求··········#####//
