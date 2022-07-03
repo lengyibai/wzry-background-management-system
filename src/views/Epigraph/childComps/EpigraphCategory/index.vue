@@ -50,8 +50,10 @@ export default {
   position: relative;
   padding-bottom: 0.5em;
   display: flex;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   align-items: center;
+  &:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
   img {
     width: 11.25%;
     position: absolute;
