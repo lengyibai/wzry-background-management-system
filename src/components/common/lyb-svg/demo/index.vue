@@ -1,14 +1,7 @@
 <template>
   <div class="demo demoFull">
     <div class="flex">
-      <LybSvg
-        :svg="icon.wzry"
-        color="red"
-        enter-color="yellow"
-        down-color="blue"
-        size="10vw"
-        right="2vw"
-      />尝试按下图标
+      <LybSvg :svg="icon.wzry" color="red" enter-color="yellow" down-color="blue" size="10vw" right="2vw" />尝试按下图标
     </div>
   </div>
 </template>

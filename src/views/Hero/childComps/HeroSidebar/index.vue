@@ -60,20 +60,11 @@ export default {
     align-items: center;
     padding: 10px 20px;
     color: var(--theme-font-dark);
-    background-image: linear-gradient(
-      -25deg,
-      transparent,
-      25%,
-      transparent 100%
-    );
+    background-image: linear-gradient(-25deg, transparent, 25%, transparent 100%);
     transition: all 0.25s;
     &:hover {
       color: var(--white);
-      background-image: linear-gradient(
-        -25deg,
-        rgba(34, 58, 94, 0) 25%,
-        rgba(34, 130, 199, 0.25) 100%
-      );
+      background-image: linear-gradient(-25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%);
     }
     .name {
       font-size: var(--font-s-20);
@@ -87,10 +78,6 @@ export default {
 }
 .active {
   color: var(--white) !important;
-  background-image: linear-gradient(
-    -25deg,
-    rgba(34, 58, 94, 0) 25%,
-    rgba(34, 130, 199, 0.25) 100%
-  ) !important;
+  background-image: linear-gradient(-25deg, rgba(34, 58, 94, 0) 25%, rgba(34, 130, 199, 0.25) 100%) !important;
 }
 </style>

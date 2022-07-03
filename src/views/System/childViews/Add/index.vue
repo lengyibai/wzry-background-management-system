@@ -1,12 +1,6 @@
 <template>
   <div class="Add flex" :style="box">
-    <K-ManageCard
-      v-for="(item, index) in list"
-      :title="item"
-      :key="index"
-      :style="card"
-      type="add"
-    />
+    <K-ManageCard v-for="(item, index) in list" :title="item" :key="index" :style="card" type="add" />
   </div>
 </template>
 <script>

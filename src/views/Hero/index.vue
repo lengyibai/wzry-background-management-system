@@ -2,12 +2,7 @@
   <div class="Hero">
     <div class="HeroMain">
       <transition name="fade">
-        <LybGridLayout
-          gap="15px"
-          v-if="hero_list.length"
-          :count="6"
-          :eqhMultiple="1.5"
-        >
+        <LybGridLayout gap="15px" v-if="hero_list.length" :count="6" :eqhMultiple="1.5">
           <div class="box" v-for="(item, index) in hero_list" :key="index">
             <HeroCard :data="item" @view="viewClick(item.id)" />
           </div>
@@ -67,7 +62,7 @@ export default {
   components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
     //#####··········获取英雄列表··········#####//
-    heroList().then((res) => {
+    heroList().then(res => {
       this.hero_list = res;
     });
   },
@@ -82,15 +77,15 @@ export default {
     viewClick(id) {
       const params = { id };
       //####········获取英雄语音········####//
-      getVoice(params).then((res) => {
+      getVoice(params).then(res => {
         this.hero_voices = res.data;
       });
       //####··········获取英雄皮肤··········####//
-      getSkin(params).then((res) => {
+      getSkin(params).then(res => {
         this.hero_skins = res.data;
         /* 获取皮肤类型中文名，用于图片路径拼接 */
-        this.hero_skins.forEach((item) => {
-          getSkinType({ id: item.type }).then((res) => {
+        this.hero_skins.forEach(item => {
+          getSkinType({ id: item.type }).then(res => {
             item.type = res.name;
           });
         });
@@ -99,23 +94,23 @@ export default {
         }, 750);
       });
       //####········获取英雄技能类型及效果········####//
-      getSkill(params).then((res) => {
+      getSkill(params).then(res => {
         this.hero_skills = res.data;
-        this.hero_skills.forEach((item) => {
-          item.effect?.forEach((item) => {
-            getSkillEffect({ id: item.type }).then((res) => {
+        this.hero_skills.forEach(item => {
+          item.effect?.forEach(item => {
+            getSkillEffect({ id: item.type }).then(res => {
               item.type = res.name;
             });
           });
           item.type?.forEach((item, index, arr) => {
-            getSkillType({ id: item }).then((res) => {
+            getSkillType({ id: item }).then(res => {
               arr[index] = res.name;
             });
           });
         });
       });
       //####··········获取英雄故事··········####//
-      getStory(params).then((res) => {
+      getStory(params).then(res => {
         this.hero_storys = res;
       });
     },

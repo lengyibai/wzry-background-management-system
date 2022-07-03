@@ -28,12 +28,7 @@
       @select="$click"
     >
       <!-- 菜单 -->
-      <sidebar-item
-        v-for="route in routes"
-        :key="route.path"
-        :item="route"
-        :base-path="route.path"
-      />
+      <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
     </el-menu>
   </div>
 </template>

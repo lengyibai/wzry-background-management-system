@@ -1,12 +1,7 @@
 <template>
   <div class="EquipCard">
     <div class="border" v-show="active_id === equip.id"></div>
-    <img
-      class="cursor-pointer"
-      :src="equip.icon"
-      @click="editActive(equip.id)"
-      alt=""
-    />
+    <img class="cursor-pointer" :src="equip.icon" @click="editActive(equip.id)" alt="" />
     <div class="box">
       <div class="name">{{ equip.name }}</div>
       <div class="desc" v-if="equip.desc">{{ equip.desc }}</div>
@@ -33,7 +28,7 @@ export default {
   components: {},
   computed: {
     ...mapState({
-      active_id: (state) => state.equip.active_id, //获取点击的装备id
+      active_id: state => state.equip.active_id, //获取点击的装备id
     }),
   },
   methods: {

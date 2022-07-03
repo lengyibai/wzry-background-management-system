@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="EpigraphCard flex"
-    v-maskGradient="{ color: 'rgb(45, 90, 142)', num1: '-35%', num2: '35%' }"
-  >
+  <div class="EpigraphCard flex" v-maskGradient="{ color: 'rgb(45, 90, 142)', num1: '-35%', num2: '35%' }">
     <img src="./img/50.png" alt="" />
     <div class="box">
       <div class="name">5级铭文:冥想</div>

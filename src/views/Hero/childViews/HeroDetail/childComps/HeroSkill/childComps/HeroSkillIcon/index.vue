@@ -1,11 +1,6 @@
 <template>
   <div class="HeroSkillIcon">
-    <div
-      class="icon"
-      ref="skillImg"
-      v-for="(item, index) in skills"
-      :key="index"
-    >
+    <div class="icon" ref="skillImg" v-for="(item, index) in skills" :key="index">
       <transition name="border">
         <div class="border" v-show="currentIndex === index"></div>
       </transition>

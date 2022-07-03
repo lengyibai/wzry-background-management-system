@@ -14,8 +14,7 @@ export default [
       title: "登录",
       noVerify: true,
     },
-    component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/Base/Login"),
+    component: () => import(/* webpackChunkName: "login" */ "@/views/Base/Login"),
     hidden: true,
     leftHidden: true,
   },
@@ -30,8 +29,7 @@ export default [
           title: "主页",
           icon: "HOME",
         },
-        component: () =>
-          import(/* webpackChunkName: "home" */ "@/views/Base/Home"),
+        component: () => import(/* webpackChunkName: "home" */ "@/views/Base/Home"),
       },
     ],
     leftHidden: true,
@@ -47,8 +45,7 @@ export default [
           title: "英雄",
           icon: "HERO",
         },
-        component: () =>
-          import(/* webpackChunkName: "profession" */ "@/views/Hero"),
+        component: () => import(/* webpackChunkName: "profession" */ "@/views/Hero"),
       },
     ],
   },
@@ -63,8 +60,7 @@ export default [
           title: "装备",
           icon: "EQUIP",
         },
-        component: () =>
-          import(/* webpackChunkName: "category" */ "@/views/Equip"),
+        component: () => import(/* webpackChunkName: "category" */ "@/views/Equip"),
       },
     ],
   },
@@ -79,8 +75,7 @@ export default [
           title: "铭文",
           icon: "EPIGRAPH",
         },
-        component: () =>
-          import(/* webpackChunkName: "epigraph" */ "@/views/Epigraph"),
+        component: () => import(/* webpackChunkName: "epigraph" */ "@/views/Epigraph"),
       },
     ],
     leftHidden: true,
@@ -96,10 +91,7 @@ export default [
     children: [
       {
         path: "add",
-        component: () =>
-          import(
-            /* webpackChunkName: "system/add" */ "@/views/System/childViews/Add"
-          ),
+        component: () => import(/* webpackChunkName: "system/add" */ "@/views/System/childViews/Add"),
         meta: {
           title: "添加",
           icon: "ADD",
@@ -107,10 +99,7 @@ export default [
       },
       {
         path: "edit",
-        component: () =>
-          import(
-            /* webpackChunkName: "system/skin" */ "@/views/System/childViews/Edit"
-          ),
+        component: () => import(/* webpackChunkName: "system/skin" */ "@/views/System/childViews/Edit"),
         meta: {
           title: "编辑",
           icon: "EDIT",
@@ -118,10 +107,7 @@ export default [
       },
       {
         path: "delete",
-        component: () =>
-          import(
-            /* webpackChunkName: "system/equip" */ "@/views/System/childViews/Delete"
-          ),
+        component: () => import(/* webpackChunkName: "system/equip" */ "@/views/System/childViews/Delete"),
         meta: {
           title: "删除",
           icon: "DELETE",
@@ -129,10 +115,7 @@ export default [
       },
       {
         path: "components",
-        component: () =>
-          import(
-            /* webpackChunkName: "system/components" */ "@/views/System/childViews/Components"
-          ),
+        component: () => import(/* webpackChunkName: "system/components" */ "@/views/System/childViews/Components"),
         meta: {
           title: "项目组件",
           icon: "COMPONENTS",
@@ -146,8 +129,7 @@ export default [
     meta: {
       title: "404 NotFound",
     },
-    component: () =>
-      import(/* webpackChunkName: "NotFound" */ "@/views/Base/NotFound"),
+    component: () => import(/* webpackChunkName: "NotFound" */ "@/views/Base/NotFound"),
     hidden: true,
     leftHidden: true,
   },

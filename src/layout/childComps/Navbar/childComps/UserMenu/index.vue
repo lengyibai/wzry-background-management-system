@@ -8,9 +8,7 @@
         </div>
       </template>
       <template #f>
-        <K-Button @click.native="logout" type="danger" :autoSize="true"
-          >退出登录</K-Button
-        >
+        <K-Button @click.native="logout" type="danger" :autoSize="true">退出登录</K-Button>
       </template>
     </LybFlipBox>
   </div>

@@ -11,10 +11,10 @@ function tip(code, msg) {
 }
 //#####··········基本··········#####//
 //####········登录········####//
-export const login = (form) => {
+export const login = form => {
   /* 获取用户表 */
-  return new Promise((resolve) => {
-    return getUserInfo({ id: form.id }).then((res) => {
+  return new Promise(resolve => {
+    return getUserInfo({ id: form.id }).then(res => {
       if (res === undefined) {
         resolve({ code: 404, msg: "请求错误" });
       } else if (!res?.data.length) {
@@ -25,7 +25,7 @@ export const login = (form) => {
         // 数据库写入token
         updateUser(form.id, {
           wzryToken: new Date().getTime().toString().slice(0, 7),
-        }).then((res) => {
+        }).then(res => {
           // 返回请求状态及数据
           resolve({ data: res.data, code: 200, msg: "登录成功" });
         });
@@ -38,11 +38,11 @@ export const login = (form) => {
   });
 };
 //####········自动登录········####//
-export const userInfo = (form) => getUserInfo(form);
+export const userInfo = form => getUserInfo(form);
 
 //####········登出········####//
-export const logout = (id) => {
-  return new Promise((resolve) => {
+export const logout = id => {
+  return new Promise(resolve => {
     // 清除数据库token
     updateUser(id, { wzryToken: "" });
     tip(200, "退出成功");

@@ -28,7 +28,7 @@ export default {
   //只会执行install
   install(Vue) {
     //注册组件
-    components.forEach((component) => {
+    components.forEach(component => {
       Vue.component(component.name, component);
     });
   },

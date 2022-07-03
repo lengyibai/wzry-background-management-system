@@ -98,9 +98,7 @@ export default {
       setTimeout(() => {
         const skin_type = this.skins[index].type;
         if (skin_type) {
-          this.active_skin_type = require("@/assets/img/skinType/" +
-            skin_type +
-            ".png");
+          this.active_skin_type = require("@/assets/img/skinType/" + skin_type + ".png");
         } else {
           this.active_skin_type = false; //伴生皮肤没有标志
         }

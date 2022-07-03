@@ -1,12 +1,6 @@
 <template>
   <div class="Delete flex" :style="box">
-    <K-ManageCard
-      v-for="(item, index) in list"
-      :title="item"
-      :key="index"
-      :style="card"
-      type="delete"
-    />
+    <K-ManageCard v-for="(item, index) in list" :title="item" :key="index" :style="card" type="delete" />
   </div>
 </template>
 <script>

@@ -30,7 +30,7 @@ export default {
   components: { EquipList, EquipDetail, EquipSidebar },
   created() {
     //#####··········获取装备列表··········#####//
-    getEquip().then((res) => {
+    getEquip().then(res => {
       this.equip_list = res;
     });
   },

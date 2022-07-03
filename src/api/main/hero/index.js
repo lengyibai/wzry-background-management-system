@@ -10,9 +10,9 @@ import { getHeros } from "./transfer.js";
 
 //#####··········基本··········#####//
 //####········获取英雄列表········####//
-export const heroList = (data) => {
-  return new Promise((resolve) => {
-    getHeros(data).then((res) => {
+export const heroList = data => {
+  return new Promise(resolve => {
+    getHeros(data).then(res => {
       if (data) {
         resolve(res.data[0]);
       } else {

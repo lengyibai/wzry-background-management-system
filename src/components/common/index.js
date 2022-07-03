@@ -9,21 +9,12 @@ import LybMask from "./lyb-mask"; //蒙版
 import LybMaskClose from "./lyb-mask-close"; //顶部关闭蒙版
 
 //使用组件
-const components = [
-  LybBgVideo,
-  LybFlipBox,
-  LybGridLayout,
-  LybIcon,
-  LybSvg,
-  LybLoading,
-  LybMask,
-  LybMaskClose,
-];
+const components = [LybBgVideo, LybFlipBox, LybGridLayout, LybIcon, LybSvg, LybLoading, LybMask, LybMaskClose];
 export default {
   //只会执行install
   install(Vue) {
     //注册组件
-    components.forEach((component) => {
+    components.forEach(component => {
       Vue.component(component.name, component);
     });
   },

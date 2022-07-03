@@ -26,9 +26,7 @@ export default {
     //#####··········获取底部栏点击的位置··········#####//
     getPoint(e) {
       const el = this.$refs.Footbar;
-      this.playProgress = parseFloat(
-        ((e.pageX - el.offsetLeft) / el.offsetWidth).toFixed(2),
-      );
+      this.playProgress = parseFloat(((e.pageX - el.offsetLeft) / el.offsetWidth).toFixed(2));
     },
   },
 };

@@ -1,13 +1,7 @@
 <template>
   <div class="GlobalSwitch">
     <!-- 点击音效 -->
-    <audio
-      :src="sound[item.name]"
-      :ref="item.id"
-      hidden="true"
-      v-for="(item, index) in sounds"
-      :key="index"
-    ></audio>
+    <audio :src="sound[item.name]" :ref="item.id" hidden="true" v-for="(item, index) in sounds" :key="index"></audio>
     <!-- loading -->
     <LybLoading :show="show_loading" />
     <!-- 消息提醒 -->
@@ -122,8 +116,8 @@ export default {
       /* 获取点击触发的音效名 */
       this.sound_name =
         (typeof name === "string" &&
-          Object.keys(obj).find((item) => {
-            return obj[item].find((item) => {
+          Object.keys(obj).find(item => {
+            return obj[item].find(item => {
               return name.includes(item);
             });
           })) ||

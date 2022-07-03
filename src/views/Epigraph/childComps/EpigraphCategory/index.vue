@@ -1,11 +1,6 @@
 <template>
   <div class="EpigraphCategory">
-    <img
-      class="cursor-pointer"
-      :style="{ left: currentIndex * 11.11 + '%' }"
-      src="./img/active.png"
-      alt
-    />
+    <img class="cursor-pointer" :style="{ left: currentIndex * 11.11 + '%' }" src="./img/active.png" alt />
     <div
       class="title cursor-pointer"
       :class="{ active: currentIndex === index }"

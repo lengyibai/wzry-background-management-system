@@ -32,7 +32,7 @@ export default {
     );
   },
   mounted() {
-    window.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove", e => {
       this.event = e;
       this.$throttle();
     });
@@ -75,11 +75,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(
-    0deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+  background-image: linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 999;
   .close {
     width: 50px;
