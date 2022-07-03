@@ -5,6 +5,7 @@ import KCheckbox from "./Parts/K-Checkbox"; //复选框
 import KDialog from "./Parts/K-Dialog"; //弹窗
 import KMessage from "./Parts/K-Message"; //消息提醒
 import KTagsmall from "./Parts/K-TagSmall"; //标签
+import KManageCard from "./Parts/K-ManageCard"; //标签
 //####········英雄相关········####//
 import KAttribute from "./Hero/K-Attribute"; //英雄属性
 import KHeroSort from "./Hero/K-HeroSort"; //英雄职业标签
@@ -18,6 +19,7 @@ const components = [
   KDialog,
   KMessage,
   KTagsmall,
+  KManageCard,
   // 英雄相关
   KAttribute,
   KHeroSort,
