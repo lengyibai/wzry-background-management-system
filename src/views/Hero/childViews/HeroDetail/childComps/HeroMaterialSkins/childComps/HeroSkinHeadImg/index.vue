@@ -124,7 +124,6 @@ export default {
     transform: translateX(-50%) translateY(-50%);
     width: 200px;
     height: 200px;
-    box-shadow: ;
     border-radius: 50%;
     background: url("./img/head_bg.png") no-repeat center center;
     background-size: cover;

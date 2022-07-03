@@ -40,7 +40,7 @@ export default {
     border-radius: 5px;
     padding: 0 25px;
     margin-right: 5px;
-    box-shadow: 0 0px 3px 0 #000;
+    box-shadow: var(--b-shadow);
   }
   .skill-type-zs {
     color: #e5b14b;

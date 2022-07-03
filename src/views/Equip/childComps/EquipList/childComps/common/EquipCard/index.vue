@@ -86,6 +86,7 @@ export default {
   .box {
     color: var(--theme-font-white);
     font-size: var(--font-s-20);
+    text-shadow: var(--t-shadow);
     .name {
     }
     .desc {

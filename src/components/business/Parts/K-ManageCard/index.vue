@@ -37,6 +37,7 @@ export default {
 <style scoped lang="less">
 .K-ManageCard {
   position: relative;
+  box-shadow: var(--b-shadow);
   .box {
     position: absolute;
     width: 100%;

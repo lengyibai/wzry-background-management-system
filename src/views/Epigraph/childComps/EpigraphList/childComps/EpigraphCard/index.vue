@@ -28,6 +28,7 @@ export default {
   background-color: var(--black-25);
   padding: var(--gap-20) 0;
   background-color: rgba(27, 43, 66, 0.5);
+  box-shadow: var(--b-shadow);
   img {
     width: 100px;
     height: 100px;
