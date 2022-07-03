@@ -53,6 +53,13 @@ export default {
     };
   },
   mounted() {
+    //#####··········全局窗口发射resize事件··········#####//
+    window.addEventListener(
+      "resize",
+      function () {
+        this.$bus.$emit("resize", document.documentElement.clientWidth);
+      }.bind(this),
+    );
     //#####··········全局点击音效··········#####//
     Vue.prototype.$click = this.click;
 
