@@ -1,5 +1,4 @@
 <template>
-  <!-- @mousedown="down($event.target)" -->
   <span
     class="LybSvg"
     v-html="svg"
@@ -10,8 +9,9 @@
       color: color,
     }"
     :title="title"
-    @mouseleave="leave($event.target)"
     @mouseenter="enter($event.target)"
+    @mouseleave="leave($event.target)"
+    @mousedown="down($event.target)"
     @mouseup="up($event.target)"
   ></span>
 </template>
@@ -34,14 +34,14 @@ export default {
     // 图标颜色
     color: {
       type: String,
-      default: "",
+      default: "#fff",
     },
     /* 悬浮颜色 */
     enterColor: {
       type: String,
       default: "",
     },
-    /* 按下颜色，已被按下缩小动画替换 */
+    /* 按下颜色，已被按下缩小动画替换，开发者可自定义按下、悬浮、离开样式 */
     // downColor: {
     //   type: String,
     //   default: "",
@@ -76,16 +76,27 @@ export default {
   },
   methods: {
     enter(el) {
-      el.style.color = this.enterColor;
+      el.style.color = this.enterColor || this.color;
     },
     leave(el) {
       el.style.color = this.color;
     },
     up(el) {
       if (el.tagName === "svg") {
-        el.parentNode.style.color = this.enterColor;
+        el.parentNode.style.color = this.enterColor || this.color;
+        el.parentNode.style.transform = "scale(1)";
       } else {
-        el.parentNode.parentNode.style.color = this.enterColor;
+        el.parentNode.parentNode.style.color = this.enterColor || this.color;
+        el.parentNode.parentNode.style.transform = "scale(1)";
+      }
+    },
+    down(el) {
+      if (el.tagName === "svg") {
+        // el.parentNode.style.color = this.enterColor;
+        el.parentNode.style.transform = "scale(0.9)";
+      } else {
+        // el.parentNode.parentNode.style.color = this.enterColor;
+        el.parentNode.parentNode.style.transform = "scale(0.9)";
       }
     },
   },
@@ -100,9 +111,6 @@ export default {
   transition: all 0.25s;
   &:hover {
     transition: all 0.1s;
-  }
-  &:active {
-    transform: scale(0.9);
   }
 }
 </style>

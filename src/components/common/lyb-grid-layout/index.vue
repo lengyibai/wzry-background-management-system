@@ -51,21 +51,23 @@ export default {
       box.forEach((item) => {
         item.elm.style.height = item.elm.scrollWidth * this.eqhMultiple + "px";
       });
-      window.addEventListener(
-        "resize",
+      window.addEventListener("resize", this.fn);
+    },
+    fn() {
+      console.log(666);
+      requestAnimationFrame(
         function () {
-          requestAnimationFrame(
-            function () {
-              const box = this.$slots.default;
-              box.forEach((item) => {
-                item.elm.style.height =
-                  item.elm.offsetWidth * this.eqhMultiple + "px";
-              });
-            }.bind(this),
-          );
+          const box = this.$slots.default;
+          box.forEach((item) => {
+            item.elm.style.height =
+              item.elm.offsetWidth * this.eqhMultiple + "px";
+          });
         }.bind(this),
       );
     },
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.fn);
   },
 };
 </script>
