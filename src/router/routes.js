@@ -88,54 +88,43 @@ export default [
   {
     path: "/system",
     component: Layout,
-    redirect: "/System/hero",
+    redirect: "/System/add",
     meta: {
       title: "系统管理",
       icon: "SYSTEM",
     },
     children: [
       {
-        path: "hero",
+        path: "add",
         component: () =>
           import(
-            /* webpackChunkName: "system/hero" */ "@/views/System/childViews/Hero"
+            /* webpackChunkName: "system/add" */ "@/views/System/childViews/Add"
           ),
         meta: {
-          title: "添加英雄",
-          icon: "ADDHERO",
+          title: "添加",
+          icon: "ADD",
         },
       },
       {
-        path: "skin",
+        path: "edit",
         component: () =>
           import(
-            /* webpackChunkName: "system/skin" */ "@/views/System/childViews/Skin"
+            /* webpackChunkName: "system/skin" */ "@/views/System/childViews/Edit"
           ),
         meta: {
-          title: "添加皮肤",
-          icon: "ADDSKIN",
+          title: "编辑",
+          icon: "EDIT",
         },
       },
       {
-        path: "equip",
+        path: "delete",
         component: () =>
           import(
-            /* webpackChunkName: "system/equip" */ "@/views/System/childViews/Equip"
+            /* webpackChunkName: "system/equip" */ "@/views/System/childViews/Delete"
           ),
         meta: {
-          title: "添加装备",
-          icon: "ADDEQUIP",
-        },
-      },
-      {
-        path: "epigraph",
-        component: () =>
-          import(
-            /* webpackChunkName: "system/epigraph" */ "@/views/System/childViews/Epigraph"
-          ),
-        meta: {
-          title: "添加铭文",
-          icon: "ADDEPIGRAPH",
+          title: "删除",
+          icon: "DELETE",
         },
       },
       {
