@@ -54,7 +54,6 @@ export default {
       window.addEventListener("resize", this.fn);
     },
     fn() {
-      console.log(666);
       requestAnimationFrame(
         function () {
           const box = this.$slots.default;
