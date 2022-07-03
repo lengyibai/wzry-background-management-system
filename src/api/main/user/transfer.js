@@ -12,7 +12,7 @@ export const addUser = (data) => postReq("/userList", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改用户信息········####//
-export const updateUser = (id) => patchReq(`/userList/${id}`);
+export const updateUser = (id, data) => patchReq(`/userList/${id}`, data);
 
 //#####··········DELETE请求··········#####//
 //####········删除用户········####//
