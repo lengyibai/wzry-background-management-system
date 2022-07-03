@@ -18,7 +18,7 @@ export default {
   position: relative;
   box-sizing: border-box;
   max-width: 100%;
-  height: calc(100% - 131px);
-  padding: 25px;
+  height: calc(100% - 130px);
+  padding: var(--gap-25);
 }
 </style>
