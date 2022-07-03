@@ -59,9 +59,11 @@ export default {
   height: 75px;
   position: relative;
   // background: url("@/assets/img/nav_bg.png") no-repeat center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   background-size: cover;
-  box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.5);
+  &:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 0 5px 0 rgba(0, 0, 0, 0.5);
+  }
   .Hamburger {
     margin-left: var(--gap-15);
   }

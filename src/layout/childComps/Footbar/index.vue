@@ -42,11 +42,12 @@ export default {
   position: relative;
   width: 100%;
   height: 56px;
-  box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.5);
   // background: url("@/assets/img/footbar_bg.png") no-repeat center;
   // background-size: cover;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  &:hover {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 0 5px 0 rgba(0, 0, 0, 0.5);
+  }
   .Time {
     margin-left: var(--gap-15);
   }

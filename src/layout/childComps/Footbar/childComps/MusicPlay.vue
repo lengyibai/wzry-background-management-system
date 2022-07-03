@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.musicPlay(); //如果从登录页过来，可直接播放背景音乐
+      // this.musicPlay(); //如果从登录页过来，可直接播放背景音乐
     });
     const that = this;
     document.body.addEventListener("mousedown", fn); //如果在管理页刷新，则需要点击才能播放
