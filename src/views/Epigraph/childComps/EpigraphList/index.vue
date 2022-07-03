@@ -32,6 +32,5 @@ export default {
 .EpigraphList {
   width: 100%;
   height: 100%;
-  padding-top: var(--gap-15);
 }
 </style>

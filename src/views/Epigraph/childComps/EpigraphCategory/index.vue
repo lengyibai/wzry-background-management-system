@@ -51,6 +51,7 @@ export default {
   padding-bottom: 0.5em;
   display: flex;
   align-items: center;
+  margin-bottom: var(--gap-25);
   &:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
