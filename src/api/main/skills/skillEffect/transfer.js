@@ -10,7 +10,8 @@ export const addSkillEffect = data => postReq("/skillEffect", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改技能效果········####//
-export const updateSkillEffect = (id, data) => patchReq(`/skillEffect/${id}`, data);
+export const updateSkillEffect = (id, data) =>
+  patchReq(`/skillEffect/${id}`, data);
 
 //#####··········DELETE请求··········#####//
 //####········删除技能效果········####//

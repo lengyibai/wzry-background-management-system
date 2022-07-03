@@ -3,10 +3,14 @@
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-        <span v-if="item.redirect === 'noRedirect' || index == levelList.length - 1" class="no-redirect">{{
+        <span
+          v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+          class="no-redirect"
+          >{{ item.meta.title }}</span
+        >
+        <a class="cursor-pointer" v-else @click.prevent="handleLink(item)">{{
           item.meta.title
-        }}</span>
-        <a class="cursor-pointer" v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+        }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -32,8 +36,12 @@ export default {
   },
   methods: {
     getBreadcrumb() {
-      let matched = this.$route.matched.filter(item => item.meta && item.meta.title);
-      this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false);
+      let matched = this.$route.matched.filter(
+        item => item.meta && item.meta.title,
+      );
+      this.levelList = matched.filter(
+        item => item.meta && item.meta.title && item.meta.breadcrumb !== false,
+      );
     },
     isLyb(route) {
       const name = route && route.name;

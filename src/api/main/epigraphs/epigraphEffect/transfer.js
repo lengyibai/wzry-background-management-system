@@ -10,7 +10,8 @@ export const addEpigraphEffect = data => postReq("/epigraphEffect", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改铭文效果········####//
-export const updateEpigraphEffect = (id, data) => patchReq(`/epigraphEffect/${id}`, data);
+export const updateEpigraphEffect = (id, data) =>
+  patchReq(`/epigraphEffect/${id}`, data);
 
 //#####··········DELETE请求··········#####//
 //####········删除铭文效果········####//

@@ -36,7 +36,10 @@ export function $fmtTime(date, fmt = "YYYY-MM-DD hh:mm:ss") {
   for (let k in opt) {
     ret = new RegExp(`(${k})`).exec(fmt);
     if (ret) {
-      fmt = fmt.replace(ret[1], ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, "0"));
+      fmt = fmt.replace(
+        ret[1],
+        ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, "0"),
+      );
     }
   }
   return fmt;
@@ -44,16 +47,36 @@ export function $fmtTime(date, fmt = "YYYY-MM-DD hh:mm:ss") {
 
 //根据时间段问候
 export function $timeGreet(greet = {}) {
-  const { a = "午夜好", b = "早上好", c = "上午好", d = "中午好", e = "下午好", f = "晚上好" } = greet;
+  const {
+    a = "午夜好",
+    b = "早上好",
+    c = "上午好",
+    d = "中午好",
+    e = "下午好",
+    f = "晚上好",
+  } = greet;
   const now = new Date().getHours();
-  return now < 4 ? a : now < 10 ? b : now < 12 ? c : now < 14 ? d : now < 18 ? e : f;
+  return now < 4
+    ? a
+    : now < 10
+    ? b
+    : now < 12
+    ? c
+    : now < 14
+    ? d
+    : now < 18
+    ? e
+    : f;
 }
 
 //记录已过去时间或倒计时
 export function $getCountTime(time = "2022-04-01 10:45:00") {
   let now = new Date(time).getTime(),
     future = new Date().getTime(),
-    times = future - now > 0 ? Math.floor((future - now) / 1000) : Math.floor((now - future) / 1000);
+    times =
+      future - now > 0
+        ? Math.floor((future - now) / 1000)
+        : Math.floor((now - future) / 1000);
   const time_arr = [
     { y: times / 60 / 60 / 24 / 30 / 12 },
     { mon: (times / 60 / 60 / 24 / 30) % 12 },

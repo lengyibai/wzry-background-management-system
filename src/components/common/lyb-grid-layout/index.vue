@@ -1,5 +1,9 @@
 <template>
-  <div class="LybGridLayout" ref="lybGrid" :style="{ gridTemplateColumns: 'repeat(' + count + ', 1fr)', gridGap: gap }">
+  <div
+    class="LybGridLayout"
+    ref="lybGrid"
+    :style="{ gridTemplateColumns: 'repeat(' + count + ', 1fr)', gridGap: gap }"
+  >
     <slot></slot>
   </div>
 </template>
@@ -55,7 +59,8 @@ export default {
         function () {
           const box = this.$slots.default;
           box.forEach(item => {
-            item.elm.style.height = item.elm.offsetWidth * this.eqhMultiple + "px";
+            item.elm.style.height =
+              item.elm.offsetWidth * this.eqhMultiple + "px";
           });
         }.bind(this),
       );

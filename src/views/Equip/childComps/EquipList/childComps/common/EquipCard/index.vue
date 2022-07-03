@@ -1,7 +1,12 @@
 <template>
   <div class="EquipCard">
     <div class="border" v-show="active_id === equip.id"></div>
-    <img class="cursor-pointer" :src="equip.icon" @click="editActive(equip.id)" alt="" />
+    <img
+      class="cursor-pointer"
+      :src="equip.icon"
+      @click="editActive(equip.id)"
+      alt=""
+    />
     <div class="box">
       <div class="name">{{ equip.name }}</div>
       <div class="desc" v-if="equip.desc">{{ equip.desc }}</div>

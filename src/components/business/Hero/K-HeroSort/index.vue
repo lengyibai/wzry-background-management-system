@@ -1,5 +1,8 @@
 <template>
-  <div class="K-HeroSort" :style="{ backgroundPositionY: '-' + y[occ] + 'px' }"></div>
+  <div
+    class="K-HeroSort"
+    :style="{ backgroundPositionY: '-' + y[occ] + 'px' }"
+  ></div>
 </template>
 <script>
 export default {

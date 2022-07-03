@@ -9,7 +9,10 @@
     <input type="password" v-model="form.password" />
 
     <LoginBtn @click.native="login" />
-    <LybBgVideo :video="require('@/assets/video/loginBg.mp4')" v-if="!this.$store.state.smooth" />
+    <LybBgVideo
+      :video="require('@/assets/video/loginBg.mp4')"
+      v-if="!this.$store.state.smooth"
+    />
     <LoginUpdateDialog v-model="show_KDialog" />
   </div>
 </template>

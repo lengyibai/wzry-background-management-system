@@ -1,6 +1,12 @@
 <template>
   <div class="HeroVoice">
-    <audio @ended="ended" :src="voice_url" ref="voice" hidden="true" v-if="voice_toggle"></audio>
+    <audio
+      @ended="ended"
+      :src="voice_url"
+      ref="voice"
+      hidden="true"
+      v-if="voice_toggle"
+    ></audio>
     <div
       class="voice flex cursor-pointer"
       :class="{ active: currentIndex === index }"
@@ -61,7 +67,10 @@ export default {
         return;
       }
       /* 继续播放下一个 */
-      this.play(this.voices[this.currentIndex + 1].voice, this.currentIndex + 1);
+      this.play(
+        this.voices[this.currentIndex + 1].voice,
+        this.currentIndex + 1,
+      );
     },
 
     //#####··········点击播放··········#####//

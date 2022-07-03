@@ -1,7 +1,13 @@
 <template>
   <div class="GlobalSwitch">
     <!-- 点击音效 -->
-    <audio :src="sound[item.name]" :ref="item.id" hidden="true" v-for="(item, index) in sounds" :key="index"></audio>
+    <audio
+      :src="sound[item.name]"
+      :ref="item.id"
+      hidden="true"
+      v-for="(item, index) in sounds"
+      :key="index"
+    ></audio>
     <!-- loading -->
     <LybLoading :show="show_loading" />
     <!-- 消息提醒 -->

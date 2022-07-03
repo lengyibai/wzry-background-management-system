@@ -1,7 +1,12 @@
 <template>
   <div class="MusicPlay" :style="{ width: progress + '%' }" @click="playToggle">
     <!-- BGM -->
-    <audio :src="musics[bgmIndex]" ref="bgm" hidden="true" v-if="bgm_show"></audio>
+    <audio
+      :src="musics[bgmIndex]"
+      ref="bgm"
+      hidden="true"
+      v-if="bgm_show"
+    ></audio>
   </div>
 </template>
 <script>
@@ -76,7 +81,9 @@ export default {
         /* 实时设置播放进度 */
         this.timer = $frameInterval(() => {
           // that.$refs.bgm 为了避免保存后报错undefined
-          that.progress = that.$refs.bgm && $potEoPct(that.$refs.bgm.currentTime / that.$refs.bgm.duration);
+          that.progress =
+            that.$refs.bgm &&
+            $potEoPct(that.$refs.bgm.currentTime / that.$refs.bgm.duration);
         }, 300);
 
         /* 播放结束后执行下一次播放 */

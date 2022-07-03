@@ -16,7 +16,11 @@
       v-for="(item, index) in skins"
       :key="index"
       :style="{
-        transform: show_skin_head || 'rotate(' + (360 / skins.length) * (index + 1) + 'deg) translateY(-150%)',
+        transform:
+          show_skin_head ||
+          'rotate(' +
+            (360 / skins.length) * (index + 1) +
+            'deg) translateY(-150%)',
       }"
     >
       <img @dragstart.prevent :src="item.head" alt="" />
@@ -64,9 +68,15 @@ export default {
         this.is_into_drap =
           this.$refs.showSkin.getBoundingClientRect().left < offset.x &&
           this.$refs.showSkin.getBoundingClientRect().top < offset.y &&
-          this.$refs.showSkin.getBoundingClientRect().left + this.$refs.showSkin.offsetWidth > offset.x &&
-          this.$refs.showSkin.getBoundingClientRect().top + this.$refs.showSkin.offsetHeight > offset.y;
-      } /* 松手触发，并且头像已进入头像框吸附范围 */ else if (this.is_into_drap) {
+          this.$refs.showSkin.getBoundingClientRect().left +
+            this.$refs.showSkin.offsetWidth >
+            offset.x &&
+          this.$refs.showSkin.getBoundingClientRect().top +
+            this.$refs.showSkin.offsetHeight >
+            offset.y;
+      } /* 松手触发，并且头像已进入头像框吸附范围 */ else if (
+        this.is_into_drap
+      ) {
         /* 判断是否存在正在展示的皮肤，存在就将此皮肤头像过渡到初始位置 */
         if (this.active_skin.el) {
           this.active_skin.el.style.pointerEvents = "auto";

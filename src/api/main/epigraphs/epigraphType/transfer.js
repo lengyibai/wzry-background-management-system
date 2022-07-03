@@ -10,7 +10,8 @@ export const addEpigraphType = data => postReq("/epigraphType", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改铭文类型········####//
-export const updateEpigraphType = (id, data) => patchReq(`/epigraphType/${id}`, data);
+export const updateEpigraphType = (id, data) =>
+  patchReq(`/epigraphType/${id}`, data);
 
 //#####··········DELETE请求··········#####//
 //####········删除铭文类型········####//

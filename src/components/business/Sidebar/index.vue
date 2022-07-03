@@ -10,7 +10,13 @@
         @select="$click"
       >
         <!-- 菜单 -->
-        <sidebar-item v-bind="$attrs" v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item
+          v-bind="$attrs"
+          v-for="route in routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </div>
   </transition>

@@ -2,7 +2,13 @@
   <LybMask :show="value">
     <transition :name="type">
       <div class="K-Dialog" v-show="value">
-        <img class="close cursor-pointer" v-if="showClose" src="./img/close.png" @dragstart.prevent @click="close" />
+        <img
+          class="close cursor-pointer"
+          v-if="showClose"
+          src="./img/close.png"
+          @dragstart.prevent
+          @click="close"
+        />
         <img class="bg" src="./img/dialog.png" />
       </div>
     </transition>

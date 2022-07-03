@@ -1,6 +1,12 @@
 <template>
   <div class="Edit flex" :style="box">
-    <K-ManageCard v-for="(item, index) in list" :title="item" :key="index" :style="card" type="edit" />
+    <K-ManageCard
+      v-for="(item, index) in list"
+      :title="item"
+      :key="index"
+      :style="card"
+      type="edit"
+    />
   </div>
 </template>
 <script>

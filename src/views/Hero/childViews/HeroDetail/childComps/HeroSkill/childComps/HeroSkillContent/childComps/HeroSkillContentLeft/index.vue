@@ -3,13 +3,19 @@
     <!--//%%%%%··········名称及类型··········%%%%%//-->
     <div class="name-type">
       <div class="name">{{ activeSkill.name }}</div>
-      <HeroSkillTypeTag v-for="(item, index) in activeSkill.type" :type="item" :key="index" />
+      <HeroSkillTypeTag
+        v-for="(item, index) in activeSkill.type"
+        :type="item"
+        :key="index"
+      />
     </div>
 
     <!--//%%%%%··········数字相关··········%%%%%//-->
     <div class="cd-consume">
       <div class="cd" v-if="activeSkill.cd">CD：{{ activeSkill.cd }}秒</div>
-      <div class="consume" v-if="activeSkill.cd">法力消耗：{{ activeSkill.consume }}</div>
+      <div class="consume" v-if="activeSkill.cd">
+        法力消耗：{{ activeSkill.consume }}
+      </div>
       <div class="passive" v-else>被动</div>
     </div>
 

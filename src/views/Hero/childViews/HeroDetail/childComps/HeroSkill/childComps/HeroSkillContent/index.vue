@@ -1,7 +1,13 @@
 <template>
   <div class="HeroSkillContent">
-    <HeroSkillContentLeft :activeSkill="activeSkill" :style="{ width: activeSkill.effect ? '45%' : '100%' }" />
-    <HeroSkillContentRight :activeSkill="activeSkill" v-if="activeSkill.effect" />
+    <HeroSkillContentLeft
+      :activeSkill="activeSkill"
+      :style="{ width: activeSkill.effect ? '45%' : '100%' }"
+    />
+    <HeroSkillContentRight
+      :activeSkill="activeSkill"
+      v-if="activeSkill.effect"
+    />
   </div>
 </template>
 <script>

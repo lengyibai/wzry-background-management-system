@@ -45,7 +45,13 @@ import { $random, $frameInterval } from "@/utils/lyb.js";
 const particle = {
   inserted(el, binding) {
     const box = el;
-    let { color = "#cfb45c", size = 10, brightness = 1.5, contrast = 1.1, filter = true } = binding.value || {};
+    let {
+      color = "#cfb45c",
+      size = 10,
+      brightness = 1.5,
+      contrast = 1.1,
+      filter = true,
+    } = binding.value || {};
     if (filter) el.style.transition = "all 0.25s";
     const style = `
       position: absolute;
@@ -84,7 +90,9 @@ const particle = {
     }, 50);
     el.addEventListener("mouseenter", () => {
       if (!filter) return;
-      el.style.filter = `brightness(${brightness * 100}%) contrast(${contrast * 100}%)`;
+      el.style.filter = `brightness(${brightness * 100}%) contrast(${
+        contrast * 100
+      }%)`;
     });
     el.addEventListener("mouseleave", () => {
       el.style.filter = "";
@@ -155,7 +163,12 @@ const particle = {
 //#####··········底部渐变··········#####//
 const maskGradient = {
   inserted(el, binding) {
-    const { color = "rgba(0, 0, 0, 0.75)", rotate = "0deg", num1 = "0%", num2 = "50%" } = binding.value || {};
+    const {
+      color = "rgba(0, 0, 0, 0.75)",
+      rotate = "0deg",
+      num1 = "0%",
+      num2 = "50%",
+    } = binding.value || {};
     const mask = document.createElement("div");
     el.style.position = "relative";
     mask.style.cssText = `
@@ -188,14 +201,20 @@ const sweepLight = {
     el.appendChild(light);
     if (auto) {
       light.style.transitionDelay = ` ${binding.value}s`;
-      light.style.transform = `skewX(45deg) translateX(${-el.offsetWidth * 1.5}px)`;
+      light.style.transform = `skewX(45deg) translateX(${
+        -el.offsetWidth * 1.5
+      }px)`;
     } else {
       el.addEventListener("mouseenter", () => {
-        light.style.transform = `skewX(45deg) translateX(${-el.offsetWidth * 1.5}px)`;
+        light.style.transform = `skewX(45deg) translateX(${
+          -el.offsetWidth * 1.5
+        }px)`;
       });
 
       el.addEventListener("mouseleave", () => {
-        light.style.transform = `skewX(45deg) translateX(${el.offsetWidth * 2}px)`;
+        light.style.transform = `skewX(45deg) translateX(${
+          el.offsetWidth * 2
+        }px)`;
       });
     }
   },

@@ -5,12 +5,21 @@
         <div class="title">王者荣耀后台管理系统 6月29日 更新公告</div>
         <div class="content">
           <p>亲爱的用户：</p>
-          <p style="text-indent: 2em">更新日志功能正在开发中，目前在开发装备页</p>
+          <p style="text-indent: 2em">
+            更新日志功能正在开发中，目前在开发装备页
+          </p>
         </div>
       </div>
       <div class="btns">
-        <K-Button class="btn" type="default" @click.native="$click('关闭'), close()">暂时跳过</K-Button>
-        <K-Button type="warn" @click.native="$click('确定'), close()">此次不再弹出</K-Button>
+        <K-Button
+          class="btn"
+          type="default"
+          @click.native="$click('关闭'), close()"
+          >暂时跳过</K-Button
+        >
+        <K-Button type="warn" @click.native="$click('确定'), close()"
+          >此次不再弹出</K-Button
+        >
       </div>
       <div class="desc">
         <span

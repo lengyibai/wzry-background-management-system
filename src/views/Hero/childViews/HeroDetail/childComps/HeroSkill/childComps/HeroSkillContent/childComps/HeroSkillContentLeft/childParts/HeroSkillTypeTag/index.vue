@@ -1,9 +1,15 @@
 <template>
   <div class="HeroSkillTypeTag">
     <div class="skill-type skill-type-zs flex" v-if="type === '真实'">真实</div>
-    <div class="skill-type skill-type-wl flex" v-else-if="type === '物理'">物理</div>
-    <div class="skill-type skill-type-fs flex" v-else-if="type === '法术'">法术</div>
-    <div class="skill-type skill-type-kz flex" v-else-if="type === '控制'">控制</div>
+    <div class="skill-type skill-type-wl flex" v-else-if="type === '物理'">
+      物理
+    </div>
+    <div class="skill-type skill-type-fs flex" v-else-if="type === '法术'">
+      法术
+    </div>
+    <div class="skill-type skill-type-kz flex" v-else-if="type === '控制'">
+      控制
+    </div>
   </div>
 </template>
 <script>

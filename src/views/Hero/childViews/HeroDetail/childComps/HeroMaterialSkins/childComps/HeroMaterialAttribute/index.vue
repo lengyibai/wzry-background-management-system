@@ -38,16 +38,19 @@ export default {
   @keyframes updownright {
     0%,
     100% {
-      transform: translateX(-185px) translateZ(275px) rotateY(-45deg) rotateX(10deg) scale(0.8);
+      transform: translateX(-185px) translateZ(275px) rotateY(-45deg)
+        rotateX(10deg) scale(0.8);
     }
     50% {
-      transform: translateX(-185px) translateY(-20px) translateZ(275px) rotateY(-45deg) rotateX(10deg) scale(0.8);
+      transform: translateX(-185px) translateY(-20px) translateZ(275px)
+        rotateY(-45deg) rotateX(10deg) scale(0.8);
     }
   }
   @keyframes into {
     100% {
       opacity: 1;
-      transform: translateX(-185px) translateZ(275px) rotateY(-45deg) rotateX(10deg) scale(0.8);
+      transform: translateX(-185px) translateZ(275px) rotateY(-45deg)
+        rotateX(10deg) scale(0.8);
     }
   }
   .title {

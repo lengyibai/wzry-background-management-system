@@ -19,7 +19,11 @@
         >
           查看详情
         </h1>
-        <div class="line" :class="{ lineActive: lineActive }" ref="line"></div></div
+        <div
+          class="line"
+          :class="{ lineActive: lineActive }"
+          ref="line"
+        ></div></div
     ></transition>
 
     <img

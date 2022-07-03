@@ -10,7 +10,8 @@ export const addRelationType = data => postReq("/relationType", data);
 
 //#####··········PATCH请求··········#####//
 //####········修改关系类型········####//
-export const updateRelationType = (id, data) => patchReq(`/relationType/${id}`, data);
+export const updateRelationType = (id, data) =>
+  patchReq(`/relationType/${id}`, data);
 
 //#####··········DELETE请求··········#####//
 //####········删除关系类型········####//

@@ -7,7 +7,10 @@
           v-for="(item, index) in messages"
           :key="item.id"
           :style="{
-            transform: 'translateX(-50%) translateY(' + (index * 100 + index * 25) + '%)',
+            transform:
+              'translateX(-50%) translateY(' +
+              (index * 100 + index * 25) +
+              '%)',
           }"
         >
           <span :style="{ color: color[item.type] }">{{ item.text }}</span>

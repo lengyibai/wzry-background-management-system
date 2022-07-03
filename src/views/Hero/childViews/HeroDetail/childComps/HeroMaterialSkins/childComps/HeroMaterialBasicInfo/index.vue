@@ -8,10 +8,15 @@
       </div>
     </div>
     <div class="info" v-for="(item, index) in hero_info" :key="index">
-      <LybIcon :imgUrl="require('./img/' + item[1] + '.svg')" right="5px" />{{ item[1] }}：{{ item[0] || "未知" }}
+      <LybIcon :imgUrl="require('./img/' + item[1] + '.svg')" right="5px" />{{
+        item[1]
+      }}：{{ item[0] || "未知" }}
     </div>
     <div class="info">
-      <LybIcon :imgUrl="require('./img/上架时间.svg')" right="5px" />上架时间：{{ data.time || "未知" }}
+      <LybIcon
+        :imgUrl="require('./img/上架时间.svg')"
+        right="5px"
+      />上架时间：{{ data.time || "未知" }}
     </div>
   </div>
 </template>
@@ -69,16 +74,19 @@ export default {
   @keyframes updownleft {
     0%,
     100% {
-      transform: translateX(216px) translateY(0px) translateZ(335px) rotateY(45deg) rotateX(10deg) scale(0.8);
+      transform: translateX(216px) translateY(0px) translateZ(335px)
+        rotateY(45deg) rotateX(10deg) scale(0.8);
     }
     50% {
-      transform: translateX(216px) translateY(-20px) translateZ(335px) rotateY(45deg) rotateX(10deg) scale(0.8);
+      transform: translateX(216px) translateY(-20px) translateZ(335px)
+        rotateY(45deg) rotateX(10deg) scale(0.8);
     }
   }
   @keyframes into {
     100% {
       opacity: 1;
-      transform: translateX(216px) translateY(0px) translateZ(335px) rotateY(45deg) rotateX(10deg) scale(0.8);
+      transform: translateX(216px) translateY(0px) translateZ(335px)
+        rotateY(45deg) rotateX(10deg) scale(0.8);
     }
   }
   .name {

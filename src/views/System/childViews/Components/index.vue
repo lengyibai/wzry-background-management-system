@@ -11,14 +11,29 @@
       <!-- 按钮 -->
       <ChildComps class="flex">
         <!-- <K-Button type="default" /> -->
-        <K-Button @click.native="$click('查看')" @mouseup.native="showTip(0)">查看</K-Button>
-        <K-Button type="warn" @click.native="$click('确定')" @mouseup.native="showTip(1)">领取</K-Button>
-        <K-Button type="danger" @click.native="$click('取消')" @mouseup.native="showTip(2)">取消</K-Button>
+        <K-Button @click.native="$click('查看')" @mouseup.native="showTip(0)"
+          >查看</K-Button
+        >
+        <K-Button
+          type="warn"
+          @click.native="$click('确定')"
+          @mouseup.native="showTip(1)"
+          >领取</K-Button
+        >
+        <K-Button
+          type="danger"
+          @click.native="$click('取消')"
+          @mouseup.native="showTip(2)"
+          >取消</K-Button
+        >
       </ChildComps>
       <!-- 复选框 -->
       <ChildComps class="flex">
         <K-Checkbox v-model="show_dialog" @click.native="$click('确定')" />
-        <K-Checkbox v-model="show_confirm_dialog" @click.native="$click('确认弹窗')" />
+        <K-Checkbox
+          v-model="show_confirm_dialog"
+          @click.native="$click('确认弹窗')"
+        />
       </ChildComps>
     </div>
 
