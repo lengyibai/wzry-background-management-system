@@ -45,7 +45,6 @@ export default {
   // background: url("@/assets/img/footbar_bg.png") no-repeat center;
   // background-size: cover;
   &:hover {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0px 0 5px 0 rgba(0, 0, 0, 0.5);
   }
   .Time {

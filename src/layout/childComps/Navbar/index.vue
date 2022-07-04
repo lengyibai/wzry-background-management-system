@@ -61,7 +61,6 @@ export default {
   // background: url("@/assets/img/nav_bg.png") no-repeat center;
   background-size: cover;
   &:hover {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0px 0 5px 0 rgba(0, 0, 0, 0.5);
   }
   .Hamburger {

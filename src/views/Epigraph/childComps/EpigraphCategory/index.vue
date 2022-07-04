@@ -52,9 +52,6 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: var(--gap-25);
-  &:hover {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
   img {
     width: 11.25%;
     position: absolute;

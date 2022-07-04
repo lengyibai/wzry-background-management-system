@@ -81,7 +81,6 @@ export default {
   height: 100vh;
   // background: url("@/assets/img/sidebar_bg.png") no-repeat center;
   &:hover {
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   }
   .game {

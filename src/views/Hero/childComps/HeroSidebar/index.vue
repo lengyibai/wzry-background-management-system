@@ -54,8 +54,7 @@ export default {
   width: 200px;
   height: 100%;
   &:hover {
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: -5px 5px 5px -5px rgba(0, 0, 0, 0.5);
   }
   .hero-type {
     display: flex;
