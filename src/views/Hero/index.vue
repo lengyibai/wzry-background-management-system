@@ -25,7 +25,7 @@
       <HeroDetail
         v-if="show_HeroDetail"
         v-model="show_HeroDetail"
-        :data="hero_list[0]"
+        :data="hero_info"
         :voices="hero_voices"
         :skins="hero_skins"
         :skills="hero_skills"
@@ -37,15 +37,42 @@
 
 <script>
 //#####··········网络请求··········#####//
-//接口信息：{ 英雄列表，英雄语音，英雄皮肤，皮肤类型，英雄技能，英雄技能效果，英雄技能类型，英雄故事  }
-import { heroList } from "@/api/main/hero";
-import { getVoice } from "@/api/main/voice";
-import { getSkin } from "@/api/main/skins/skin";
-import { getSkinType } from "@/api/main/skins/skinType";
-import { getSkill } from "@/api/main/skills/skill";
-import { getSkillType } from "@/api/main/skills/skillType";
-import { getSkillEffect } from "@/api/main/skills/skillEffect";
-import { getStory } from "@/api/main/story";
+//英雄相关：{ 英雄列表 }
+import { hero } from "@/api/main/hero/self";
+//接口信息：{ 英雄故事 }
+import { getGameStory } from "@/api/main/hero/gameStory";
+//接口信息：{ 历史故事 }
+import { getHistory } from "@/api/main/hero/history";
+//接口信息：{ 语音列表 }
+import { getVoice } from "@/api/main/hero/voice";
+//接口信息：{ 皮肤列表 }
+import { getSkin } from "@/api/main/hero/skin";
+//接口信息：{ 技能列表 }
+import { getSkill } from "@/api/main/hero/skill";
+
+/* 信息树 */
+//接口信息：{ 区域类型 }
+import { getAreaType } from "@/api/main/tree/areaType";
+//接口信息：{ 阵营类型 }
+import { getCampType } from "@/api/main/tree/campType";
+//接口信息：{ 能量类型 }
+import { getEnergyType } from "@/api/main/tree/energyType";
+//接口信息：{ 身份类型 }
+import { getIdentityType } from "@/api/main/tree/identityType";
+//接口信息：{ 定位类型 }
+import { getLocationType } from "@/api/main/tree/locationType";
+//接口信息：{ 时期类型 }
+import { getPeriodType } from "@/api/main/tree/periodType";
+//接口信息：{ 职业类型 }
+import { getProfessionType } from "@/api/main/tree/professionType";
+//接口信息：{ 技能效果 }
+import { getSkillEffect } from "@/api/main/tree/skillEffect";
+//接口信息：{ 技能类型 }
+import { getSkillType } from "@/api/main/tree/skillType";
+//接口信息：{ 皮肤类型 }
+import { getSkinType } from "@/api/main/tree/skinType";
+//接口信息：{ 特长类型 }
+import { getSpecialtyType } from "@/api/main/tree/specialtyType";
 //#####··········子组件··········#####//
 import HeroCard from "./childComps/HeroCard";
 import HeroSidebar from "./childComps/HeroSidebar";
@@ -55,11 +82,15 @@ export default {
   name: "Hero",
   data() {
     return {
+      hero_info: {},
       hero_list: [], //英雄列表
       hero_voices: [], //英雄语音
       hero_skins: [], //英雄皮肤
       hero_skills: {}, //英雄技能
-      hero_storys: {}, //英雄故事
+      hero_storys: {
+        gameStory: {}, //英雄故事
+        history: {}, //历史故事
+      },
       show_HeroDetail: false, //显示英雄详情
       show_HeroSidebar: false, //显示英雄分类侧边栏
     };
@@ -67,7 +98,7 @@ export default {
   components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
     //#####··········获取英雄列表··········#####//
-    heroList().then(res => {
+    hero().then(res => {
       this.hero_list = res;
     });
   },
@@ -81,6 +112,36 @@ export default {
     //#####··········显示英雄详情··········#####//
     viewClick(id) {
       const params = { id };
+      //####········英雄基础········####//
+      hero(params).then(async res => {
+        this.hero_info = res;
+        const k = [
+          "area",
+          "camp",
+          "energy",
+          "identity",
+          "location",
+          "period",
+          "profession",
+          "specialty",
+        ];
+        const r = [
+          getAreaType,
+          getCampType,
+          getEnergyType,
+          getIdentityType,
+          getLocationType,
+          getPeriodType,
+          getProfessionType,
+          getSpecialtyType,
+        ];
+
+        (async function () {
+          for (let i = 0; i < r.length; i++) {
+            this.$set(this.hero_info, k[i], await r[i](res[k[i]]));
+          }
+        }.call(this));
+      });
       //####········获取英雄语音········####//
       getVoice(params).then(res => {
         this.hero_voices = res.data;
@@ -91,7 +152,7 @@ export default {
         /* 获取皮肤类型中文名，用于图片路径拼接 */
         this.hero_skins.forEach(item => {
           getSkinType({ id: item.type }).then(res => {
-            item.type = res.name;
+            item.type = res;
           });
         });
         setTimeout(() => {
@@ -104,19 +165,23 @@ export default {
         this.hero_skills.forEach(item => {
           item.effect?.forEach(item => {
             getSkillEffect({ id: item.type }).then(res => {
-              item.type = res.name;
+              item.type = res;
             });
           });
           item.type?.forEach((item, index, arr) => {
             getSkillType({ id: item }).then(res => {
-              arr[index] = res.name;
+              arr[index] = res;
             });
           });
         });
       });
       //####··········获取英雄故事··········####//
-      getStory(params).then(res => {
-        this.hero_storys = res;
+      getGameStory(params).then(res => {
+        this.hero_storys.gameStory = res;
+      });
+      //####··········获取历史故事··········####//
+      getHistory(params).then(res => {
+        this.hero_storys.history = res;
       });
     },
   },
