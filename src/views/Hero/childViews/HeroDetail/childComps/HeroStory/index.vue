@@ -1,9 +1,9 @@
 <template>
   <div class="HeroStory">
     <div class="title">TA的故事</div>
-    <p class="content" v-html="storys.gamestory"></p>
+    <p class="content" v-html="storys.gameStory.data"></p>
     <div class="title">历史上的他</div>
-    <p class="content" v-html="storys.history"></p>
+    <p class="content" v-html="storys.history.data"></p>
   </div>
 </template>
 <script>
