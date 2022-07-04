@@ -1,18 +1,17 @@
 import { getReq, postReq, patchReq, deleteReq } from "@/api/network";
 
 //#####··········GET请求··········#####//
-//####········获取关系类型········####//
-export const getAppellationTypes = data => getReq("/appellationType", data);
+//####········获取区域类型········####//
+export const getAreaTypes = data => getReq("/areaType", data);
 
 //#####··········POST请求··········#####//
-//####········添加关系类型········####//
-export const addAppellationType = data => postReq("/appellationType", data);
+//####········添加区域类型········####//
+export const addAreaType = data => postReq("/areaType", data);
 
 //#####··········PATCH请求··········#####//
-//####········修改关系类型········####//
-export const updateAppellationType = (id, data) =>
-  patchReq(`/appellationType/${id}`, data);
+//####········修改区域类型········####//
+export const updateAreaType = (id, data) => patchReq(`/areaType/${id}`, data);
 
 //#####··········DELETE请求··········#####//
-//####········删除关系类型········####//
-export const delAppellationType = id => deleteReq(`/appellationType/${id}`);
+//####········删除区域类型········####//
+export const delAreaType = id => deleteReq(`/areaType/${id}`);

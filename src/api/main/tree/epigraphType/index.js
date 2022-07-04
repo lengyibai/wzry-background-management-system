@@ -5,7 +5,7 @@ export const getEpigraphType = data => {
   return new Promise(resolve => {
     getEpigraphTypes(data).then(res => {
       if (data) {
-        resolve(res.data[0]);
+        resolve(res.data[0].name);
       } else {
         resolve(res.data);
       }
