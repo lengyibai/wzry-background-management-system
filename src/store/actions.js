@@ -1,6 +1,6 @@
 import Vue from "vue";
 import router from "@/router";
-import { login, logout, userInfo } from "@/api/main/user";
+import { login, logout, userInfo } from "@/api/main/other/user";
 export default {
   //#####··········登录··········#####//
   login(context, account) {

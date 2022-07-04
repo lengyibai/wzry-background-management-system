@@ -13,7 +13,8 @@
 
 <script>
 //#####··········网络请求··········#####//
-import { getEquip } from "@/api/main/equips/equip";
+import { getEquip } from "@/api/main/other/equip";
+
 //#####··········子组件··········#####//
 import EquipList from "./childComps/EquipList"; //装备列表
 import EquipDetail from "./childComps/EquipDetail"; //装备详情
