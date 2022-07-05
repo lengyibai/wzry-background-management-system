@@ -11,7 +11,7 @@
           boxShadow: '0 0 50px ' + item,
         }"
       ></span>
-      <h1>加载中...</h1>
+      <h1>{{ text }}...</h1>
     </div>
   </transition>
 </template>
@@ -21,6 +21,10 @@ export default {
     show: {
       type: Boolean,
       default: false,
+    },
+    text: {
+      type: String,
+      default: "加载中",
     },
   },
   name: "LybLoading",
