@@ -9,7 +9,7 @@
       :key="index"
     ></audio>
     <!-- loading -->
-    <LybLoading :show="show_loading" />
+    <LybLoading :show="show_loading" :text="loading_text" />
     <!-- 消息提醒 -->
     <KMessage :messages="messages" />
   </div>
@@ -25,6 +25,7 @@ export default {
 
       //#····加载动画相关····#//
       show_loading: false, //是否显示
+      loading_text: "",
 
       //#····音效相关相关····#//
       click_name: "", //点击的标识，用于解决重复点击会重复播放问题
@@ -66,11 +67,19 @@ export default {
     //#####··········全局loading··········#####//
     const that = this;
     Vue.prototype.$lybLoad = {
-      show() {
+      show(text) {
+        that.loading_text = text;
         that.show_loading = true;
       },
       close() {
-        that.show_loading = false;
+        return new Promise(resolve => {
+          setTimeout(() => {
+            that.show_loading = false;
+            setTimeout(() => {
+              resolve();
+            }, 250);
+          }, 500);
+        });
       },
     };
 
