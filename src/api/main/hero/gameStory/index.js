@@ -5,7 +5,7 @@ export const getGameStory = data => {
   return new Promise(resolve => {
     getGameStorys(data).then(res => {
       if (data) {
-        resolve(res.data[0]);
+        resolve(res.data[0].data);
       } else {
         resolve(res.data);
       }
