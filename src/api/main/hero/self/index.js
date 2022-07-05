@@ -61,7 +61,7 @@ export const hero = data => {
           getSpecialtyType,
         ];
         for (let i = 0; i < r1.length; i++) {
-          res.data[0][k1[i]] = await r1[i](res.data[0][k1[i]]);
+          res.data[0][k1[i]] = await r1[i]({ id: res.data[0][k1[i]] });
         }
 
         /* 详细信息 */
