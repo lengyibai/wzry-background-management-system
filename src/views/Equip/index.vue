@@ -1,10 +1,12 @@
 <template>
   <!-- 装备 -->
   <div class="Equip">
-    <div class="EquipMain">
-      <EquipList :equipList="equipList" />
-      <EquipDetail />
-    </div>
+    <transition name="fade">
+      <div class="EquipMain" v-if="equipList">
+        <EquipList :equipList="equipList" />
+        <EquipDetail />
+      </div>
+    </transition>
     <transition name="sidebar">
       <EquipSidebar v-show="show_EquipSidebar" />
     </transition>
@@ -31,8 +33,12 @@ export default {
   components: { EquipList, EquipDetail, EquipSidebar },
   created() {
     //#####··········获取装备列表··········#####//
+
+    this.$lybLoad.show("正在请求装备列表");
     getEquip().then(res => {
-      this.equip_list = res;
+      this.$lybLoad.close().then(() => {
+        this.equip_list = res;
+      });
     });
   },
   computed: {
