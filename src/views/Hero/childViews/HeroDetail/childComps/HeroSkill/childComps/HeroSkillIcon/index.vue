@@ -3,7 +3,7 @@
     <div
       class="icon"
       ref="skillImg"
-      v-for="(item, index) in skills"
+      v-for="(item, index) in data.skills"
       :key="index"
     >
       <transition name="border">
@@ -19,10 +19,10 @@ export default {
   name: "HeroSkillIcon",
   props: {
     /* 技能列表 */
-    skills: {
-      type: Array,
+    data: {
+      type: Object,
       default() {
-        return [];
+        return {};
       },
     },
   },

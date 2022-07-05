@@ -18,10 +18,10 @@ export default {
   name: "HeroSkillContent",
   props: {
     /* 技能列表 */
-    skills: {
-      type: Array,
+    data: {
+      type: Object,
       default() {
-        return [];
+        return {};
       },
     },
     /* 当前展示技能的索引 */
@@ -33,7 +33,7 @@ export default {
   components: { HeroSkillContentLeft, HeroSkillContentRight },
   computed: {
     activeSkill() {
-      return this.skills[this.index];
+      return this.data.skills[this.index];
     },
   },
 };

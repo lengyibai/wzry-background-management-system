@@ -3,17 +3,17 @@
     <LybMaskClose @close="hide" />
     <!--//%%%%%··········资料皮肤··········%%%%%//-->
     <HeroDetailParallaxBg class="stick" :bg="data.poster">
-      <HeroMaterialSkins v-bind="$attrs" :data="data" />
+      <HeroMaterialSkins :data="data" />
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········技能··········%%%%%//-->
     <HeroDetailParallaxBg class="stick" :bg="data.poster">
-      <HeroSkill v-bind="$attrs" />
+      <HeroSkill :data="data" />
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········故事··········%%%%%//-->
     <HeroDetailParallaxBg class="stick" :bg="data.poster">
-      <HeroStory v-bind="$attrs" />
+      <HeroStory :data="data" />
     </HeroDetailParallaxBg>
   </div>
 </template>

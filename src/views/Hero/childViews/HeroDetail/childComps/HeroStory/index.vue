@@ -1,15 +1,15 @@
 <template>
   <div class="HeroStory">
     <div class="title">TA的故事</div>
-    <p class="content" v-html="storys.gameStory.data"></p>
+    <p class="content" v-html="data.gameStory"></p>
     <div class="title">历史上的他</div>
-    <p class="content" v-html="storys.history.data"></p>
+    <p class="content" v-html="data.history"></p>
   </div>
 </template>
 <script>
 export default {
   props: {
-    storys: {
+    data: {
       type: Object,
       default() {
         return {};
@@ -20,7 +20,6 @@ export default {
   data() {
     return {};
   },
-  components: {},
   methods: {},
 };
 </script>
