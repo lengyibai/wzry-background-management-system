@@ -34,8 +34,9 @@ export default {
   },
   methods: {
     logout() {
+      this.$lybLoad.show("正在退出");
       this.$click();
-      this.$store.dispatch("logout");
+      this.$store.dispatch("logout").then(() => this.$lybLoad.close());
     },
   },
 };
