@@ -36,16 +36,12 @@ export function deleteReq(url) {
 //#####·········拦截器··········#####//
 //####·······请求拦截器········####//
 server.interceptors.request.use(config => {
-  Vue.prototype.$lybLoad.show();
   config.headers.authorization = localStorage.getItem("wzryToken");
   return config;
 });
 //####·······响应拦截器········####//
 server.interceptors.response.use(
   res => {
-    setTimeout(() => {
-      Vue.prototype.$lybLoad.close();
-    }, 500);
     return res;
   },
   () => {
@@ -53,6 +49,5 @@ server.interceptors.response.use(
       "请求失败，请检查是否启动本地服务器：npm run wzry",
       "danger",
     );
-    Vue.prototype.$lybLoad.close();
   },
 );
