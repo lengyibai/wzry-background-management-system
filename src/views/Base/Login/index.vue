@@ -33,8 +33,11 @@ export default {
   },
   methods: {
     login() {
+      this.$lybLoad.show("登录中");
       this.$click("login");
-      this.$store.dispatch("login", this.form);
+      this.$store
+        .dispatch("login", this.form)
+        .then(() => this.$lybLoad.close());
     },
   },
   components: { LoginBtn, LoginUpdateDialog },
