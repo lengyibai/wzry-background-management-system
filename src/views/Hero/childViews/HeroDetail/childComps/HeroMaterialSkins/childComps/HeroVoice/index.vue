@@ -88,7 +88,7 @@ export default {
         this.voice_url = voice;
         this.$nextTick(() => {
           this.$refs.voice.play().then(() => {
-            this.time = this.$refs.voice.duration - 0.75;
+            this.time = this.$refs.voice.duration;
           });
         });
       }, 250);
