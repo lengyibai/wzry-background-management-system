@@ -3,12 +3,13 @@
     class="EpigraphCard flex"
     v-maskGradient="{ color: 'rgb(45, 90, 142)', num1: '-35%', num2: '35%' }"
   >
-    <img src="./img/50.png" alt="" />
+    <img src="./img/红月.png" alt="" />
     <div class="box">
-      <div class="name">5级铭文:冥想</div>
+      <div class="name">5级铭文:{{ data.type }}</div>
       <div class="attr">
-        <div class="type">最大生命+60</div>
-        <div class="type">每5秒回血+4.5</div>
+        <div class="type" v-for="(item, index) in data.effect" :key="index">
+          {{ item.type }}+{{ item.num }}
+        </div>
       </div>
     </div>
   </div>
@@ -16,9 +17,18 @@
 <script>
 export default {
   name: "EpigraphCard",
+  props: {
+    data: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
   data() {
     return {};
   },
+  created() {},
   components: {},
   methods: {},
 };
@@ -31,7 +41,6 @@ export default {
   box-shadow: var(--b-shadow);
   img {
     width: 100px;
-    height: 100px;
     margin-right: var(--gap-25);
   }
   .box {
