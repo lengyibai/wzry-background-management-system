@@ -34,7 +34,7 @@ export default {
     let a = null;
     const _this = this;
     (function fn() {
-      if (_this.eqhMultiple > 0 && _this.$slots.default.length) {
+      if (_this.eqhMultiple > 0 && _this.$slots.default?.length) {
         _this.updateHeight();
         return;
       }
