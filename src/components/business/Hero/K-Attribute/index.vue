@@ -24,7 +24,7 @@ export default {
       default: "0%",
     },
   },
-  name: "KAttribute",
+  name: "K-Attribute",
   data() {
     return {
       progress: "0%",

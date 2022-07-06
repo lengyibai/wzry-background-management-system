@@ -12,7 +12,7 @@ export default {
       default: "",
     },
   },
-  name: "KHeroSort",
+  name: "K-HeroSort",
   data() {
     return {
       y: {

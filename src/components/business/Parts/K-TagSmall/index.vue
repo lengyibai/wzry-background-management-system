@@ -22,7 +22,7 @@ export default {
       default: "blue",
     },
   },
-  name: "KTagSmall",
+  name: "K-TagSmall",
   data() {
     return {
       colors: {

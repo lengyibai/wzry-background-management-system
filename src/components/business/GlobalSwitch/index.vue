@@ -11,7 +11,7 @@
     <!-- loading -->
     <LybLoading :show="show_loading" :text="loading_text" />
     <!-- 消息提醒 -->
-    <KMessage :messages="messages" />
+    <K-Message :messages="messages" />
   </div>
 </template>
 <script>

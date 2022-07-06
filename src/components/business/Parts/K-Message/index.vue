@@ -35,7 +35,7 @@ export default {
       },
     },
   },
-  name: "KMessage",
+  name: "K-Message",
   data() {
     return {
       color: {
