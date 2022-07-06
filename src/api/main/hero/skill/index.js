@@ -1,13 +1,12 @@
 //#####··········资料聚合处理··········#####//
-/* 类型效果 */
 //接口信息：{ 技能效果 }
 import { getSkillEffect } from "@/api/main/tree/skillEffect";
 //接口信息：{ 技能类型 }
 import { getSkillType } from "@/api/main/tree/skillType";
 
+//#####········获取技能········#####//
 import { getSkills } from "./transfer.js";
 
-//#####········获取技能········#####//
 export const getSkill = data => {
   return new Promise(resolve => {
     getSkills(data).then(async res => {

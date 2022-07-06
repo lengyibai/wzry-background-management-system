@@ -1,6 +1,6 @@
+//#####········获取装备········#####//
 import { getEquips } from "./transfer.js";
 
-//#####········获取装备········#####//
 export const getEquip = data => {
   return new Promise(resolve => {
     getEquips(data).then(res => {

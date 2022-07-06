@@ -1,11 +1,10 @@
-/* 类型效果 */
+//#####··········资料聚合处理··········#####//
 //接口信息：{ 皮肤类型 }
 import { getSkinType } from "@/api/main/tree/skinType";
 
-/* 当前接口 */
+//#####········获取皮肤········#####//
 import { getSkins } from "./transfer.js";
 
-//#####········获取皮肤········#####//
 export const getSkin = data => {
   return new Promise(resolve => {
     getSkins(data).then(async res => {

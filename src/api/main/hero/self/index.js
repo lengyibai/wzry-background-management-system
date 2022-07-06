@@ -29,11 +29,9 @@ import { getSkin } from "@/api/main/hero/skin";
 //接口信息：{ 技能列表 }
 import { getSkill } from "@/api/main/hero/skill";
 
-/* 当前接口 */
+//#####········获取英雄列表········#####//
 import { getHeros } from "./transfer.js";
 
-//#####··········基本··········#####//
-//####········获取英雄列表········####//
 export const hero = data => {
   return new Promise(resolve => {
     getHeros(data).then(async res => {
