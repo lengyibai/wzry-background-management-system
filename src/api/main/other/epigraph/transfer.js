@@ -2,7 +2,7 @@ import { getReq, postReq, patchReq, deleteReq } from "@/api/network";
 
 //#####··········GET请求··········#####//
 //####········获取铭文········####//
-export const getEpigraph = data => getReq("/epigraph", data);
+export const getEpigraphs = data => getReq("/epigraph", data);
 
 //#####··········POST请求··········#####//
 //####········添加铭文········####//
