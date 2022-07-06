@@ -5,12 +5,14 @@
       <EpigraphCategory v-show="show_epigraph" />
     </transition>
     <div class="EpigraphMain">
-      <EpigraphList />
+      <EpigraphList :data="epigraph_list" />
     </div>
   </div>
 </template>
 
 <script>
+//#####··········网络请求··········#####//
+import { getEpigraph } from "@/api/main/other/epigraph";
 //#####··········子组件··········#####//
 import EpigraphCategory from "./childComps/EpigraphCategory"; //铭文类型分类
 import EpigraphList from "./childComps/EpigraphList"; //铭文列表
@@ -19,8 +21,17 @@ export default {
   components: { EpigraphCategory, EpigraphList },
   data() {
     return {
-      show_epigraph: false,
+      show_epigraph: false, //显示铭文顶部分类
+      epigraph_list: [],
     };
+  },
+  created() {
+    this.$lybLoad.show("正在请求铭文列表");
+    getEpigraph().then(res => {
+      this.$lybLoad.close();
+
+      this.epigraph_list = res;
+    });
   },
   mounted() {
     setTimeout(() => {
