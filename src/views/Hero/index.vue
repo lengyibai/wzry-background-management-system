@@ -56,12 +56,21 @@ export default {
   },
   components: { HeroSidebar, HeroCard, HeroDetail },
   created() {
+    const id = this.$route.query.id;
+    if (id) {
+      this.viewClick(id);
+    } else {
+      this.$lybLoad.show("正在请求英雄列表");
+    }
     //#####··········获取英雄列表··········#####//
-    this.$lybLoad.show("正在请求英雄列表");
     hero().then(res => {
-      this.$lybLoad.close().then(() => {
+      if (id) {
         this.hero_list = res;
-      });
+      } /* 如果存在id，就不播放列表加载动画 */ else {
+        this.$lybLoad.close().then(() => {
+          this.hero_list = res;
+        });
+      }
     });
   },
   mounted() {
@@ -79,6 +88,14 @@ export default {
         this.hero_info = res;
         this.$lybLoad.close().then(() => {
           this.show_HeroDetail = true;
+
+          /* 只用于记录，并不会跳转 */
+          this.$router.push({
+            path: "/hero",
+            query: {
+              id: res.id,
+            },
+          });
         });
       });
     },
