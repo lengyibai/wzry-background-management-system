@@ -10,13 +10,11 @@ import "./plugins/element";
 
 //####········全局组件········####//
 //###······个人······###//
-import "@/components/common/index.js";
-//###······项目······###//
-import businessUI from "@/components/business/index.js";
-Vue.use(businessUI);
+import "@/components/index.js";
 
 //####········公共CSS、JS········####//
 import "@/styles/indexs.css";
+import "@/utils/flexible.js";
 
 //#####··········其他··········#####//
 //####········事件总线········####//
