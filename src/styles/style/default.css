@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-size: 12px;
 }
 html {
   overflow: auto;
