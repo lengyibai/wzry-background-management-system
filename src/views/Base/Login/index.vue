@@ -13,12 +13,12 @@
       :video="require('@/assets/video/loginBg.mp4')"
       v-if="!this.$store.state.smooth"
     />
-    <LoginUpdateDialog v-model="show_KDialog" />
+    <LoginUpdate v-model="show_KDialog" />
   </div>
 </template>
 <script>
 import LoginBtn from "./childComp/LoginBtn";
-import LoginUpdateDialog from "./childComp/LoginUpdateDialog";
+import LoginUpdate from "./childComp/LoginUpdate";
 export default {
   name: "Login",
   data() {
@@ -40,7 +40,7 @@ export default {
         .then(() => this.$lybLoad.close());
     },
   },
-  components: { LoginBtn, LoginUpdateDialog },
+  components: { LoginBtn, LoginUpdate },
 };
 </script>
 <style scoped lang="less">

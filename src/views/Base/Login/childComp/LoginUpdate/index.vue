@@ -2,12 +2,10 @@
   <transition name="default">
     <div class="LoginUpdateDialog" v-show="value">
       <div class="box">
-        <div class="title">王者荣耀后台管理系统 6月29日 更新公告</div>
+        <div class="title">王者荣耀后台管理系统 7月7日 更新公告</div>
         <div class="content">
           <p>亲爱的用户：</p>
-          <p style="text-indent: 2em">
-            更新日志功能正在开发中，目前在开发装备页
-          </p>
+          <p style="text-indent: 2em">更新日志功能待开发，目前在开发系统管理</p>
         </div>
       </div>
       <div class="btns">
