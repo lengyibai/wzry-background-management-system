@@ -88,11 +88,14 @@ export default {
     font-size: var(--font-s-20);
     text-shadow: var(--t-shadow);
     .name {
+      font-size: inherit;
     }
     .desc {
+      font-size: inherit;
       color: var(--theme-font-color);
     }
     .price {
+      font-size: inherit;
       color: var(--theme-font-dark);
     }
   }

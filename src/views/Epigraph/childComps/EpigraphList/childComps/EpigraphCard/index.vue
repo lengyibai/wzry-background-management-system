@@ -55,9 +55,9 @@ export default {
       margin-bottom: var(--gap-10);
     }
     .attr {
-      font-size: var(--font-s-18);
       color: var(--theme-font-white);
       .type {
+        font-size: var(--font-s-18);
         margin-bottom: var(--gap-5);
       }
     }

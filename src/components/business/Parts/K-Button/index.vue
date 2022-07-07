@@ -49,7 +49,6 @@ export default {
   position: relative;
   width: 224px;
   height: 56px;
-  font-size: var(--font-s-24);
   color: var(--white);
   &:active {
     img {
@@ -62,6 +61,7 @@ export default {
     z-index: 2;
     user-select: none;
     margin-top: 4px;
+    font-size: var(--font-s-24);
   }
   img {
     position: absolute;

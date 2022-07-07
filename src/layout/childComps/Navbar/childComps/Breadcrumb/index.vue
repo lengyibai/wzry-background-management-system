@@ -74,7 +74,9 @@ export default {
   .el-breadcrumb__item .el-breadcrumb__inner a {
     color: var(--theme-font-dark);
   }
-  .no-redirect {
+  .no-redirect,
+  a {
+    font-size: var(--font-s-20);
     color: var(--white);
     cursor: text;
   }

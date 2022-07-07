@@ -144,6 +144,7 @@ export default {
       transition: all 0.5s;
       animation: scale 0.25s 0.25s forwards;
       transform: scale(0);
+      font-size: var(--font-s-35);
       @keyframes scale {
         100% {
           transform: scale(1);
@@ -158,7 +159,7 @@ export default {
       background-color: var(--blue);
     }
     .lineActive {
-      width: 8em !important;
+      width: 11em !important;
     }
   }
   .bg {

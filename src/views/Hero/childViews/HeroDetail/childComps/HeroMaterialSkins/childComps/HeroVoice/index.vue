@@ -108,7 +108,6 @@ export default {
   .voice {
     width: 100%;
     height: 50px;
-    font-size: var(--font-s-16);
     transition: all 0.5s;
     white-space: nowrap;
     padding: 0 100px;
@@ -119,6 +118,9 @@ export default {
       transition: all 0.25s cubic-bezier(0.18, 0.89, 0, 1.41) !important;
       transform: scale(1.1) !important;
       color: var(--blue);
+    }
+    span {
+      font-size: var(--font-s-16);
     }
     img {
       height: 50px;

@@ -101,10 +101,10 @@ export default {
       width: 100%;
       height: 100%;
       padding: var(--gap-50);
-      font-size: var(--font-s-25);
       color: var(--theme-font-dark);
       p {
-        font-family: "微软雅黑";
+        font-family: var(--font-f);
+        font-size: var(--font-s-25);
       }
     }
   }

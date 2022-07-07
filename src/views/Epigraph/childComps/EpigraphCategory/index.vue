@@ -63,10 +63,12 @@ export default {
   .title {
     text-align: center;
     position: relative;
-    font-size: 25px;
     flex: 1;
     color: var(--theme-font-dark);
     transition: color 0.25s 0.1s;
+    span {
+      font-size: var(--font-s-25);
+    }
   }
 }
 .active {
