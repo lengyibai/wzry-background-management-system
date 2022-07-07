@@ -30,14 +30,18 @@ export default {
           //     context.state.wzryToken >=
           //   2
           // )
-          if (!context.state.wzryToken) throw "请求失败";
-          // 获取成功后存储用户信息
-          context.state.userStatus = true;
-          context.state.userInfo = res.data[0];
-          resolve();
+          if (!context.state.wzryToken) throw 0;
+          if (res.data.length === 0) {
+            Vue.prototype.$tip("token校验失败，请重新登录", "danger");
+            throw 0;
+          } else {
+            // 获取成功后存储用户信息
+            context.state.userStatus = true;
+            context.state.userInfo = res.data[0];
+            resolve();
+          }
         })
         .catch(() => {
-          Vue.prototype.$tip("身份验证已过期，请重新登录", "danger");
           context.commit("clearToken");
         });
     });
