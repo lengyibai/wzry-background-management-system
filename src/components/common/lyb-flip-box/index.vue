@@ -1,10 +1,12 @@
 <template>
-  <div class="LybFlipBox">
+  <div class="LybFlipBox" @mouseenter="show = true" @mouseleave="show = false">
     <div class="card-side card-side-front">
       <slot name="z"></slot>
     </div>
     <div class="card-side card-side-back">
-      <slot name="f"></slot>
+      <transition name="fade">
+        <slot name="f" v-if="show"></slot>
+      </transition>
     </div>
   </div>
 </template>
@@ -12,7 +14,9 @@
 export default {
   name: "LybFlipBox",
   data() {
-    return {};
+    return {
+      show: false, //针对带有粒子效果的按钮，节省性能
+    };
   },
   components: {},
   methods: {},
