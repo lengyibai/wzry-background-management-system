@@ -14,12 +14,15 @@
   --font-s-22: 22px;
   --font-s-24: 24px;
   --font-s-25: 25px;
+  --font-s-26: 26px;
+  --font-s-28: 28px;
   --font-s-30: 30px;
   --font-s-35: 35px;
   --font-s-50: 50px;
   --font-s-75: 75px;
   --t-shadow: 0px 2px 3px #000;
   --b-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  --font-f: "微软雅黑";
 }
 
 /* 鼠标样式 */

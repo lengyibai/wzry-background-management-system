@@ -29,4 +29,9 @@
   --theme-font-dark: #8097bb;
   --theme-font-color: #73b1d5;
   --theme-font-white: #cdd0e2;
+  --theme-font-placeholder: #4d6b8f;
+}
+
+.font-light {
+  color: #ccde2c;
 }
