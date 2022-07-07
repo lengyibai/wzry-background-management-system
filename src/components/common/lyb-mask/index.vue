@@ -1,6 +1,10 @@
 <template>
   <transition name="fade">
-    <div class="LybMask flex" v-show="show">
+    <div
+      class="LybMask flex"
+      v-show="show"
+      v-maskGradient="{ color: 'rgba(40, 100, 195, 0.25)' }"
+    >
       <slot>这是一个蒙版</slot>
     </div>
   </transition>
@@ -23,7 +27,7 @@ export default {
   height: 100vh;
   inset: 0;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
