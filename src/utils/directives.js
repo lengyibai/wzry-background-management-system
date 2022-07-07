@@ -170,7 +170,6 @@ const maskGradient = {
       num2 = "50%",
     } = binding.value || {};
     const mask = document.createElement("div");
-    el.style.position = "relative";
     mask.style.cssText = `
     position: absolute;
     inset:0;
@@ -255,6 +254,7 @@ const textHoverColor = {
     color: transparent;
     background-color: #fff;
     transition: all 0.25s;
+    font-size: inherit;
     animation: light 3s infinite;
     -webkit-background-clip: text;
     clip-path: circle(75% at 50% 50%);
