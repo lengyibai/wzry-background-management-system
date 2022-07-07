@@ -40,7 +40,8 @@ const parallaxBody = {
 };
 
 //#####··········粒子效果··········#####//
-import { $random, $frameInterval } from "@/utils/lyb.js";
+import { $random } from "@/utils/lyb.js";
+let particle_timer = null;
 //####········纵向········####//
 const particle = {
   inserted(el, binding) {
@@ -66,7 +67,7 @@ const particle = {
     const box_width = box.offsetWidth;
     const box_height = box.offsetHeight;
 
-    $frameInterval(() => {
+    particle_timer = setInterval(() => {
       const left = $random(0, box_width - size),
         top = $random(box_height / 2, box_height),
         scale = $random(0.25, 0.75, 1),
@@ -86,7 +87,7 @@ const particle = {
         setTimeout(() => {
           c.remove();
         }, time * 1000);
-      });
+      }, 50);
     }, 50);
     el.addEventListener("mouseenter", () => {
       if (!filter) return;
@@ -97,6 +98,9 @@ const particle = {
     el.addEventListener("mouseleave", () => {
       el.style.filter = "";
     });
+  },
+  unbind() {
+    clearInterval(particle_timer);
   },
 };
 
