@@ -8,16 +8,17 @@
           v-if="showClose"
           src="./img/close.png"
           @dragstart.prevent
-          @click="close"
+          @click="$emit('input', false)"
         />
         <img class="bg" src="./img/dialog.png" />
         <div class="content">
-          <div class="desc">
-            使用<span class="font-light">改名卡</span
-            >来修改您的玩家名称（每15天可以修改一次）
-          </div>
-          <input type="text" placeholder="点击输入你的新名字" />
-          <K-Button type="warn">确定</K-Button>
+          <div class="box"></div>
+          <!-- v-if解决按钮隐式显示，高度却未知，导致粒子无法正常显示 -->
+          <transition name="fade">
+            <K-Button type="warn" v-if="value" @click.native="close"
+              >确定</K-Button
+            >
+          </transition>
         </div>
       </div>
     </transition>
@@ -44,6 +45,11 @@ export default {
       type: String,
       default: "更改名字",
     },
+    /* 输入框描述 */
+    placeholder: {
+      type: String,
+      default: "请输入",
+    },
     /* 动画类型 */
     type: {
       type: String,
@@ -55,12 +61,16 @@ export default {
   },
   name: "K-Dialog",
   data() {
-    return {};
+    return {
+      link: "",
+    };
   },
   methods: {
     close() {
       this.$click("关闭");
       this.$emit("input", false);
+      this.$emit("get-link", this.link);
+      this.link = "";
     },
   },
   components: {},
@@ -101,27 +111,6 @@ export default {
     transform: translate(-48%, -44%);
     width: 80%;
     height: 75%;
-    .desc {
-      font-size: 0.1458rem;
-      color: var(--theme-font-dark);
-      font-family: var(--font-f);
-      span {
-        font-size: inherit;
-        font-family: var(--font-f);
-      }
-    }
-    input {
-      width: 75%;
-      background-color: var(--theme-color-dark);
-      border: none;
-      font-size: 0.1458rem;
-      padding: 0.0365rem;
-      font-family: var(--font-f);
-      color: var(--white);
-      &::-webkit-input-placeholder {
-        color: var(--theme-font-placeholder);
-      }
-    }
   }
 }
 
