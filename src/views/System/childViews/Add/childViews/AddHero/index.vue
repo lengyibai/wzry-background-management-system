@@ -1,6 +1,6 @@
 <template>
   <div class="AddHero">
-    <!-- <LybMaskClose @close="hide" /> -->
+    <LybMaskClose @close="hide" />
     <AddLink
       v-model="show_AddLink"
       :title="AddLink_title"
