@@ -1,7 +1,8 @@
 <template>
   <LybMask :show="value">
     <transition :name="type">
-      <div class="K-Dialog" v-show="value">
+      <div class="K-Dialog" :style="{ width: width }" v-show="value">
+        <div class="title">{{ title }}</div>
         <img
           class="close cursor-pointer"
           v-if="showClose"
@@ -10,6 +11,14 @@
           @click="close"
         />
         <img class="bg" src="./img/dialog.png" />
+        <div class="content">
+          <div class="desc">
+            使用<span class="font-light">改名卡</span
+            >来修改您的玩家名称（每15天可以修改一次）
+          </div>
+          <input type="text" placeholder="点击输入你的新名字" />
+          <K-Button type="warn">确定</K-Button>
+        </div>
       </div>
     </transition>
   </LybMask>
@@ -21,13 +30,27 @@ export default {
       type: Boolean,
       default: true,
     },
+    width: {
+      type: String,
+      default: "50%",
+    },
+    /* 是否显示右上角关闭按钮 */
     showClose: {
       type: Boolean,
       default: true,
     },
+    /* 左上角描述文字(有才会显示) */
+    title: {
+      type: String,
+      default: "更改名字",
+    },
+    /* 动画类型 */
     type: {
       type: String,
       default: "default",
+      validator: value => {
+        return ["default", "confirm"].indexOf(value) !== -1;
+      },
     },
   },
   name: "K-Dialog",
@@ -46,21 +69,59 @@ export default {
 <style scoped lang="less">
 .K-Dialog {
   position: absolute;
-  width: 1280px;
-  height: 760px;
   z-index: 3;
+  .title {
+    position: absolute;
+    left: 0.3646rem;
+    top: 0.1823rem;
+    font-size: 0.1563rem;
+    color: var(--theme-font-white);
+  }
   .close {
     position: absolute;
-    top: 32px;
-    right: 27px;
-    width: 40px;
-    filter: drop-shadow(0px 0px 3px #cce5ff);
+    top: 0.1667rem;
+    right: 0.1406rem;
+    width: 0.2083rem;
+    filter: drop-shadow(0rem 0rem 0.0156rem #cce5ff);
     z-index: 2;
   }
   .bg {
     width: 100%;
     height: 100%;
     pointer-events: none;
+  }
+  .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-48%, -44%);
+    width: 80%;
+    height: 75%;
+    .desc {
+      font-size: 0.1458rem;
+      color: var(--theme-font-dark);
+      font-family: var(--font-f);
+      span {
+        font-size: inherit;
+        font-family: var(--font-f);
+      }
+    }
+    input {
+      width: 75%;
+      background-color: var(--theme-color-dark);
+      border: none;
+      font-size: 0.1458rem;
+      padding: 0.0365rem;
+      font-family: var(--font-f);
+      color: var(--white);
+      &::-webkit-input-placeholder {
+        color: var(--theme-font-placeholder);
+      }
+    }
   }
 }
 
