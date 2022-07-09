@@ -73,7 +73,7 @@ export default {
 }
 
 .move {
-  transform: translateY(-200%);
+  transform: translateX(200%) translateY(-200%);
 }
 
 .rotate {
