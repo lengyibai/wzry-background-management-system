@@ -1,7 +1,7 @@
 <template>
   <div
     class="K-Button cursor-pointer"
-    :class="{ auto: autoSize }"
+    :style="{ width, height }"
     v-particle="{
       color: particle_color[type],
       size: 5,
@@ -9,7 +9,12 @@
       contrast: 1.1,
     }"
   >
-    <span class="cursor-pointer flex">
+    <span
+      class="cursor-pointer flex"
+      :style="{
+        fontSize,
+      }"
+    >
       <slot>按钮</slot>
     </span>
     <img class="cursor-pointer" :src="bg_img[type]" />
@@ -22,9 +27,17 @@ export default {
       type: String,
       default: "default",
     },
-    autoSize: {
-      type: Boolean,
-      default: false,
+    width: {
+      type: String,
+      default: "224px",
+    },
+    height: {
+      type: String,
+      default: "56px",
+    },
+    fontSize: {
+      type: String,
+      default: "var(--font-s-24)",
     },
   },
   name: "K-Button",
@@ -47,8 +60,6 @@ export default {
 <style scoped lang="less">
 .K-Button {
   position: relative;
-  width: 224px;
-  height: 56px;
   color: var(--white);
   &:active {
     img {
@@ -61,7 +72,6 @@ export default {
     z-index: 2;
     user-select: none;
     margin-top: 4px;
-    font-size: var(--font-s-24);
   }
   img {
     position: absolute;
