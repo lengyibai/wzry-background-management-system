@@ -1,38 +1,70 @@
 <template>
   <div class="AddHero">
-    <LybMaskClose @close="hide" />
+    <transition name="fade">
+      <div class="content" v-show="show">
+        <!--//%%%%%··········头像及名字··········%%%%%//-->
+        <AddHeroHeadImg />
+
+        <!--//%%%%%··········封面及海报··········%%%%%//-->
+        <AddHeroCover />
+
+        <!--//%%%%%··········身高及代号··········%%%%%//-->
+        <AddHeroMarkHeight />
+      </div>
+    </transition>
+
+    <!--//%%%%%··········发布英雄按钮··········%%%%%//-->
+    <LybCommit
+      class="LybCommit"
+      size="100px"
+      @upload="addHero"
+      :finish="addHero_finish"
+    />
+
+    <!--//%%%%%··········添加图片链接弹窗组件··········%%%%%//-->
     <AddLink
       v-model="show_AddLink"
       :title="AddLink_title"
       :placeholder="AddLink_placeholder"
       @get-link="getLink"
     />
-    <transition name="fade">
-      <div class="content" v-show="show">
-        <AddHeroHeadImg :link="hero_data.headImg" @select="headImg" />
-      </div>
-    </transition>
   </div>
 </template>
 <script>
 //#####··········子组件··········#####//
-import AddHeroHeadImg from "./childComps/AddHeroHeadImg"; //头像
+import AddHeroHeadImg from "./childComps/AddHeroHeadImg"; //头像及名字
+import AddHeroMarkHeight from "./childComps/AddHeroMarkHeight"; //身高及代号
+import AddHeroCover from "./childComps/AddHeroCover"; //封面及海报
 export default {
   name: "AddHero",
   data() {
+    this.AddLink_set_desc = {
+      headImg: "头像链接",
+      name: "英雄名",
+      mark: "代号",
+      height: "身高",
+      cover: "封面",
+      poster: "海报",
+    };
     return {
       show: false,
       //#####··········弹窗相关··········#####//
       show_AddLink: false, //显示添加链接弹窗
-      AddLink_status: "", //当前谁在使用弹窗(字段名)
+      AddLink_key: "", //当前谁在使用弹窗(字段名)
       AddLink_title: "", //弹窗左上角标题
       AddLink_placeholder: "", //弹窗输入框描述
-      hero_data: {
-        headImg: "",
-      },
+      hero_data: {},
+      addHero_finish: false, //是否发布成功
     };
   },
-  components: { AddHeroHeadImg },
+  components: { AddHeroHeadImg, AddHeroMarkHeight, AddHeroCover },
+  provide() {
+    return {
+      hero_data: this.hero_data,
+      setKeyValue: this.setKeyValues,
+      setKeyV: this.setKeyVs,
+    };
+  },
   mounted() {
     setTimeout(() => {
       this.show = true;
@@ -47,19 +79,37 @@ export default {
       }, 500);
     },
 
-    //#####·········设置图片弹窗时间··········#####//
+    //#####·········设置图片弹窗组件··········#####//
     //####········获取链接········####//
     getLink(link) {
-      this.hero_data.headImg = link;
+      this.$set(this.hero_data, this.AddLink_key, link);
     },
 
     //#####··········添加链接事件··········#####//
-    //####········头像········####//
-    headImg() {
+    //####········设置头像及名字········####//
+    setKeyValues(key) {
       this.show_AddLink = true;
-      this.AddLink_title = "设置英雄头像";
-      this.AddLink_placeholder = "请输入头像链接";
-      this.AddLink_status = "headImg";
+      this.AddLink_title = "设置" + this.AddLink_set_desc[key];
+      this.AddLink_placeholder = "请输入" + this.AddLink_set_desc[key];
+      this.AddLink_key = key;
+    },
+
+    //#####··········设置属性值··········#####//
+    setKeyVs(k, v) {
+      this.$set(this.hero_data, k, v);
+      console.log(JSON.parse(JSON.stringify(this.hero_data)));
+    },
+
+    //#####··········发布英雄··········#####//
+    addHero() {
+      console.warn("发布英雄");
+      setTimeout(() => {
+        this.addHero_finish = true;
+        console.warn("发布成功");
+        setTimeout(() => {
+          this.hide();
+        }, 250);
+      }, 250);
     },
   },
 };
@@ -79,6 +129,12 @@ export default {
     width: 100%;
     height: 100%;
     color: #fff;
+  }
+  .LybCommit {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    border: 5px solid #fff;
   }
 }
 </style>
