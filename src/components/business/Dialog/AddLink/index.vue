@@ -1,7 +1,7 @@
 <template>
   <LybMask :show="value">
     <transition :name="type">
-      <div class="AddLink" :style="{ width: width }" v-show="value">
+      <div class="AddLink" :style="{ width: width }" v-if="value">
         <div class="title">{{ title }}</div>
         <img
           class="close cursor-pointer"
@@ -12,12 +12,12 @@
         />
         <img class="bg" src="./img/dialog.png" />
         <div class="content">
-          <div class="headImg flex">
-            <span v-if="!link">?</span>
-            <img v-else :src="link" alt="" />
-          </div>
-
-          <input type="text" :placeholder="placeholder" v-model="link" />
+          <input
+            type="text"
+            ref="input"
+            :placeholder="placeholder"
+            v-model="link"
+          />
           <!-- v-if解决按钮隐式显示，高度却未知，导致粒子无法正常显示 -->
           <transition name="fade">
             <K-Button type="warn" v-if="value" @click.native="close"
@@ -70,6 +70,15 @@ export default {
       link: "",
     };
   },
+  watch: {
+    value(v) {
+      if (v) {
+        this.$nextTick(() => {
+          this.$refs.input.focus();
+        });
+      }
+    },
+  },
   methods: {
     close() {
       this.$click("关闭");
@@ -78,7 +87,6 @@ export default {
       this.link = "";
     },
   },
-  components: {},
 };
 </script>
 <style scoped lang="less">
@@ -110,7 +118,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     top: 50%;
     left: 50%;
     transform: translate(-48%, -44%);
