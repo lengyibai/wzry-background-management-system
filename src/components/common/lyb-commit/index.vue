@@ -50,7 +50,7 @@ export default {
       setTimeout(() => {
         this.show_up = false;
         this.$emit("upload");
-      }, 200);
+      }, 750);
     },
   },
 };
@@ -67,7 +67,7 @@ export default {
     width: 75%;
     height: 75%;
     &.up {
-      transition: all 0.5s;
+      transition: all 1s cubic-bezier(1, -0.67, 0.5, 1);
     }
   }
 }
