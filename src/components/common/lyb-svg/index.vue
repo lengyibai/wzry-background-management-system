@@ -42,10 +42,10 @@ export default {
       default: "",
     },
     /* 按下颜色，已被按下缩小动画替换，开发者可自定义按下、悬浮、离开样式 */
-    // downColor: {
-    //   type: String,
-    //   default: "",
-    // },
+    downColor: {
+      type: String,
+      default: "",
+    },
     //悬浮描述
     title: {
       type: String,
@@ -73,6 +73,16 @@ export default {
       type: String,
       default: "0px",
     },
+    /* 按下回调 */
+    downFn: {
+      type: Function,
+      default() {},
+    },
+    /* 抬起回调 */
+    upFn: {
+      type: Function,
+      default() {},
+    },
   },
   methods: {
     enter(el) {
@@ -84,19 +94,19 @@ export default {
     up(el) {
       if (el.tagName === "svg") {
         el.parentNode.style.color = this.enterColor || this.color;
-        el.parentNode.style.transform = "scale(1)";
+        this.upFn(el.parentNode.parentNode);
       } else {
         el.parentNode.parentNode.style.color = this.enterColor || this.color;
-        el.parentNode.parentNode.style.transform = "scale(1)";
+        this.upFn(el.parentNode.parentNode);
       }
     },
     down(el) {
       if (el.tagName === "svg") {
-        // el.parentNode.style.color = this.enterColor;
-        el.parentNode.style.transform = "scale(0.9)";
+        el.parentNode.style.color = this.downColor || this.color;
+        this.downFn(el.parentNode);
       } else {
-        // el.parentNode.parentNode.style.color = this.enterColor;
-        el.parentNode.parentNode.style.transform = "scale(0.9)";
+        el.parentNode.parentNode.style.color = this.downColor || this.color;
+        this.downFn(el.parentNode.parentNode);
       }
     },
   },
@@ -104,6 +114,7 @@ export default {
 </script>
 <style scoped lang="less">
 .LybSvg {
+  display: inline-block;
   position: relative;
   background: no-repeat center center;
   background-size: contain;
