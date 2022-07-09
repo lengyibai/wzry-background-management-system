@@ -12,12 +12,6 @@
         item[1]
       }}：{{ item[0] || "未知" }}
     </div>
-    <div class="info">
-      <LybIcon
-        :imgUrl="require('./img/上架时间.svg')"
-        right="5px"
-      />上架时间：{{ data.time || "未知" }}
-    </div>
   </div>
 </template>
 <script>
