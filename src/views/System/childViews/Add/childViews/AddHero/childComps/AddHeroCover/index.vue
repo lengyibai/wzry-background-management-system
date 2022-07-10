@@ -3,10 +3,10 @@
     <div class="row">
       <span class="title">英雄封面：</span>
       <div class="cover flex" @click="setKeyValue('cover')">
-        <img class="add" src="./img/add.svg" v-if="!hero_data.cover" alt="" />
+        <img class="add" src="./img/add.svg" v-show="!hero_data.cover" alt="" />
         <img
           class="cover-img"
-          v-else
+          v-if="hero_data.cover"
           :src="hero_data.cover"
           :style="{
             top: p.top + '%',
@@ -45,6 +45,10 @@ export default {
     },
     //#####··········设置偏移量··········#####//
     direction(d) {
+      if (!this.hero_data.cover) {
+        this.$messages.error("请选择图片后再试");
+        return;
+      }
       if (d === "left") {
         this.p.left -= 1;
       } else if (d === "right") {
@@ -59,6 +63,10 @@ export default {
 
     //#####··········设置缩放··········#####//
     scale(s) {
+      if (!this.hero_data.cover) {
+        this.$messages.error("请选择图片后再试");
+        return;
+      }
       if (s === "left") {
         this.p.transform = `scale(${(this.size += 0.1).toFixed(1)})`;
       } else if (s === "right") {
@@ -75,7 +83,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: var(--gap-50);
+  margin-bottom: var(--gap-35);
   .row {
     display: flex;
     align-items: center;
@@ -90,6 +98,7 @@ export default {
       border: 5px solid #fff;
       .add {
         width: 75px;
+        height: 75px;
       }
       .cover-img {
         position: absolute;
