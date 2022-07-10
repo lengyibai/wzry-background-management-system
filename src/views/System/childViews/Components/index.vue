@@ -77,11 +77,11 @@ export default {
   methods: {
     showTip(flag) {
       if (flag === 0) {
-        this.$tip("显示普通弹窗并播放正常音效", "default");
+        this.$tip("显示普通弹窗并播放正常音效", "info");
       } else if (flag === 1) {
         this.$tip("显示警告弹窗并播放警告音效", "warning");
       } else {
-        this.$tip("显示错误弹窗并播放错误音效", "danger");
+        this.$tip("显示错误弹窗并播放错误音效", "error");
       }
     },
   },

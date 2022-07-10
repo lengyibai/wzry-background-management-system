@@ -92,16 +92,16 @@ export default {
     };
 
     //#####··········全局消息提醒··········#####//
-    Vue.prototype.$tip = function (text = "未设置提示", type = "default") {
+    Vue.prototype.$tip = function (text = "未设置提示", type = "info") {
       const text_length = text.split("").length / 3; //获取文字长度
       const time = text_length > 3 ? text_length : text_length + 1; //通过文字长度，设置显示时长
       /* 延迟提醒，避免与点击操作同时播放 */
       setTimeout(
         function () {
           const obj = {
-            default: "消息提示",
+            info: "消息提示",
             warning: "警告提示",
-            danger: "错误提示",
+            error: "错误提示",
           };
           this.$click(obj[type]);
           this.messages.push({

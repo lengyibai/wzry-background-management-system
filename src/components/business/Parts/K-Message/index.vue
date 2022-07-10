@@ -39,12 +39,12 @@ export default {
   data() {
     return {
       color: {
-        default: "#84ade2",
+        info: "#84ade2",
         warning: "#e2c484",
-        danger: "#e28484",
+        error: "#e28484",
       },
       imgs: {
-        default: {
+        info: {
           left: require("./img/left_default.png"),
           center: require("./img/center_default.png"),
           right: require("./img/right_default.png"),
@@ -54,7 +54,7 @@ export default {
           center: require("./img/center_warning.png"),
           right: require("./img/right_warning.png"),
         },
-        danger: {
+        error: {
           left: require("./img/left_danger.png"),
           center: require("./img/center_danger.png"),
           right: require("./img/right_danger.png"),

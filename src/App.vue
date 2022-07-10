@@ -37,7 +37,7 @@ export default {
         "warning",
       );
     } else if (test < 0) {
-      this.$tip("只有作者才可以改版本号哦！", "danger");
+      this.$tip("只有作者才可以改版本号哦！", "info");
     }
   },
 };

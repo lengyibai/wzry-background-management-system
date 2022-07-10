@@ -6,7 +6,7 @@ function tip(code, msg) {
   if (code === 200) {
     Vue.prototype.$tip(msg);
   } else {
-    Vue.prototype.$tip(msg, "danger");
+    Vue.prototype.$tip(msg, "error");
   }
 }
 //#####··········基本··········#####//
