@@ -2,14 +2,70 @@
   <div class="AddHero">
     <transition name="fade">
       <div class="content" v-show="show">
-        <!--//%%%%%··········头像及名字··········%%%%%//-->
-        <AddHeroHeadImg />
+        <FormInput label="英雄名" required v-model="hero_data.name" />
+        <FormInput label="代号" required v-model="hero_data.mark" />
+        <FormInput
+          label="身高"
+          :validate="validate"
+          v-model="hero_data.height"
+        />
 
-        <!--//%%%%%··········封面及海报··········%%%%%//-->
-        <AddHeroCover />
+        <!--//%%%%%··········属性相关··········%%%%%//-->
+        <FormInput :label="v" v-for="(v, k) in attr" :key="k">
+          <LybRange
+            v-bind="range_bind"
+            :text="hero_data[k] + '%'"
+            v-model="hero_data[k]"
+          />
+        </FormInput>
 
-        <!--//%%%%%··········身高及代号··········%%%%%//-->
-        <AddHeroMarkHeight />
+        <FormSelect
+          label="区域"
+          :data="type_tree.areaType"
+          v-model="hero_data.area"
+        />
+
+        <FormSelect
+          label="阵营"
+          :data="type_tree.campType"
+          v-model="hero_data.camp"
+        />
+
+        <FormSelect
+          label="能量"
+          :data="type_tree.energyType"
+          v-model="hero_data.energy"
+        />
+
+        <FormSelect
+          label="身份"
+          :data="type_tree.identityType"
+          v-model="hero_data.identity"
+        />
+
+        <FormSelect
+          label="定位"
+          :data="type_tree.locationType"
+          v-model="hero_data.location"
+        />
+
+        <FormSelect
+          label="时期"
+          :data="type_tree.periodType"
+          v-model="hero_data.period"
+        />
+
+        <FormSelect
+          label="职业"
+          :data="type_tree.professionType"
+          v-model="hero_data.profession"
+        />
+
+        <FormSelect
+          label="特长"
+          :data="type_tree.specialtyType"
+          v-model="hero_data.specialty"
+        />
       </div>
     </transition>
 
@@ -31,13 +87,33 @@
   </div>
 </template>
 <script>
+//#####··········网络请求··········#####//
+//接口信息：{ 区域 }
+import { getAreaType } from "@/api/main/tree/areaType";
+//接口信息：{ 阵营 }
+import { getCampType } from "@/api/main/tree/campType";
+//接口信息：{ 能量 }
+import { getEnergyType } from "@/api/main/tree/energyType";
+//接口信息：{ 身份 }
+import { getIdentityType } from "@/api/main/tree/identityType";
+//接口信息：{ 定位 }
+import { getLocationType } from "@/api/main/tree/locationType";
+//接口信息：{ 时期 }
+import { getPeriodType } from "@/api/main/tree/periodType";
+//接口信息：{ 职业 }
+import { getProfessionType } from "@/api/main/tree/professionType";
+//接口信息：{ 特长 }
+import { getSpecialtyType } from "@/api/main/tree/specialtyType";
 //#####··········子组件··········#####//
-import AddHeroHeadImg from "./childComps/AddHeroHeadImg"; //头像及名字
-import AddHeroMarkHeight from "./childComps/AddHeroMarkHeight"; //身高及代号
-import AddHeroCover from "./childComps/AddHeroCover"; //封面及海报
 export default {
   name: "AddHero",
   data() {
+    this.validate = function (v) {
+      if (isNaN(v)) return "限制为数字";
+    };
+    this.range_bind = {
+      style: "width: 300px",
+    };
     this.AddLink_set_desc = {
       headImg: "头像链接",
       name: "英雄名",
@@ -46,6 +122,12 @@ export default {
       cover: "封面",
       poster: "海报",
     };
+    this.attr = {
+      survival: "生存能力",
+      attack: "攻击伤害",
+      effect: "技能效果",
+      difficulty: "上手难度",
+    };
     return {
       show: false,
       //#####··········弹窗相关··········#####//
@@ -53,17 +135,44 @@ export default {
       AddLink_key: "", //当前谁在使用弹窗(字段名)
       AddLink_title: "", //弹窗左上角标题
       AddLink_placeholder: "", //弹窗输入框描述
-      hero_data: {},
+      /* 英雄数据 */
+      hero_data: {
+        name: "",
+        mark: "",
+        survival: 0,
+      },
+      type_tree: {
+        areaType: [],
+        campType: [],
+        energyType: [],
+        identityType: [],
+        locationType: [],
+        periodType: [],
+        professionType: [],
+        specialtyType: [],
+      },
+      /* 区域列表 */
+      areaType_list: [],
       addHero_finish: false, //是否发布成功
     };
   },
-  components: { AddHeroHeadImg, AddHeroMarkHeight, AddHeroCover },
   provide() {
     return {
       hero_data: this.hero_data,
       setKeyValue: this.setKeyValues,
       setKeyV: this.setKeyVs,
     };
+  },
+  async created() {
+    this.type_tree.areaType = await getAreaType();
+    this.type_tree.campType = await getCampType();
+    this.type_tree.energyType = await getEnergyType();
+    this.type_tree.identityType = await getIdentityType();
+    this.type_tree.locationType = await getLocationType();
+    this.type_tree.periodType = await getPeriodType();
+    this.type_tree.professionType = await getProfessionType();
+    this.type_tree.specialtyType = await getSpecialtyType();
+    console.log(this.type_tree);
   },
   mounted() {
     setTimeout(() => {
@@ -124,8 +233,11 @@ export default {
   height: 100%;
   z-index: 2;
   overflow: hidden auto;
-  background-color: rgba(0, 0, 0, 0.582);
+  background-color: rgba(0, 0, 0, 0.9);
   .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
     color: #fff;
