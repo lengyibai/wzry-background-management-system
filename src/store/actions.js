@@ -32,7 +32,7 @@ export default {
           // )
           if (!context.state.wzryToken) throw 0;
           if (res.data.length === 0) {
-            Vue.prototype.$tip("token校验失败，请重新登录", "danger");
+            Vue.prototype.$tip("token校验失败，请重新登录", "error");
             throw 0;
           } else {
             // 获取成功后存储用户信息
