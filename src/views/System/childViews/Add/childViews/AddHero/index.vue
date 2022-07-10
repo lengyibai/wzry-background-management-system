@@ -10,6 +10,14 @@
           v-model="hero_data.height"
         />
 
+        <FormSelect
+          v-for="(v, k) in info"
+          :key="k"
+          :label="v[0]"
+          :data="type_tree[v[1]]"
+          v-model="hero_data[v[2]]"
+        />
+
         <!--//%%%%%··········属性相关··········%%%%%//-->
         <FormInput :label="v" v-for="(v, k) in attr" :key="k">
           <LybRange
@@ -19,53 +27,8 @@
           />
         </FormInput>
 
-        <FormSelect
-          label="区域"
-          :data="type_tree.areaType"
-          v-model="hero_data.area"
-        />
-
-        <FormSelect
-          label="阵营"
-          :data="type_tree.campType"
-          v-model="hero_data.camp"
-        />
-
-        <FormSelect
-          label="能量"
-          :data="type_tree.energyType"
-          v-model="hero_data.energy"
-        />
-
-        <FormSelect
-          label="身份"
-          :data="type_tree.identityType"
-          v-model="hero_data.identity"
-        />
-
-        <FormSelect
-          label="定位"
-          :data="type_tree.locationType"
-          v-model="hero_data.location"
-        />
-
-        <FormSelect
-          label="时期"
-          :data="type_tree.periodType"
-          v-model="hero_data.period"
-        />
-
-        <FormSelect
-          label="职业"
-          :data="type_tree.professionType"
-          v-model="hero_data.profession"
-        />
-
-        <FormSelect
-          label="特长"
-          :data="type_tree.specialtyType"
-          v-model="hero_data.specialty"
-        />
+        <!--//%%%%%··········设置封面··········%%%%%//-->
+        <AddHeroCover />
       </div>
     </transition>
 
@@ -105,6 +68,7 @@ import { getProfessionType } from "@/api/main/tree/professionType";
 //接口信息：{ 特长 }
 import { getSpecialtyType } from "@/api/main/tree/specialtyType";
 //#####··········子组件··········#####//
+import AddHeroCover from "./childComps/AddHeroCover";
 export default {
   name: "AddHero",
   data() {
@@ -122,12 +86,24 @@ export default {
       cover: "封面",
       poster: "海报",
     };
+    /* 用于循环 */
     this.attr = {
       survival: "生存能力",
       attack: "攻击伤害",
       effect: "技能效果",
       difficulty: "上手难度",
     };
+    /* 用于循环 */
+    this.info = [
+      ["区域", "areaType", "area"],
+      ["阵营", "campType", "camp"],
+      ["能量", "energyType", "energy"],
+      ["身份", "identityType", "identity"],
+      ["定位", "locationType", "location"],
+      ["时期", "periodType", "period"],
+      ["职业", "professionType", "profession"],
+      ["特长", "specialtyType", "specialty"],
+    ];
     return {
       show: false,
       //#####··········弹窗相关··········#####//
@@ -156,6 +132,9 @@ export default {
       addHero_finish: false, //是否发布成功
     };
   },
+  components: {
+    AddHeroCover,
+  },
   provide() {
     return {
       hero_data: this.hero_data,
@@ -172,7 +151,6 @@ export default {
     this.type_tree.periodType = await getPeriodType();
     this.type_tree.professionType = await getProfessionType();
     this.type_tree.specialtyType = await getSpecialtyType();
-    console.log(this.type_tree);
   },
   mounted() {
     setTimeout(() => {
@@ -206,7 +184,6 @@ export default {
     //#####··········设置属性值··········#####//
     setKeyVs(k, v) {
       this.$set(this.hero_data, k, v);
-      console.log(JSON.parse(JSON.stringify(this.hero_data)));
     },
 
     //#####··········发布英雄··········#####//
@@ -215,6 +192,7 @@ export default {
       setTimeout(() => {
         this.addHero_finish = true;
         console.warn("发布成功");
+        console.log(JSON.parse(JSON.stringify(this.hero_data)));
         setTimeout(() => {
           this.hide();
         }, 250);
@@ -226,7 +204,6 @@ export default {
 <style scoped lang="less">
 .AddHero {
   position: fixed;
-  padding: var(--gap-25);
   top: 0;
   left: 0;
   width: 100%;
@@ -239,7 +216,7 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100%;
+    padding: var(--gap-25);
     color: #fff;
   }
   .LybCommit {
