@@ -54,11 +54,19 @@ export default {
     };
   },
   mounted() {
-    //#####··········全局窗口发射resize事件··········#####//
+    //#####··········全局window事件··········#####//
+    //####········resize········####//
     window.addEventListener(
       "resize",
       function () {
         this.$bus.$emit("resize", document.documentElement.clientWidth);
+      }.bind(this),
+    );
+    //####········click········####//
+    window.addEventListener(
+      "click",
+      function (e) {
+        this.$bus.$emit("click", e);
       }.bind(this),
     );
     //#####··········全局点击音效··········#####//
