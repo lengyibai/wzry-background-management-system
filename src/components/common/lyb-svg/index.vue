@@ -91,6 +91,17 @@ export default {
     leave(el) {
       el.style.color = this.color;
     },
+    down(el) {
+      if (el.tagName === "svg") {
+        el.parentNode.style.color =
+          this.downColor || this.enterColor || this.color;
+        this.downFn(el.parentNode);
+      } else {
+        el.parentNode.parentNode.style.color =
+          this.downColor || this.enterColor || this.color;
+        this.downFn(el.parentNode.parentNode);
+      }
+    },
     up(el) {
       if (el.tagName === "svg") {
         el.parentNode.style.color = this.enterColor || this.color;
@@ -98,15 +109,6 @@ export default {
       } else {
         el.parentNode.parentNode.style.color = this.enterColor || this.color;
         this.upFn(el.parentNode.parentNode);
-      }
-    },
-    down(el) {
-      if (el.tagName === "svg") {
-        el.parentNode.style.color = this.downColor || this.color;
-        this.downFn(el.parentNode);
-      } else {
-        el.parentNode.parentNode.style.color = this.downColor || this.color;
-        this.downFn(el.parentNode.parentNode);
       }
     },
   },
