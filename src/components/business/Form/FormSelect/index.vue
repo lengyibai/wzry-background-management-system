@@ -136,7 +136,6 @@ export default {
     color: var(--theme-font-light);
     text-align: right;
     span {
-      pointer-events: none;
       position: relative;
       font-size: var(--font-s-30);
       color: transparent;
@@ -160,9 +159,10 @@ export default {
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--theme-font-white);
-      padding: 5px;
+      padding: var(--gap-5);
       .value {
-        font-size: 24px;
+        font-size: var(--font-s-25);
+        pointer-events: none;
         color: var(--theme-font-dark);
       }
       .clear {
@@ -191,7 +191,7 @@ export default {
       overflow: auto;
       z-index: 1;
       .box {
-        padding: 20px;
+        padding: var(--gap-20);
         background-color: rgba(0, 0, 0, 0.39);
         color: var(--theme-font-white);
         .item {
