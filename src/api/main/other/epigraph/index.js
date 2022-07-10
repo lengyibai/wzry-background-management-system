@@ -19,8 +19,6 @@ export const getEpigraph = data => {
           });
         }
       }
-
-      console.log(JSON.parse(JSON.stringify(res.data)));
       if (data) {
         resolve(res.data[0]);
       } else {
