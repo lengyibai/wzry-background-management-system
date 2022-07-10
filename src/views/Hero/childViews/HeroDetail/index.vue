@@ -55,6 +55,7 @@ export default {
     //#####··········隐藏自身··········#####//
     hide() {
       this.$emit("input", false);
+      this.$router.replace("/hero");
     },
   },
 };
