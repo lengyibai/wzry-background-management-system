@@ -174,9 +174,6 @@ export default {
         border-radius: 50%;
         transition: transform 0.5s;
       }
-      img {
-        z-index: 2;
-      }
     }
     input {
       appearance: none;
