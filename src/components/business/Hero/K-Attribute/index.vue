@@ -20,8 +20,8 @@ export default {
       default: "",
     },
     length: {
-      type: String,
-      default: "0%",
+      type: Number,
+      default: 0,
     },
   },
   name: "K-Attribute",
@@ -51,7 +51,7 @@ export default {
   mounted() {
     /* 为了显示时播放进度条动画 */
     setTimeout(() => {
-      this.progress = this.length;
+      this.progress = this.length + "%";
     }, 500);
   },
 };
