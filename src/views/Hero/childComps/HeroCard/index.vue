@@ -159,7 +159,7 @@ export default {
       background-color: var(--blue);
     }
     .lineActive {
-      width: 11em !important;
+      width: 10em !important;
     }
   }
   .bg {
@@ -190,7 +190,17 @@ export default {
       font-size: var(--font-s-16);
     }
   }
-  @media screen and (max-width: 1390px) {
+  @media screen and (max-width: 1500px) {
+    .view {
+      font-size: var(--font-s-30) !important;
+    }
+    .select-mask {
+      .lineActive {
+        width: 8em !important;
+      }
+    }
+  }
+  @media screen and (max-width: 1400px) {
     .name,
     .view {
       font-size: var(--font-s-25) !important;
@@ -201,7 +211,7 @@ export default {
     }
     .select-mask {
       .lineActive {
-        width: 6em !important;
+        width: 7em !important;
       }
     }
   }
