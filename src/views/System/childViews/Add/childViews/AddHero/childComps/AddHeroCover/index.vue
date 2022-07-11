@@ -1,9 +1,15 @@
 <template>
   <div class="AddHeroCover">
     <div class="row">
-      <span class="title">英雄封面：</span>
+      <span class="title text-gradient-one">英雄封面：</span>
       <div class="cover flex" @click="setKeyValue('cover')">
-        <img class="add" src="./img/add.svg" v-show="!hero_data.cover" alt="" />
+        <LybSvg
+          :svg="icon.ADD"
+          color="var(--theme-color-three)"
+          enter-color="var(--theme-color-seven)"
+          size="75px"
+          v-show="!hero_data.cover"
+        />
         <img
           class="cover-img"
           v-if="hero_data.cover"
@@ -21,12 +27,15 @@
   </div>
 </template>
 <script>
+//#####··········图标··········#####//
+import icon from "./svg";
 //#####··········子组件··········#####//
 import AddHeroCoverOffset from "./childComps/AddHeroCoverOffset"; //调整偏移量
 import AddHeroCoverScale from "./childComps/AddHeroCoverScale"; //调整缩放量
 export default {
   name: "AddHeroCover",
   data() {
+    this.icon = icon;
     return {
       size: 1,
       p: {
@@ -46,7 +55,7 @@ export default {
     //#####··········设置偏移量··········#####//
     direction(d) {
       if (!this.hero_data.cover) {
-        this.$messages.error("请选择图片后再试");
+        this.$tip("请选择图片后再试", "error");
         return;
       }
       if (d === "left") {
@@ -64,7 +73,7 @@ export default {
     //#####··········设置缩放··········#####//
     scale(s) {
       if (!this.hero_data.cover) {
-        this.$messages.error("请选择图片后再试");
+        this.$tip("请选择图片后再试", "error");
         return;
       }
       if (s === "left") {
@@ -88,17 +97,21 @@ export default {
     display: flex;
     align-items: center;
     .title {
-      font-size: var(--font-s-50);
+      font-size: var(--font-s-30);
     }
     .cover {
       position: relative;
       width: 200px;
       height: 300px;
       overflow: hidden;
-      border: 5px solid #fff;
-      .add {
-        width: 75px;
-        height: 75px;
+      border: 5px solid var(--theme-color-eight);
+      transition: all 0.25s;
+      border-image: linear-gradient(315deg, #3774b4 0%, #73b1d5 100%) 1 1 !important;
+      &:hover {
+        border-image: linear-gradient(315deg, #5989a5 0%, #295686 100%) 1 1 !important;
+      }
+      &:active {
+        transform: scale(0.95);
       }
       .cover-img {
         position: absolute;
