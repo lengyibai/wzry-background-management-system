@@ -34,12 +34,12 @@ export default {
   created() {
     let a = this.data;
     this.hero_info = [
-      [a.location, "定位"],
-      [a.specialty, "特长"],
-      [a.period, "时期"],
-      [a.camp, "阵营"],
-      [a.area, "区域"],
-      [a.height, "身高"],
+      [a.location, "location"],
+      [a.specialty, "specialty"],
+      [a.period, "period"],
+      [a.camp, "camp"],
+      [a.area, "area"],
+      [a.height, "height"],
     ];
   },
   mounted() {

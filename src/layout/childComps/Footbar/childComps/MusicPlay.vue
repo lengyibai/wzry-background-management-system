@@ -29,12 +29,12 @@ export default {
       status: "play", //当前音乐状态
       timer: null, //进度条计时器
       musics: [
-        require("@/assets/music/王者战歌.mp3"),
-        require("@/assets/music/英雄归来.mp3"),
-        require("@/assets/music/荣耀主题.mp3"),
-        require("@/assets/music/荣耀之路.mp3"),
-        require("@/assets/music/王者冰刃.mp3"),
-        require("@/assets/music/五五狂欢.mp3"),
+        require("@/assets/music/wzzg.mp3"), //王者战歌
+        require("@/assets/music/yxgl.mp3"), //英雄归来
+        require("@/assets/music/ryzt.mp3"), //荣耀主题
+        require("@/assets/music/ryzl.mp3"), //荣耀之路
+        require("@/assets/music/wzbr.mp3"), //王者冰刃
+        require("@/assets/music/wwkh.mp3"), //五五狂欢
       ],
     };
   },
