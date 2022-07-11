@@ -41,7 +41,7 @@ export default {
       type: String,
       default: "",
     },
-    /* 按下颜色，已被按下缩小动画替换，开发者可自定义按下、悬浮、离开样式 */
+    /* 按下颜色，开发者可自定义按下、悬浮、离开样式 */
     downColor: {
       type: String,
       default: "",
@@ -76,12 +76,16 @@ export default {
     /* 按下回调 */
     downFn: {
       type: Function,
-      default() {},
+      default(el) {
+        el.style.transform = "scale(0.9)";
+      },
     },
     /* 抬起回调 */
     upFn: {
       type: Function,
-      default() {},
+      default(el) {
+        el.style.transform = "scale(1)";
+      },
     },
   },
   methods: {
@@ -105,7 +109,7 @@ export default {
     up(el) {
       if (el.tagName === "svg") {
         el.parentNode.style.color = this.enterColor || this.color;
-        this.upFn(el.parentNode.parentNode);
+        this.upFn(el.parentNode);
       } else {
         el.parentNode.parentNode.style.color = this.enterColor || this.color;
         this.upFn(el.parentNode.parentNode);
@@ -121,9 +125,7 @@ export default {
   background: no-repeat center center;
   background-size: contain;
   cursor: pointer;
-  transition: all 0.25s;
-  &:hover {
-    transition: all 0.1s;
-  }
+  transition: all 0.1s;
+  transform-origin: center center;
 }
 </style>
