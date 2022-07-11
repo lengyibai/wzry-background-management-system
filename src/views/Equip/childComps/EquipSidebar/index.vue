@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import icon from "@/assets/icon/svg/index.js";
+import icon from "@/assets/icon/svg/sidebar.js";
 export default {
   name: "EquipSidebar",
   data() {

@@ -25,7 +25,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: "default",
+      default: "info",
     },
     width: {
       type: String,
@@ -44,14 +44,14 @@ export default {
   data() {
     return {
       bg_img: {
-        default: require("./img/btn-defaule.png"),
-        danger: require("./img/btn-danger.png"),
-        warn: require("./img/btn-warn.png"),
+        info: require("@/assets/img/part/button/info.png"),
+        error: require("@/assets/img/part/button/error.png"),
+        warning: require("@/assets/img/part/button/warning.png"),
       },
       particle_color: {
-        default: "#3f9ed3",
-        danger: "#d83e41",
-        warn: "#e1c673",
+        info: "#3f9ed3",
+        error: "#d83e41",
+        warning: "#e1c673",
       },
     };
   },

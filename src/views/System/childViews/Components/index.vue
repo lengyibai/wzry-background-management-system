@@ -10,18 +10,18 @@
       </ChildComps>
       <!-- 按钮 -->
       <ChildComps class="flex">
-        <!-- <K-Button type="default" /> -->
+        <!-- <K-Button type="info" /> -->
         <K-Button @click.native="$click('查看')" @mouseup.native="showTip(0)"
           >查看</K-Button
         >
         <K-Button
-          type="warn"
+          type="warning"
           @click.native="$click('确定')"
           @mouseup.native="showTip(1)"
           >领取</K-Button
         >
         <K-Button
-          type="danger"
+          type="error"
           @click.native="$click('取消')"
           @mouseup.native="showTip(2)"
           >取消</K-Button
@@ -49,10 +49,10 @@
       </ChildComps>
       <!-- 英雄属性 -->
       <ChildComps class="flex">
-        <K-Attribute attr="survival" length="25%" />
-        <K-Attribute attr="attack" length="50%" />
-        <K-Attribute attr="effect" length="75%" />
-        <K-Attribute attr="difficulty" length="100%" />
+        <K-Attribute attr="survival" length="25" />
+        <K-Attribute attr="attack" length="50" />
+        <K-Attribute attr="effect" length="75" />
+        <K-Attribute attr="difficulty" length="100" />
       </ChildComps>
     </div>
 

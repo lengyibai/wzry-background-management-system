@@ -3,7 +3,7 @@
     <img
       class="cursor-pointer"
       :style="{ left: currentIndex * 11.11 + '%' }"
-      src="./img/active.png"
+      src="@/assets/img/part/icon/epigraph_active.png"
       alt
     />
     <div

@@ -7,7 +7,7 @@
       @mousedown.native="down(item.toLowerCase())"
       @mouseup.native="up(item.toLowerCase())"
       style="position: absolute"
-      color="var(--theme-color-seven)"
+      color="var(--theme-color-eight)"
       enterColor="var(--theme-color-four)"
       size="75px"
       v-for="item in ['TOP', 'RIGHT', 'BOTTOM', 'LEFT']"

@@ -27,7 +27,7 @@
         <img
           class="arrow"
           :class="{ rotate: is_unfold }"
-          src="./img/arrow.png"
+          src="@/assets/img/part/icon/k_arrow.png"
           alt=""
         />
       </div>

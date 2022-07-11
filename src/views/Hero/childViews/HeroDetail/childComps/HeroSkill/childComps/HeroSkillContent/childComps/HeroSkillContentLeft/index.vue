@@ -3,7 +3,7 @@
     <!--//%%%%%··········名称及类型··········%%%%%//-->
     <div class="name-type">
       <div class="name">{{ activeSkill.name }}</div>
-      <HeroSkillTypeTag
+      <K-SkillTypeTag
         v-for="(item, index) in activeSkill.type"
         :type="item"
         :key="index"
@@ -24,8 +24,6 @@
   </div>
 </template>
 <script>
-//#####··········零部件··········#####//
-import HeroSkillTypeTag from "./childParts/HeroSkillTypeTag"; //技能类别标签
 export default {
   name: "HeroSkillContentLeft",
   props: {
@@ -36,7 +34,6 @@ export default {
       },
     },
   },
-  components: { HeroSkillTypeTag },
 };
 </script>
 <style scoped lang="less">

@@ -2,7 +2,12 @@
   <!-- 圆形头像选择组件 -->
   <div class="SelectImg flex cursor-pointer" @click="set(keyword)">
     <img class="cursor-pointer" :src="src" alt="" v-if="src" />
-    <img class="add cursor-pointer" v-else src="./img/add.svg" alt="" />
+    <img
+      class="add cursor-pointer"
+      v-else
+      src="@/assets/img/svg/add.svg"
+      alt=""
+    />
   </div>
 </template>
 <script>

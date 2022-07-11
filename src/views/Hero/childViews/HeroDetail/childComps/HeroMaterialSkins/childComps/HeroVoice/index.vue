@@ -18,7 +18,11 @@
     >
       <span v-if="currentIndex !== index"> {{ item.desc }}</span>
       <transition name="fade">
-        <img v-if="currentIndex === index" src="./img/bugle.svg" alt="" />
+        <img
+          v-if="currentIndex === index"
+          src="@/assets/img/svg/bugle.svg"
+          alt=""
+        />
       </transition>
     </div>
   </div>

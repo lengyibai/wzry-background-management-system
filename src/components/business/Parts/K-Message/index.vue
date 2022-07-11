@@ -45,19 +45,19 @@ export default {
       },
       imgs: {
         info: {
-          left: require("./img/left_default.png"),
-          center: require("./img/center_default.png"),
-          right: require("./img/right_default.png"),
+          left: require("@/assets/img/part/message/left_default.png"),
+          center: require("@/assets/img/part/message/center_default.png"),
+          right: require("@/assets/img/part/message/right_default.png"),
         },
         warning: {
-          left: require("./img/left_warning.png"),
-          center: require("./img/center_warning.png"),
-          right: require("./img/right_warning.png"),
+          left: require("@/assets/img/part/message/left_warning.png"),
+          center: require("@/assets/img/part/message/center_warning.png"),
+          right: require("@/assets/img/part/message/right_warning.png"),
         },
         error: {
-          left: require("./img/left_danger.png"),
-          center: require("./img/center_danger.png"),
-          right: require("./img/right_danger.png"),
+          left: require("@/assets/img/part/message/left_danger.png"),
+          center: require("@/assets/img/part/message/center_danger.png"),
+          right: require("@/assets/img/part/message/right_danger.png"),
         },
       },
     };

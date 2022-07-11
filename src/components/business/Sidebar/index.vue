@@ -58,7 +58,6 @@ export default {
   right: 0;
   width: 250px;
   height: calc(100vh - 75px - 56px);
-  // background: url("./img/bg.png") no-repeat center;
   border-left: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden auto !important;
 }

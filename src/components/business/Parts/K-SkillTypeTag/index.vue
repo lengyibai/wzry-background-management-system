@@ -1,5 +1,5 @@
 <template>
-  <div class="HeroSkillTypeTag">
+  <div class="K-SkillTypeTag">
     <div class="skill-type skill-type-zs flex" v-if="type === '真实'">真实</div>
     <div class="skill-type skill-type-wl flex" v-else-if="type === '物理'">
       物理
@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "HeroSkillTypeTag",
+  name: "K-SkillTypeTag",
   props: {
     type: {
       type: String,
@@ -32,7 +32,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.HeroSkillTypeTag {
+.K-SkillTypeTag {
   display: flex;
   .skill-type {
     height: var(--font-s-35);

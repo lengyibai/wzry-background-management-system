@@ -8,9 +8,10 @@
       </div>
     </div>
     <div class="info" v-for="(item, index) in hero_info" :key="index">
-      <LybIcon :imgUrl="require('./img/' + item[1] + '.svg')" right="5px" />{{
-        item[1]
-      }}：{{ item[0] || "未知" }}
+      <LybIcon
+        :imgUrl="require('@/assets/img/svg/' + item[1] + '.svg')"
+        right="5px"
+      />{{ item[1] }}：{{ item[0] || "未知" }}
     </div>
   </div>
 </template>

@@ -31,7 +31,7 @@ export default {
 .K-HeroSort {
   width: 290px;
   height: 70px;
-  background-image: url("./img/hero-sort.png");
+  background-image: url("@/assets/img/sprite/k-professional.png");
   background-repeat: no-repeat;
   background-position: 0 0;
   filter: drop-shadow(0px 3px 1px #000);

@@ -6,7 +6,7 @@
       :svg="icon[item]"
       @click.native="scale(item.toLowerCase())"
       style="position: absolute"
-      color="var(--theme-color-seven)"
+      color="var(--theme-color-eight)"
       enterColor="var(--theme-color-four)"
       size="75px"
       v-for="(item, index) in ['LEFT', 'RIGHT']"

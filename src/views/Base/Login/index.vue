@@ -2,7 +2,7 @@
   <div class="Login">
     <div class="mask"></div>
     <div class="logo">
-      <img src="@/assets/img/logo.png" alt="" />
+      <img src="@/assets/img/other/logo.png" alt="" />
     </div>
     <h1>王者荣耀后台管理系统</h1>
     <input type="text" v-model="form.id" />

@@ -18,7 +18,7 @@ export default {
   align-items: center;
   width: 400px;
   height: 80px;
-  background: url("./img/login.png") no-repeat center center;
+  background: url("@/assets/img/part/button/login.png") no-repeat center center;
   background-size: 100%;
   span {
     &:nth-of-type(1) {

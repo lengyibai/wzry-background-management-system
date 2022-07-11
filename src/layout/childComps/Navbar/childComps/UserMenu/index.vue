@@ -8,7 +8,7 @@
         </div>
       </template>
       <template #f>
-        <K-Button @click.native="logout" type="danger" :autoSize="true"
+        <K-Button @click.native="logout" type="error" :autoSize="true"
           >退出登录</K-Button
         >
       </template>

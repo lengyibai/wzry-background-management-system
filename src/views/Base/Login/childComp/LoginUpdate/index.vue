@@ -11,11 +11,11 @@
       <div class="btns">
         <K-Button
           class="btn"
-          type="default"
+          type="info"
           @click.native="$click('关闭'), close()"
           >暂时跳过</K-Button
         >
-        <K-Button type="warn" @click.native="$click('确定'), close()"
+        <K-Button type="warning" @click.native="$click('确定'), close()"
           >此次不再弹出</K-Button
         >
       </div>
@@ -85,7 +85,7 @@ export default {
     padding: var(--gap-40);
     padding-right: 0;
     padding-bottom: 0;
-    background: url("./img/dialog.png") no-repeat center center;
+    background: url("@/assets/img/other/dialog.png") no-repeat center center;
     background-size: 100% 100%;
     .title {
       width: 100%;

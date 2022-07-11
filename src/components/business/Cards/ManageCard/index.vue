@@ -23,9 +23,9 @@ export default {
   },
   data() {
     this.bg = {
-      add: require("./img/add.png"),
-      edit: require("./img/edit.png"),
-      delete: require("./img/delete.png"),
+      add: require("@/assets/img/part/manage/add.png"),
+      edit: require("@/assets/img/part/manage/edit.png"),
+      delete: require("@/assets/img/part/manage/delete.png"),
     };
     this.icon = icon;
     return {};

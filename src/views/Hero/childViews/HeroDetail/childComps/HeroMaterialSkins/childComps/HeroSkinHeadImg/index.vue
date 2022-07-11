@@ -125,12 +125,13 @@ export default {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: url("./img/head_bg.png") no-repeat center center;
+    background: url("@/assets/img/part/icon/head_bg.png") no-repeat center
+      center;
     background-size: cover;
     filter: drop-shadow(0px 5px 3px black);
     &.clone {
       filter: blur(5px) brightness(150%);
-      background-image: url("./img/head_bg_clone.png");
+      background-image: url("@/assets/img/part/icon/head_bg_clone.png");
     }
   }
   .skin {

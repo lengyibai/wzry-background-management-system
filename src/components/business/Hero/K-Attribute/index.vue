@@ -71,7 +71,7 @@ export default {
   .ico {
     width: 26px;
     height: 26px;
-    background-image: url("./img/item.png");
+    background-image: url("@/assets/img/sprite/k-attribute.png");
     background-repeat: no-repeat;
     background-position: 0 0;
   }
