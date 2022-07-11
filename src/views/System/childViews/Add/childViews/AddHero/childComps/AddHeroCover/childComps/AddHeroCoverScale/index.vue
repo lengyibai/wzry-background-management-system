@@ -1,15 +1,15 @@
 <template>
-  <div class="AddHeroCoverOffset">
+  <div class="AddHeroCoverOffset flex">
     <LybSvg
       :class="item.toLowerCase()"
-      class="a"
-      downColor="#aaa"
-      v-for="(item, index) in ['LEFT', 'RIGHT']"
-      @click.native="scale(item.toLowerCase())"
       :key="index"
       :svg="icon[item]"
-      color="#fff"
+      @click.native="scale(item.toLowerCase())"
+      style="position: absolute"
+      color="var(--theme-color-seven)"
+      enterColor="var(--theme-color-four)"
       size="75px"
+      v-for="(item, index) in ['LEFT', 'RIGHT']"
     />
   </div>
 </template>
@@ -21,7 +21,6 @@ export default {
     this.icon = icon;
     return {};
   },
-  components: {},
   methods: {
     scale(scale) {
       this.$emit("scale", scale);
@@ -34,21 +33,8 @@ export default {
   position: relative;
   width: 200px;
   height: 300px;
-  .a {
-    position: absolute;
-  }
-  .top,
-  .bottom {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .bottom {
-    bottom: 0;
-  }
-  .left,
-  .right {
-    top: 50%;
-    transform: translateY(-50%);
+  .left {
+    left: 0;
   }
   .right {
     right: 0;

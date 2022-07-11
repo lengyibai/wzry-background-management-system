@@ -1,16 +1,16 @@
 <template>
-  <div class="AddHeroCoverOffset">
+  <div class="AddHeroCoverOffset flex">
     <LybSvg
       :class="item.toLowerCase()"
-      class="a"
-      downColor="#aaa"
-      @mousedown.native="down(item.toLowerCase())"
-      @mouseup.native="up(item.toLowerCase())"
-      v-for="item in ['TOP', 'RIGHT', 'BOTTOM', 'LEFT']"
       :key="item"
       :svg="icon[item]"
-      color="#fff"
+      @mousedown.native="down(item.toLowerCase())"
+      @mouseup.native="up(item.toLowerCase())"
+      style="position: absolute"
+      color="var(--theme-color-seven)"
+      enterColor="var(--theme-color-four)"
       size="75px"
+      v-for="item in ['TOP', 'RIGHT', 'BOTTOM', 'LEFT']"
     />
   </div>
 </template>
@@ -45,21 +45,14 @@ export default {
   position: relative;
   width: 250px;
   height: 250px;
-  .a {
-    position: absolute;
-  }
-  .top,
-  .bottom {
-    left: 50%;
-    transform: translateX(-50%);
+  .top {
+    top: 0;
   }
   .bottom {
     bottom: 0;
   }
-  .left,
-  .right {
-    top: 50%;
-    transform: translateY(-50%);
+  .left {
+    left: 0;
   }
   .right {
     right: 0;
