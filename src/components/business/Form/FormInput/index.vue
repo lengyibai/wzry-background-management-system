@@ -2,7 +2,9 @@
   <div class="FormInput">
     <!-- 右侧描述 -->
     <div class="label">
-      <span><i class="star" v-if="required">*</i>{{ label }}：</span>
+      <span class="text-gradient-one">
+        <i class="star" v-if="required">*</i>{{ label }}：</span
+      >
     </div>
 
     <!-- 输入框 -->
@@ -98,18 +100,15 @@ export default {
     position: relative;
     width: 150px;
     margin-right: 0.25em;
-    color: var(--theme-font-light);
+    color: var(--theme-color-eight);
     text-align: right;
     span {
       position: relative;
       font-size: var(--font-s-30);
-      color: transparent;
-      background: linear-gradient(115deg, #4d6b8f 0%, #8097bb 89%);
-      -webkit-background-clip: text;
       .star {
         position: absolute;
         left: 0;
-        color: var(--theme-font-color);
+        color: var(--theme-color-seven);
         font-size: var(--font-s-20);
         transform: translateX(-150%);
       }
@@ -120,14 +119,14 @@ export default {
     input {
       width: 300px;
       border: none;
-      border-bottom: 1px solid var(--theme-font-white);
+      border-bottom: 1px solid var(--theme-color-nine);
       outline: none;
       font-size: var(--font-s-25);
-      color: var(--theme-font-dark);
+      color: var(--theme-color-five);
       padding: 0 0.25em;
       background-color: transparent;
       &::-webkit-input-placeholder {
-        color: var(--theme-color-light);
+        color: var(--theme-color-two);
       }
     }
     .border,
@@ -140,7 +139,7 @@ export default {
       background-color: var(--red);
     }
     .focus {
-      background-color: var(--theme-font-active);
+      background-color: var(--theme-color-four);
     }
     .tip {
       position: absolute;
