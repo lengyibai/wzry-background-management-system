@@ -98,7 +98,7 @@ export default {
     left: 0.3646rem;
     top: 0.1823rem;
     font-size: 0.1563rem;
-    color: var(--theme-font-white);
+    color: var(--theme-color-nine);
   }
   .close {
     position: absolute;
@@ -150,14 +150,14 @@ export default {
     }
     input {
       width: 75%;
-      background-color: var(--theme-color-dark);
+      background-color: var(--theme-color-one);
       border: none;
       font-size: 0.1458rem;
       padding: 0.0365rem;
       font-family: var(--font-f);
       color: var(--white);
       &::-webkit-input-placeholder {
-        color: var(--theme-font-placeholder);
+        color: var(--theme-color-three);
       }
     }
   }

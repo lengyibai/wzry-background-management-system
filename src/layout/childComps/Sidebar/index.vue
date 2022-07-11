@@ -21,7 +21,7 @@
     <el-menu
       :default-active="activeMenu"
       background-color="transparent"
-      text-color="var(--theme-font-dark)"
+      text-color="var(--theme-color-five)"
       active-text-color="var(--white)"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
@@ -94,10 +94,10 @@ export default {
       width: 50px;
       height: 50px;
       margin-right: 0;
-      fill: var(--theme-font-dark);
+      fill: var(--theme-color-five);
     }
     span {
-      color: var(--theme-font-dark);
+      color: var(--theme-color-five);
       font-size: var(--font-s-30);
       overflow: hidden;
     }

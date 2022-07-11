@@ -34,7 +34,7 @@ export default {
 .hamburger {
   display: inline-block;
   vertical-align: middle;
-  fill: var(--theme-font-dark);
+  fill: var(--theme-color-five);
   transition: transform 0.25s;
   width: 35px;
   height: 35px;

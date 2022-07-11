@@ -10,7 +10,7 @@
       :svg="icon.search"
       size="35px"
       enterColor="var(--white)"
-      color="var(--theme-font-dark)"
+      color="var(--theme-color-five)"
       right="20px"
       @click.native="$tip('开发中...', 'warning')"
     />
@@ -19,7 +19,7 @@
       :svg="icon.setting"
       size="35px"
       enterColor="var(--white)"
-      color="var(--theme-font-dark)"
+      color="var(--theme-color-five)"
       right="20px"
       @click.native="$tip('开发中...', 'warning')"
     />

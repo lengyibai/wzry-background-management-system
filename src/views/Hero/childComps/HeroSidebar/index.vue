@@ -60,7 +60,7 @@ export default {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    color: var(--theme-font-dark);
+    color: var(--theme-color-five);
     background-image: linear-gradient(
       -25deg,
       transparent,

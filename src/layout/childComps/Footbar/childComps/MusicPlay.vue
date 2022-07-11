@@ -115,7 +115,7 @@ export default {
 .MusicPlay {
   width: 0%;
   height: 5px;
-  background-color: var(--theme-font-dark);
+  background-color: var(--theme-color-five);
   transition: all 0.25s ease-out;
   &:hover {
     background-color: var(--red);

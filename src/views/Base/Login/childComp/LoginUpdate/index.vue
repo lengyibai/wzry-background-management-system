@@ -99,7 +99,7 @@ export default {
       width: 100%;
       height: 100%;
       padding: var(--gap-50);
-      color: var(--theme-font-dark);
+      color: var(--theme-color-five);
       p {
         font-family: var(--font-f);
         font-size: var(--font-s-25);

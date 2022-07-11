@@ -81,10 +81,10 @@ export default {
     height: 75px;
     border-radius: 50%;
     margin-right: var(--gap-5);
-    border: 3px solid var(--theme-color-light);
+    border: 3px solid var(--theme-color-two);
   }
   .box {
-    color: var(--theme-font-white);
+    color: var(--theme-color-nine);
     font-size: var(--font-s-20);
     text-shadow: var(--t-shadow);
     .name {
@@ -92,11 +92,11 @@ export default {
     }
     .desc {
       font-size: inherit;
-      color: var(--theme-font-color);
+      color: var(--theme-color-seven);
     }
     .price {
       font-size: inherit;
-      color: var(--theme-font-dark);
+      color: var(--theme-color-five);
     }
   }
 }

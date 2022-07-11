@@ -9,7 +9,7 @@ export default {
 </script>
 <style scoped lang="less">
 .Copyright {
-  color: var(--theme-font-dark);
+  color: var(--theme-color-five);
   font-size: var(--font-s-20);
 }
 </style>

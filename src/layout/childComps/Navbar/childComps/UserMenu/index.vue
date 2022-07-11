@@ -59,7 +59,7 @@ export default {
     }
     span {
       font-size: var(--font-s-20);
-      color: var(--theme-font-dark);
+      color: var(--theme-color-five);
       margin-right: var(--gap-15);
     }
   }

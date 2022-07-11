@@ -142,8 +142,8 @@ export default {
       height: 50px;
       font-size: 25px;
       font-weight: 500;
-      color: var(--theme-font-light);
-      background-color: var(--theme-color-light);
+      color: var(--theme-color-eight);
+      background-color: var(--theme-color-two);
       text-align: center;
       transform: translateX(-50%) scale(0);
       transform-origin: bottom;
@@ -181,7 +181,7 @@ export default {
       height: @height;
       border-radius: @height;
       margin: 0;
-      background-color: var(--theme-font-white);
+      background-color: var(--theme-color-nine);
       outline: none;
       &::-webkit-slider-thumb {
         -webkit-appearance: none;

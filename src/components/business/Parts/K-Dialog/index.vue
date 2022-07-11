@@ -85,7 +85,7 @@ export default {
     left: 0.3646rem;
     top: 0.1823rem;
     font-size: 0.1563rem;
-    color: var(--theme-font-white);
+    color: var(--theme-color-nine);
   }
   .close {
     position: absolute;

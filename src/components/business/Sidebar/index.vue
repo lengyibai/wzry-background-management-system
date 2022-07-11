@@ -5,7 +5,7 @@
       <el-menu
         :default-active="activeMenu"
         background-color="transparent"
-        text-color="var(--theme-font-dark)"
+        text-color="var(--theme-color-five)"
         active-text-color="var(--white)"
         @select="$click"
       >

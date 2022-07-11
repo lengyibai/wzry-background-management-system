@@ -72,7 +72,7 @@ export default {
   font-size: var(--font-s-20);
   margin-left: 8px;
   .el-breadcrumb__item .el-breadcrumb__inner a {
-    color: var(--theme-font-dark);
+    color: var(--theme-color-five);
   }
   .no-redirect,
   a {
@@ -104,6 +104,6 @@ export default {
 </style>
 <style>
 .el-breadcrumb__separator {
-  color: var(--theme-font-dark);
+  color: var(--theme-color-five);
 }
 </style>

@@ -19,8 +19,8 @@
           class="clear"
           v-show="show_clear && value"
           :svg="icon.CLEAR"
-          color="var(--theme-font-white)"
-          enter-color="var(--theme-font-active)"
+          color="var(--theme-color-nine)"
+          enter-color="var(--theme-color-four)"
           size="20px"
           @click.native.stop="clear"
         />
@@ -133,7 +133,7 @@ export default {
     position: relative;
     width: 150px;
     margin-right: 0.25em;
-    color: var(--theme-font-light);
+    color: var(--theme-color-eight);
     text-align: right;
     span {
       position: relative;
@@ -144,7 +144,7 @@ export default {
       .star {
         position: absolute;
         left: 0;
-        color: var(--theme-font-color);
+        color: var(--theme-color-seven);
         font-size: var(--font-s-20);
         transform: translateX(-150%);
       }
@@ -158,12 +158,12 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--theme-font-white);
+      border-bottom: 1px solid var(--theme-color-nine);
       padding: var(--gap-5);
       .value {
         font-size: var(--font-s-25);
         pointer-events: none;
-        color: var(--theme-font-dark);
+        color: var(--theme-color-five);
       }
       .clear {
         position: absolute;
@@ -182,9 +182,9 @@ export default {
       bottom: -15px;
       width: 100%;
       height: 300px;
-      border: 1px solid var(--theme-font-active);
+      border: 1px solid var(--theme-color-four);
       border-radius: 5px;
-      background-color: var(--theme-color-dark);
+      background-color: var(--theme-color-one);
       transform: translateY(100%);
       transition: all 0.25s;
       transform-origin: top center;
@@ -193,7 +193,7 @@ export default {
       .box {
         padding: var(--gap-20);
         background-color: rgba(0, 0, 0, 0.39);
-        color: var(--theme-font-white);
+        color: var(--theme-color-nine);
         .item {
           font-size: var(--font-s-25);
           transition: all 0.25s;
@@ -213,7 +213,7 @@ export default {
 
 .active {
   background-color: rgba(35, 60, 91, 0.25) !important;
-  color: var(--theme-font-active) !important;
+  color: var(--theme-color-four) !important;
   .item {
     transform: translateX(10px);
   }

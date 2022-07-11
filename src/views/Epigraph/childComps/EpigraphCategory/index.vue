@@ -64,7 +64,7 @@ export default {
     text-align: center;
     position: relative;
     flex: 1;
-    color: var(--theme-font-dark);
+    color: var(--theme-color-five);
     transition: color 0.25s 0.1s;
     span {
       font-size: var(--font-s-25);

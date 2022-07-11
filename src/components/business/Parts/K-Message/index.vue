@@ -90,7 +90,7 @@ export default {
     transform: translateX(-50%) translateY(-3px);
     span {
       font-size: var(--font-s-20);
-      color: var(--theme-font-dark);
+      color: var(--theme-color-five);
       z-index: 2;
     }
     .bg {
