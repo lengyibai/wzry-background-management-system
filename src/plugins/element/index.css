@@ -26,6 +26,8 @@
 }
 /* 父级菜单 */
 .el-menu .el-menu-item {
+  display: flex;
+  align-items: center;
   background-color: transparent !important;
 }
 .el-menu .el-menu-item:hover {
