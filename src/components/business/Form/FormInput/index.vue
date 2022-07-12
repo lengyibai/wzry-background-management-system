@@ -1,7 +1,7 @@
 <template>
   <div class="FormInput">
     <!-- 右侧描述 -->
-    <div class="label">
+    <div class="label" :style="{ width: labelWidth }">
       <span class="text-gradient-one">
         <i class="star" v-if="required">*</i>{{ label }}：</span
       >
@@ -51,6 +51,11 @@ export default {
       type: String,
       default: "标题",
     },
+    /* 左侧文字宽度 */
+    labelWidth: {
+      type: String,
+      default: "150px",
+    },
     /* 输入框描述 */
     placeholder: {
       type: String,
@@ -98,7 +103,6 @@ export default {
   margin-bottom: var(--gap-35);
   .label {
     position: relative;
-    width: 150px;
     margin-right: 0.25em;
     color: var(--theme-color-eight);
     text-align: right;
@@ -117,7 +121,7 @@ export default {
   .input {
     position: relative;
     input {
-      width: 300px;
+      width: 250px;
       border: none;
       border-bottom: 1px solid var(--theme-color-nine);
       outline: none;
