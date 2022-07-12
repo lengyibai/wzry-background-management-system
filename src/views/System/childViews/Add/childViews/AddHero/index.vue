@@ -2,30 +2,40 @@
   <div class="AddHero">
     <transition name="fade">
       <div class="content" v-show="show">
-        <FormInput label="英雄名" required v-model="hero_data.name" />
-        <FormInput label="代号" required v-model="hero_data.mark" />
-        <FormInput
-          label="身高"
-          :validate="validate"
-          v-model="hero_data.height"
-        />
-
-        <FormSelect
-          v-for="(v, k) in info"
-          :key="k"
-          :label="v[0]"
-          :data="type_tree[v[1]]"
-          v-model="hero_data[v[2]]"
-        />
+        <div class="flex-box">
+          <FormInput label="英雄名" required v-model="hero_data.name" />
+          <FormInput label="代号" required v-model="hero_data.mark" />
+          <FormInput
+            label="身高"
+            :validate="validate"
+            v-model="hero_data.height"
+          />
+        </div>
+        <div class="flex-box">
+          <FormSelect
+            v-for="(v, k) in info"
+            :key="k"
+            :label="v[0]"
+            :data="type_tree[v[1]]"
+            v-model="hero_data[v[2]]"
+          />
+        </div>
 
         <!--//%%%%%··········属性相关··········%%%%%//-->
-        <FormInput :label="v" v-for="(v, k) in attr" :key="k">
-          <LybRange
-            v-bind="range_bind"
-            :text="hero_data[k] + '%'"
-            v-model="hero_data[k]"
-          />
-        </FormInput>
+        <div class="flex-box">
+          <FormInput
+            :label="v"
+            label-width="200px"
+            v-for="(v, k) in attr"
+            :key="k"
+          >
+            <LybRange
+              style="width: 200px"
+              :text="hero_data[k] + '%'"
+              v-model="hero_data[k]"
+            />
+          </FormInput>
+        </div>
 
         <!--//%%%%%··········设置封面··········%%%%%//-->
         <AddHeroCover />
@@ -41,6 +51,7 @@
       size="50px"
       @upload="addHero"
       :finish="addHero_finish"
+      title="发布"
     />
 
     <!--//%%%%%··········取消发布··········%%%%%//-->
@@ -49,6 +60,7 @@
       size="50px"
       @close="hide"
       :finish="addHero_finish"
+      title="取消"
     />
 
     <!--//%%%%%··········添加图片链接弹窗组件··········%%%%%//-->
@@ -86,9 +98,6 @@ export default {
   data() {
     this.validate = function (v) {
       if (isNaN(v)) return "限制为数字";
-    };
-    this.range_bind = {
-      style: "width: 300px",
     };
     this.AddLink_set_desc = {
       headImg: "头像链接",
@@ -231,6 +240,12 @@ export default {
     width: 100%;
     padding: var(--gap-25);
     color: #fff;
+    .flex-box {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin-bottom: var(--gap-50);
+    }
   }
   .LybCommitBtn,
   .LybCancelBtn {
