@@ -167,8 +167,7 @@ export default {
       }
       .clear {
         position: absolute;
-        right: 0;
-        transform: translateX(-200%);
+        right: 40px;
       }
       .arrow {
         width: 25px;
@@ -184,7 +183,7 @@ export default {
       height: 300px;
       border: 1px solid var(--theme-color-four);
       border-radius: 5px;
-      background-color: var(--theme-color-one);
+      background-color: var(--black);
       transform: translateY(100%);
       transition: all 0.25s;
       transform-origin: top center;
@@ -212,7 +211,7 @@ export default {
 }
 
 .active {
-  background-color: rgba(35, 60, 91, 0.25) !important;
+  background-color: rgba(35, 60, 91, 0.5) !important;
   color: var(--theme-color-four) !important;
   .item {
     transform: translateX(10px);

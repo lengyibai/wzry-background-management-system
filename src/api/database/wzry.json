@@ -30,8 +30,8 @@
       "specialty": 1,
       "height": 150,
       "offset": {
-        "top": "10%",
-        "left": "-40%",
+        "top":10,
+        "left":-40,
         "transform": "scale(1.2)"
       }
     }
