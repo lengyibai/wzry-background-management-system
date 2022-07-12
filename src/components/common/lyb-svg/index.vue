@@ -1,6 +1,6 @@
 <template>
   <span
-    class="LybSvg"
+    class="LybSvg cursor-pointer"
     v-html="svg"
     :style="{
       width: size,

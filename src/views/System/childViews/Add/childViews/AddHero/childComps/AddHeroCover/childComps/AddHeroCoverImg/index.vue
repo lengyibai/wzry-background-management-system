@@ -1,5 +1,8 @@
 <template>
-  <div class="AddHeroCoverImg flex" @click="setKeyValue('cover')">
+  <div
+    class="AddHeroCoverImg flex cursor-pointer"
+    @click="setKeyValue('cover')"
+  >
     <LybSvg
       :svg="icon.ADD"
       color="var(--theme-color-eight)"

@@ -8,7 +8,7 @@
     }"
   >
     <img
-      class="close"
+      class="close cursor-pointer"
       v-show="show_up"
       :class="{ move: status === 1 }"
       src="./img/close.svg"

@@ -1,6 +1,6 @@
 <template>
   <div class="FormSelect">
-    <!-- 右侧描述 -->
+    <!-- 左侧描述 -->
     <div class="label">
       <span>{{ label }}：</span>
     </div>
@@ -8,7 +8,7 @@
     <div class="select">
       <!-- 选择器框 -->
       <div
-        class="select-box"
+        class="select-box cursor-pointer"
         ref="selectBox"
         @click="is_unfold = !is_unfold"
         @mouseenter="show_clear = true"
@@ -43,7 +43,7 @@
           @mouseleave="currentIndex = null"
           :key="index"
         >
-          <div class="item">{{ item.name }}</div>
+          <div class="item cursor-pointer">{{ item.name }}</div>
         </div>
       </div>
     </div>
@@ -152,7 +152,7 @@ export default {
   }
   .select {
     position: relative;
-    width: 300px;
+    width: 200px;
     .select-box {
       position: relative;
       display: flex;

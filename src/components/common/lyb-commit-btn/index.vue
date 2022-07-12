@@ -8,7 +8,7 @@
     }"
   >
     <img
-      class="up"
+      class="up cursor-pointer"
       v-show="show_up"
       :class="{ move: status === 1 }"
       src="./img/fabu.svg"
