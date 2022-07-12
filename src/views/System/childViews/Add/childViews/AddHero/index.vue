@@ -36,10 +36,18 @@
     </transition>
 
     <!--//%%%%%··········发布英雄按钮··········%%%%%//-->
-    <LybCommit
-      class="LybCommit"
-      size="100px"
+    <LybCommitBtn
+      class="LybCommitBtn"
+      size="50px"
       @upload="addHero"
+      :finish="addHero_finish"
+    />
+
+    <!--//%%%%%··········取消发布··········%%%%%//-->
+    <LybCancelBtn
+      class="LybCancelBtn"
+      size="50px"
+      @close="hide"
       :finish="addHero_finish"
     />
 
@@ -224,11 +232,30 @@ export default {
     padding: var(--gap-25);
     color: #fff;
   }
-  .LybCommit {
+  .LybCommitBtn,
+  .LybCancelBtn {
     position: fixed;
     right: 0;
     bottom: 0;
-    border: 5px solid #fff;
+    transition: all 0.1s;
+    &:hover {
+      filter: saturate(2);
+    }
+    &:active {
+      filter: brightness(0.75);
+    }
+  }
+  .LybCommitBtn {
+    transform: translateX(-25%) translateY(-25%);
+    &:active {
+      transform: translateX(-25%) translateY(-25%) scale(0.9);
+    }
+  }
+  .LybCancelBtn {
+    transform: translateX(-155%) translateY(-25%);
+    &:active {
+      transform: translateX(-155%) translateY(-25%) scale(0.9);
+    }
   }
 }
 </style>
