@@ -21,7 +21,7 @@
 </template>
 <script>
 //#####··········图标··········#####//
-import icon from "./svg";
+import icon from "@/assets/icon/svg/icon.js";
 export default {
   name: "AddHeroCoverImg",
   props: {
