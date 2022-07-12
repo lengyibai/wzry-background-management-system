@@ -113,7 +113,6 @@ export default {
             this.messages.splice(0, 1);
           }, time * 1000);
         }.bind(that),
-        500,
       );
     };
   },
