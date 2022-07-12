@@ -30,8 +30,8 @@
       class="bg"
       :src="data.cover"
       :style="{
-        top: data.offset.top,
-        left: data.offset.left,
+        top: data.offset.top + '%',
+        left: data.offset.left + '%',
         transform: data.offset.transform,
       }"
     />
