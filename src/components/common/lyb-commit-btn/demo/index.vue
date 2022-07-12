@@ -1,7 +1,7 @@
 <template>
   <div class="demoFull flex">
     <h1>{{ text }}</h1>
-    <LybCommit
+    <LybCommitBtn
       style="border: 1.25vw solid #fff"
       @upload="upload"
       :finish="finish"

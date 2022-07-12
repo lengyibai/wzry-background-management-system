@@ -1,6 +1,6 @@
 <template>
   <div
-    class="LybCommit"
+    class="LybCommitBtn"
     @click="add"
     :style="{
       width: size,
@@ -27,7 +27,7 @@
 </template>
 <script>
 export default {
-  name: "LybCommit",
+  name: "LybCommitBtn",
   props: {
     size: {
       type: String,
@@ -56,7 +56,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.LybCommit {
+.LybCommitBtn {
   position: relative;
   display: flex;
   border-radius: 50%;
