@@ -28,17 +28,25 @@
 
 /* 鼠标样式 */
 .cursor-default {
-  cursor: url("../../assets/icon/cur/default.png"), auto !important;
+  cursor: url("@/assets/icon/cur/default.png"), auto !important;
+}
+.cursor-default svg {
+  cursor: url("@/assets/icon/cur/default.png"), auto !important;
 }
 
 .cursor-pointer {
-  cursor: url("../../assets/icon/cur/pointer.png"), auto !important;
+  cursor: url("@/assets/icon/cur/pointer.png"), auto !important;
+}
+.cursor-pointer svg {
+  cursor: url("@/assets/icon/cur/pointer.png"), auto !important;
 }
 
 .cursor-not-allowed {
-  cursor: url("../../assets/icon/cur/not-allowed.png"), auto !important;
+  cursor: url("@/assets/icon/cur/not-allowed.png"), auto !important;
 }
-
+.cursor-not-allowed svg {
+  cursor: url("@/assets/icon/cur/not-allowed.png"), auto !important;
+}
 /* 溢出省略号显示单行 */
 .lyb-one-line {
   word-break: break-all;
