@@ -29,6 +29,9 @@
 
         <!--//%%%%%··········设置封面··········%%%%%//-->
         <AddHeroCover />
+
+        <!--//%%%%%··········设置头像&海报··········%%%%%//-->
+        <AddHeroHeadPoster />
       </div>
     </transition>
 
@@ -68,7 +71,8 @@ import { getProfessionType } from "@/api/main/tree/professionType";
 //接口信息：{ 特长 }
 import { getSpecialtyType } from "@/api/main/tree/specialtyType";
 //#####··········子组件··········#####//
-import AddHeroCover from "./childComps/AddHeroCover";
+import AddHeroCover from "./childComps/AddHeroCover"; //设置封面
+import AddHeroHeadPoster from "./childComps/AddHeroHeadPoster"; //设置头像
 export default {
   name: "AddHero",
   data() {
@@ -134,6 +138,7 @@ export default {
   },
   components: {
     AddHeroCover,
+    AddHeroHeadPoster,
   },
   provide() {
     return {
