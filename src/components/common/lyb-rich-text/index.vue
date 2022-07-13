@@ -8,12 +8,7 @@
       @focus="onEditorFocus($event)"
       @change="onEditorChange($event)"
     ></quill-editor>
-    <input
-      class="QuillEditor-uploader"
-      @change="QuillEditorUpload"
-      type="file"
-      v-show="false"
-    />
+    <input class="QuillEditor-uploader" type="file" v-show="false" />
   </div>
 </template>
 <script>
@@ -42,25 +37,15 @@ export default {
     return {
       contentText: "",
       editorOption: {
-        placeholder: "",
+        placeholder: "请输入",
         modules: {
           eeSourceBtn: eeSourceBtn,
           toolbar: {
             container: [
-              ["bold", "italic", "underline", "strike"], //加粗，斜体，下划线，删除线
-              ["blockquote", "code-block"], //引用，代码块
-              [{ header: 1 }, { header: 2 }], // 标题，键值对的形式；1、2表示字体大小
-              [{ list: "ordered" }, { list: "bullet" }], //列表
-              [{ script: "sub" }, { script: "super" }], // 上下标
+              ["bold", "italic", "underline"], //加粗，斜体，下划线，删除线
               [{ indent: "-1" }, { indent: "+1" }], // 缩进
-              [{ direction: "rtl" }], // 文本方向
-              [{ size: ["small", false, "large", "huge"] }], // 字体大小
-              [{ header: [1, 2, 3, 4, 5, 6, false] }], //几级标题
-              [{ color: [] }, { background: [] }], // 字体颜色，字体背景颜色
-              [{ font: [] }], //字体
-              [{ align: [] }], //对齐方式
+              [{ color: [] }], // 字体颜色，字体背景颜色
               ["clean"], //清除字体样式
-              ["image", "video"], //上传图片、上传视频
             ],
             handlers: {
               image: function (value) {
@@ -95,72 +80,123 @@ export default {
     onEditorChange(e) {
       this.$emit("input", e.html);
     },
-
-    // 调用接口上传
-    QuillEditorUpload(f) {
-      let file = new FormData();
-      file.append("file", f.target.files[0]);
-      alert("上传图片需要填写上传文件接口");
-      // upload(fd).then((res) => {
-      //   // 获取富文本组件实例
-      //   let quill = this.$refs.myQuillEditor.quill;
-      //   // 获取光标所在位置
-      //   let length = quill.getSelection().index;
-      //   // 插入图片，res.data.data.src 为服务器返回的图片链接地址
-      //   quill.insertEmbed(length, "image", res.data.data.src);
-      //   // 调整光标到最后
-      //   quill.setSelection(length + 1);
-      // });
-
-      /* 以下支持图片压缩 */
-      // $imageOptimizer({
-      //   file: f,
-      //   ratio: 0.5, //压缩率
-      //   maxsize: 1024, //超过多大进行压缩
-      //   /* 成功回调 */
-      //   success: (data, file, url) => {
-      //     upload(data).then((res) => {
-      //       // 获取富文本组件实例
-      //       let quill = this.$refs.myQuillEditor.quill;
-      //       // 获取光标所在位置
-      //       let length = quill.getSelection().index;
-      //       // 插入图片，res.resultMsg 为服务器返回的图片链接地址
-      //       quill.insertEmbed(length, "image", res.data.data.src);
-      //       // 调整光标到最后
-      //       quill.setSelection(length + 1);
-      //     });
-      //   },
-      // });
-    },
   },
 };
 </script>
-<style>
+<style lang="less">
 .ql-editor {
-  height: 500px;
+  height: 50vh;
+  /*   &.ql-toolbar button,
+  .ql-toolbar button {
+    width: fit-content;
+  }
+  .ql-snow {
+    .ql-picker-label {
+      display: flex;
+    }
+    .ql-color-picker .ql-picker-label svg,
+    .ql-icon-picker .ql-picker-label svg {
+      width: 18px;
+    }
+    .ql-formats {
+      margin-right: 10px;
+    }
+    .ql-tooltip {
+      top: 0 !important;
+      left: 50% !important;
+      transform: translateX(-50%);
+    }
+  } */
 }
 
-.ql-snow.ql-toolbar button,
-.ql-snow .ql-toolbar button {
-  width: fit-content;
+/* 字体大小 */
+.ql-snow .ql-editor,
+.ql-ee-source {
+  * {
+    font-size: 24px !important;
+  }
 }
 
-.ql-snow .ql-picker-label {
-  display: flex;
+/* 整体边框颜色 */
+.ql-snow {
+  border: 1px solid @color !important;
 }
 
-.ql-snow .ql-color-picker .ql-picker-label svg,
-.ql-snow .ql-icon-picker .ql-picker-label svg {
-  width: 18px;
+/* html按钮悬浮颜色 */
+.ql-html:hover {
+  color: #fff !important;
 }
 
-.ql-snow .ql-formats {
-  margin-right: 10px;
+/* 以下为SVG图标颜色及悬浮颜色 */
+@color: #4d6b8f;
+.ql-snow .ql-stroke {
+  stroke: @color;
 }
-.ql-snow .ql-tooltip {
-  top: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%);
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke.ql-fill {
+  fill: @color;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow .ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button:focus .ql-fill,
+.ql-snow .ql-toolbar button:focus .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill,
+.ql-snow .ql-toolbar button.ql-active .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+.ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+  fill: #fff;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow .ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button:focus .ql-stroke,
+.ql-snow .ql-toolbar button:focus .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+.ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+  stroke: #fff;
 }
 </style>
 <style scoped>
