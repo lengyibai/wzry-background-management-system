@@ -95,17 +95,17 @@ export default {
   z-index: 3;
   .title {
     position: absolute;
-    left: 0.3646rem;
-    top: 0.1823rem;
-    font-size: 0.1563rem;
+    left: 70px;
+    top: 35px;
+    font-size: 30px;
     color: var(--theme-color-nine);
   }
   .close {
     position: absolute;
-    top: 0.1667rem;
-    right: 0.1406rem;
-    width: 0.2083rem;
-    filter: drop-shadow(0rem 0rem 0.0156rem #cce5ff);
+    top: 32px;
+    right: 28px;
+    width: 40px;
+    filter: drop-shadow(0px 0px 3px #cce5ff);
     z-index: 2;
   }
   .bg {
@@ -152,8 +152,8 @@ export default {
       width: 75%;
       background-color: var(--theme-color-one);
       border: none;
-      font-size: 0.1458rem;
-      padding: 0.0365rem;
+      font-size: 28px;
+      padding: 8px;
       font-family: var(--font-f);
       color: var(--white);
       &::-webkit-input-placeholder {
