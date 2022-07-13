@@ -43,7 +43,6 @@ export default {
           toolbar: {
             container: [
               ["bold", "italic", "underline"], //加粗，斜体，下划线，删除线
-              [{ indent: "-1" }, { indent: "+1" }], // 缩进
               [{ color: [] }], // 字体颜色，字体背景颜色
               ["clean"], //清除字体样式
             ],
@@ -112,7 +111,9 @@ export default {
 /* 字体大小 */
 .ql-snow .ql-editor,
 .ql-ee-source {
+  cursor: text !important;
   * {
+    cursor: inherit !important;
     font-size: 24px !important;
   }
 }
