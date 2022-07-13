@@ -9,12 +9,12 @@
       type="add"
     />
 
-    //#####··········添加英雄··········#####//
+    <!--//%%%%%··········添加英雄··········%%%%%//-->
     <transition name="clip">
       <AddHero v-if="show_AddHero" v-model="show_AddHero" />
     </transition>
 
-    //#####··········添加故事··········#####//
+    <!--//%%%%%··········添加故事··········%%%%%//-->
     <transition name="clip">
       <AddStory v-if="show_AddStory" v-model="show_AddStory" />
     </transition>
