@@ -41,6 +41,12 @@ export default {
     text-indent: 2em;
     padding: 2em;
     text-shadow: var(--t-shadow);
+    /deep/ p {
+      text-indent: inherit;
+    }
+    /deep/ * {
+      font-size: inherit;
+    }
   }
 }
 </style>
