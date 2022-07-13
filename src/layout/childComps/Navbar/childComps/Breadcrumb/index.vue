@@ -78,7 +78,6 @@ export default {
   a {
     font-size: var(--font-s-20);
     color: var(--white);
-    cursor: text;
   }
 }
 
