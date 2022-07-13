@@ -10,8 +10,13 @@
     />
 
     //#####··········添加英雄··········#####//
-    <transition name="clip" appear>
+    <transition name="clip">
       <AddHero v-if="show_AddHero" v-model="show_AddHero" />
+    </transition>
+
+    //#####··········添加故事··········#####//
+    <transition name="clip">
+      <AddStory v-if="show_AddStory" v-model="show_AddStory" />
     </transition>
   </div>
 </template>
@@ -21,21 +26,26 @@
 import { ManageCard } from "@/utils/mixins.js";
 
 //#####··········子页面··········#####//
-import AddHero from "./childViews/AddHero";
+import AddHero from "./childViews/AddHero"; //英雄
+import AddStory from "./childViews/AddStory"; //故事
 export default {
   name: "Add",
   data() {
     return {
       show_AddHero: false, //显示添加英雄页面
+      show_AddStory: false, //显示添加故事页面
     };
   },
   mixins: [ManageCard],
-  components: { AddHero },
+  components: { AddHero, AddStory },
   methods: {
     open(a) {
       const obj = {
         英雄() {
           this.show_AddHero = true;
+        },
+        故事() {
+          this.show_AddStory = true;
         },
       };
       obj[a].call(this);
