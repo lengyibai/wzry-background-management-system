@@ -4,6 +4,7 @@
 @import url("./style/animate.css");
 @import url("./style/common.css");
 @import url("./style/style.css");
+@import url("./style/view.css");
 
 :root {
   --gray: rgba(255, 255, 255, 0.75);
