@@ -1,5 +1,5 @@
 <template>
-  <div class="AddHero">
+  <div class="AddHero view_add">
     <transition name="fade">
       <div class="content" v-show="show">
         <div class="flex-box">
@@ -55,13 +55,7 @@
     />
 
     <!--//%%%%%··········取消发布··········%%%%%//-->
-    <LybCancelBtn
-      class="LybCancelBtn"
-      size="50px"
-      @close="hide"
-      :finish="addHero_finish"
-      title="取消"
-    />
+    <LybCancelBtn class="LybCancelBtn" size="50px" @close="hide" title="取消" />
 
     <!--//%%%%%··········添加图片链接弹窗组件··········%%%%%//-->
     <AddLink
@@ -150,6 +144,7 @@ export default {
       },
       /* 区域列表 */
       areaType_list: [],
+
       addHero_finish: false, //是否发布成功
     };
   },
@@ -210,10 +205,8 @@ export default {
 
     //#####··········发布英雄··········#####//
     addHero() {
-      console.warn("发布英雄");
       setTimeout(() => {
         this.addHero_finish = true;
-        console.warn("发布成功");
         console.log(JSON.parse(JSON.stringify(this.hero_data)));
         setTimeout(() => {
           this.hide();
@@ -225,14 +218,6 @@ export default {
 </script>
 <style scoped lang="less">
 .AddHero {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  overflow: hidden auto;
-  background-color: rgba(0, 0, 0, 0.9);
   .content {
     display: flex;
     flex-direction: column;
