@@ -64,12 +64,15 @@ export default {
       text-shadow: var(--t-shadow);
     }
     .passive {
-      color: #ccc;
+      color: var(--gray);
     }
   }
   .desc {
     font-size: var(--font-s-25);
     text-shadow: var(--t-shadow);
+    /deep/ * {
+      font-size: inherit;
+    }
   }
 }
 </style>
