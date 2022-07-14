@@ -82,7 +82,7 @@ export default {
       /* 切换时延迟设置顶部皮肤类型标志 */
       setTimeout(() => {
         const skin_type = this.data.skins[index].type;
-        if (skin_type) {
+        if (skin_type && skin_type !== "伴生") {
           this.active_skin_type = require("@/assets/img/skinType/" +
             skin_type +
             ".png");
