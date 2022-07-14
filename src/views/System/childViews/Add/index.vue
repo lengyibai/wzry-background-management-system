@@ -14,6 +14,11 @@
       <AddHero v-if="show_AddHero" v-model="show_AddHero" />
     </transition>
 
+    <!--//%%%%%··········添加皮肤··········%%%%%//-->
+    <transition name="clip">
+      <AddSkin v-if="show_AddSkin" v-model="show_AddSkin" />
+    </transition>
+
     <!--//%%%%%··········添加故事··········%%%%%//-->
     <transition name="clip">
       <AddStory v-if="show_AddStory" v-model="show_AddStory" />
@@ -27,28 +32,37 @@ import { ManageCard } from "@/utils/mixins.js";
 
 //#####··········子页面··········#####//
 import AddHero from "./childViews/AddHero"; //英雄
+import AddSkin from "./childViews/AddSkin"; //皮肤
 import AddStory from "./childViews/AddStory"; //故事
 export default {
   name: "Add",
   data() {
     return {
       show_AddHero: false, //显示添加英雄页面
+      show_AddSkin: false, //显示添加英雄页面
       show_AddStory: false, //显示添加故事页面
     };
   },
   mixins: [ManageCard],
-  components: { AddHero, AddStory },
+  components: { AddHero, AddSkin, AddStory },
   methods: {
     open(a) {
       const obj = {
         英雄() {
           this.show_AddHero = true;
         },
+        皮肤() {
+          this.show_AddSkin = true;
+        },
         故事() {
           this.show_AddStory = true;
         },
       };
-      obj[a].call(this);
+      try {
+        obj[a].call(this);
+      } catch (error) {
+        this.$tip("开发中", "warning");
+      }
     },
   },
 };
