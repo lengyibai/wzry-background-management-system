@@ -120,7 +120,7 @@ export default {
 
 /* 整体边框颜色 */
 .ql-snow {
-  border: 1px solid @color !important;
+  border: 2px solid @color !important;
 }
 
 /* html按钮悬浮颜色 */
