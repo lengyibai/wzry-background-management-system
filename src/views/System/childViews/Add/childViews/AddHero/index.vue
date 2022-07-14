@@ -1,7 +1,7 @@
 <template>
   <div class="AddHero view_add">
     <transition name="fade">
-      <div class="content" v-show="show">
+      <div class="content" v-if="show">
         <div class="flex-box">
           <FormInput label="英雄名" required v-model="hero_data.name" />
           <FormInput label="代号" required v-model="hero_data.mark" />
@@ -121,7 +121,7 @@ export default {
     ];
     return {
       show: false,
-      //#####··········弹窗相关··········#####//
+      /* 弹窗相关 */
       show_AddLink: false, //显示添加链接弹窗
       AddLink_key: "", //当前谁在使用弹窗(字段名)
       AddLink_title: "", //弹窗左上角标题
@@ -168,11 +168,9 @@ export default {
     this.type_tree.periodType = await getPeriodType();
     this.type_tree.professionType = await getProfessionType();
     this.type_tree.specialtyType = await getSpecialtyType();
-  },
-  mounted() {
     setTimeout(() => {
       this.show = true;
-    }, 1000);
+    }, 500);
   },
   methods: {
     //#####··········隐藏自身··········#####//
@@ -207,7 +205,6 @@ export default {
     addHero() {
       setTimeout(() => {
         this.addHero_finish = true;
-        console.log(JSON.parse(JSON.stringify(this.hero_data)));
         setTimeout(() => {
           this.hide();
         }, 250);
