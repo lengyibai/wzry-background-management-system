@@ -3,9 +3,9 @@
     <transition name="fade">
       <div class="content" v-show="show">
         <div class="title">英雄故事</div>
-        <LybRichText class="LybRichText" v-model="hero_data.gamestory" />
+        <LybRichText class="LybRichText" v-model="story_data.gamestory" />
         <div class="title">历史故事</div>
-        <LybRichText class="LybRichText" v-model="hero_data.history" />
+        <LybRichText class="LybRichText" v-model="story_data.history" />
       </div>
     </transition>
 
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       show: false,
-      hero_data: {
+      story_data: {
         gamestory: "",
         history: "",
       },
@@ -54,7 +54,6 @@ export default {
     addStory() {
       setTimeout(() => {
         this.addStory_finish = true;
-        console.log(JSON.parse(JSON.stringify(this.hero_data)));
         setTimeout(() => {
           this.hide();
         }, 250);
