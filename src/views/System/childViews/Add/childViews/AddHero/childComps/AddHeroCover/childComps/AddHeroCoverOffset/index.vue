@@ -23,11 +23,22 @@ export default {
     this.icon = icon;
     return {
       timer: null,
+      direction: "", //点击的方向
     };
+  },
+  created() {
+    this.$bus.$on("mouseup", () => {
+      clearInterval(this.timer);
+    });
+  },
+  beforeDestroy() {
+    //组件一销毁就需要关闭监听，防止重复监听
+    this.$bus.$off("change");
   },
   methods: {
     //#####··········长按自增··········#####//
     down(d) {
+      this.direction = d;
       this.timer = setInterval(() => {
         this.$emit("direction", d);
       }, 100);
