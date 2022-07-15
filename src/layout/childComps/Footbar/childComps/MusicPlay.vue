@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      // this.musicPlay(); //如果从登录页过来，可直接播放背景音乐
+      this.musicPlay(); //如果从登录页过来，可直接播放背景音乐
     });
     const that = this;
     document.body.addEventListener("mousedown", fn); //如果在管理页刷新，则需要点击才能播放
@@ -65,6 +65,7 @@ export default {
         if (isReset) this.bgmIndex = $random(0, this.musics.length - 1);
         // 解决音频播放失败，失败后重新调用，或直到用户与页面交互
         bgm.volume = 0.25;
+
         setTimeout(() => {
           bgm
             .play()
@@ -72,9 +73,7 @@ export default {
               bgm.play();
             })
             .catch(() => {
-              // setTimeout(() => {
-              //   this.musicPlay();
-              // }, 500);
+              /*  */
             });
         });
 
