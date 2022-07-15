@@ -11,7 +11,7 @@
       <LybIcon
         :imgUrl="require('@/assets/img/svg/' + item[1] + '.svg')"
         right="5px"
-      />{{ item[1] }}：{{ item[0] || "未知" }}
+      />{{ item[2] }}：{{ item[0] || "未知" }}
     </div>
   </div>
 </template>
@@ -34,12 +34,12 @@ export default {
   created() {
     let a = this.data;
     this.hero_info = [
-      [a.location, "location"],
-      [a.specialty, "specialty"],
-      [a.period, "period"],
-      [a.camp, "camp"],
-      [a.area, "area"],
-      [a.height, "height"],
+      [a.location, "location", "定位"],
+      [a.specialty, "specialty", "特长"],
+      [a.period, "period", "时期"],
+      [a.camp, "camp", "阵营"],
+      [a.area, "area", "区域"],
+      [a.height, "height", "身高"],
     ];
   },
   mounted() {
