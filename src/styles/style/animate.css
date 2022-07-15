@@ -29,17 +29,52 @@
   transition: all 0.25s;
 }
 
-/* 侧边栏切换路由 */
-.sidebar_router-enter {
-  opacity: 0;
-  transform: translateY(50px);
+/* 输入框线条 */
+.border-enter,
+.border-leave-active {
+  width: 0% !important;
+}
+.border-leave-active,
+.border-enter-active {
+  transition: all 0.5s;
 }
 
-.sidebar_router-leave-to {
-  opacity: 0;
+/* 输入框不合法 */
+.tip-leave-active {
+  height: 0 !important;
+}
+.tip-leave-active {
+  transition: all 0.5s;
 }
 
-.sidebar_router-leave-active,
-.sidebar_router-enter-active {
-  transition: all 0.25s;
+/* 选择器列表内容动画 */
+.selectList-enter,
+.selectList-leave-active {
+  opacity: 0;
+}
+.selectList-leave-active,
+.selectList-enter-active {
+  transition: all 0.5s;
+}
+.selectList-move {
+  transition: all 0.5s;
+}
+.selectList-leave-active {
+  position: absolute;
+}
+
+/* 提交成功√放大显示 */
+.bounce-enter,
+.bounce-leave-active {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.bounce-leave-active,
+.bounce-enter-active {
+  transition: all 0.5s 0.2s;
+}
+
+.bounce-leave-active {
+  position: absolute;
 }
