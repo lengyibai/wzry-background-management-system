@@ -1,5 +1,5 @@
 <template>
-  <transition name="K-Message">
+  <transition name="fade">
     <div class="K-Message" v-show="messages.length">
       <transition-group name="message">
         <div
@@ -72,7 +72,7 @@ export default {
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 3;
+  z-index: 999;
   background-image: linear-gradient(180deg, #000000 -25%, transparent 25%);
 
   .message {
@@ -109,17 +109,6 @@ export default {
       }
     }
   }
-}
-
-/* 消息蒙版 */
-.K-Message-enter,
-.K-Message-leave-to {
-  opacity: 0;
-}
-
-.K-Message-leave-active,
-.K-Message-enter-active {
-  transition: all 0.5s;
 }
 
 /* 消息框 */

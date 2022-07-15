@@ -3,8 +3,8 @@
     <!-- 右侧描述 -->
     <div class="label" :style="{ width: labelWidth }">
       <span class="text-gradient-one">
-        <i class="star" v-if="required">*</i>{{ label }}：</span
-      >
+        <i class="star" v-if="required">*</i>{{ label }}：
+      </span>
     </div>
 
     <!-- 输入框 -->
@@ -156,24 +156,5 @@ export default {
       overflow: hidden;
     }
   }
-}
-/* 进入前状态 */
-.border-enter,
-.border-leave-active {
-  width: 0% !important;
-}
-/* 进入和离开动画属性 */
-.border-leave-active,
-.border-enter-active {
-  transition: all 0.5s;
-}
-
-/* 进入前状态 */
-.tip-leave-active {
-  height: 0 !important;
-}
-/* 进入和离开动画属性 */
-.tip-leave-active {
-  transition: all 0.5s;
 }
 </style>

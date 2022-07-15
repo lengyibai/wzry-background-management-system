@@ -50,7 +50,7 @@ export default {
   height: 100vh;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
-  z-index: 999;
+  z-index: 998;
   img {
     position: absolute;
     width: 40vw;
@@ -87,17 +87,5 @@ export default {
   100% {
     transform: translateY(0%) scale(0.2);
   }
-}
-
-/* 进入前状态 */
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-
-/* 进入和离开动画属性 */
-.fade-leave-active,
-.fade-enter-active {
-  transition: all 0.25s;
 }
 </style>

@@ -6,7 +6,7 @@
       v-for="(item, index) in data.skills"
       :key="index"
     >
-      <transition name="border">
+      <transition name="borderFade">
         <div class="border" v-show="currentIndex === index"></div>
       </transition>
       <img :src="item.img" @click="selectSkill($event, index)" />
@@ -104,17 +104,18 @@ export default {
 }
 
 /* 进入前状态 */
-.border-enter,
-.border-leave-active {
+.borderFade-enter,
+.borderFade-leave-active {
   opacity: 0;
+  transform: scaleY(2);
 }
 
 /* 进入和离开动画属性 */
-.border-enter-active {
+.borderFade-enter-active {
   transition: all 0.5s 0.35s;
 }
 
-.border-leave-active {
+.borderFade-leave-active {
   transition: all 0.5s;
 }
 </style>
