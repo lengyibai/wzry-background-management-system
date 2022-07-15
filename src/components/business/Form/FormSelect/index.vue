@@ -2,33 +2,36 @@
   <div class="FormSelect">
     <!-- 左侧描述 -->
     <div class="label">
-      <span>{{ label }}：</span>
+      <span><i class="star" v-if="required">*</i>{{ label }}：</span>
     </div>
 
     <div class="select">
       <!-- 选择器框 -->
-      <div
-        class="select-box cursor-pointer"
-        ref="selectBox"
-        @mouseenter="show_clear = true"
-        @mouseleave="show_clear = false"
-      >
+      <div class="select-box cursor-pointer" ref="selectBox">
         <input
           type="text"
           ref="input"
-          @focus="is_unfold = true"
+          @input="debounce"
+          @focus="focus"
+          @blur="blur($event.target.value)"
           v-model="select_value"
-          placeholder="搜索"
+          :placeholder="active_value || '搜索'"
         />
-        <LybSvg
-          class="clear"
-          v-show="show_clear && value"
-          :svg="icon.CLEAR"
-          color="var(--theme-color-nine)"
-          enter-color="var(--theme-color-four)"
-          size="20px"
-          @click.native.stop="clear"
-        />
+
+        <!-- 获取焦点拉长线条 -->
+        <transition name="border">
+          <div class="focus" v-show="is_unfold"></div>
+        </transition>
+
+        <!-- 输入不合法拉长线条 -->
+        <transition name="border">
+          <div class="border" v-show="no_legal"></div>
+        </transition>
+
+        <!-- 输入不合法提示 -->
+        <transition name="tip">
+          <div class="tip" v-if="no_legal" v-typewriter="'必选项'"></div>
+        </transition>
         <img
           class="arrow"
           :class="{ rotate: is_unfold }"
@@ -39,7 +42,7 @@
 
       <!-- 展开列表 -->
       <div class="select-list" :class="{ unfold: !is_unfold }">
-        <transition-group name="fade">
+        <transition-group name="selectList">
           <div
             class="box"
             :class="{ active: currentIndex === index || value === item.id }"
@@ -61,7 +64,6 @@
 //{ 正则搜索，防抖 }
 import { $search, $debounce } from "@/utils/lyb.js";
 //#####··········图标··········#####//
-import icon from "./svg";
 export default {
   name: "FormSelect",
   props: {
@@ -77,6 +79,11 @@ export default {
       type: Number,
       default: 0,
     },
+    /* 是否必填 */
+    required: {
+      type: Boolean,
+      default: false,
+    },
     /* 左侧文字 */
     label: {
       type: String,
@@ -89,14 +96,14 @@ export default {
     },
   },
   data() {
-    this.icon = icon; //图标
     return {
+      tip: "必填项", //不合法提示
+      no_legal: false, //是否合法
       select_value: "", //输入框的值
       active_value: "", //选中的值
-      select_list: [],
+      select_list: [], //下拉列表
       is_unfold: false, //是否展开
       currentIndex: null, //当前点击
-      show_clear: false, //显示清空按钮
       debounce: null,
     };
   },
@@ -110,10 +117,6 @@ export default {
     },
   },
   watch: {
-    //#####··········实时监听输入框值··········#####//
-    select_value() {
-      this.debounce();
-    },
     //#####··········选择后替换输入框··········#####//
     value(v) {
       const data = this.data.filter(item => {
@@ -141,17 +144,30 @@ export default {
     this.$bus.$off("click"); //关闭监听
   },
   methods: {
+    //#####··········获取焦点··········#####//
+    focus() {
+      this.is_unfold = true;
+      this.select_value = "";
+      /* console.log(
+        document.documentElement.clientHeight -
+          this.$refs.selectBox.getBoundingClientRect().top <
+          400,
+      ); */
+    },
+
+    //#####··········失去焦点··········#####//
+    blur() {
+      this.is_focus = false;
+      setTimeout(() => {
+        this.no_legal = this.required && this.active_value === "";
+      }, 100);
+    },
+
     //#####··········选择的数据··········#####//
     select(id) {
       this.$emit("input", id);
       this.is_unfold = false;
-    },
-
-    //#####··········清空··········#####//
-    clear() {
-      this.$emit("input", null);
-      this.is_unfold = true;
-      this.$refs.input.focus();
+      this.select_list = this.data;
     },
 
     //#####··········点击空白隐藏列表··········#####//
@@ -211,9 +227,29 @@ export default {
         outline: none;
         border: none;
       }
-      .clear {
+      .border,
+      .focus {
         position: absolute;
-        right: 40px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--red);
+        transition: all 0.5s;
+        transform: translateY(1px);
+      }
+      .focus {
+        background-color: var(--theme-color-four);
+      }
+      .tip {
+        position: absolute;
+        bottom: 0;
+        transform-origin: center top;
+        transform: translateY(125%);
+        font-size: var(--font-s-16);
+        height: var(--font-s-16);
+        color: var(--red);
+        overflow: hidden;
       }
       .arrow {
         width: 25px;
@@ -263,27 +299,5 @@ export default {
   .item {
     transform: translateX(10px);
   }
-}
-/* 进入前状态 */
-.fade-enter {
-  opacity: 0;
-  transform: translateX(100%);
-}
-.fade-leave-active {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-/* 进入和离开动画属性 */
-.fade-leave-active,
-.fade-enter-active {
-  transition: all 0.5s;
-}
-/* 解决添加元素占位时无动画，替代 width: 0 与 overflow: hidden */
-.fade-move {
-  transition: all 0.5s;
-}
-/* 解决删除元素时，其他元素补位无动画 */
-.fade-leave-active {
-  position: absolute; /* 必须为绝对定位 */
 }
 </style>
