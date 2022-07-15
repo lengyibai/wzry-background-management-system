@@ -18,7 +18,7 @@ export default {
   name: "App",
   data() {
     return {
-      LOCAL_VERSION: "22.7.14.13",
+      LOCAL_VERSION: "22.7.16.2",
     };
   },
   components: { GlobalSwitch },
@@ -37,7 +37,7 @@ export default {
         "warning",
       );
     } else if (test < 0) {
-      this.$tip("只有作者才可以改版本号哦！", "info");
+      this.$tip("大于远程版本，请 Ctrl + F5 强制刷新更新缓存", "info");
     }
   },
 };
