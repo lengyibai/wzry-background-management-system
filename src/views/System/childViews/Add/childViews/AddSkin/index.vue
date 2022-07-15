@@ -1,9 +1,24 @@
 <template>
   <div class="AddSkin view_add">
     <transition name="fade">
-      <div class="content" v-if="show">
+      <div
+        class="content"
+        ref="content"
+        v-if="show"
+        is="transition-group"
+        name="fade"
+      >
         <div class="skin" v-for="(item, index) in skin_data.data" :key="index">
           <FormInput label="皮肤名" required v-model="item.name" />
+
+          <FormSelect label="皮肤类型" :data="skin_type" v-model="item.type" />
+
+          <FormSelect
+            label="指派英雄"
+            v-if="index === 0"
+            :data="hero_list"
+            v-model="skin_data.id"
+          />
 
           <div class="head-poster">
             <span class="title text-gradient-one">英雄头像&海报：</span>
@@ -15,21 +30,14 @@
             />
             <SelectImg :src="item.head" @select="setKeyValues" keyword="head" />
           </div>
-
-          <FormSelect
-            label="指派英雄"
-            v-if="index === 0"
-            :data="hero_list"
-            v-model="item.type"
-          />
-
-          <FormSelect
-            label="皮肤类型"
-            :data="skin_type"
-            v-model="skin_data.id"
-          />
         </div>
-        <div class="add" @click="skin_data.data.push({})">增加一项</div>
+        <K-Button
+          class="k-button"
+          @click.native="$click('确定')"
+          @mouseup.native="addOne"
+          key="a"
+          >增加一项</K-Button
+        >
       </div>
     </transition>
 
@@ -72,7 +80,7 @@ export default {
       /* 添加的皮肤 */
       skin_data: {
         id: null,
-        data: [{}],
+        data: [{ name: "", img: "", head: "", type: 0 }],
       },
       hero_list: [], //英雄基础列表
       skin_type: [], //皮肤类型表
@@ -84,12 +92,25 @@ export default {
       AddLink_placeholder: "", //弹窗输入框描述
     };
   },
-  async created() {
-    this.hero_list = await heroList();
-    this.skin_type = await getSkinType();
-    setTimeout(() => {
-      this.show = true;
-    }, 500);
+  created() {
+    setTimeout(async () => {
+      try {
+        this.$lybLoad.show("正在加载英雄基础表0/2");
+        this.hero_list = await heroList();
+        this.$lybLoad.show("正在加载皮肤类型表1/2");
+        this.skin_type = await getSkinType();
+        this.$lybLoad.show("加载完成，正在渲染表单");
+      } catch (error) {
+        this.$lybLoad.close().then(() => {
+          this.show = true;
+        });
+      }
+      setTimeout(() => {
+        this.$lybLoad.close().then(() => {
+          this.show = true;
+        });
+      }, 500);
+    }, 1000);
   },
   methods: {
     //#####·········设置图片弹窗组件··········#####//
@@ -109,6 +130,19 @@ export default {
       this.AddLink_title = "设置" + this.AddLink_set_desc[key];
       this.AddLink_placeholder = "请输入" + this.AddLink_set_desc[key];
       this.AddLink_key = key;
+    },
+
+    //#####··········增加一项··········#####//
+    addOne() {
+      this.skin_data.data.push({ name: "", img: "", head: "", type: 0 });
+
+      setTimeout(() => {
+        const scrollBox = this.$refs.content.$el;
+        scrollBox.scroll({
+          top: scrollBox.scrollHeight,
+          behavior: "smooth",
+        });
+      }, 250);
     },
 
     //#####··········隐藏自身··········#####//
@@ -139,6 +173,8 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 100vh;
+    overflow: auto;
     padding: var(--gap-25);
     color: #fff;
     .skin {
@@ -157,6 +193,11 @@ export default {
           font-size: var(--font-s-30);
         }
       }
+    }
+    .k-button {
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
   .LybCommitBtn,
