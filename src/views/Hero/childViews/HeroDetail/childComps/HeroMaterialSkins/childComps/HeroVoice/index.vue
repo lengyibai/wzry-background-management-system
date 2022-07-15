@@ -18,16 +18,20 @@
     >
       <span v-if="currentIndex !== index"> {{ item.desc }}</span>
       <transition name="fade">
-        <img
+        <LybSvg
           v-if="currentIndex === index"
-          src="@/assets/img/svg/bugle.svg"
-          alt=""
+          :svg="icon"
+          color="#fff"
+          enter-color="var(--blue)"
+          down-color="var(--red)"
+          size="35px"
         />
       </transition>
     </div>
   </div>
 </template>
 <script>
+import icon from "./svg";
 export default {
   name: "HeroVoice",
   props: {
@@ -39,6 +43,7 @@ export default {
     },
   },
   data() {
+    this.icon = icon; //旋转图标
     return {
       voice_url: "", //语音链接
       voice_toggle: false, //用于切换语音
@@ -47,9 +52,11 @@ export default {
     };
   },
   mounted() {
+    /* 出场动画 */
     const list = this.$refs.voice;
     list.forEach((item, index) => {
-      item.style.transitionDelay = `${index / 15}s`;
+      item.style.transitionDelay = `${index / 15}s`; //入场间隔
+      /* 决定是从左还是从右入场 */
       if (index % 2) {
         item.style.transform = `translateX(-100%) translateY(500%) scale(0)`;
       } else {
@@ -57,10 +64,11 @@ export default {
       }
       setTimeout(() => {
         item.style.transform = "translateX(0%) translateY(0%) scale(1)";
+        /* 动画结束后初始化 */
         setTimeout(() => {
           item.style.transitionDelay = "0s";
         }, 1000);
-      }, 250);
+      });
     });
   },
   methods: {
@@ -68,6 +76,7 @@ export default {
     ended() {
       /* 如果播放完最后一个，则停止播放 */
       if (this.currentIndex + 1 === this.voices.length) {
+        this.currentIndex += 1;
         return;
       }
       /* 继续播放下一个 */
@@ -91,8 +100,10 @@ export default {
         this.voice_toggle = true;
         this.voice_url = voice;
         this.$nextTick(() => {
-          this.$refs.voice.play().then(() => {
-            this.time = this.$refs.voice.duration;
+          const audio = this.$refs.voice;
+          audio.addEventListener("canplay", () => {
+            audio.play();
+            this.time = audio.duration;
           });
         });
       }, 250);
@@ -112,29 +123,26 @@ export default {
   .voice {
     width: 100%;
     height: 50px;
-    transition: all 0.5s;
+    transition: all 1s;
     white-space: nowrap;
     padding: 0 100px;
     background-color: rgba(0, 0, 0, 0.5);
     overflow: hidden;
     color: var(--white);
     &:hover {
+      height: 60px;
       transition: all 0.25s cubic-bezier(0.18, 0.89, 0, 1.41) !important;
-      transform: scale(1.1) !important;
       color: var(--blue);
     }
     span {
       font-size: var(--font-s-16);
-    }
-    img {
-      height: 50px;
-      padding: 10px;
     }
   }
 }
 .active {
   padding: 0 !important;
   width: 50px !important;
+  height: 50px !important;
   border-radius: 50%;
   animation: rotate 0s 0.5s linear;
 }
