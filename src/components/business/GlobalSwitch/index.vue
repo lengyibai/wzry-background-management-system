@@ -19,6 +19,46 @@ import Vue from "vue";
 export default {
   name: "GlobalSwitch",
   data() {
+    this.sound = {
+      login: require("@/assets/audios/login.mp3"),
+      default: require("@/assets/audios/default.mp3"),
+      tab: require("@/assets/audios/tab栏切换.mp3"),
+      查看: require("@/assets/audios/查看.mp3"),
+      确定: require("@/assets/audios/确定.mp3"),
+      关闭: require("@/assets/audios/关闭.mp3"),
+      取消: require("@/assets/audios/取消.mp3"),
+      消息提示: require("@/assets/audios/消息提示.mp3"),
+      警告提示: require("@/assets/audios/警告提示.mp3"),
+      错误提示: require("@/assets/audios/错误提示.mp3"),
+      关闭抽屉: require("@/assets/audios/关闭抽屉.mp3"),
+      查看详情: require("@/assets/audios/查看详情.mp3"),
+      确认弹窗: require("@/assets/audios/确认弹窗.mp3"),
+      皮肤相关: require("@/assets/audios/皮肤相关.mp3"),
+      模式选择: require("@/assets/audios/模式选择.mp3"),
+      装备相关: require("@/assets/audios/装备相关.mp3"),
+      英雄列表: require("@/assets/audios/英雄列表.mp3"),
+      项目组件: require("@/assets/audios/项目组件.mp3"),
+    };
+    this.sound_type = {
+      default: ["默认"],
+      tab: ["tab"],
+      login: ["login"],
+      模式选择: ["/home"],
+      查看详情: ["/system/hero"],
+      皮肤相关: ["/system/skin"],
+      装备相关: ["/system/equip", "/equip", "/system/epigraph"],
+      英雄列表: ["/hero"],
+      查看: ["查看"],
+      确定: ["确定"],
+      关闭: ["关闭"],
+      取消: ["取消"],
+      消息提示: ["消息提示"],
+      警告提示: ["警告提示"],
+      错误提示: ["错误提示"],
+      确认弹窗: ["确认弹窗"],
+      关闭抽屉: ["收起侧边栏"],
+      项目组件: ["/system/components"],
+    };
     return {
       //#····消息提醒相关····#//
       messages: [], //消息队列
@@ -31,30 +71,21 @@ export default {
       click_name: "", //点击的标识，用于解决重复点击会重复播放问题
       sound_name: "default", //音效名
       sounds: [], //音效队列
-      sound: {
-        login: require("@/assets/audios/login.mp3"),
-        default: require("@/assets/audios/default.mp3"),
-        tab: require("@/assets/audios/tab栏切换.mp3"),
-        查看: require("@/assets/audios/查看.mp3"),
-        确定: require("@/assets/audios/确定.mp3"),
-        关闭: require("@/assets/audios/关闭.mp3"),
-        取消: require("@/assets/audios/取消.mp3"),
-        消息提示: require("@/assets/audios/消息提示.mp3"),
-        警告提示: require("@/assets/audios/警告提示.mp3"),
-        错误提示: require("@/assets/audios/错误提示.mp3"),
-        关闭抽屉: require("@/assets/audios/关闭抽屉.mp3"),
-        查看详情: require("@/assets/audios/查看详情.mp3"),
-        确认弹窗: require("@/assets/audios/确认弹窗.mp3"),
-        皮肤相关: require("@/assets/audios/皮肤相关.mp3"),
-        模式选择: require("@/assets/audios/模式选择.mp3"),
-        装备相关: require("@/assets/audios/装备相关.mp3"),
-        英雄列表: require("@/assets/audios/英雄列表.mp3"),
-        项目组件: require("@/assets/audios/项目组件.mp3"),
-      },
     };
   },
   mounted() {
     //#####··········全局window事件··········#####//
+    /*
+    created() {
+      this.$bus.$on('change', value => {
+        console.log(value)
+      });
+    },
+    beforeDestroy() {
+      //组件一销毁就需要关闭监听，防止重复监听
+      this.$bus.$off('change');
+    },
+   */
     //####········resize········####//
     window.addEventListener(
       "resize",
@@ -67,6 +98,20 @@ export default {
       "click",
       function (e) {
         this.$bus.$emit("click", e);
+      }.bind(this),
+    );
+    //####········mousedown········####//
+    window.addEventListener(
+      "mousedown",
+      function (e) {
+        this.$bus.$emit("mousedown", e);
+      }.bind(this),
+    );
+    //####········mouseup········####//
+    window.addEventListener(
+      "mouseup",
+      function (e) {
+        this.$bus.$emit("mouseup", e);
       }.bind(this),
     );
     //#####··········全局点击音效··········#####//
@@ -121,32 +166,11 @@ export default {
     click(name) {
       // if (this.click_name === name) return;
       this.click_name = name;
-      const obj = {
-        default: ["默认"],
-        tab: ["tab"],
-        login: ["login"],
-        模式选择: ["/home"],
-        查看详情: ["/system/hero"],
-        皮肤相关: ["/system/skin"],
-        装备相关: ["/system/equip", "/equip", "/system/epigraph"],
-        英雄列表: ["/hero"],
-        查看: ["查看"],
-        确定: ["确定"],
-        关闭: ["关闭"],
-        取消: ["取消"],
-        消息提示: ["消息提示"],
-        警告提示: ["警告提示"],
-        错误提示: ["错误提示"],
-        确认弹窗: ["确认弹窗"],
-        关闭抽屉: ["收起侧边栏"],
-        项目组件: ["/system/components"],
-      };
-
       /* 获取点击触发的音效名 */
       this.sound_name =
         (typeof name === "string" &&
-          Object.keys(obj).find(item => {
-            return obj[item].find(item => {
+          Object.keys(this.sound_type).find(item => {
+            return this.sound_type[item].find(item => {
               return name.includes(item);
             });
           })) ||
@@ -155,18 +179,22 @@ export default {
       /* 将音效加入播放队列 */
       const id = new Date().getTime();
       this.sounds.push({ id: id, name: this.sound_name });
-      setTimeout(() => {
-        this.$nextTick(() => {
-          try {
-            const audio = this.$refs[id][0];
-            audio.play().catch(() => {
-              console.warn("用户需要与网页交互才能播放音效");
-            });
-          } catch (error) {
-            console.log(error);
+      this.$nextTick(() => {
+        const audio = this.$refs[id][0];
+
+        audio
+          .play()
+          .then(() => {
+            audio.play();
+            /* 音效播放完毕后删除音频标签元素 */
+            setTimeout(() => {
+              audio.remove();
+            }, audio.duration * 1000);
+          })
+          .catch(() => {
+            audio.remove(); //播放失败也要删除
             /*  */
-          }
-        });
+          });
       });
     },
   },
