@@ -159,18 +159,37 @@ export default {
       setKeyV: this.setKeyVs,
     };
   },
-  async created() {
-    this.type_tree.areaType = await getAreaType();
-    this.type_tree.campType = await getCampType();
-    this.type_tree.energyType = await getEnergyType();
-    this.type_tree.identityType = await getIdentityType();
-    this.type_tree.locationType = await getLocationType();
-    this.type_tree.periodType = await getPeriodType();
-    this.type_tree.professionType = await getProfessionType();
-    this.type_tree.specialtyType = await getSpecialtyType();
-    setTimeout(() => {
-      this.show = true;
-    }, 500);
+  created() {
+    setTimeout(async () => {
+      try {
+        this.$lybLoad.show("正在加载区域类型表0/8");
+        this.type_tree.areaType = await getAreaType();
+        this.$lybLoad.show("正在加载阵营类型表1/8");
+        this.type_tree.campType = await getCampType();
+        this.$lybLoad.show("正在加载能量类型表2/8");
+        this.type_tree.energyType = await getEnergyType();
+        this.$lybLoad.show("正在加载身份类型表3/8");
+        this.type_tree.identityType = await getIdentityType();
+        this.$lybLoad.show("正在加载定位类型表4/8");
+        this.type_tree.locationType = await getLocationType();
+        this.$lybLoad.show("正在加载时期类型表5/8");
+        this.type_tree.periodType = await getPeriodType();
+        this.$lybLoad.show("正在加载职业类型表6/8");
+        this.type_tree.professionType = await getProfessionType();
+        this.$lybLoad.show("正在加载特长类型表7/8");
+        this.type_tree.specialtyType = await getSpecialtyType();
+        this.$lybLoad.show("加载完成，正在渲染表单");
+      } catch (error) {
+        this.$lybLoad.close().then(() => {
+          this.show = true;
+        });
+      }
+      setTimeout(() => {
+        this.$lybLoad.close().then(() => {
+          this.show = true;
+        });
+      }, 500);
+    }, 1000);
   },
   methods: {
     //#####··········隐藏自身··········#####//
