@@ -31,3 +31,32 @@ export const ManageCard = {
     ];
   },
 };
+
+/* 发布及隐藏自身 */
+export const addHide = {
+  data() {
+    return {
+      show: false,
+      add_finish: false, //是否发布成功
+    };
+  },
+  methods: {
+    //#####··········隐藏自身··········#####//
+    hide() {
+      this.show = false;
+      setTimeout(() => {
+        this.$emit("input", false);
+      }, 500);
+    },
+
+    //#####··········发布··········#####//
+    add() {
+      setTimeout(() => {
+        this.add_finish = true;
+        setTimeout(() => {
+          this.hide();
+        }, 250);
+      }, 250);
+    },
+  },
+};

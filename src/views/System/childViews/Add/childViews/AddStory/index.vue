@@ -1,5 +1,5 @@
 <template>
-  <div class="AddStory view_add">
+  <div class="AddStory">
     <transition name="fade">
       <div class="content" v-show="show">
         <div class="title">英雄故事</div>
@@ -13,8 +13,8 @@
     <LybCommitBtn
       class="LybCommitBtn"
       size="50px"
-      @upload="addStory"
-      :finish="addStory_finish"
+      @upload="add"
+      :finish="add_finish"
       title="发布"
     />
 
@@ -23,54 +23,33 @@
   </div>
 </template>
 <script>
+//#####··········混入··········#####//
+// { 发布及隐藏自身 }
+import { addHide } from "@/utils/mixins.js";
 export default {
   name: "AddStory",
   data() {
     return {
-      show: false,
       story_data: {
         gamestory: "",
         history: "",
       },
-      addStory_finish: false, //是否发布成功
     };
   },
-  components: {},
+
+  mixins: [addHide],
   mounted() {
     setTimeout(() => {
       this.show = true;
     }, 1000);
   },
-  methods: {
-    //#####··········隐藏自身··········#####//
-    hide() {
-      this.show = false;
-      setTimeout(() => {
-        this.$emit("input", false);
-      }, 500);
-    },
-
-    //#####··········发布故事 ··········#####//
-    addStory() {
-      setTimeout(() => {
-        this.addStory_finish = true;
-        setTimeout(() => {
-          this.hide();
-        }, 250);
-      }, 250);
-    },
-  },
+  methods: {},
 };
 </script>
 <style scoped lang="less">
 .AddStory {
+  .view_add();
   .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: var(--gap-25);
-    color: #fff;
     .title {
       font-size: var(--font-s-35);
       color: var(--theme-color-eight);
@@ -79,31 +58,6 @@ export default {
     .LybRichText {
       width: 75%;
       margin-bottom: var(--gap-50);
-    }
-  }
-  .LybCommitBtn,
-  .LybCancelBtn {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    transition: all 0.1s;
-    &:hover {
-      filter: saturate(2);
-    }
-    &:active {
-      filter: brightness(0.75);
-    }
-  }
-  .LybCommitBtn {
-    transform: translateX(-25%) translateY(-25%);
-    &:active {
-      transform: translateX(-25%) translateY(-25%) scale(0.9);
-    }
-  }
-  .LybCancelBtn {
-    transform: translateX(-155%) translateY(-25%);
-    &:active {
-      transform: translateX(-155%) translateY(-25%) scale(0.9);
     }
   }
 }

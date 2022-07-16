@@ -1,5 +1,5 @@
 <template>
-  <div class="AddHero view_add">
+  <div class="AddHero">
     <transition name="fade">
       <div class="content" v-if="show">
         <div class="flex-box">
@@ -49,8 +49,8 @@
     <LybCommitBtn
       class="LybCommitBtn"
       size="50px"
-      @upload="addHero"
-      :finish="addHero_finish"
+      @upload="add"
+      :finish="add_finish"
       title="发布"
     />
 
@@ -84,6 +84,11 @@ import { getPeriodType } from "@/api/main/tree/periodType";
 import { getProfessionType } from "@/api/main/tree/professionType";
 //接口信息：{ 特长 }
 import { getSpecialtyType } from "@/api/main/tree/specialtyType";
+
+//#####··········混入··········#####//
+// { 发布及隐藏自身 }
+import { addHide } from "@/utils/mixins.js";
+
 //#####··········子组件··········#####//
 import AddHeroCover from "./childComps/AddHeroCover"; //设置封面
 import AddHeroHeadPoster from "./childComps/AddHeroHeadPoster"; //设置头像
@@ -120,7 +125,6 @@ export default {
       ["特长", "specialtyType", "specialty"],
     ];
     return {
-      show: false,
       /* 弹窗相关 */
       show_AddLink: false, //显示添加链接弹窗
       AddLink_key: "", //当前谁在使用弹窗(字段名)
@@ -144,10 +148,9 @@ export default {
       },
       /* 区域列表 */
       areaType_list: [],
-
-      addHero_finish: false, //是否发布成功
     };
   },
+  mixins: [addHide],
   components: {
     AddHeroCover,
     AddHeroHeadPoster,
@@ -161,45 +164,28 @@ export default {
   },
   created() {
     setTimeout(async () => {
-      try {
-        this.$lybLoad.show("正在加载区域类型表0/8");
-        this.type_tree.areaType = await getAreaType();
-        this.$lybLoad.show("正在加载阵营类型表1/8");
-        this.type_tree.campType = await getCampType();
-        this.$lybLoad.show("正在加载能量类型表2/8");
-        this.type_tree.energyType = await getEnergyType();
-        this.$lybLoad.show("正在加载身份类型表3/8");
-        this.type_tree.identityType = await getIdentityType();
-        this.$lybLoad.show("正在加载定位类型表4/8");
-        this.type_tree.locationType = await getLocationType();
-        this.$lybLoad.show("正在加载时期类型表5/8");
-        this.type_tree.periodType = await getPeriodType();
-        this.$lybLoad.show("正在加载职业类型表6/8");
-        this.type_tree.professionType = await getProfessionType();
-        this.$lybLoad.show("正在加载特长类型表7/8");
-        this.type_tree.specialtyType = await getSpecialtyType();
-        this.$lybLoad.show("加载完成，正在渲染表单");
-      } catch (error) {
-        this.$lybLoad.close().then(() => {
-          this.show = true;
-        });
-      }
-      setTimeout(() => {
-        this.$lybLoad.close().then(() => {
-          this.show = true;
-        });
-      }, 500);
+      this.$lybLoad.show("正在加载区域类型表0/7");
+      this.type_tree.areaType = await getAreaType();
+      this.$lybLoad.show("正在加载阵营类型表1/7");
+      this.type_tree.campType = await getCampType();
+      this.$lybLoad.show("正在加载能量类型表2/7");
+      this.type_tree.energyType = await getEnergyType();
+      this.$lybLoad.show("正在加载身份类型表3/7");
+      this.type_tree.identityType = await getIdentityType();
+      this.$lybLoad.show("正在加载定位类型表4/7");
+      this.type_tree.locationType = await getLocationType();
+      this.$lybLoad.show("正在加载时期类型表5/7");
+      this.type_tree.periodType = await getPeriodType();
+      this.$lybLoad.show("正在加载职业类型表6/7");
+      this.type_tree.professionType = await getProfessionType();
+      this.$lybLoad.show("正在加载特长类型表7/7");
+      this.type_tree.specialtyType = await getSpecialtyType();
+      this.$lybLoad.close().then(() => {
+        this.show = true;
+      });
     }, 1000);
   },
   methods: {
-    //#####··········隐藏自身··········#####//
-    hide() {
-      this.show = false;
-      setTimeout(() => {
-        this.$emit("input", false);
-      }, 500);
-    },
-
     //#####·········设置图片弹窗组件··········#####//
     //####········获取链接········####//
     getLink(link) {
@@ -219,58 +205,18 @@ export default {
     setKeyVs(k, v) {
       this.$set(this.hero_data, k, v);
     },
-
-    //#####··········发布英雄··········#####//
-    addHero() {
-      setTimeout(() => {
-        this.addHero_finish = true;
-        setTimeout(() => {
-          this.hide();
-        }, 250);
-      }, 250);
-    },
   },
 };
 </script>
 <style scoped lang="less">
 .AddHero {
+  .view_add();
   .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: var(--gap-25);
-    color: #fff;
     .flex-box {
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
       margin-bottom: var(--gap-50);
-    }
-  }
-  .LybCommitBtn,
-  .LybCancelBtn {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    transition: all 0.1s;
-    &:hover {
-      filter: saturate(2);
-    }
-    &:active {
-      filter: brightness(0.75);
-    }
-  }
-  .LybCommitBtn {
-    transform: translateX(-25%) translateY(-25%);
-    &:active {
-      transform: translateX(-25%) translateY(-25%) scale(0.9);
-    }
-  }
-  .LybCancelBtn {
-    transform: translateX(-155%) translateY(-25%);
-    &:active {
-      transform: translateX(-155%) translateY(-25%) scale(0.9);
     }
   }
 }
