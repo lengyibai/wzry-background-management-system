@@ -9,11 +9,7 @@ Vue.config.productionTip = false;
 import "./plugins/element";
 
 //####········全局组件········####//
-//###······个人······###//
 import "@/components/index.js";
-
-//####········公共CSS、JS········####//
-import "@/styles/indexs.css";
 
 //#####··········其他··········#####//
 //####········事件总线········####//
