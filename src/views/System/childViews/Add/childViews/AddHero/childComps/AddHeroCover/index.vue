@@ -1,6 +1,6 @@
 <template>
   <div class="AddHeroCover">
-    <span class="title text-gradient-one">英雄封面：</span>
+    <span>英雄封面：</span>
 
     <!--//%%%%%··········选择封面··········%%%%%//-->
     <AddHeroCoverImg :p="p" />
@@ -78,7 +78,8 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: var(--gap-35);
-  .title {
+  span {
+    .text-gradient-one();
     font-size: var(--font-s-30);
   }
 }
