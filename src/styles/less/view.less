@@ -1,0 +1,45 @@
+.view_add {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  > .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    padding: var(--gap-25);
+  }
+
+  > .LybCommitBtn,
+  > .LybCancelBtn {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    transition: all 0.1s;
+    &:hover {
+      filter: saturate(2);
+    }
+    &:active {
+      filter: brightness(0.75);
+    }
+  }
+  > .LybCommitBtn {
+    transform: translateX(-25%) translateY(-25%);
+    &:active {
+      transform: translateX(-25%) translateY(-25%) scale(0.9);
+    }
+  }
+  > .LybCancelBtn {
+    transform: translateX(-155%) translateY(-25%);
+    &:active {
+      transform: translateX(-155%) translateY(-25%) scale(0.9);
+    }
+  }
+}

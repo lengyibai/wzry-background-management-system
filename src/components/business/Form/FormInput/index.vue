@@ -2,9 +2,7 @@
   <div class="FormInput">
     <!-- 右侧描述 -->
     <div class="label" :style="{ width: labelWidth }">
-      <span class="text-gradient-one">
-        <i class="star" v-if="required">*</i>{{ label }}：
-      </span>
+      <span><i class="star" v-if="required">*</i>{{ label }}： </span>
     </div>
 
     <!-- 输入框 -->
@@ -107,6 +105,7 @@ export default {
     color: var(--theme-color-eight);
     text-align: right;
     span {
+      .text-gradient-one();
       position: relative;
       font-size: var(--font-s-30);
       .star {

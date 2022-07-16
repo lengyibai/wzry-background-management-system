@@ -1,6 +1,6 @@
 <template>
   <div class="AddHeroHeadPoster">
-    <span class="title text-gradient-one">英雄头像&海报：</span>
+    <span>英雄头像&海报：</span>
     <SelectImg
       :src="hero_data.headImg"
       keyword="headImg"
@@ -28,7 +28,8 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: var(--gap-35);
-  .title {
+  span {
+    .text-gradient-one();
     font-size: var(--font-s-30);
   }
 }

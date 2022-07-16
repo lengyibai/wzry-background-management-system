@@ -1,0 +1,104 @@
+.color {
+  color: var(--white) !important;
+  background-image: linear-gradient(
+    25deg,
+    rgba(34, 58, 94, 0) 25%,
+    rgba(34, 130, 199, 0.25) 100%
+  );
+}
+
+/* 侧边栏主体 */
+.el-menu {
+  border: none !important;
+  height: 100%;
+}
+/* 菜单栏支持滚动条 */
+.el-menu-vertical-demo {
+  height: calc(100% - 75px);
+  overflow: hidden auto;
+}
+
+/* 侧边栏背景 */
+.sidebar-container {
+  // 目前已被图片替代
+  background-color: rgba(35, 60, 91, 0.25) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 菜单激活色 */
+.el-menu-item.is-active {
+  .color();
+}
+/* 父级菜单 */
+// 背景色
+.el-menu .el-menu-item {
+  display: flex;
+  align-items: center;
+  background-color: transparent !important;
+  &:hover {
+    .color();
+  }
+}
+
+// 文字及图标激活色
+.el-submenu.is-active > .el-submenu__title .submenu {
+  span {
+    color: var(--white) !important;
+  }
+}
+
+/* 子级菜单 */
+// 下拉背景色
+.el-submenu .el-menu .nest-menu {
+  // background-color: rgba(23, 37, 63, 0.5) !important;
+}
+
+// 背景色
+.el-submenu .el-submenu__title {
+  background-color: transparent !important;
+  &:hover {
+    .color();
+  }
+}
+// 文字
+.el-menu .el-submenu .el-submenu__title .submenu span,
+.el-menu .el-menu-item .submenu span {
+  font-size: var(--font-s-20);
+}
+
+/* 折叠相关 */
+// 设置宽度才会有折叠动画
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 250px;
+}
+// 折叠后隐藏箭头
+.el-menu-vertical-demo .el-icon-arrow-right {
+  // right: 0px;
+  display: none !important;
+}
+.el-menu--vertical .el-icon-arrow-right {
+  display: none !important;
+}
+/* 折叠后父级 */
+// 背景色
+.el-menu--vertical .el-menu .el-submenu .el-submenu__title {
+  background-color: transparent !important;
+  &:hover {
+    .color();
+  }
+}
+
+/* 折叠后菜单背景 */
+.el-menu--vertical .el-menu {
+  background-color: #1a2842 !important;
+}
+
+.el-submenu .el-submenu__title i {
+  color: transparent;
+  width: 25px;
+  height: 15px;
+  background: url("../../assets/img/part/icon/k_arrow.png") no-repeat;
+  background-size: contain;
+}
