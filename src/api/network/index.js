@@ -49,5 +49,6 @@ server.interceptors.response.use(
       "请求失败，请检查是否启动本地服务器：npm run wzry",
       "error",
     );
+    Vue.prototype.$lybLoad.close();
   },
 );
