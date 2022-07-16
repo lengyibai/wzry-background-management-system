@@ -104,7 +104,7 @@ export default {
       select_list: [], //下拉列表
       is_unfold: false, //是否展开
       currentIndex: null, //当前点击
-      debounce: null,
+      debounce: null, //防抖
     };
   },
   computed: {
@@ -166,6 +166,7 @@ export default {
     //#####··········选择的数据··········#####//
     select(id) {
       this.$emit("input", id);
+      this.$emit("change", id);
       this.is_unfold = false;
       this.select_list = this.data;
     },

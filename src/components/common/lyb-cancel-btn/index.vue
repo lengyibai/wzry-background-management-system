@@ -33,9 +33,7 @@ export default {
   methods: {
     close() {
       this.status = 1;
-      setTimeout(() => {
-        this.$emit("close");
-      }, 350);
+      this.$emit("close");
     },
   },
 };
