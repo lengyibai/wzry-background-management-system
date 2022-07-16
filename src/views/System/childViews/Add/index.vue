@@ -23,6 +23,11 @@
     <transition name="clip">
       <AddStory v-if="show_AddStory" v-model="show_AddStory" />
     </transition>
+
+    <!--//%%%%%··········添加语音··········%%%%%//-->
+    <transition name="clip">
+      <AddVoice v-if="show_AddVoice" v-model="show_AddVoice" />
+    </transition>
   </div>
 </template>
 <script>
@@ -34,6 +39,7 @@ import { ManageCard } from "@/utils/mixins.js";
 import AddHero from "./childViews/AddHero"; //英雄
 import AddSkin from "./childViews/AddSkin"; //皮肤
 import AddStory from "./childViews/AddStory"; //故事
+import AddVoice from "./childViews/AddVoice"; //语音
 export default {
   name: "Add",
   data() {
@@ -41,22 +47,18 @@ export default {
       show_AddHero: false, //显示添加英雄页面
       show_AddSkin: false, //显示添加英雄页面
       show_AddStory: false, //显示添加故事页面
+      show_AddVoice: false, //显示添加故事页面
     };
   },
   mixins: [ManageCard],
-  components: { AddHero, AddSkin, AddStory },
+  components: { AddHero, AddSkin, AddStory, AddVoice },
   methods: {
     open(a) {
       const obj = {
-        英雄() {
-          this.show_AddHero = true;
-        },
-        皮肤() {
-          this.show_AddSkin = true;
-        },
-        故事() {
-          this.show_AddStory = true;
-        },
+        英雄: () => (this.show_AddHero = true),
+        皮肤: () => (this.show_AddSkin = true),
+        故事: () => (this.show_AddStory = true),
+        语音: () => (this.show_AddVoice = true),
       };
       try {
         obj[a].call(this);
