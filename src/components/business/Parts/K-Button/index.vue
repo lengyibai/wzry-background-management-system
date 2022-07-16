@@ -1,7 +1,10 @@
 <template>
   <div
     class="K-Button cursor-pointer"
-    :style="{ width, height }"
+    :style="{
+      width: autoSize ? '100%' : width,
+      height: autoSize ? '100%' : height,
+    }"
     v-particle="{
       color: particle_color[type],
       size: 5,
@@ -38,6 +41,10 @@ export default {
     fontSize: {
       type: String,
       default: "var(--font-s-24)",
+    },
+    autoSize: {
+      type: Boolean,
+      default: false,
     },
   },
   name: "K-Button",
