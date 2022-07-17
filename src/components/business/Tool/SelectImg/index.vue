@@ -69,7 +69,7 @@ export default {
     border-style: dashed;
   }
   &:active {
-    background-color: #555;
+    transform: scale(0.95);
   }
   img {
     object-fit: cover;
