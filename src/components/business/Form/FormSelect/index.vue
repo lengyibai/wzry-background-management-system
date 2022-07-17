@@ -125,9 +125,15 @@ export default {
       this.select_value = data[0]?.name;
       this.active_value = data[0]?.name;
     },
+    //#####··········在created会赋空值，只能通过侦听器··········#####//
+    data: {
+      immediate: true,
+      handler(v) {
+        this.select_list = v;
+      },
+    },
   },
   created() {
-    this.select_list = this.data;
     //#####··········防抖配合正则搜索··········#####//
     this.debounce = $debounce(
       function () {
@@ -160,6 +166,7 @@ export default {
       this.is_focus = false;
       setTimeout(() => {
         this.no_legal = this.required && this.active_value === "";
+        this.select_list = this.data;
       }, 100);
     },
 
