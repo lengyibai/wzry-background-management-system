@@ -31,8 +31,12 @@ export default {
   z-index: 1000;
 }
 
-.fade-enter-active,
+.fade-enter,
 .fade-leave-active {
-  transition: all 0.25s;
+  opacity: 0;
+}
+.fade-leave-active,
+.fade-enter-active {
+  transition: all 0.5s;
 }
 </style>
