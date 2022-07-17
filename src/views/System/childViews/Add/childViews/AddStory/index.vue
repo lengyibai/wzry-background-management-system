@@ -43,7 +43,17 @@ export default {
       this.show = true;
     }, 1000);
   },
-  methods: {},
+  methods: {
+    //#####··········发布··········#####//
+    add() {
+      setTimeout(() => {
+        this.add_finish = true;
+        setTimeout(() => {
+          this.hide();
+        }, 250);
+      }, 250);
+    },
+  },
 };
 </script>
 <style scoped lang="less">

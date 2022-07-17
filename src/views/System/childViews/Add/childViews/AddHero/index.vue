@@ -2,6 +2,7 @@
   <div class="AddHero">
     <transition name="fade">
       <div class="content" v-if="show">
+        <!--//%%%%%··········英雄名、代号、身高··········%%%%%//-->
         <div class="flex-box">
           <FormInput label="英雄名" required v-model="hero_data.name" />
           <FormInput label="代号" required v-model="hero_data.mark" />
@@ -11,6 +12,8 @@
             v-model="hero_data.height"
           />
         </div>
+
+        <!--//%%%%%··········选择器相关··········%%%%%//-->
         <div class="flex-box">
           <FormSelect
             v-for="(v, k) in info"
@@ -204,6 +207,16 @@ export default {
     //#####··········设置属性值··········#####//
     setKeyVs(k, v) {
       this.$set(this.hero_data, k, v);
+    },
+
+    //#####··········发布··········#####//
+    add() {
+      setTimeout(() => {
+        this.add_finish = true;
+        setTimeout(() => {
+          this.hide();
+        }, 250);
+      }, 250);
     },
   },
 };
