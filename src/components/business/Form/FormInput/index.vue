@@ -1,5 +1,5 @@
 <template>
-  <div class="FormInput">
+  <div class="FormInput" :style="{ width: autoSize && '100%' }">
     <!-- 右侧描述 -->
     <div class="label" :style="{ width: labelWidth }">
       <span><i class="star" v-if="required">*</i>{{ label }}： </span>
@@ -10,6 +10,7 @@
       <slot>
         <input
           type="text"
+          :style="{ width: autoSize ? '100%' : '250px' }"
           @input="$emit('input', $event.target.value)"
           :value="value"
           :placeholder="placeholder"
@@ -53,6 +54,11 @@ export default {
     labelWidth: {
       type: String,
       default: "150px",
+    },
+    /* 自适应大小 */
+    autoSize: {
+      type: Boolean,
+      default: false,
     },
     /* 输入框描述 */
     placeholder: {
@@ -119,8 +125,8 @@ export default {
   }
   .input {
     position: relative;
+    flex: 1;
     input {
-      width: 250px;
       border: none;
       border-bottom: 1px solid var(--theme-color-nine);
       outline: none;
