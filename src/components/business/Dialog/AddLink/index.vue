@@ -1,30 +1,28 @@
 <template>
   <LybMask :show="value">
     <transition :name="type">
-      <div class="AddLink" :style="{ width: width }" v-if="value">
+      <div class="AddLink" :style="{ width: width }" v-show="value">
         <div class="title">{{ title }}</div>
         <img
           class="close cursor-pointer"
-          v-if="showClose"
+          v-show="showClose"
           src="@/assets/img/part/icon/close.png"
           @dragstart.prevent
           @click="$emit('input', false)"
         />
         <img class="bg" src="@/assets/img/other/dialog.png" />
-        <div class="content">
-          <input
-            type="text"
-            ref="input"
-            :placeholder="placeholder"
-            v-model="link"
-          />
-          <!-- v-if解决按钮隐式显示，高度却未知，导致粒子无法正常显示 -->
-          <transition name="fade">
-            <K-Button type="warning" v-if="value" @click.native="close"
-              >确定</K-Button
-            >
-          </transition>
-        </div>
+        <transition name="fade">
+          <div class="content" v-if="value">
+            <input
+              type="text"
+              ref="input"
+              :placeholder="placeholder"
+              v-model="link"
+            />
+            <!-- v-if解决按钮隐式显示，高度却未知，导致粒子无法正常显示 -->
+            <K-Button type="warning" @click.native="close">确定</K-Button>
+          </div>
+        </transition>
       </div>
     </transition>
   </LybMask>
@@ -174,7 +172,7 @@ export default {
   transition: all 0.25s cubic-bezier(0.08, 0.82, 0.17, 1);
 }
 .default-leave-active {
-  transition: all 0.25s 0.25s;
+  transition: all 0.25s;
 }
 
 /* 由下而上 */
