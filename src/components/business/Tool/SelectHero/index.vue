@@ -1,10 +1,10 @@
 <template>
   <div class="SelectHero">
     <FormSelect
-      v-if="hero_list.length"
       label="指派英雄"
       :data="hero_list"
       v-model="id"
+      required
       @change="selectHero"
     />
   </div>
