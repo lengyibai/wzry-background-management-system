@@ -32,7 +32,7 @@ export const ManageCard = {
   },
 };
 
-/* 发布及隐藏自身 */
+/* 隐藏自身 */
 export const addHide = {
   data() {
     return {
@@ -47,16 +47,6 @@ export const addHide = {
       setTimeout(() => {
         this.$emit("input", false);
       }, 500);
-    },
-
-    //#####··········发布··········#####//
-    add() {
-      setTimeout(() => {
-        this.add_finish = true;
-        setTimeout(() => {
-          this.hide();
-        }, 250);
-      }, 250);
     },
   },
 };
