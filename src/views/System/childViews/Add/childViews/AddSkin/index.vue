@@ -8,31 +8,73 @@
         is="transition-group"
         name="fade"
       >
-        <div class="skin" v-for="(item, index) in skin_data.data" :key="index">
+        <!--//%%%%%··········左上角新增··········%%%%%//-->
+        <LybSvg
+          :svg="icon.ADDC"
+          @click.native="addOne"
+          class="addOne"
+          color="var(--theme-color-seven)"
+          enter-color="var(--theme-color-four)"
+          key="LybSvg"
+          size="50px"
+        />
+
+        <!--//%%%%%··········指派英雄··········%%%%%//-->
+        <SelectHero
+          class="SelectHero"
+          v-model="skin_data.id"
+          key="SelectHero"
+        />
+
+        <!--//%%%%%··········皮肤盒子列表··········%%%%%//-->
+        <div
+          class="skin"
+          @mouseenter="currentIndex = index"
+          @mouseleave="currentIndex = null"
+          v-for="(item, index) in skin_data.data"
+          :key="item.id"
+        >
+          <!--//%%%%········皮肤名········%%%%//-->
           <FormInput label="皮肤名" required v-model="item.name" />
 
-          <FormSelect label="皮肤类型" :data="skin_type" v-model="item.type" />
+          <!--//%%%%········皮肤类型········%%%%//-->
+          <FormSelect
+            label="皮肤类型"
+            required
+            :data="skin_type"
+            v-model="item.type"
+          />
 
-          <SelectHero v-model="skin_data.id" v-if="index === 0" />
-
+          <!--//%%%%········皮肤头像、海报········%%%%//-->
           <div class="head-poster">
             <span>皮肤头像&海报：</span>
+
+            <!--//%%%······海报······%%%//-->
             <SelectImg
               :src="item.img"
               type="width"
               @select="setKeyValues"
               keyword="img"
             />
+
+            <!--//%%%······海报头像······%%%//-->
             <SelectImg :src="item.head" @select="setKeyValues" keyword="head" />
           </div>
+
+          <!--//%%%%········右上角删除········%%%%//-->
+          <transition name="fade">
+            <LybSvg
+              class="del"
+              @click.native="del(index)"
+              :svg="icon.X"
+              color="var(--theme-color-seven)"
+              enter-color="var(--theme-color-four)"
+              size="25px"
+              right="25px"
+              top="25px"
+            />
+          </transition>
         </div>
-        <K-Button
-          class="k-button"
-          @click.native="$click('确定')"
-          @mouseup.native="addOne"
-          key="a"
-          >增加一项</K-Button
-        >
       </div>
     </transition>
 
@@ -65,6 +107,9 @@ import { getSkinType } from "@/api/main/tree/skinType";
 //#####··········混入··········#####//
 // { 发布及隐藏自身 }
 import { addHide } from "@/utils/mixins.js";
+
+//#####··········图标··········#####//
+import icon from "@/assets/icon/svg/icon.js";
 export default {
   name: "AddSkin",
   data() {
@@ -72,13 +117,17 @@ export default {
       img: "海报",
       head: "头像",
     };
+
+    this.icon = icon;
     return {
       /* 添加的皮肤 */
       skin_data: {
         id: null,
-        data: [{ name: "", img: "", head: "", type: 0 }],
+        data: [],
       },
+
       skin_type: [], //皮肤类型表
+      currentIndex: null, //根据悬浮的位置显示垃圾桶
 
       /* 弹窗相关 */
       show_AddLink: false, //显示添加链接弹窗
@@ -119,14 +168,36 @@ export default {
 
     //#####··········增加一项··········#####//
     addOne() {
-      this.skin_data.data.push({ name: "", img: "", head: "", type: 0 });
+      this.skin_data.data.unshift({
+        id: new Date().getTime().toString(),
+        name: "",
+        img: "",
+        head: "",
+        type: 0,
+      });
 
-      setTimeout(() => {
+      /* setTimeout(() => {
         const scrollBox = this.$refs.content.$el;
         scrollBox.scroll({
           top: scrollBox.scrollHeight,
           behavior: "smooth",
         });
+      }, 250); */
+    },
+
+    //#####··········删除一项··········#####//
+    del(i) {
+      this.skin_data.data.splice(i, 1);
+      this.currentIndex = null;
+    },
+
+    //#####··········发布··········#####//
+    add() {
+      setTimeout(() => {
+        this.add_finish = true;
+        setTimeout(() => {
+          this.hide();
+        }, 250);
       }, 250);
     },
   },
@@ -136,12 +207,24 @@ export default {
 .AddSkin {
   .view_add();
   .content {
+    padding-left: 0;
+    padding-right: 0;
+    .SelectHero {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
     .skin {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      margin-bottom: var(--gap-35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: var(--gap-35);
+      .del {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
       .head-poster {
         width: 100%;
         display: flex;
@@ -154,8 +237,8 @@ export default {
         }
       }
     }
-    .k-button {
-      position: absolute;
+    .addOne {
+      position: fixed;
       top: 0;
       left: 0;
     }
