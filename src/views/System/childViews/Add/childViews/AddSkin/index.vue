@@ -78,7 +78,7 @@
       </div>
     </transition>
 
-    <!--//%%%%%··········发布皮肤按钮··········%%%%%//-->
+    <!--//%%%%%··········发布按钮··········%%%%%//-->
     <LybCommitBtn
       class="LybCommitBtn"
       size="50px"
@@ -207,6 +207,9 @@ export default {
 .AddSkin {
   .view_add();
   .content {
+    flex-direction: initial;
+    flex-wrap: wrap;
+    justify-content: center;
     padding-left: 0;
     padding-right: 0;
     .SelectHero {
