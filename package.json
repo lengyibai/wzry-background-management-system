@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve --watch",
     "build": "vue-cli-service build --no-module",
     "wzry": "json-server ./src/api/database/wzry.json --watch --port 9527",
-    "lint": "vue-cli-service lint --fix"
+    "lint": "vue-cli-service lint --fix",
+    "push": "git push"
   },
   "dependencies": {
     "axios": "^0.26.1",
