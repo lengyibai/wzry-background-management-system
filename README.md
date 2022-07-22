@@ -7,6 +7,6 @@
 # 王者荣耀后台管理系统
 > 开发中，有优化的地方可以提出来，大家一起学习
 >
-> 目前有这些接口，后续更新可能还会加一些
+> 当前主要目录树
 
-![mind_map](mind_map.png)
+![directory_tree](directory_tree.png)
