@@ -9,24 +9,39 @@
       type="add"
     />
 
-    <!--//%%%%%··········添加英雄··········%%%%%//-->
+    <!--//%%%%%··········发布英雄··········%%%%%//-->
     <transition name="clip">
       <AddHero v-if="show_AddHero" v-model="show_AddHero" />
     </transition>
 
-    <!--//%%%%%··········添加皮肤··········%%%%%//-->
+    <!--//%%%%%··········发布皮肤··········%%%%%//-->
     <transition name="clip">
       <AddSkin v-if="show_AddSkin" v-model="show_AddSkin" />
     </transition>
 
-    <!--//%%%%%··········添加故事··········%%%%%//-->
+    <!--//%%%%%··········发布语音··········%%%%%//-->
+    <transition name="clip">
+      <AddVoice v-if="show_AddVoice" v-model="show_AddVoice" />
+    </transition>
+
+    <!--//%%%%%··········发布技能··········%%%%%//-->
+    <transition name="clip">
+      <AddSkill v-if="show_AddSkill" v-model="show_AddSkill" />
+    </transition>
+
+    <!--//%%%%%··········发布故事··········%%%%%//-->
     <transition name="clip">
       <AddStory v-if="show_AddStory" v-model="show_AddStory" />
     </transition>
 
-    <!--//%%%%%··········添加语音··········%%%%%//-->
+    <!--//%%%%%··········发布装备··········%%%%%//-->
     <transition name="clip">
-      <AddVoice v-if="show_AddVoice" v-model="show_AddVoice" />
+      <AddEquip v-if="show_AddEquip" v-model="show_AddEquip" />
+    </transition>
+
+    <!--//%%%%%··········发布铭文··········%%%%%//-->
+    <transition name="clip">
+      <AddEpigraph v-if="show_AddEpigraph" v-model="show_AddEpigraph" />
     </transition>
   </div>
 </template>
@@ -38,27 +53,44 @@ import { ManageCard } from "@/utils/mixins.js";
 //#####··········子页面··········#####//
 import AddHero from "./childViews/AddHero"; //英雄
 import AddSkin from "./childViews/AddSkin"; //皮肤
-import AddStory from "./childViews/AddStory"; //故事
+import AddSkill from "./childViews/AddSkill"; //技能
 import AddVoice from "./childViews/AddVoice"; //语音
+import AddStory from "./childViews/AddStory"; //故事
+import AddEquip from "./childViews/AddEquip"; //装备
+import AddEpigraph from "./childViews/AddEpigraph"; //铭文
 export default {
   name: "Add",
   data() {
     return {
-      show_AddHero: false, //显示添加英雄页面
-      show_AddSkin: false, //显示添加英雄页面
-      show_AddStory: false, //显示添加故事页面
-      show_AddVoice: false, //显示添加故事页面
+      show_AddHero: false, //显示发布英雄页面
+      show_AddSkin: false, //显示发布皮肤页面
+      show_AddVoice: false, //显示发布语音页面
+      show_AddSkill: false, //显示发布技能页面
+      show_AddStory: false, //显示发布故事页面
+      show_AddEquip: false, //显示发布装备页面
+      show_AddEpigraph: false, //显示发布铭文页面
     };
   },
   mixins: [ManageCard],
-  components: { AddHero, AddSkin, AddStory, AddVoice },
+  components: {
+    AddHero,
+    AddSkin,
+    AddSkill,
+    AddVoice,
+    AddStory,
+    AddEquip,
+    AddEpigraph,
+  },
   methods: {
     open(a) {
       const obj = {
         英雄: () => (this.show_AddHero = true),
         皮肤: () => (this.show_AddSkin = true),
-        故事: () => (this.show_AddStory = true),
         语音: () => (this.show_AddVoice = true),
+        技能: () => (this.show_AddSkill = true),
+        故事: () => (this.show_AddStory = true),
+        装备: () => (this.show_AddEquip = true),
+        铭文: () => (this.show_AddEpigraph = true),
       };
       try {
         obj[a].call(this);
