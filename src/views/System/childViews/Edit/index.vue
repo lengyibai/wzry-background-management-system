@@ -1,9 +1,9 @@
 <template>
   <div class="Edit flex" :style="box">
     <K-ManageCard
-      v-for="(item, index) in list"
-      :title="item"
-      :key="index"
+      v-for="(v, k) in list"
+      :title="v"
+      :key="k"
       :style="card"
       type="edit"
     />

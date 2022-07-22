@@ -13,22 +13,22 @@ export const ManageCard = {
       flexWrap: "wrap",
       overflow: "auto",
     };
-    this.list = [
-      "英雄",
-      "皮肤",
-      "语音",
-      "技能",
-      "故事",
-      "装备",
-      "铭文",
-      "英雄关系",
-      "关系类型",
-      "技能类型",
-      "技能效果",
-      "装备类型",
-      "铭文类型",
-      "铭文效果",
-    ];
+    this.list = {
+      AddHero: "英雄",
+      AddSkin: "皮肤",
+      AddSkill: "语音",
+      AddVoice: "技能",
+      AddStory: "故事",
+      AddEquip: "装备",
+      AddEpigraph: "铭文",
+      /* { name: "英雄关系", key: "" },
+      { name: "关系类型", key: "" },
+      { name: "技能类型", key: "" },
+      { name: "技能效果", key: "" },
+      { name: "装备类型", key: "" },
+      { name: "铭文类型", key: "" },
+      { name: "铭文效果", key: "" }, */
+    };
   },
 };
 
