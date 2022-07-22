@@ -1,9 +1,9 @@
 <template>
   <div class="HeroDetailBasicInfo" ref="HeroDetailBasicInfo">
     <div class="name">
-      <span>{{ data.name || "未知" }}</span>
+      <span>{{ hero_data.name || "未知" }}</span>
       <div class="box">
-        <span>{{ data.mark || "未知" }}</span>
+        <span>{{ hero_data.mark || "未知" }}</span>
         <span>BACKGROUND</span>
       </div>
     </div>
@@ -17,22 +17,15 @@
 </template>
 <script>
 export default {
-  props: {
-    data: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
   name: "HeroDetailBasicInfo",
   data() {
     return {
       hero_info: {},
     };
   },
+  inject: ["hero_data"],
   created() {
-    let a = this.data;
+    let a = this.hero_data;
     this.hero_info = [
       [a.location, "location", "定位"],
       [a.specialty, "specialty", "特长"],

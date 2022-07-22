@@ -31,9 +31,10 @@ export default {
     },
   },
   components: { HeroSkillContentLeft, HeroSkillContentRight },
+  inject: ["hero_data"],
   computed: {
     activeSkill() {
-      return this.data.skills[this.index];
+      return this.hero_data.skills[this.index];
     },
   },
 };

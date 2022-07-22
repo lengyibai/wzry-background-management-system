@@ -1,25 +1,18 @@
 <template>
   <div class="HeroStory">
     <div class="title">TA的故事</div>
-    <p class="content" v-html="data.gameStory"></p>
+    <p class="content" v-html="hero_data.gameStory"></p>
     <div class="title">历史上的他</div>
-    <p class="content" v-html="data.history"></p>
+    <p class="content" v-html="hero_data.history"></p>
   </div>
 </template>
 <script>
 export default {
-  props: {
-    data: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
-  name: "index",
+  name: "HeroStory",
   data() {
     return {};
   },
+  inject: ["hero_data"],
   methods: {},
 };
 </script>

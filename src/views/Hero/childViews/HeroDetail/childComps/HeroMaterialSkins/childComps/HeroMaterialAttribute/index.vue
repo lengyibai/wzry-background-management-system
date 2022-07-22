@@ -1,24 +1,17 @@
 <template>
   <div class="HeroMaterialAttribute">
     <div class="title">英雄属性</div>
-    <K-HeroSort class="HeroSort" :occ="data.profession" />
-    <K-Attribute attr="survival" :length="data.survival" />
-    <K-Attribute attr="attack" :length="data.attack" />
-    <K-Attribute attr="effect" :length="data.effect" />
-    <K-Attribute attr="difficulty" :length="data.difficulty" />
+    <K-HeroSort class="HeroSort" :occ="hero_data.profession" />
+    <K-Attribute attr="survival" :length="hero_data.survival" />
+    <K-Attribute attr="attack" :length="hero_data.attack" />
+    <K-Attribute attr="effect" :length="hero_data.effect" />
+    <K-Attribute attr="difficulty" :length="hero_data.difficulty" />
   </div>
 </template>
 <script>
 export default {
-  props: {
-    data: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
   name: "HeroMaterialAttribute",
+  inject: ["hero_data"],
 };
 </script>
 <style scoped lang="less">

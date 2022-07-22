@@ -8,12 +8,12 @@
 
     <!--//%%%%%··········技能··········%%%%%//-->
     <HeroDetailParallaxBg class="stick" :bg="data.poster">
-      <HeroSkill :data="data" />
+      <HeroSkill />
     </HeroDetailParallaxBg>
 
     <!--//%%%%%··········故事··········%%%%%//-->
     <HeroDetailParallaxBg class="stick" :bg="data.poster">
-      <HeroStory :data="data" />
+      <HeroStory />
     </HeroDetailParallaxBg>
   </div>
 </template>
@@ -24,6 +24,7 @@ import HeroMaterialSkins from "./childComps/HeroMaterialSkins"; //资料、皮�
 import HeroSkill from "./childComps/HeroSkill"; //技能页
 import HeroStory from "./childComps/HeroStory"; //历史页
 export default {
+  name: "HeroDetail",
   props: {
     /* 英雄基本数据 */
     data: {
@@ -33,7 +34,6 @@ export default {
       },
     },
   },
-  name: "HeroDetail",
   data() {
     return {
       show_info: false,
@@ -44,6 +44,11 @@ export default {
     HeroMaterialSkins,
     HeroSkill,
     HeroStory,
+  },
+  provide() {
+    return {
+      hero_data: this.data,
+    };
   },
   created() {
     setTimeout(() => {

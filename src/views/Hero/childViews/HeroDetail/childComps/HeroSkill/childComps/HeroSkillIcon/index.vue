@@ -3,7 +3,7 @@
     <div
       class="icon"
       ref="skillImg"
-      v-for="(item, index) in data.skills"
+      v-for="(item, index) in hero_data.skills"
       :key="index"
     >
       <transition name="borderFade">
@@ -17,20 +17,12 @@
 <script>
 export default {
   name: "HeroSkillIcon",
-  props: {
-    /* 技能列表 */
-    data: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
   data() {
     return {
       currentIndex: 0, //处于展示的技能索引
     };
   },
+  inject: ["hero_data"],
   methods: {
     //#####··········点击需要展示的技能··········#####//
     selectSkill(e, index) {

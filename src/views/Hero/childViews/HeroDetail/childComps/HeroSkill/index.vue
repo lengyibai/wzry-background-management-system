@@ -2,11 +2,11 @@
   <div class="HeroSkill">
     <div class="title">技能</div>
     <!--//%%%%%··········技能图标··········%%%%%//-->
-    <HeroSkillIcon v-bind="$attrs" @select-skill="selectSkill" />
+    <HeroSkillIcon @select-skill="selectSkill" />
 
     <!--//%%%%%··········主体内容··········%%%%%//-->
     <transition name="fade">
-      <HeroSkillContent v-bind="$attrs" :index="index" v-show="toggle" />
+      <HeroSkillContent :index="index" v-show="toggle" />
     </transition>
   </div>
 </template>
@@ -15,7 +15,7 @@
 import HeroSkillIcon from "./childComps/HeroSkillIcon"; //技能图标
 import HeroSkillContent from "./childComps/HeroSkillContent"; //主体内容
 export default {
-  name: "index",
+  name: "HeroSkill",
   data() {
     return {
       toggle: true, //用于切换动画
@@ -23,7 +23,6 @@ export default {
     };
   },
   components: { HeroSkillIcon, HeroSkillContent },
-
   methods: {
     //#####··········点击需要展示的技能··········#####//
     selectSkill(index) {

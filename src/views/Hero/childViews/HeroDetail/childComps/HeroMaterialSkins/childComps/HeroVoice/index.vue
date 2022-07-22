@@ -34,16 +34,9 @@
 import icon from "./svg";
 export default {
   name: "HeroVoice",
-  props: {
-    voices: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-  },
   data() {
     this.icon = icon; //旋转图标
+    this.voices = this.hero_data.voices; //语音数据
     return {
       voice_url: "", //语音链接
       voice_toggle: false, //用于切换语音
@@ -51,6 +44,7 @@ export default {
       time: 0, //当前播放时长
     };
   },
+  inject: ["hero_data"],
   mounted() {
     /* 出场动画 */
     const list = this.$refs.voice;

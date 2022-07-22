@@ -2,19 +2,19 @@
   <div class="HeroMaterialSkins" ref="HeroMaterialSkins">
     <div class="box">
       <!--//%%%%%··········左侧详情··········%%%%%//-->
-      <HeroMaterialBasicInfo :data="data" v-if="show_info" />
+      <HeroMaterialBasicInfo v-if="show_info" />
 
       <!--//%%%%%··········右边侧详情··········%%%%%//-->
-      <HeroMaterialAttribute :data="data" v-if="show_info" />
+      <HeroMaterialAttribute v-if="show_info" />
 
       <!--//%%%%%··········皮肤类型··········%%%%%//-->
       <HerSkinType :skinTypeImg="active_skin_type" :toggle="skin_type_toggle" />
 
       <!--//%%%%%··········英雄语音··········%%%%%//-->
-      <HeroVoice :voices="data.voices" v-if="show_info" />
+      <HeroVoice :voices="hero_data.voices" v-if="show_info" />
 
       <!--//%%%%%··········中心皮肤切换··········%%%%%//-->
-      <HeroSkinHeadImg :skins="data.skins" @bg-imgs="bgImgs" />
+      <HeroSkinHeadImg :skins="hero_data.skins" @bg-imgs="bgImgs" />
 
       <!--//%%%%%··········皮肤名··········%%%%%//-->
       <HeroSkinName :toggle="skin_name_toggle" :name="active_skin_name" />
@@ -34,14 +34,6 @@ import HeroSkinHeadImg from "./childComps/HeroSkinHeadImg"; //切换皮肤工具
 import HeroSkinName from "./childComps/HeroSkinName"; //皮肤名
 import HeroBgImg from "./childComps/HeroBgImg"; //背景图
 export default {
-  props: {
-    data: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
   name: "HeroMaterialSkins",
   data() {
     return {
@@ -54,6 +46,7 @@ export default {
       skin_type_toggle: true, //皮肤类型切换
     };
   },
+  inject: ["hero_data"],
   components: {
     HeroMaterialBasicInfo,
     HeroMaterialAttribute,
@@ -72,16 +65,16 @@ export default {
   methods: {
     //#####··········通过切换背景图组件传过来的索引设置背景··········#####//
     bgImgs([i, index]) {
-      this.$set(this.bg_imgs, i, this.data.skins[index].img); //设置背景图
+      this.$set(this.bg_imgs, i, this.hero_data.skins[index].img); //设置背景图
       this.toggle = !this.toggle; //用于皮肤背景的切换动画
 
       /* 设置皮肤名，皮肤名需要有切换时的打字机效果 */
-      this.active_skin_name = this.data.skins[index].name;
+      this.active_skin_name = this.hero_data.skins[index].name;
       this.skin_name_toggle = !this.skin_name_toggle;
 
       /* 切换时延迟设置顶部皮肤类型标志 */
       setTimeout(() => {
-        const skin_type = this.data.skins[index].type;
+        const skin_type = this.hero_data.skins[index].type;
         if (skin_type && skin_type !== "伴生") {
           this.active_skin_type = require("@/assets/img/skinType/" +
             skin_type +

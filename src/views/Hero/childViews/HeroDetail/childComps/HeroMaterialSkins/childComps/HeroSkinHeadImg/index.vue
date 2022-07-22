@@ -30,16 +30,8 @@
 <script>
 export default {
   name: "HeroSkinHeadImg",
-  props: {
-    /* 皮肤数据 */
-    skins: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-  },
   data() {
+    this.skins = this.hero_data.skins;
     return {
       toggle: true, //用于切换背景
       is_into_drap: false, //拖动头像是否进入头像框范围
@@ -50,7 +42,7 @@ export default {
       }, //当前处于展示的皮肤的DOM元素及坐标
     };
   },
-  components: {},
+  inject: ["hero_data"],
   created() {
     setTimeout(() => {
       this.show_skin_head = false;
