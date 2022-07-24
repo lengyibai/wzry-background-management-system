@@ -1,5 +1,5 @@
 <template>
-  <div class="HeroSkinHeadImg">
+  <div class="HeroSkinHeadImg flex">
     <!--//%%%%%··········中心头衔框··········%%%%%//-->
     <div class="show-skin flex" ref="showSkin">
       {{ is_into_drap ? "松开" : "拖过来" }}
@@ -16,11 +16,11 @@
       v-for="(item, index) in skins"
       :key="index"
       :style="{
-        transform:
-          show_skin_head ||
-          'rotate(' +
+        transform: show_skin_head
+          ? 'rotate(' +
             (360 / skins.length) * (index + 1) +
-            'deg) translateY(-150%)',
+            'deg) translateY(-150%)'
+          : '',
       }"
     >
       <img @dragstart.prevent :src="item.head" alt="" />
@@ -35,7 +35,7 @@ export default {
     return {
       toggle: true, //用于切换背景
       is_into_drap: false, //拖动头像是否进入头像框范围
-      show_skin_head: true,
+      show_skin_head: false,
       active_skin: {
         el: null,
         transform: null,
@@ -43,10 +43,10 @@ export default {
     };
   },
   inject: ["hero_data"],
-  created() {
+  mounted() {
     setTimeout(() => {
-      this.show_skin_head = false;
-    }, 1000);
+      this.show_skin_head = true;
+    }, 2000);
   },
   methods: {
     //#####··········皮肤头像拖动事件··········#####//
@@ -81,11 +81,10 @@ export default {
         this.active_skin.transform = data.style.transform;
 
         /* 将要展示的皮肤头像过渡到头像框的位置 */
-        const el = this.$refs.showSkin;
         data.style.pointerEvents = "none";
         data.style.transition = "all 1s";
-        data.style.left = el.offsetLeft - data.offsetWidth / 2 + "px";
-        data.style.top = el.offsetTop - data.offsetHeight / 2 + "px";
+        data.style.left = `calc(50% - ${data.offsetWidth / 2}px)`;
+        data.style.top = `calc(50% - ${data.offsetHeight / 2}px)`;
         data.style.transform = "";
 
         /* 有一秒的过渡动画，动画结束后执行以下 */
@@ -109,13 +108,24 @@ export default {
 </script>
 <style scoped lang="less">
 .HeroSkinHeadImg {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  animation: into 1s 1s forwards;
+  transform: translateX(-50%) translateY(-250%) scale(2);
+  @keyframes into {
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+  }
   .show-skin {
     position: absolute;
-    left: 50%;
-    top: 75%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background: url("@/assets/img/part/icon/head_bg.png") no-repeat center
       center;
@@ -130,10 +140,9 @@ export default {
     position: absolute;
     width: 90px;
     height: 90px;
-    left: calc(50% - 45px);
-    top: calc(75% - 45px);
     transform-origin: center center;
     transition: all 1s;
+    z-index: 1;
     img {
       width: 100%;
       height: 100%;
