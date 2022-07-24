@@ -18,7 +18,7 @@ export default {
   name: "App",
   data() {
     return {
-      LOCAL_VERSION: "22.7.22.14",
+      LOCAL_VERSION: "22.7.24.23",
     };
   },
   components: { GlobalSwitch },

@@ -1,1 +1,0 @@
-window.REMOTE_VERSION = "22.7.22.14";
