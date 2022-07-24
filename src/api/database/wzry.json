@@ -4,17 +4,17 @@
       "id": 1329670984,
       "password": "lengyibai.",
       "name": "冷弋白",
-      "headImg": "https://lengyibai-img-bed.netlify.app/img/lyb.png",
-      "wzryToken": "1658370"
+      "headImg": "https://img-bed-five.vercel.app/img/lyb.png",
+      "wzryToken": "1658670"
     }
   ],
   "hero": [
     {
       "id": 67,
       "name": "鬼谷子",
-      "head_img": "https://lengyibai-wzry-material.netlify.app/hero/67/67.png",
-      "cover": "https://lengyibai-wzry-material.netlify.app/hero/67/feng_mian.jpg",
-      "poster": "https://lengyibai-wzry-material.netlify.app/hero/67/hai_bao.jpg",
+      "head_img": "https://wzry-material.vercel.app/hero/67/67.png",
+      "cover": "https://wzry-material.vercel.app/hero/67/feng_mian.jpg",
+      "poster": "https://wzry-material.vercel.app/hero/67/hai_bao.jpg",
       "mark": "万物有灵",
       "survival": 50,
       "attack": 20,
@@ -66,7 +66,7 @@
         {
           "name": "纵横兵法",
           "desc": "鬼谷子脱离敌方视野3秒后，玄微子会再次归巢到法杖中，下一次普通攻击变更为强化攻击，强化攻击会造成300（+45%法术加成）点法术伤害并将范围内的敌人减少50%移动速度，持续1.5秒；如果使用强化攻击时，鬼谷子不处于敌方视野，则纵横兵法的冷却时间将会增加至10秒",
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/ji_neng/0.png",
+          "img": "https://wzry-material.vercel.app/hero/67/ji_neng/0.png",
           "type": [
             1,
             4
@@ -77,7 +77,7 @@
           "desc": "鬼谷子命令玄微子包裹自身和1500距离内的队友，准备1秒后进入伪装状态；伪装状态下鬼谷子和队友将增加30%移动速度；同时将会探查到距离鬼谷子最近的一名敌方英雄视野，伪装状态最多持续4秒；伪装状态下，如果使用普通攻击、技能或敌方造成负面效果时会立即解除伪装状态",
           "cd": 10,
           "consume": 70,
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/ji_neng/1.png",
+          "img": "https://wzry-material.vercel.app/hero/67/ji_neng/1.png",
           "type": [
             1
           ],
@@ -115,7 +115,7 @@
           ],
           "cd": 10,
           "consume": 60,
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/ji_neng/2.png",
+          "img": "https://wzry-material.vercel.app/hero/67/ji_neng/2.png",
           "effect": [
             {
               "type": 1,
@@ -157,7 +157,7 @@
           "desc": "鬼谷子命令玄微子包裹自身和1500距离内的队友，准备1秒后进入伪装状态；伪装状态下鬼谷子和队友将增加30%移动速度；同时将会探查到距离鬼谷子最近的一名敌方英雄视野，伪装状态最多持续4秒；伪装状态下，如果使用普通攻击、技能或敌方造成负面效果时会立即解除伪装状态",
           "cd": 35,
           "consume": 120,
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/ji_neng/3.png",
+          "img": "https://wzry-material.vercel.app/hero/67/ji_neng/3.png",
           "effect": [
             {
               "type": 3,
@@ -178,20 +178,20 @@
       "data": [
         {
           "name": "阿莫斯公爵",
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/pi_fu/1.jpg",
-          "head": "https://lengyibai-wzry-material.netlify.app/hero/67/tou_xiang/1.jpg",
+          "img": "https://wzry-material.vercel.app/hero/67/pi_fu/1.jpg",
+          "head": "https://wzry-material.vercel.app/hero/67/tou_xiang/1.jpg",
           "type": 1
         },
         {
           "name": "幻乐之宴",
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/pi_fu/2.jpg",
-          "head": "https://lengyibai-wzry-material.netlify.app/hero/67/tou_xiang/2.jpg",
+          "img": "https://wzry-material.vercel.app/hero/67/pi_fu/2.jpg",
+          "head": "https://wzry-material.vercel.app/hero/67/tou_xiang/2.jpg",
           "type": 49
         },
         {
           "name": "原初探秘者",
-          "img": "https://lengyibai-wzry-material.netlify.app/hero/67/pi_fu/3.jpg",
-          "head": "https://lengyibai-wzry-material.netlify.app/hero/67/tou_xiang/3.jpg",
+          "img": "https://wzry-material.vercel.app/hero/67/pi_fu/3.jpg",
+          "head": "https://wzry-material.vercel.app/hero/67/tou_xiang/3.jpg",
           "type": 43
         }
       ]
@@ -678,7 +678,7 @@
     {
       "name": "红月",
       "type": 6,
-      "img": "https://lengyibai-wzry-material.netlify.app/epigraph/3.png",
+      "img": "https://wzry-material.vercel.app/epigraph/3.png",
       "effect": [
         {
           "type": 3,
@@ -711,7 +711,7 @@
             "id": 311,
             "name": "红玛瑙",
             "price": 300,
-            "icon": "https://lengyibai-wzry-material.netlify.app/equip/defense/1_1.png"
+            "icon": "https://wzry-material.vercel.app/equip/defense/1_1.png"
           }
         ],
         [
@@ -719,7 +719,7 @@
             "id": 321,
             "name": "力量腰带",
             "price": 900,
-            "icon": "https://lengyibai-wzry-material.netlify.app/equip/defense/2_1.png"
+            "icon": "https://wzry-material.vercel.app/equip/defense/2_1.png"
           }
         ],
         [
@@ -728,7 +728,7 @@
             "name": "红莲斗篷",
             "desc": "灼烧周围敌人",
             "price": 1800,
-            "icon": "https://lengyibai-wzry-material.netlify.app/equip/defense/3_1.png"
+            "icon": "https://wzry-material.vercel.app/equip/defense/3_1.png"
           }
         ]
       ]
